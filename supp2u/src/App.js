@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import GoogleMaps from './comp/GoogleMap'
 
 function App() {
   return (
@@ -11,6 +11,13 @@ function App() {
           Welcome to 
         </p>
         <h1>Supp2U</h1>
+
+        <GoogleMaps
+        isMarkerShown
+        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyA9vZYucirjbKCttIzPuBEbNelsYeCsAYg&v=3.exp&libraries=geometry,drawing,places`}
+        loadingElement={<div style={{ height: `100%` }} />}
+        containerElement={<div style={{ height: `400px` }} />}
+        mapElement={<div style={{ height: `100%` }} />}/>
         
       </header>
     </div>
