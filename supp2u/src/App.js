@@ -1,18 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
+import Map from './comp/Map'
 import './App.css';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        
+    <div className="App"> 
         <p>
-          Welcome to 
+          {/* Welcome to Supp2U */}
         </p>
-        <h1>Supp2U</h1>
-        
-      </header>
+        <Map className="map" />
     </div>
   );
 }
