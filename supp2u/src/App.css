@@ -1,6 +1,13 @@
 .App {
+  /* display: flex; */
+  
   text-align: center;
-  overflow-x: hidden
+  /* overflow-x: hidden; */
+  width: 1000px;
+}
+
+.Map_Holder {
+  justify-content: center;
 }
 
 .App-logo {
