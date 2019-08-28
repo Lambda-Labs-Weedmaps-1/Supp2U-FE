@@ -1,18 +1,15 @@
 import React from 'react';
-import Map from './comp/Map'
-
+import Map from './comp/googleMap/Map'
+import Navigation from './comp/Navigation/Navigation'
 import './App.css';
 import LookupTest from './comp/LookupTest';
-
 
 function App() {
   return (
     <div className="App"> 
-        <p>
-          Welcome to Supp2U
-        </p>
+        <Navigation />
         <div className="Map_Holder">
-          <Map className="map" />
+          <Map />
         </div>
         <div>
           <LookupTest />
