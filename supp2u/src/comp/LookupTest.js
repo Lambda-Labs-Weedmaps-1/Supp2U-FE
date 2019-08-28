@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 
 import axios from 'axios';
 
+let thing = process.env.TESTDATA;
+
+console.log('env',thing);
+
 class LookupTest extends Component {
     constructor() {
         super()
@@ -33,9 +37,11 @@ class LookupTest extends Component {
       getLL = addy => {
         addy.preventDefault();
 
-        // axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY`)
+        // This is currently just a test address and not taking in the actual state address
+        // axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=XXXXXXXXXXXXXXXXXXX`)
     
-        axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.address}=AIzaSyDtc3pDlAa_YG-MOK-irmjZAM_fFJbpEgg`)
+        axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=${process.env.GCOORDINATES}`)
+
         .then (res => {
             console.log("res", res);
             console.log("res data", res.data)
@@ -69,6 +75,8 @@ class LookupTest extends Component {
                 <p>Lon: {this.state.lon}</p>
 
                 <br></br><br></br>
+
+                <p>{process.env.TESTDATA}</p>
 
             </div>
         )
