@@ -31,13 +31,14 @@ class LookupTest extends Component {
 
 
       getLL = addy => {
-    
+        addy.preventDefault();
+
         // axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY`)
     
-        axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${addy}=AIzaSyDtc3pDlAa_YG-MOK-irmjZAM_fFJbpEgg`)
+        axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.address}=AIzaSyDtc3pDlAa_YG-MOK-irmjZAM_fFJbpEgg`)
         .then (res => {
-            console.log(res);
-            console.log(res.data)
+            console.log("res", res);
+            console.log("res data", res.data)
         })
         
     
@@ -51,13 +52,16 @@ class LookupTest extends Component {
                 <h1>LookupTest</h1>
                 <p>Enter an address, to search for geocoordinates</p>
                 
-                <input
-                    type="text"
-                    name="address"
-                    placeholder="address"
-                    onChange={this.handleAddress}
-                    value={this.state.address}
-                />
+                <form onSubmit= {this.getLL}>
+                    <input
+                        type="text"
+                        name="address"
+                        placeholder="address"
+                        onChange={this.handleAddress}
+                        value={this.state.address}
+                    />
+                </form>
+
                 <br></br><br></br>
 
                 <p>geocoordinates:</p>
