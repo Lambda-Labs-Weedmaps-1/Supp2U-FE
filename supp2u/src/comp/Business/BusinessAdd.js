@@ -6,10 +6,11 @@ let thing = process.env.TESTDATA;
 
 console.log('env',thing);
 
-class LookupTest extends Component {
+class BusinessAdd extends Component {
     constructor() {
         super()
 
+        // change this for business stuff later just placeholder starter
         this.state = {
             address: "",
             lat: "32342",
@@ -55,8 +56,8 @@ class LookupTest extends Component {
     render() {
         return (
             <div>
-                <h1>LookupTest</h1>
-                <p>Enter an address, to search for geocoordinates</p>
+                <h1>Business Creation Goes Here !!!</h1>
+                <p>Enter business stuff here ;p</p>
                 
                 <form onSubmit= {this.getLL}>
                     <input
@@ -70,13 +71,11 @@ class LookupTest extends Component {
 
                 <br></br><br></br>
 
-                <p>geocoordinates:</p>
-                <p>Lat: {this.state.lat}</p>
-                <p>Lon: {this.state.lon}</p>
+                
 
                 <br></br><br></br>
 
-                <p>{process.env.TESTDATA}</p>
+                
 
             </div>
         )
@@ -85,4 +84,4 @@ class LookupTest extends Component {
 
 }
 
-export default LookupTest;
+export default BusinessAdd;
