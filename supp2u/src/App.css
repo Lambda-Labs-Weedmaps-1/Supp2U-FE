@@ -8,6 +8,28 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.App {
+  /* display: flex; */
+  
+  text-align: center;
+  /* overflow-x: hidden; */
+  width: 1000px;
+}
+
+.Map_Holder {
+  justify-content: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+}
 .Link {
   padding: 10px;
 }
