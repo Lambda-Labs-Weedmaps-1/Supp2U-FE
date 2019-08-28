@@ -1,15 +1,13 @@
 import React from 'react';
-import { Route, Link } from "react-router-dom";
-import App from "../../App";
+import { NavLink } from "react-router-dom";
 
 export default function Navigation() {
     return (
       <div>
         <nav className="Navigation">
-          <h1>Supp2U</h1> 
-          <Link className="Link" to="/">Home</Link>
+          <h1 className="NavTitle" >supp2u</h1> 
+          <NavLink className="Link" to="/">Home</NavLink>
         </nav>  
-        <Route exact path="/" component={App} />
       </div>
     )
 }
