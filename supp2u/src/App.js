@@ -1,9 +1,8 @@
 import React from 'react';
-import Map from './comp/Map'
+import Map from './comp/googleMap/Map'
 
 import './App.css';
 import LookupTest from './comp/LookupTest';
-
 
 function App() {
   return (
