@@ -5,7 +5,7 @@ import GoogleMaps from './comp/GoogleMap'
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+
         
         <p>
           Welcome to 
@@ -19,7 +19,7 @@ function App() {
         containerElement={<div style={{ height: `400px` }} />}
         mapElement={<div style={{ height: `100%` }} />}/>
         
-      </header>
+      
     </div>
   );
 }
