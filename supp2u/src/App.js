@@ -1,9 +1,9 @@
 import React from 'react';
 import Map from './comp/googleMap/Map'
 import Navigation from './comp/Navigation/Navigation'
-import './App.css';
+import './App.sass';
 import LookupTest from './comp/LookupTest';
-import BusinessAdd from './comp/Business/BusinessAdd';
+import BusinessCreator from './comp/Business/BusinessCreator';
 
 
 require('dotenv').config()
@@ -19,7 +19,7 @@ function App() {
           <LookupTest />
         </div>
         <div>
-          <BusinessAdd />
+          <BusinessCreator />
         </div>
     </div>
   );

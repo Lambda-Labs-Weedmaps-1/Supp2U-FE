@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 
 import axios from 'axios';
 
-let thing = process.env.TESTDATA;
-
-console.log('env',thing);
-
 class BusinessAdd extends Component {
     constructor() {
         super()
@@ -56,8 +52,7 @@ class BusinessAdd extends Component {
     render() {
         return (
             <div>
-                <h1>Business Creation Goes Here !!!</h1>
-                <p>Enter business stuff here ;p</p>
+                <h1>Business Creation Goes Here!</h1>
                 
                 <form onSubmit= {this.getLL}>
                     <input
