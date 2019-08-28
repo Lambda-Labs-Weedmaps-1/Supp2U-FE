@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  overflow-x: hidden
 }
 
 .App-logo {
@@ -30,4 +31,9 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.map{
+  width: 90%;
+  margin: 0 auto
 }
