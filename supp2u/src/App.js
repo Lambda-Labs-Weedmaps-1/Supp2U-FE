@@ -3,6 +3,7 @@ import Map from './comp/googleMap/Map'
 import Navigation from './comp/Navigation/Navigation'
 import './App.css';
 import LookupTest from './comp/LookupTest';
+import BusinessAdd from './comp/Business/BusinessAdd';
 
 function App() {
   return (
@@ -13,6 +14,9 @@ function App() {
         </div>
         <div>
           <LookupTest />
+        </div>
+        <div>
+          <BusinessAdd />
         </div>
     </div>
   );
