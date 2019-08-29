@@ -2,6 +2,10 @@
 
 import axios from 'axios';
 
+import {
+    GET_BUSINESS_START, GET_BUSINESS_SUCCESS, GET_BUSINESS_FAIL
+} from './getBusiness'
+
 // This is a placeholder for backend variables, whether dev or prod
 const backendURL = process.env.REACT_APP_BACKEND_URL
 
@@ -32,4 +36,10 @@ export const startAction = dispatch => {
         dispatch({ type: GET_START_FAIL, payload: err.data})
         );
 
+}
+
+export {
+    GET_BUSINESS_START,
+    GET_BUSINESS_SUCCESS,
+    GET_BUSINESS_FAIL
 }

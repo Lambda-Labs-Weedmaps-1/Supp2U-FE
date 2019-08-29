@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { business } from './businessReducer';
+import { businessGet } from './businessReducer';
 
 // break most of this out to other reducers (business,customer, etc) later, just setting up intial store atm
 import {GET_START, GET_START_SUCCESS, GET_START_FAIL} from '../actions/index'
@@ -42,7 +42,7 @@ export const landingState = ( state = initialState, action) => {
 }
 
 export default combineReducers({
-    business,
+    businessGet,
     landingState
     // customerReducer,
     // location,
