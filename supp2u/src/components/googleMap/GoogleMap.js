@@ -2,9 +2,6 @@ import React, {createRef} from 'react';
 import "./style.sass"
 import { mapStyle } from "./MapStyles";
 
-// const GOOGLE_MAP_API_KEY = process.env.GOOGLE_MAP_API_KEY;
-// console.log(GOOGLE_MAP_API_KEY);
-
 class GoogleMaps extends React.Component{
 
   mapRef = createRef();

@@ -38,7 +38,7 @@ function BusinessCreator() {
         const newAddress = businessInformation.street.split(' ')
         //   address look up function
         // axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=XXXXXXXXXXXXXXXXXXX`)
-        Axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${newAddress[0]}+${newAddress[1]}+${newAddress[1]},+${businessInformation.city},+${businessInformation.state}&key=${process.env.REACT_APP_GCOORDINATES}`)
+        Axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${newAddress[0]}+${newAddress[1]}+${newAddress[2]},+${businessInformation.city},+${businessInformation.state}&key=${process.env.REACT_APP_GCOORDINATES}`)
         .then (res => {
             // sends location to businessInformation
             console.log("location", res.data.results[0].geometry.location);

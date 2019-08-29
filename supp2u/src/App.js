@@ -1,26 +1,28 @@
 import React from 'react';
-import Map from './comp/googleMap/Map'
-import Navigation from './comp/Navigation/Navigation'
+import Map from './components/googleMap/Map'
 import './App.sass';
-import LookupTest from './comp/LookupTest';
-import BusinessCreator from './comp/Business/BusinessCreator';
+import BusinessCreator from './components/Business/BusinessCreator';
+import Navigation from "./components/Navigation/Navigation"
+import BasicRoute from "./BasicRoute";
+import LookupTest from './components/LookupTest';
 
 
-require('dotenv').config()
+
 
 function App() {
   return (
-    <div className="App"> 
+    <div className="App">
         <Navigation />
         <div className="Map_Holder">
-          <Map />
+          <Map /> {/* // TODO move to BasicRoute  if needed*/}
         </div>
         <div>
-          <LookupTest />
+          <LookupTest /> {/* // TODO move to BasicRoute */}
         </div>
         <div>
           <BusinessCreator />
         </div>
+        <BasicRoute />
     </div>
   );
 }
