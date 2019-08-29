@@ -1,6 +1,7 @@
-import React, {createRef} from 'react';
+import React, {createRef,} from 'react';
 import "./style.sass"
 import { mapStyle } from "./MapStyles";
+import axios from "axios"
 
 class GoogleMaps extends React.Component{
 
@@ -34,6 +35,7 @@ class GoogleMaps extends React.Component{
     googleMapScript.addEventListener("load", ()=>{
       this.googleMap = this.createGoogleMap();
     })
+  
   }
 
   render(){
