@@ -1,33 +1,26 @@
 import React from 'react';
+
 import GoogleMaps from './components/googleMap/Map'
-import Navigation from './components/Navigation/Navigation'
 import './App.css';
+import BasicRoute from "./BasicRoute";
 import LookupTest from './components/LookupTest';
 import BusinessAdd from './components/Business/BusinessAdd';
-import { GoogleMap } from 'react-google-maps';
 
 
-require('dotenv').config()
 
 function App() {
   return (
-    <div className="App"> 
-        <Navigation />
+    <div className="App">
         <div className="Map_Holder">
-        <GoogleMaps
-					isMarkerShown
-					googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyA9vZYucirjbKCttIzPuBEbNelsYeCsAYg&v=3.exp&libraries=geometry,drawing,places`}
-					loadingElement={<div style={{ height: `100%` }} />}
-					containerElement={<div style={{ height: `400px` }} />}
-					mapElement={<div style={{ height: `100%` }} />}
-				/>
+          <GoogleMaps /> {/* // TODO move to BasicRoute  if needed*/}
         </div>
         <div>
-          <LookupTest />
+          <LookupTest /> {/* // TODO move to BasicRoute */}
         </div>
         <div>
-          <BusinessAdd />
+          <BusinessAdd /> {/* // TODO move to BasicRoute */}
         </div>
+        <BasicRoute />
     </div>
   );
 }
