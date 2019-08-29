@@ -1,16 +1,16 @@
-import React from "react";
+// import React from "react";
 
-// import Character from "./Character";
-import Business from "./Business";
+// // import Character from "./Character";
+// import Business from "./Business";
 
-const BusinessList = props => {
-  return (
-    <ul>
-      {props.businesses.map(business => {
-        return <Business key={business.name} business={business} />;
-      })}
-    </ul>
-  );
-};
+// const BusinessList = props => {
+//   return (
+//     <ul>
+//       {props.businesses.map(business => {
+//         return <Business key={business.name} business={business} />;
+//       })}
+//     </ul>
+//   );
+// };
 
-export default BusinessList;
+// export default BusinessList;

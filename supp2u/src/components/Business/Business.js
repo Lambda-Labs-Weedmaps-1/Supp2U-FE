@@ -1,7 +1,7 @@
-import React from "react";
+// import React from "react";
 
-const Business = props => {
-  return <li>{props.business.name}</li>;
-};
+// const Business = props => {
+//   return <li>{props.business.name}</li>;
+// };
 
-export default Business;
+// export default Business;
