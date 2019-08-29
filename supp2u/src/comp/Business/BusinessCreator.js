@@ -34,10 +34,9 @@ function BusinessCreator() {
           e.preventDefault()
           console.log('new data', businessInformation)
                 setTimeout(() => {
-                Axios.post(`https://supp2udev.herokuapp.com/api/v1/users/${user}/businesses`, businessInformation)
+                Axios.post(`https://supp2udev.herokuapp.com/api/v1/users/${user}/businesses`, {businessInformation})
             .then((res, req) => {
-    
-                res.data = businessInformation
+
                 console.log('sent')   
         
             }).catch(error =>{
@@ -78,7 +77,7 @@ function BusinessCreator() {
             <br/>
             {/* Here we bring in the address input, this is off in another component because of the extra frontend logic used to turn the address into a geocoordanate */}
             <div className="input-box-type1">
-                <label>Building number</label>
+                <label>Address</label>
                 <input
                         type="text"
                         name="address"
