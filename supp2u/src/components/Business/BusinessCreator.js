@@ -12,7 +12,7 @@ function BusinessCreator() {
         "website": "",
         "city": "",
         "state": "",
-        "street": "",
+        "street": " ",
         "zipcode": 0,
         "building_number": 420,
         "theme": "",
@@ -46,7 +46,7 @@ function BusinessCreator() {
            businessInformation.long = res.data.results[0].geometry.location.lng 
         })
         setTimeout(() => {
-            Axios.post(`https://supp2udev.herokuapp.com/api/v1/users/${user}/businesses`, businessInformation)
+            Axios.post(`http://localhost:3000/api/v1/users/${user}/businesses`, businessInformation)
             .then((res, req) => { console.log('sent') })
             .catch(error =>{console.log('ERROR POST\n',error);
         }, 5000);
