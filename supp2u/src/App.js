@@ -7,7 +7,6 @@ import LookupTest from './components/LookupTest';
 import BusinessAdd from './components/Business/BusinessAdd';
 
 
-
 function App() {
   return (
     <div className="App">
