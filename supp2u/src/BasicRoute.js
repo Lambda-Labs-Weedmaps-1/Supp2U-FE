@@ -4,8 +4,7 @@ import Profile from "./components/profile";
 import Navigation from './components/Navigation/Navigation'
 
 export default () =>{
-
-  return  <>
+  return <>
         <Route path={"/"} component={Navigation}/>
         {/*<Route path={"/profile"} component={Profile}/>*/}
         <Route path={"/profile"} component={Profile}/>

@@ -4,7 +4,7 @@ import '../css/styles.styl';
 import Home from './Home'
 import { auth } from '../utils/init';
 
-class App extends Component {
+class Auth0 extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -27,4 +27,4 @@ class App extends Component {
 		);
 	}
 }
-export default App;
+export default Auth0;

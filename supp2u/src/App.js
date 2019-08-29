@@ -5,6 +5,7 @@ import BusinessCreator from './components/Business/BusinessCreator';
 import Navigation from "./components/Navigation/Navigation"
 import BasicRoute from "./BasicRoute";
 import LookupTest from './components/LookupTest';
+import Auth0 from './components/Auth0';
 
 
 
