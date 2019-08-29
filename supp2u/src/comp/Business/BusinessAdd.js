@@ -52,9 +52,11 @@ class BusinessAdd extends Component {
     render() {
         return (
             <div>
-                <h1>Business Creation Goes Here!</h1>
+                
                 
                 <form onSubmit= {this.getLL}>
+                    <div className="input-box-type1">
+                    <label>Street</label>
                     <input
                         type="text"
                         name="address"
@@ -62,13 +64,8 @@ class BusinessAdd extends Component {
                         onChange={this.handleAddress}
                         value={this.state.address}
                     />
+                </div>
                 </form>
-
-                <br></br><br></br>
-
-                
-
-                <br></br><br></br>
 
                 
 
