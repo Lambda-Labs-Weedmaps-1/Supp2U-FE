@@ -19,8 +19,8 @@ function BusinessCreator() {
         "description": "",
         "hours": "",
         "recommended": null,
-        "long": null,
-        "lat": null}]);
+        "long": "",
+        "lat": ""}]);
     
         // hard coded user for test reasons
     let user = 1
@@ -32,20 +32,31 @@ function BusinessCreator() {
     //   submit form function
       const submit = e =>{
           e.preventDefault()
-          console.log('new data', businessInformation)
-                setTimeout(() => {
-                Axios.post(`https://supp2udev.herokuapp.com/api/v1/users/${user}/businesses`, {businessInformation})
-            .then((res, req) => {
-
-                console.log('sent')   
-        
-            }).catch(error =>{
-            console.log('ERROR POST\n',error);
+          // Logs out what the current businessinfo is before it post it
+        //   console.log('new data', businessInformation)
+        // Transmutes the address into a useable array
+        const newAddress = businessInformation.street.split(' ')
+        //   address look up function
+        // axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=XXXXXXXXXXXXXXXXXXX`)
+        Axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${newAddress[0]}+${newAddress[1]}+${newAddress[1]},+${businessInformation.city},+${businessInformation.state}&key=${process.env.REACT_APP_GCOORDINATES}`)
+        .then (res => {
+            // sends location to businessInformation
+            console.log("location", res.data.results[0].geometry.location);
+           businessInformation.lat = res.data.results[0].geometry.location.lat
+           businessInformation.long = res.data.results[0].geometry.location.lng 
+        })
+        setTimeout(() => {
+            Axios.post(`https://supp2udev.herokuapp.com/api/v1/users/${user}/businesses`, businessInformation)
+            .then((res, req) => { console.log('sent') })
+            .catch(error =>{console.log('ERROR POST\n',error);
         }, 5000);
-      })}
+      })
+    
+    
+    }
 
     //   REFRENCE FOR THE GEOCODE API
-    // //   const getLL = adde => {
+    //   const getLL = adde => {
     //     adde.preventDefault();
     //     // This is currently just a test address and not taking in the actual state address
     //     // axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=XXXXXXXXXXXXXXXXXXX`)
@@ -80,7 +91,7 @@ function BusinessCreator() {
                 <label>Address</label>
                 <input
                         type="text"
-                        name="address"
+                        name="street"
                         placeholder="address"
                         onChange={changeHandler}
                         value={businessInformation.street}
