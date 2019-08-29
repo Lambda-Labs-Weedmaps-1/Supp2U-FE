@@ -169,7 +169,7 @@ function BusinessCreator() {
             </div>
 
 
-            <button> ................... </button>
+            <button> Create Business </button>
 
         </form>
     </div>
