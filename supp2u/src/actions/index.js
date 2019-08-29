@@ -25,7 +25,11 @@ export const startAction = dispatch => {
     return axios
     // this url is also a placeholder at the moment as routes/endpoints are not all setup
     .get(`${backendURL}/mapdata/forStartingMapPosition`)
-    .then((res) => dispatch({ type: GET_START_SUCCESS, payload: res.data}))
-    .catch(err => dispatch({ type: GET_START_FAIL, payload: err.data}));
+    .then(res => 
+        dispatch({ type: GET_START_SUCCESS, payload: res.data})
+        )
+    .catch(err => 
+        dispatch({ type: GET_START_FAIL, payload: err.data})
+        );
 
 }
