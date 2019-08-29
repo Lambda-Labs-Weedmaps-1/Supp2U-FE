@@ -1,9 +1,10 @@
 import React from 'react';
-import Map from './comp/googleMap/Map'
-import Navigation from './comp/Navigation/Navigation'
+import GoogleMaps from './components/googleMap/Map'
+import Navigation from './components/Navigation/Navigation'
 import './App.css';
-import LookupTest from './comp/LookupTest';
-import BusinessAdd from './comp/Business/BusinessAdd';
+import LookupTest from './components/LookupTest';
+import BusinessAdd from './components/Business/BusinessAdd';
+import { GoogleMap } from 'react-google-maps';
 
 
 require('dotenv').config()
@@ -13,7 +14,13 @@ function App() {
     <div className="App"> 
         <Navigation />
         <div className="Map_Holder">
-          <Map />
+        <GoogleMaps
+					isMarkerShown
+					googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyA9vZYucirjbKCttIzPuBEbNelsYeCsAYg&v=3.exp&libraries=geometry,drawing,places`}
+					loadingElement={<div style={{ height: `100%` }} />}
+					containerElement={<div style={{ height: `400px` }} />}
+					mapElement={<div style={{ height: `100%` }} />}
+				/>
         </div>
         <div>
           <LookupTest />
