@@ -31,8 +31,6 @@ function BusinessCreator() {
     //   submit form function
     const submit = e =>{
         e.preventDefault()
-        //   Logs out what the current businessinfo is before it post it
-        console.log('new data', businessInformation)
         // Transmutes the address into a useable array
         if(businessInformation.street === undefined){console.log('Address in Required')}else{
         const newAddress = businessInformation.street
@@ -42,30 +40,17 @@ function BusinessCreator() {
         Axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${newAddressArray[0]}+${newAddressArray[1]}+${newAddressArray[2]},+${businessInformation.city},+${businessInformation.state}&key=${process.env.REACT_APP_GCOORDINATES}`)
         .then (res => {
         //     // sends location to businessInformation
-            console.log("location", res.data.results[0].geometry.location);
            businessInformation.lat = res.data.results[0].geometry.location.lat
            businessInformation.long = res.data.results[0].geometry.location.lng 
         })
-        console.log('new new data', businessInformation)
+        console.log('data to be sent to backend', businessInformation)
         
             Axios.post(`http://localhost:3000/api/v1/users/${user}/businesses`, businessInformation)
             .then((res, req) => { console.log('sent') })
             .catch(error =>{console.log('ERROR POST\n',error);
         });
     }}
-
-    //   REFRENCE FOR THE GEOCODE API
-    //   const getLL = adde => {
-    //     adde.preventDefault();
-    //     // This is currently just a test address and not taking in the actual state address
-    //     // axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=XXXXXXXXXXXXXXXXXXX`)
-    //     Axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=${process.env.REACT_APP_GCOORDINATES}`)
-    //     .then (res => {
-    //         console.log("res", res);
-    //         console.log("res data", res.data)
-    //     })
-    // }
-    
+        
     //   JSX for BusinessCreator component
     return (
         <>
@@ -82,7 +67,6 @@ function BusinessCreator() {
                     placeholder="business name..." 
                     onChange={changeHandler}
                     />
-            ....
             </div>
             <br/>
             {/* Here we bring in the address input, this is off in another component because of the extra frontend logic used to turn the address into a geocoordanate */}

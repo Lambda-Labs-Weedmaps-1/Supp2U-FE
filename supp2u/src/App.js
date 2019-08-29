@@ -17,9 +17,6 @@ function App() {
         <div>
           <LookupTest /> {/* // TODO move to BasicRoute */}
         </div>
-        <div>
-          <BusinessCreator />
-        </div>
     </div>
   );
 }
