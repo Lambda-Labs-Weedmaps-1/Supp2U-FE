@@ -1,9 +1,9 @@
 import React from 'react';
-import Map from './comp/googleMap/Map'
-import Navigation from './comp/Navigation/Navigation'
+import Map from './components/googleMap/Map'
+import Navigation from './components/Navigation/Navigation'
 import './App.css';
-import LookupTest from './comp/LookupTest';
-import BusinessAdd from './comp/Business/BusinessAdd';
+import LookupTest from './components/LookupTest';
+import BusinessAdd from './components/Business/BusinessAdd';
 
 
 require('dotenv').config()
