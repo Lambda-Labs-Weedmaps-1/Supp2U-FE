@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Navigation from "./components/Navigation/Navigation"
 import GoogleMaps from './components/googleMap/Map'
 import './App.css';
 import BasicRoute from "./BasicRoute";
@@ -11,6 +11,7 @@ import BusinessAdd from './components/Business/BusinessAdd';
 function App() {
   return (
     <div className="App">
+        <Navigation />
         <div className="Map_Holder">
           <GoogleMaps /> {/* // TODO move to BasicRoute  if needed*/}
         </div>
