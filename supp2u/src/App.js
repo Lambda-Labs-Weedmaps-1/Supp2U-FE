@@ -1,23 +1,22 @@
 import React from 'react';
 import Map from './comp/googleMap/Map'
-import Navigation from './comp/Navigation/Navigation'
 import './App.css';
 import LookupTest from './comp/LookupTest';
 import BusinessAdd from './comp/Business/BusinessAdd';
-
+import BasicRoute from "./BasicRoute";
 function App() {
   return (
-    <div className="App"> 
-        <Navigation />
+    <div className="App">
         <div className="Map_Holder">
-          <Map />
+          <Map /> {/* // TODO move to BasicRoute  if needed*/}
         </div>
         <div>
-          <LookupTest />
+          <LookupTest /> {/* // TODO move to BasicRoute */}
         </div>
         <div>
-          <BusinessAdd />
+          <BusinessAdd /> {/* // TODO move to BasicRoute */}
         </div>
+        <BasicRoute />
     </div>
   );
 }
