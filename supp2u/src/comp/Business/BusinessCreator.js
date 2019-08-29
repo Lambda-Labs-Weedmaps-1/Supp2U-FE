@@ -34,38 +34,35 @@ function BusinessCreator() {
           e.preventDefault()
           console.log('new data', businessInformation)
                 setTimeout(() => {
-                Axios.post(`https://supp2udev.herokuapp.com/api/v1/users/${user}/businesses`)
+                Axios.post(`https://supp2udev.herokuapp.com/api/v1/users/${user}/businesses`, businessInformation)
             .then((res, req) => {
     
                 res.data = businessInformation
-                    
+                console.log('sent')   
         
             }).catch(error =>{
             console.log('ERROR POST\n',error);
         }, 5000);
       })}
 
-      const getLL = adde => {
-        adde.preventDefault();
-
-        // This is currently just a test address and not taking in the actual state address
-        // axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=XXXXXXXXXXXXXXXXXXX`)
-    
-        Axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=${process.env.REACT_APP_GCOORDINATES}`)
-
-        .then (res => {
-            console.log("res", res);
-            console.log("res data", res.data)
-        })
-    }
-
+    //   REFRENCE FOR THE GEOCODE API
+    // //   const getLL = adde => {
+    //     adde.preventDefault();
+    //     // This is currently just a test address and not taking in the actual state address
+    //     // axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=XXXXXXXXXXXXXXXXXXX`)
+    //     Axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=${process.env.REACT_APP_GCOORDINATES}`)
+    //     .then (res => {
+    //         console.log("res", res);
+    //         console.log("res data", res.data)
+    //     })
+    // }
     
     //   JSX for BusinessCreator component
     return (
         <>
     <div className="form"> 
     <h3>Create your business</h3>
-        <form onSubmit={submit && getLL}>
+        <form onSubmit={submit}>
 
             <div className="input-box-type1">
                 <label>Name of your business</label>
