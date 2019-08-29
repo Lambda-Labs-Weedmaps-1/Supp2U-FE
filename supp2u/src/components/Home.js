@@ -1,92 +1,99 @@
 //src/components/Home.js
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 // import JSONDebugger from '../utils/JSONDebugger';
 import {
 	pingApiServer,
 	fetchProfilesWithAuth,
 	fetchProfilesNoAuth
 } from '../utils/API';
+
+import { auth } from '../utils/init';
+
 import { Container, Row, Col, Button, ButtonGroup } from 'reactstrap';
+
 import Loading from './Loading';
 
-class Home extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			status: 'Idle',
-			pingData: 'No data from server yet',
-			profileData: 'No data from server yet'
-		};
-	}
-	resetStates = () => {
-		this.setState({
-			status: 'Idle',
-			pingData: 'No data from server yet',
-			profileData: 'No data from server yet'
-		});
-	};
-	renderLoading = () => {
-		switch (this.state.status) {
+const Home = () => {
+  const [status, setStatus] = useState('Idle');
+  const [pingData, setPingData] = useState('No data from server yet')
+  const [profileData, setProfileData] = useState('No data from server yet')
+
+  const resetStates = () => {
+    setStatus(status)
+    setPingData(pingData)
+    setProfileData(profileData)
+  }
+
+  const renderLoading = () => {
+    switch (status) {
 			case 'Fetching':
 				return <Loading />;
 			default:
 				return null;
 		}
-	};
-	pingApi = () => {
-		this.setState({ status: 'Fetching' });
-		pingApiServer().then(data => {
-			this.setState({ status: 'Fetch completed', pingData: data });
-		});
-	};
+  }
 
-	_fetchProfilesNoAuth = () => {
-		this.setState({ status: 'Fetching' });
+  const pingApi = () => {
+    setStatus('Fetching')
+		
+		pingApiServer().then(data => {
+      setStatus('Fetch completed')
+      setPingData(data)
+		});
+  };
+  
+  const _fetchProfilesNoAuth = () => {
+		setStatus('Fetching')
 		fetchProfilesNoAuth().then(data => {
-			this.setState({ status: 'Fetch completed', profileData: data });
+			setStatus('Fetch completed')
+      setPingData(data)
 		});
-	};
-	_fetchProfilesWithAuth = () => {
-		this.setState({ status: 'Fetching' });
+  };
+  
+  const _fetchProfilesWithAuth = () => {
+		setStatus('Fetching')
 		fetchProfilesWithAuth(this.props.token).then(data => {
-			this.setState({ status: 'Fetch completed', profileData: data });
+			setStatus('Fetch completed')
+      setPingData(data)
 		});
-	};
-	renderSignInUp = () => {
+  };
+  
+  const renderSignInUp = () => {
 		return (
-			<Button color="primary" onClick={this.props.auth.login}>
+			<Button color="primary" onClick={auth.login}>
 				Sign In / Sign Up
 			</Button>
 		);
-	};
-	renderLogOut = () => {
+  };
+  
+  const renderLogOut = () => {
 		return (
 			<div>
 				<Row>
 					<Col>
-						<Button color="primary" onClick={this.props.auth.logout}>
+						<Button color="primary" onClick={auth.logout}>
 							Sign out
 						</Button>
-						<Button color="secondary" onClick={this.pingApi}>
+						<Button color="secondary" onClick={pingApi}>
 							Ping API Server
 						</Button>
 					</Col>
 				</Row>
 				<Row>
 					<Col xs="12" sm="6">
-						<Button color="danger" onClick={this._fetchProfilesNoAuth}>
+						<Button color="danger" onClick={_fetchProfilesNoAuth}>
 							Fetch Profile without Authentication
 						</Button>
 					</Col>
 					<Col xs="12" sm="6">
-						<Button color="success" onClick={this._fetchProfilesWithAuth}>
+						<Button color="success" onClick={_fetchProfilesWithAuth}>
 							Fetch Profile with Authentication
 						</Button>
 					</Col>
 				</Row>
 				<Row>
 					<Col>
-						<Button outline color="danger" size="sm" onClick={this.resetStates}>
+						<Button outline color="danger" size="sm" onClick={resetStates}>
 							Reset
 						</Button>
 					</Col>
@@ -94,20 +101,23 @@ class Home extends Component {
 			</div>
 		);
 	};
-	render() {
-		return (
+
+
+  return (
+    
 			<Container>
 				<div className="buttons">
 					<ButtonGroup vertical>
-						{this.props.isLoggedIn
-							? this.renderLogOut()
-							: this.renderSignInUp()}
+						{auth.loggedIn()
+							? renderLogOut()
+							: renderSignInUp()}
 					</ButtonGroup>
 				</div>
-				{this.renderLoading()}
+				{renderLoading()}
 				{/* {<JSONDebugger json={this.state} />} */}
 			</Container>
 		);
-	}
+  
 }
-export default Home;
+  
+	export default Home;
