@@ -1,5 +1,23 @@
+.Navigation {
+  background-color: #8debac;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
 .App {
+  /* display: flex; */
+  
   text-align: center;
+  /* overflow-x: hidden; */
+  width: 1000px;
+}
+
+.Map_Holder {
+  justify-content: center;
 }
 
 .App-logo {
@@ -11,23 +29,7 @@
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Link {
+  padding: 10px;
 }
