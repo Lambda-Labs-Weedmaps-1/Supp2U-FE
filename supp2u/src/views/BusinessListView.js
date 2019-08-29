@@ -28,9 +28,9 @@ class BusinessListView extends React.Component {
 const mapStateToProps = state => {
   console.log(state);
   return {
-    businesses: state.initialBusState.businesses,
-    error: state.initialBusState.error,
-    gettingBusinesses: state.initialBusState.gettingBusinesses
+    businesses: state.businessGet.businesses,
+    error: state.businessGet.error,
+    gettingBusinesses: state.businessGet.gettingBusinesses
   };
 };
 
