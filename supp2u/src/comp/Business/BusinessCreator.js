@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import BusinessAdd from './BusinessAdd'
 import Axios from "axios";
 
 import './business-creator.sass'
@@ -46,13 +45,27 @@ function BusinessCreator() {
         }, 5000);
       })}
 
+      const getLL = adde => {
+        adde.preventDefault();
+
+        // This is currently just a test address and not taking in the actual state address
+        // axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=XXXXXXXXXXXXXXXXXXX`)
+    
+        Axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=${process.env.REACT_APP_GCOORDINATES}`)
+
+        .then (res => {
+            console.log("res", res);
+            console.log("res data", res.data)
+        })
+    }
+
     
     //   JSX for BusinessCreator component
     return (
         <>
     <div className="form"> 
     <h3>Create your business</h3>
-        <form onSubmit={submit}>
+        <form onSubmit={submit && getLL}>
 
             <div className="input-box-type1">
                 <label>Name of your business</label>
@@ -67,7 +80,17 @@ function BusinessCreator() {
             </div>
             <br/>
             {/* Here we bring in the address input, this is off in another component because of the extra frontend logic used to turn the address into a geocoordanate */}
-            <BusinessAdd />
+            <div className="input-box-type1">
+                <label>Building number</label>
+                <input
+                        type="text"
+                        name="address"
+                        placeholder="address"
+                        onChange={changeHandler}
+                        value={businessInformation.street}
+                    />
+            </div>
+            
             <div className="input-box-type1">
                 <label>Building number</label>
                 <input
