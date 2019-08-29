@@ -5,9 +5,10 @@ import {
 	pingApiServer,
 	fetchProfilesWithAuth,
 	fetchProfilesNoAuth
-} from './../utils/API';
+} from '../utils/API';
 import { Container, Row, Col, Button, ButtonGroup } from 'reactstrap';
 import Loading from './Loading';
+
 class Home extends Component {
 	constructor(props) {
 		super(props);
