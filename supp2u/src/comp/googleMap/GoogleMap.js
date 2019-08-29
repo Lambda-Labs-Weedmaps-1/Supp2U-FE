@@ -32,7 +32,6 @@ class GoogleMaps extends React.Component{
   };
   componentDidMount() {
     const googleMapScript = document.createElement('script');
-    const GOOGLE_MAP_API_KEY = process.env.GOOGLE_MAP_API_KEY;
     googleMapScript.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAP_API_KEY}&v=3.exp&libraries=geometry,drawing,places`;
     window.document.body.appendChild(googleMapScript);
     googleMapScript.addEventListener("load", ()=>{
