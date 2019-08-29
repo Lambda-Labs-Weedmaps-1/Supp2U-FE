@@ -2,7 +2,9 @@ import React, {useEffect , useState} from 'react'
 import GoogleMaps from './GoogleMap'
 import axios from 'axios'
 
+
 function Map() {
+    let position = [{lat: 23.118813,lng: -82.329933}, {lat: 23.118813,lng: -81.329936}]; // position should be an array of obj that hold info about {lng, lat}
 
     //Setting the lat and long for display
     const [coors, setCoors] = useState([{ 
@@ -23,10 +25,12 @@ function Map() {
         }).catch(err => console.log({err}))
     }, [])
     
-    let position={}
 
 
-    return (<GoogleMaps position={position} /> )
+
+    return (<GoogleMaps positions={position} /> )
+
+
 }
 
 export default Map
