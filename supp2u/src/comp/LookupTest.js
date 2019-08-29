@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 
 import axios from 'axios';
 
-let thing = process.env.TESTDATA;
 
-console.log('env',thing);
 
 class LookupTest extends Component {
     constructor() {
