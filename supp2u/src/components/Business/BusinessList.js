@@ -1,6 +1,5 @@
 // import React from "react";
 
-// // import Character from "./Character";
 // import Business from "./Business";
 
 // const BusinessList = props => {
