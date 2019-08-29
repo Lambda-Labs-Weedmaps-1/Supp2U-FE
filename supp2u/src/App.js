@@ -1,14 +1,16 @@
 import React from 'react';
-
 import Map from './components/googleMap/Map'
-import './App.css';
+import './App.sass';
+import BusinessCreator from './components/Business/BusinessCreator';
 import BasicRoute from "./BasicRoute";
 import LookupTest from './components/LookupTest';
-import BusinessAdd from './components/Business/BusinessAdd';
+
+
 
 function App() {
   return (
     <div className="App">
+        <BasicRoute />
         <div className="Map_Holder">
           <Map /> {/* // TODO move to BasicRoute  if needed*/}
         </div>
@@ -16,9 +18,8 @@ function App() {
           <LookupTest /> {/* // TODO move to BasicRoute */}
         </div>
         <div>
-          <BusinessAdd /> {/* // TODO move to BasicRoute */}
+          <BusinessCreator />
         </div>
-        <BasicRoute />
     </div>
   );
 }
