@@ -1,14 +1,18 @@
 import React from 'react';
-import Map from './comp/googleMap/Map'
+
+import GoogleMaps from './components/googleMap/Map'
 import './App.css';
-import LookupTest from './comp/LookupTest';
-import BusinessAdd from './comp/Business/BusinessAdd';
 import BasicRoute from "./BasicRoute";
+import LookupTest from './components/LookupTest';
+import BusinessAdd from './components/Business/BusinessAdd';
+
+
+
 function App() {
   return (
     <div className="App">
         <div className="Map_Holder">
-          <Map /> {/* // TODO move to BasicRoute  if needed*/}
+          <GoogleMaps /> {/* // TODO move to BasicRoute  if needed*/}
         </div>
         <div>
           <LookupTest /> {/* // TODO move to BasicRoute */}

@@ -1,7 +1,7 @@
 import React from "react"
 import {Route} from "react-router-dom";
-import Profile from "./comp/profile";
-import Navigation from "./comp/Navigation/Navigation";
+import Profile from "./components/profile";
+import Navigation from './components/Navigation/Navigation'
 
 export default () =>{
 
