@@ -6,4 +6,5 @@ export default function Marker(map, positions) {
         });
         marker.addListener("click", props=> console.log("marker clicked", props));
     })
+    console.log('position from Marker', positions)
 }

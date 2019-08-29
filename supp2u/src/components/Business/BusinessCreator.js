@@ -12,7 +12,7 @@ function BusinessCreator() {
         "website": "",
         "city": "",
         "state": "",
-        "street": "",
+        "street": " ",
         "zipcode": 0,
         "building_number": 420,
         "theme": "",
@@ -24,36 +24,35 @@ function BusinessCreator() {
     
         // hard coded user for test reasons
     let user = 1
-
     const changeHandler = event => {
         setBusinessInformation({ ...businessInformation, [event.target.name]: event.target.value });
-      };
-
+    };
+    
     //   submit form function
-      const submit = e =>{
-          e.preventDefault()
-          // Logs out what the current businessinfo is before it post it
-        //   console.log('new data', businessInformation)
+    const submit = e =>{
+        e.preventDefault()
+        //   Logs out what the current businessinfo is before it post it
+        console.log('new data', businessInformation)
         // Transmutes the address into a useable array
-        const newAddress = businessInformation.street.split(' ')
+        if(businessInformation.street === undefined){console.log('Address in Required')}else{
+        const newAddress = businessInformation.street
+        const newAddressArray = newAddress.split(' ')
         //   address look up function
         // axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=XXXXXXXXXXXXXXXXXXX`)
-        Axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${newAddress[0]}+${newAddress[1]}+${newAddress[2]},+${businessInformation.city},+${businessInformation.state}&key=${process.env.REACT_APP_GCOORDINATES}`)
+        Axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${newAddressArray[0]}+${newAddressArray[1]}+${newAddressArray[2]},+${businessInformation.city},+${businessInformation.state}&key=${process.env.REACT_APP_GCOORDINATES}`)
         .then (res => {
-            // sends location to businessInformation
+        //     // sends location to businessInformation
             console.log("location", res.data.results[0].geometry.location);
            businessInformation.lat = res.data.results[0].geometry.location.lat
            businessInformation.long = res.data.results[0].geometry.location.lng 
         })
-        setTimeout(() => {
-            Axios.post(`https://supp2udev.herokuapp.com/api/v1/users/${user}/businesses`, businessInformation)
+        console.log('new new data', businessInformation)
+        
+            Axios.post(`http://localhost:3000/api/v1/users/${user}/businesses`, businessInformation)
             .then((res, req) => { console.log('sent') })
             .catch(error =>{console.log('ERROR POST\n',error);
-        }, 5000);
-      })
-    
-    
-    }
+        });
+    }}
 
     //   REFRENCE FOR THE GEOCODE API
     //   const getLL = adde => {
