@@ -4,7 +4,7 @@ import Axios from "axios";
 import './business-creator.sass'
 
 function BusinessCreator() {
-
+    
     // The useState hook that will store the Business information
     const [businessInformation, setBusinessInformation] = useState([{
         "user_id": 0,
@@ -21,9 +21,26 @@ function BusinessCreator() {
         "recommended": null,
         "long": "",
         "lat": ""}]);
-    
+        
+
+        //function that handles business creation via axios POST
+        let postBusinessHandler = () => {
+            Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/1/businesses`, businessInformation)
+                .then(res => {
+                     console.log(res)
+                     console.log("HERE")
+                    }).then(res =>
+                       { console.log("I AM HERE")
+                        window.location.href = '/'
+                    }
+                    )
+                .catch(error =>{
+                    console.log('ERROR POST\n',error);
+            });
+        }
+
         // hard coded user for test reasons
-    let user = 1
+        let user = 1
     const changeHandler = event => {
         setBusinessInformation({ ...businessInformation, [event.target.name]: event.target.value });
     };
@@ -41,15 +58,20 @@ function BusinessCreator() {
         .then (res => {
         //     // sends location to businessInformation
            businessInformation.lat = res.data.results[0].geometry.location.lat.toString()
-           businessInformation.long = res.data.results[0].geometry.location.lng.toString() 
+           businessInformation.long = res.data.results[0].geometry.location.lng.toString()
+
+            //ensures that a lat and lng exist before posting
+           if(businessInformation.lat && businessInformation.long){
+               postBusinessHandler()
+           } else {
+               console.log("There was an error finding a lat and long for your selected address")
+           }
+
         })
         console.log('data to be sent to backend', businessInformation)
         
-            Axios.post(`http://localhost:3000/api/v1/users/1/businesses`, businessInformation)
-            .then((res, req) => { console.log('sent') })
-            .catch(error =>{console.log('ERROR POST\n',error);
-        });
     }}
+
 
     //   JSX for BusinessCreator component
     return (

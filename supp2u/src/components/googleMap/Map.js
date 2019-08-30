@@ -10,7 +10,7 @@ function Map() {
     useEffect(() => {
         //request for the coordinates 
         axios
-            .get(`http://localhost:3000/api/v1/businesses`)
+            .get(`${process.env.REACT_APP_BACKEND_URL}businesses`)
             .then(res => {
                 setCoors(res.data);
             }).catch(err => console.log({err}))
