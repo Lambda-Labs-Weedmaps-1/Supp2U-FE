@@ -28,7 +28,6 @@ class GoogleMaps extends React.Component{
   }
   componentDidUpdate(nextProps, nextState, nextContext) {
     if(nextProps.positions !== this.props.positions){
-      console.log("*********** componentDidUpdate ***********");
       Marker(this.map, this.props.positions)
     }
   }
