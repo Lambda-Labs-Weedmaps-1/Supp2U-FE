@@ -32,13 +32,6 @@ class GoogleMaps extends React.Component{
     }
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if(prevProps.positions.length !== this.props.positions.length){
-  //     console.log("*********** componentDidUpdate ***********");
-  //     Marker(this.map, this.props.positions)
-  //   }
-  // }
-
   componentWillUnmount() {
     delete this.map;
     delete window.google;
