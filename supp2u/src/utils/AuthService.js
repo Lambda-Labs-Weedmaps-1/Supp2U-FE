@@ -6,9 +6,9 @@ export default class AuthService {
 		// Configure Auth0
 		this.lock = new Auth0Lock(clientId, domain, {
 			auth: {
-        // redirectUrl: `${window.location.origin}/auth`,
-        redirectUrl: `${window.location.origin}/`,
-        // redirectUrl: '',
+        redirectUrl: `${window.location.origin}`,
+        // redirectUrl: 'https://supp2u.netlify.com/',
+        
         responseType: 'token',
         // responseMode: 'form_post'
       },

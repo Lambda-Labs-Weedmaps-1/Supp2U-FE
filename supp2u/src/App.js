@@ -11,6 +11,7 @@ import Auth0 from './components/Auth0';
 function App() {
   return (
     <div className="App">
+      <Auth0 />
         <BasicRoute />
         <div className="Map_Holder">
           <Map /> {/* // TODO move to BasicRoute  if needed*/}
