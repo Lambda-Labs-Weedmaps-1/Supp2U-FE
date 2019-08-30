@@ -9,11 +9,15 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './reducers/index.js';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 const store = createStore(
     rootReducer,
     applyMiddleware( thunk, logger )
 );
 
-ReactDOM.render(<Router><Provider store={store}><App /></Provider></Router>, document.getElementById('root'));
+toast.configure();
+
+ReactDOM.render(<Provider store={store}><Router><App /></Router></Provider>, document.getElementById('root'));
 

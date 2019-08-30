@@ -1,6 +1,6 @@
 import axios from "axios";
 let api = axios.create({
-    baseURL: `${process.env.REACT_APP_API_URL}/`
+    baseURL: `${process.env.REACT_APP_API_BACKEND_URL}/`
 });
 
 export default api;
