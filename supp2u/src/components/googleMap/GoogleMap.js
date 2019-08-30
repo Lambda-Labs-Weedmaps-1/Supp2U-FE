@@ -1,6 +1,7 @@
-import React, {createRef} from 'react';
+import React, {createRef,} from 'react';
 import "./style.sass"
 import { mapStyle } from "./MapStyles";
+
 import Marker from "./Marker";
 class GoogleMaps extends React.Component{
   map ={};
@@ -23,6 +24,7 @@ class GoogleMaps extends React.Component{
       this.googleMap = this.createGoogleMap();
       Marker(this.map, this.props.positions)
     })
+  
   }
   componentWillUnmount() {
     delete this.map;
