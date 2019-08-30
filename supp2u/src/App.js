@@ -6,6 +6,11 @@ import BasicRoute from "./BasicRoute";
 import LookupTest from './components/LookupTest';
 import Auth0 from './components/Auth0';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
+
+toast.configure();
+
 
 function App() {
   return (
