@@ -23,6 +23,7 @@ function App() {
           <BusinessCreator />
         </div>
         <BasicRoute />
+        <Auth0 />
     </div>
   );
 }
