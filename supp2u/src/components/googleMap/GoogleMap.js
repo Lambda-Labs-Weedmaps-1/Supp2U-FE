@@ -8,10 +8,10 @@ class GoogleMaps extends React.Component{
   mapRef = createRef();
   createGoogleMap = () =>{
     this.map = new window.google.maps.Map(this.mapRef.current, {
-      zoom: 16,
+      zoom: 12,
       center:{
-        lat: 23.118813,
-        lng: -82.329933
+        lat:39.727066,
+        lng: -104.981963
       },
       styles: mapStyle
     });
@@ -26,6 +26,20 @@ class GoogleMaps extends React.Component{
     })
   
   }
+  componentDidUpdate(nextProps, nextState, nextContext) {
+    if(nextProps.positions !== this.props.positions){
+      console.log("*********** componentDidUpdate ***********");
+      Marker(this.map, this.props.positions)
+    }
+  }
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   if(prevProps.positions.length !== this.props.positions.length){
+  //     console.log("*********** componentDidUpdate ***********");
+  //     Marker(this.map, this.props.positions)
+  //   }
+  // }
+
   componentWillUnmount() {
     delete this.map;
     delete window.google;
