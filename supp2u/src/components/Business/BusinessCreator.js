@@ -41,6 +41,7 @@ function BusinessCreator() {
 
         // hard coded user for test reasons
         let user = 1
+        
     const changeHandler = event => {
         setBusinessInformation({ ...businessInformation, [event.target.name]: event.target.value });
     };

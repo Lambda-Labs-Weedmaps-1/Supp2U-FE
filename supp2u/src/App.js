@@ -15,14 +15,14 @@ toast.configure();
 function App() {
   return (
     <div className="App">
-        <Route path={"/"} component={BasicRoute} />
-      <Auth0 />
+        {/* <Route path={"/"} component={BasicRoute} /> */}
+       {/* <Auth0 /> */}
         <BasicRoute />
         <div className="Map_Holder">
           <Map /> {/* // TODO move to BasicRoute  if needed*/}
         </div>
         <div>
-          <LookupTest /> {/* // TODO move to BasicRoute */}
+          {/* <LookupTest /> // TODO move to BasicRoute */}
         </div>
     </div>
   );

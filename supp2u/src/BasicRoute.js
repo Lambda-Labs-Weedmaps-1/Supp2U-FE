@@ -5,14 +5,16 @@ import Navigation from './components/Navigation/Navigation'
 import BusinessListVew from './views/BusinessListView'
 import Review from "./components/Reviews"
 import BusinessCreator from './components/Business/BusinessCreator'
+import Auth0 from './components/Auth0';
 
 export default () =>{
   return <>
         <Route path={"/"} component={Navigation}/>
         {/*<Route path={"/profile"} component={Profile}/>*/}
         <Route path={"/profile"} component={Profile}/>
-        <Route path={"/businessview"} component={BusinessListVew} />
+        <Route path={"/business/view"} component={BusinessListVew} />
         <Route path={"/business/reviews"} component={Review} />
-        <Route path="/newBusiness" exact component={BusinessCreator}/>
+        <Route path="/business/create" exact component={BusinessCreator}/>
+        <Route path="/login" exact component={Auth0}/>
       </>
 }
