@@ -8,12 +8,9 @@ function Map() {
     const [coors, setCoors] = useState([{lat: 0, lng: 0 }]);
 
     useEffect(() => {
-
-        // hard coded user
-        let user = 1;
-
+        //request for the coordinates 
         axios
-            .get(`http://localhost:4000/api/v1/users/1/businesses`)
+            .get(`http://localhost:3000/api/v1/businesses`)
             .then(res => {
                 setCoors(res.data);
             }).catch(err => console.log({err}))
