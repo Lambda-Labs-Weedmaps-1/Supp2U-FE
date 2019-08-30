@@ -1,5 +1,5 @@
 export default function Marker(map, positions) {
-    if(positions.length){
+    if(positions.length){ // check if there is an array of coordinates
         positions.forEach((position)=>{
             let marker = new window.google.maps.Marker({
                 position: {
@@ -10,7 +10,7 @@ export default function Marker(map, positions) {
             });
             marker.addListener("click", props=> console.log("marker clicked", position));
         });
-    }else {
+    }else {// handle case if there is one obj of coordinates
         let marker = new window.google.maps.Marker({
             position: {
                 lat: parseFloat(positions.lat),
