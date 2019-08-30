@@ -4,7 +4,7 @@ import Axios from "axios";
 import './business-creator.sass'
 
 function BusinessCreator() {
-
+    
     // The useState hook that will store the Business information
     const [businessInformation, setBusinessInformation] = useState([{
         "user_id": 0,
@@ -21,9 +21,26 @@ function BusinessCreator() {
         "recommended": null,
         "long": "",
         "lat": ""}]);
-    
+        
+
+        //function that handles business creation via axios POST
+        let postBusinessHandler = () => {
+            Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/1/businesses`, businessInformation)
+                .then(res => {
+                     console.log(res)
+                     console.log("HERE")
+                    }).then(res =>
+                       { console.log("I AM HERE")
+                        window.location.href = '/'
+                    }
+                    )
+                .catch(error =>{
+                    console.log('ERROR POST\n',error);
+            });
+        }
+
         // hard coded user for test reasons
-    let user = 1
+        let user = 1
     const changeHandler = event => {
         setBusinessInformation({ ...businessInformation, [event.target.name]: event.target.value });
     };
@@ -31,8 +48,6 @@ function BusinessCreator() {
     //   submit form function
     const submit = e =>{
         e.preventDefault()
-        //   Logs out what the current businessinfo is before it post it
-        console.log('new data', businessInformation)
         // Transmutes the address into a useable array
         if(businessInformation.street === undefined){console.log('Address in Required')}else{
         const newAddress = businessInformation.street
@@ -42,39 +57,31 @@ function BusinessCreator() {
         Axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${newAddressArray[0]}+${newAddressArray[1]}+${newAddressArray[2]},+${businessInformation.city},+${businessInformation.state}&key=${process.env.REACT_APP_GCOORDINATES}`)
         .then (res => {
         //     // sends location to businessInformation
-            console.log("location", res.data.results[0].geometry.location);
-           businessInformation.lat = res.data.results[0].geometry.location.lat
-           businessInformation.long = res.data.results[0].geometry.location.lng 
+           businessInformation.lat = res.data.results[0].geometry.location.lat.toString()
+           businessInformation.long = res.data.results[0].geometry.location.lng.toString()
+
+            //ensures that a lat and lng exist before posting
+           if(businessInformation.lat && businessInformation.long){
+               postBusinessHandler()
+           } else {
+               console.log("There was an error finding a lat and long for your selected address")
+           }
+
         })
-        console.log('new new data', businessInformation)
+        console.log('data to be sent to backend', businessInformation)
         
-            Axios.post(`http://localhost:3000/api/v1/users/${user}/businesses`, businessInformation)
-            .then((res, req) => { console.log('sent') })
-            .catch(error =>{console.log('ERROR POST\n',error);
-        });
     }}
 
-    //   REFRENCE FOR THE GEOCODE API
-    //   const getLL = adde => {
-    //     adde.preventDefault();
-    //     // This is currently just a test address and not taking in the actual state address
-    //     // axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=XXXXXXXXXXXXXXXXXXX`)
-    //     Axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=${process.env.REACT_APP_GCOORDINATES}`)
-    //     .then (res => {
-    //         console.log("res", res);
-    //         console.log("res data", res.data)
-    //     })
-    // }
-    
+
     //   JSX for BusinessCreator component
     return (
         <>
-    <div className="form"> 
     <h3>Create your business</h3>
+    <div className="form"> 
         <form onSubmit={submit}>
 
             <div className="input-box-type1">
-                <label>Name of your business</label>
+                <label>Name of business <span className="required-span">*</span></label>
                 <input
                     type="text"
                     name="name"
@@ -82,12 +89,11 @@ function BusinessCreator() {
                     placeholder="business name..." 
                     onChange={changeHandler}
                     />
-            ....
             </div>
             <br/>
-            {/* Here we bring in the address input, this is off in another component because of the extra frontend logic used to turn the address into a geocoordanate */}
+            
             <div className="input-box-type1">
-                <label>Address</label>
+                <label>Address <span className="required-span">*</span></label>
                 <input
                         type="text"
                         name="street"
@@ -98,7 +104,7 @@ function BusinessCreator() {
             </div>
             
             <div className="input-box-type1">
-                <label>Building number</label>
+                <label>Building number </label>
                 <input
                     placeholder="Enter building number..."
                     type="integer"
@@ -108,6 +114,25 @@ function BusinessCreator() {
                      />
             </div>
             <div className="input-box-type1">
+                <label>City <span className="required-span">*</span></label>
+                <input
+                    placeholder="City name..." 
+                    type="text"
+                    name="city"
+                    value={businessInformation.city}
+                    onChange={changeHandler}/>
+            </div>
+            <div className="input-box-type1">
+                <label>State <span className="required-span">*</span></label>
+                <input
+                        type="text"
+                        name="state"
+                        placeholder="Enter state"
+                        onChange={changeHandler}
+                        value={businessInformation.state}
+                    />
+            </div>
+            <div className="input-box-type1">
                 <label>zipcode</label>
                 <input
                     placeholder="zipcode..."
@@ -115,15 +140,6 @@ function BusinessCreator() {
                     name="zipcode"
                     value={businessInformation.zipcode}
                     onChange={changeHandler} />
-            </div>
-            <div className="input-box-type1">
-                <label>City</label>
-                <input
-                    placeholder="City name..." 
-                    type="text"
-                    name="city"
-                    value={businessInformation.city}
-                    onChange={changeHandler}/>
             </div>
             
             <div className="input-box-type1">
@@ -166,9 +182,10 @@ function BusinessCreator() {
                     value={businessInformation.website}
                     onChange={changeHandler} />
             </div>
+            <span className="required-span">* required</span>
 
 
-            <button> Create Business </button>
+            <button className="create-business-button"> Create Business </button>
 
         </form>
     </div>
