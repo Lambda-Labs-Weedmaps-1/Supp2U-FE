@@ -24,8 +24,13 @@ class GoogleMaps extends React.Component{
       this.googleMap = this.createGoogleMap();
       Marker(this.map, this.props.positions)
     })
-  
   }
+  componentDidUpdate(nextProps, nextState, nextContext) {
+    if(nextProps.positions !== this.props.positions){
+      Marker(this.map, this.props.positions)
+    }
+  }
+
   componentWillUnmount() {
     delete this.map;
     delete window.google;
