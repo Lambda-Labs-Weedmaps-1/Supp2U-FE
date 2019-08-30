@@ -8,5 +8,6 @@ export const auth = new AuthService(
 );
 
 export const api = axios.create({
-	baseURL: 'http://localhost:3000'
+  //! change to whatever port you're running front end from //
+	baseURL: 'http://localhost:9000'
 });

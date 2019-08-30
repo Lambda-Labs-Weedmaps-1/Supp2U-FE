@@ -7,8 +7,7 @@ import Review from "./components/Reviews"
 import BusinessCreator from './components/Business/BusinessCreator'
 
 export default () =>{
-
-  return  <>
+  return <>
         <Route path={"/"} component={Navigation}/>
         {/*<Route path={"/profile"} component={Profile}/>*/}
         <Route path={"/profile"} component={Profile}/>
