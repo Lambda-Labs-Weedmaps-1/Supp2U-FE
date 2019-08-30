@@ -40,12 +40,12 @@ function BusinessCreator() {
         Axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${newAddressArray[0]}+${newAddressArray[1]}+${newAddressArray[2]},+${businessInformation.city},+${businessInformation.state}&key=${process.env.REACT_APP_GCOORDINATES}`)
         .then (res => {
         //     // sends location to businessInformation
-           businessInformation.lat = res.data.results[0].geometry.location.lat
-           businessInformation.long = res.data.results[0].geometry.location.lng 
+           businessInformation.lat = res.data.results[0].geometry.location.lat.toString()
+           businessInformation.long = res.data.results[0].geometry.location.lng.toString() 
         })
         console.log('data to be sent to backend', businessInformation)
         
-            Axios.post(`http://localhost:3000/api/v1/users/${user}/businesses`, businessInformation)
+            Axios.post(`http://localhost:3000/api/v1/users/1/businesses`, businessInformation)
             .then((res, req) => { console.log('sent') })
             .catch(error =>{console.log('ERROR POST\n',error);
         });
@@ -99,6 +99,16 @@ function BusinessCreator() {
                     name="city"
                     value={businessInformation.city}
                     onChange={changeHandler}/>
+            </div>
+            <div className="input-box-type1">
+                <label>State <span className="required-span">*</span></label>
+                <input
+                        type="text"
+                        name="state"
+                        placeholder="Enter state"
+                        onChange={changeHandler}
+                        value={businessInformation.state}
+                    />
             </div>
             <div className="input-box-type1">
                 <label>zipcode</label>
