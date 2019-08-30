@@ -50,16 +50,16 @@ function BusinessCreator() {
             .catch(error =>{console.log('ERROR POST\n',error);
         });
     }}
-        
+
     //   JSX for BusinessCreator component
     return (
         <>
-    <div className="form"> 
     <h3>Create your business</h3>
+    <div className="form"> 
         <form onSubmit={submit}>
 
             <div className="input-box-type1">
-                <label>Name of your business</label>
+                <label>Name of business <span className="required-span">*</span></label>
                 <input
                     type="text"
                     name="name"
@@ -69,9 +69,9 @@ function BusinessCreator() {
                     />
             </div>
             <br/>
-            {/* Here we bring in the address input, this is off in another component because of the extra frontend logic used to turn the address into a geocoordanate */}
+            
             <div className="input-box-type1">
-                <label>Address</label>
+                <label>Address <span className="required-span">*</span></label>
                 <input
                         type="text"
                         name="street"
@@ -82,7 +82,7 @@ function BusinessCreator() {
             </div>
             
             <div className="input-box-type1">
-                <label>Building number</label>
+                <label>Building number </label>
                 <input
                     placeholder="Enter building number..."
                     type="integer"
@@ -92,6 +92,15 @@ function BusinessCreator() {
                      />
             </div>
             <div className="input-box-type1">
+                <label>City <span className="required-span">*</span></label>
+                <input
+                    placeholder="City name..." 
+                    type="text"
+                    name="city"
+                    value={businessInformation.city}
+                    onChange={changeHandler}/>
+            </div>
+            <div className="input-box-type1">
                 <label>zipcode</label>
                 <input
                     placeholder="zipcode..."
@@ -99,15 +108,6 @@ function BusinessCreator() {
                     name="zipcode"
                     value={businessInformation.zipcode}
                     onChange={changeHandler} />
-            </div>
-            <div className="input-box-type1">
-                <label>City</label>
-                <input
-                    placeholder="City name..." 
-                    type="text"
-                    name="city"
-                    value={businessInformation.city}
-                    onChange={changeHandler}/>
             </div>
             
             <div className="input-box-type1">
@@ -150,9 +150,10 @@ function BusinessCreator() {
                     value={businessInformation.website}
                     onChange={changeHandler} />
             </div>
+            <span className="required-span">* required</span>
 
 
-            <button> Create Business </button>
+            <button className="create-business-button"> Create Business </button>
 
         </form>
     </div>
