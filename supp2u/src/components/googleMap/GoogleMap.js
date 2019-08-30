@@ -1,13 +1,13 @@
-import React, {createRef} from 'react';
+import React, {createRef,} from 'react';
 import "./style.sass"
 import { mapStyle } from "./MapStyles";
 
+import Marker from "./Marker";
 class GoogleMaps extends React.Component{
-
+  map ={};
   mapRef = createRef();
-  // googleMapDiv = ()=> {return document.getElementById("google-map")};
   createGoogleMap = () =>{
-    let map = new window.google.maps.Map(this.mapRef.current, {
+    this.map = new window.google.maps.Map(this.mapRef.current, {
       zoom: 16,
       center:{
         lat: 23.118813,
@@ -15,17 +15,6 @@ class GoogleMaps extends React.Component{
       },
       styles: mapStyle
     });
-    this.creatMarker(map);
-  };
-  creatMarker =(map)=>{
-    let marker = new window.google.maps.Marker({
-      position: {
-        lat: 23.118813,
-        lng: -82.329933
-      },
-      map: map,
-    });
-    marker.addListener("click", props=> console.log("marker clicked", props));
   };
   componentDidMount() {
     const googleMapScript = document.createElement('script');
@@ -33,7 +22,13 @@ class GoogleMaps extends React.Component{
     window.document.body.appendChild(googleMapScript);
     googleMapScript.addEventListener("load", ()=>{
       this.googleMap = this.createGoogleMap();
+      Marker(this.map, this.props.positions)
     })
+  
+  }
+  componentWillUnmount() {
+    delete this.map;
+    delete window.google;
   }
 
   render(){
