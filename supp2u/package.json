@@ -1,50 +1,4 @@
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 0718e4b554715a686ad9d7ffd131b8cfcaa12a06
-  "name": "supp2u",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "auth0-lock": "^11.17.2",
-    "axios": "^0.19.0",
-    "node-sass": "^4.12.0",
-    "react": "^16.9.0",
-    "react-addons-css-transition-group": "^15.6.2",
-    "react-addons-transition-group": "^15.6.2",
-    "react-dom": "^16.9.0",
-    "react-redux": "^7.1.1",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "3.1.1",
-    "reactstrap": "^8.0.1",
-    "redux": "^4.0.4",
-    "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
-  },
-  "scripts": {
-    "start": "PORT=9000 react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
-<<<<<<< HEAD
-=======
 	"name": "supp2u",
 	"version": "0.1.0",
 	"private": true,
@@ -62,7 +16,7 @@
   
 	},
 	"scripts": {
-		"start": "PORT=9000 react-scripts start",
+		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
@@ -82,7 +36,5 @@
 			"last 1 safari version"
 		]
 	}
->>>>>>> 773b30641cbc1f64b96a466853053b7d11f74d69
-=======
->>>>>>> 0718e4b554715a686ad9d7ffd131b8cfcaa12a06
+
 }
