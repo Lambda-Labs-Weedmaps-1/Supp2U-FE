@@ -7,6 +7,7 @@ export default function Navigation() {
         <nav className="Navigation">
           <h1 className="NavTitle" >supp2u</h1> 
           <NavLink className="Link" to="/">Home</NavLink>
+          <NavLink className="Link" to="/business/reviews/add">Add Business Review</NavLink>
         </nav>  
       </div>
     )

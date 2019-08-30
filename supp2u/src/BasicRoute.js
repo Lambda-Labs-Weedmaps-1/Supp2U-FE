@@ -1,9 +1,9 @@
 import React from "react"
 import {Route} from "react-router-dom";
-// routes import
 import Profile from "./components/profile/show";
 import Navigation from './components/Navigation/Navigation'
 import BusinessListVew from './views/BusinessListView'
+import Review from "./components/Reviews"
 import BusinessCreator from './components/Business/BusinessCreator'
 
 export default () =>{
@@ -12,6 +12,7 @@ export default () =>{
         {/*<Route path={"/profile"} component={Profile}/>*/}
         <Route path={"/profile"} component={Profile}/>
         <Route path={"/businessview"} component={BusinessListVew} />
+        <Route path={"/business/reviews"} component={Review} />
         <Route path="/newBusiness" exact component={BusinessCreator}/>
       </>
 }
