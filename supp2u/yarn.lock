@@ -757,12 +757,16 @@
     "@babel/plugin-transform-typescript" "^7.3.2"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 "@babel/runtime@7.5.5", "@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.2.0", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.0", "@babel/runtime@^7.4.2", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.5":
 =======
 
 "@babel/runtime@7.5.5", "@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.0", "@babel/runtime@^7.4.2", "@babel/runtime@^7.4.5":
 
 >>>>>>> 773b30641cbc1f64b96a466853053b7d11f74d69
+=======
+"@babel/runtime@7.5.5", "@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.2.0", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.0", "@babel/runtime@^7.4.2", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.5":
+>>>>>>> 0718e4b554715a686ad9d7ffd131b8cfcaa12a06
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.5.5.tgz#74fba56d35efbeca444091c7850ccd494fd2f132"
   integrity sha512-28QvEGyQyNkB0/m2B4FU7IEZGK2NUrcMtT6BZEFALTguLk+AUT6ofsHtPk5QyjAdUkpMJ+/Em+quwz4HOt30AQ==
@@ -3151,12 +3155,16 @@ debug@=3.1.0:
     ms "2.0.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 debug@^3.0.0, debug@^3.1.0, debug@^3.2.5, debug@^3.2.6:
 =======
 
 debug@^3.1.0, debug@^3.2.5, debug@^3.2.6:
 
 >>>>>>> 773b30641cbc1f64b96a466853053b7d11f74d69
+=======
+debug@^3.0.0, debug@^3.1.0, debug@^3.2.5, debug@^3.2.6:
+>>>>>>> 0718e4b554715a686ad9d7ffd131b8cfcaa12a06
   version "3.2.6"
   resolved "https://registry.yarnpkg.com/debug/-/debug-3.2.6.tgz#e83d17de16d8a7efb7717edbe5fb10135eee629b"
   integrity sha512-mel+jf7nrtEl5Pn1Qx46zARXKDpBbvzezse7p7LqINmdoIk8PYP5SySaxEmYv6TZ0JyEKA1hsCId6DIhgITtWQ==
@@ -4070,11 +4078,15 @@ fb-watchman@^2.0.0:
     bser "^2.0.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 fbjs@^0.8.9:
 =======
 
 fbjs@^0.8.1, fbjs@^0.8.9:
 >>>>>>> 773b30641cbc1f64b96a466853053b7d11f74d69
+=======
+fbjs@^0.8.9:
+>>>>>>> 0718e4b554715a686ad9d7ffd131b8cfcaa12a06
   version "0.8.17"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
   integrity sha1-xNWY6taUkRJlPWWIsBpc3Nn5D90=
@@ -5854,6 +5866,9 @@ jest@24.8.0:
     jest-cli "^24.8.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0718e4b554715a686ad9d7ffd131b8cfcaa12a06
 js-base64@^2.1.8:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.5.1.tgz#1efa39ef2c5f7980bb1784ade4a8af2de3291121"
@@ -6291,12 +6306,16 @@ loglevel@^1.4.1:
   integrity sha512-LoEDv5pgpvWgPF4kNYuIp0qqSJVWak/dML0RY74xlzMZiT9w77teNAwKYKWBTYjlokMirg+o3jBwp+vlLrcfAA==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.2.0, loose-envify@^1.3.1, loose-envify@^1.4.0:
 =======
 
 loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.3.1, loose-envify@^1.4.0:
 
 >>>>>>> 773b30641cbc1f64b96a466853053b7d11f74d69
+=======
+loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.2.0, loose-envify@^1.3.1, loose-envify@^1.4.0:
+>>>>>>> 0718e4b554715a686ad9d7ffd131b8cfcaa12a06
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
   integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
@@ -8541,6 +8560,9 @@ react-popper@^1.3.3:
     warning "^4.0.2"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0718e4b554715a686ad9d7ffd131b8cfcaa12a06
 react-redux@^7.1.1:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-7.1.1.tgz#ce6eee1b734a7a76e0788b3309bf78ff6b34fa0a"
@@ -10127,10 +10149,13 @@ trim@0.0.1:
   integrity sha1-WFhUf2spB1fulczMZm+1AITEYN0=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 ts-pnp@1.1.2, ts-pnp@^1.1.2:
 
 >>>>>>> 773b30641cbc1f64b96a466853053b7d11f74d69
+=======
+>>>>>>> 0718e4b554715a686ad9d7ffd131b8cfcaa12a06
 "true-case-path@^1.0.2":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/true-case-path/-/true-case-path-1.0.3.tgz#f813b5a8c86b40da59606722b144e3225799f47d"
@@ -10140,9 +10165,12 @@ ts-pnp@1.1.2, ts-pnp@^1.1.2:
 
 ts-pnp@1.1.2:
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 773b30641cbc1f64b96a466853053b7d11f74d69
+=======
+>>>>>>> 0718e4b554715a686ad9d7ffd131b8cfcaa12a06
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/ts-pnp/-/ts-pnp-1.1.2.tgz#be8e4bfce5d00f0f58e0666a82260c34a57af552"
   integrity sha512-f5Knjh7XCyRIzoC/z1Su1yLLRrPrFCgtUAh/9fCSP6NKbATwpOL1+idQVXQokK9GRFURn/jYPGPfegIctwunoA==

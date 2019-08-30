@@ -1,5 +1,8 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0718e4b554715a686ad9d7ffd131b8cfcaa12a06
   "name": "supp2u",
   "version": "0.1.0",
   "private": true,
@@ -40,6 +43,7 @@
       "last 1 safari version"
     ]
   }
+<<<<<<< HEAD
 =======
 	"name": "supp2u",
 	"version": "0.1.0",
@@ -79,4 +83,6 @@
 		]
 	}
 >>>>>>> 773b30641cbc1f64b96a466853053b7d11f74d69
+=======
+>>>>>>> 0718e4b554715a686ad9d7ffd131b8cfcaa12a06
 }
