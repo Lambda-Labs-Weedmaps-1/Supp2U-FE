@@ -17,7 +17,6 @@ function BusinessCreator() {
         "building_number": 420,
         "theme": "",
         "description": "",
-        "hours": "",
         "recommended": null,
         "long": "",
         "lat": ""}]);
@@ -31,7 +30,7 @@ function BusinessCreator() {
                      console.log("HERE")
                     }).then(res =>
                        { console.log("I AM HERE")
-                        window.location.href = '/'
+                        window.location.href = '/menu/new'
                     }
                     )
                 .catch(error =>{
@@ -134,7 +133,7 @@ function BusinessCreator() {
                     />
             </div>
             <div className="input-box-type1">
-                <label>zipcode</label>
+                <label>zipcode<span className="required-span">*</span></label>
                 <input
                     placeholder="zipcode..."
                     type="integer"
@@ -164,16 +163,8 @@ function BusinessCreator() {
                     onChange={changeHandler} />
             </div>
             
-            {/* maybe turn this into a form of its own */}
-            <div className="input-box-type1">
-                <label>Hours of Operations</label>
-                <input
-                    placeholder="Enter open and close hours..." 
-                    type="text"
-                    name="hours"
-                    value={businessInformation.hours}
-                    onChange={changeHandler}/>
-            </div>
+            
+            
             <div className="input-box-type1">
                 <label>Website</label>
                 <input
