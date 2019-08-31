@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import Axios from 'axios'
+import ItemCreator from './ItemCreator'
 
-import './menu-creator.sass'
+import './menu.sass'
 
 function MenuCreator(){
 
   //This creates a new menu
-  const [menu, setMenu] = useState({"name":"untitled menu"})
+  const [menu, setMenu] = useState({"name":"untitled"})
+  // this lets us know if the menu has been created in order to render the ablitiy to add items
+    const [menuCreated, setMenuCreated] = useState(false)
 
   //this function changes the state for menu
   const changeHandlerMenu = event => {
@@ -15,14 +18,19 @@ function MenuCreator(){
   // This submit creates a new menu and is only called on the submit 
   const submitMenu = e => {
       e.preventDefault();
+      //conditional that forces them to name their menu, maybe change this into an alert instead of just a console log
+      if(menu.name === "untitled"){console.log("You need to name your menu")}
+      else{
       Axios.post(`${process.env.REACT_APP_BACKEND_URL}businesses/1/menus`, menu)
               .then(res => {
-                  console.log('sent', res)
+                  console.log('sent menu', res)
                   }).catch(error =>{
                   console.log('ERROR POST\n',error);
               });
+            setMenuCreated(true)
+            }
   }
-
+ console.log(menuCreated)
   return (
       <div>
           {/* Welcome to Menu Creation Screen this original form will prompt the user to create a menu before they can add menu items */}
@@ -37,10 +45,11 @@ function MenuCreator(){
         
             <button>Create Menu</button>
           </form>
-          {/* Here we have JSX for entering an item being rendered condionally only if a menu has been created, it uses our defualt menu name to check this */}
-          {menu.name != "untitled menu" ? 
-          // this is where we add items to the menu
-           <form>Enter menu item</form>: <p>please enter menu name, cannot be "untitled menu"</p > }
+        {/* conditional render to add items only if the menu exists first */}
+        {menuCreated === true ? <ItemCreator />
+        // this will render if they have not created a menu yet
+        :<p>Create Your menu</p>}
+
       </div>
   )
 }
