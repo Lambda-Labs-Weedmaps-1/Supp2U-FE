@@ -162,8 +162,7 @@ function BusinessCreator() {
                     value={businessInformation.theme}
                     onChange={changeHandler} />
             </div>
-            
-            
+
             
             <div className="input-box-type1">
                 <label>Website</label>
