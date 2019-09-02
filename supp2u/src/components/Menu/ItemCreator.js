@@ -29,10 +29,10 @@ function ItemCreator() {
 
 
     return (
-        <div>
-        <h2>Add Items to your menu!</h2>
+    <div className="add-item-form">
+        <h2>Add Items to your menu</h2>
         <form onClick={submit}>
-        <div>
+        <div className="item-input-box">
             <label>Menu Item</label>
             <input
                 placeholder="Enter item..."
@@ -41,16 +41,16 @@ function ItemCreator() {
                 value={item.item_name}
                 onChange={changeHandler} />
         </div>
-        <div>
+        <div className="item-input-box">
             <label>Describe item</label>
             <input
                 placeholder="Enter description..."
-                type="text"
+                type="text-box"
                 name="description"
                 value={item.description}
                 onChange={changeHandler} />
         </div>
-         <div>
+         <div className="item-input-box">
             <label>Price</label>
             <input
                 placeholder="Enter price..."
@@ -59,7 +59,7 @@ function ItemCreator() {
                 value={item.price}
                 onChange={changeHandler} />
         </div>
-        <div>
+        <div className="item-input-box">
             <label>Item Category</label>
             <input
                 placeholder="Enter category..."
@@ -68,16 +68,16 @@ function ItemCreator() {
                 value={item.category}
                 onChange={changeHandler} />
         </div>
-        <div>
+        <div className="item-input-box">
             <label>If you wish to add how many calories this dish is please add below</label>
             <input
-                placeholder="Enter description..."
+                placeholder="Enter calories amount..."
                 type="text"
                 name="cals"
                 value={item.description}
                 onChange={changeHandler} />
         </div>
-        <button>add item</button>
+        <button className="add-item-button">add item</button>
         </form>
     </div>
     )

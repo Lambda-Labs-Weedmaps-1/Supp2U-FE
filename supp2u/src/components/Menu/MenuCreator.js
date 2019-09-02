@@ -34,8 +34,9 @@ function MenuCreator(){
   return (
       <div>
           {/* Welcome to Menu Creation Screen this original form will prompt the user to create a menu before they can add menu items */}
-          <form onClick={submitMenu}>
+          <form onClick={submitMenu} className="create-menu">
           <input
+                  className="create-menu-input"
                   type="text"
                   name="name"
                   value={menu.name}
@@ -43,7 +44,7 @@ function MenuCreator(){
                   onChange={changeHandlerMenu}
                   />
         
-            <button>Create Menu</button>
+            <button className="create-menu-button">Create Menu</button>
           </form>
         {/* conditional render to add items only if the menu exists first */}
         {menuCreated === true ? <ItemCreator />
