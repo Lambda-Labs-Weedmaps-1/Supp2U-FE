@@ -6,7 +6,7 @@ export const ADD_CUSTOMER_FAILED = "ADD_CUSTOMER_FAILED";
 
 export const addCustomer = (user_id) => dispatch => {
     dispatch({type: ADD_CUSTOMER_REQUEST});
-    return api.post(`/users/${user_id}/customer`)
+    return api.post(`/users/${user_id}/customers`)
         .then(res =>{
             dispatch({type: ADD_CUSTOMER_SUCCESS, payload: res.data});
             return res.data

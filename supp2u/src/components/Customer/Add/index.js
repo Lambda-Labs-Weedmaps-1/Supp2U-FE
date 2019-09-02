@@ -10,9 +10,9 @@ export default connect(null, {addCustomer})(({addCustomer, history})=>{
         let user_id=1; //TODO get user_id from localStorage
         addCustomer(user_id)
             .then((res) => {
-                if(res.review){
+                if(res.user_id){
                     toast.success("Welcome to yelp Clone");
-                    history.goBack();
+                    history.push('/profile');
                 }else{
                     toast.error("Oh no! something went wrong, Please try again", res.response);
                 }
