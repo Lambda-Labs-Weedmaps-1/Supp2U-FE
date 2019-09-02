@@ -6,11 +6,11 @@ import './menu.sass'
 function ItemCreator() {
 
     const [item, setItem] = useState([{
-       "item_name":"" ,
-       "description":"",
+       "item_name":"notSet" ,
+       "description":"notSet",
        "cals":1,
         "price": 0, 
-        "category":""
+        "category":"notSet"
     }])
 
     const changeHandler = event => {
@@ -69,12 +69,12 @@ function ItemCreator() {
                 onChange={changeHandler} />
         </div>
         <div className="item-input-box">
-            <label>If you wish to add how many calories this dish is please add below</label>
+            <label>Health</label>
             <input
                 placeholder="Enter calories amount..."
                 type="text"
                 name="cals"
-                value={item.description}
+                value={item.cals}
                 onChange={changeHandler} />
         </div>
         <button className="add-item-button">add item</button>

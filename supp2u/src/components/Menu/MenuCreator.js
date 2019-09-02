@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Axios from 'axios'
 import ItemCreator from './ItemCreator'
+import MenuShowcase from './MenuShowcase'
 
 import './menu.sass'
 
@@ -50,6 +51,8 @@ function MenuCreator(){
         {menuCreated === true ? <ItemCreator />
         // this will render if they have not created a menu yet
         :<p>Create Your menu</p>}
+
+        <MenuShowcase />
 
       </div>
   )
