@@ -12,24 +12,29 @@ function CustomerCreator() {
         "custname": ""}]);
         
 
-        //function that handles Customer creation via axios POST
-        let postCustomerHandler = () => {
-            Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/1/customers`, customerInformation)
-                .then(res => {
-                     console.log(res)
-                     console.log("HERE customer")
-                    }).then(res =>
-                       { console.log("I AM HERE customer")
-                        window.location.href = '/'
-                    }
-                    )
-                .catch(error =>{
-                    console.log('ERROR POST\n',error);
-            });
-        }
+    //function that handles Customer creation via axios POST
+    // needs to ADD ACTUAL User number once we have it stored from auth0
 
-        // hard coded user for test reasons
-        let user = 1
+    // this does seem to be adding a new customer to the backend, but the
+    // cust name shows as null, backend function for adding customer info
+    // needs to be updated to actually take the info and input it to DB :)
+    let postCustomerHandler = () => {
+        Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/1/customers`, customerInformation)
+            .then(res => {
+                    console.log(res)
+                    console.log("HERE customer")
+                }).then(res =>
+                    { console.log("I AM HERE customer")
+                    window.location.href = '/'
+                }
+                )
+            .catch(error =>{
+                console.log('ERROR POST\n',error);
+        });
+    }
+
+    // hard coded user for test reasons
+    let user = 1
         
     const changeHandler = event => {
         setCustomerInformation({ ...customerInformation, [event.target.name]: event.target.value });
@@ -41,6 +46,7 @@ function CustomerCreator() {
         // 
         if(customerInformation.custname) {
             console.log('do the next thing now ;p', customerInformation.custname)
+            postCustomerHandler();
         }
         
         console.log('data to be sent to backend', customerInformation)
