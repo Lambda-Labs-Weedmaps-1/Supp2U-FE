@@ -31,16 +31,22 @@ function MenuShowcase() {
     return (
         <>
         <h1>Menu</h1>
-        <div className ="menu-showcase">
+        <div>
+        {/* this code makes it so you have to create items before they display */}
+      { item.item_name === "notSet" ? 
+      <p className="empty-menu-message">Add Items to your menu to see how your menu will look</p>:     
+        <div  className="menu-showcase">
             {item.map( item =>(
-            <div className="menu-item-box">
+                <div className="menu-item-box">   
                 <p>{item.item_name}</p>
                 <p>{item.category}</p>
                 <p>{item.description}</p>
                 <p>${item.price}</p>
                 <p>Calories: {item.cals}</p>
-            </div>
+                </div>
             ))}
+        </div>
+        }
         </div>
         </>
     )

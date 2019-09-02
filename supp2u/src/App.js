@@ -17,7 +17,7 @@ function App() {
 
         <BasicRoute />
         <div className="Map_Holder">
-          {/* <Map /> // TODO move to BasicRoute  if needed */}
+          <Map />
         </div>
 
     </div>

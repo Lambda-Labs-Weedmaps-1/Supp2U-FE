@@ -16,6 +16,7 @@ function MenuCreator(){
   const changeHandlerMenu = event => {
       setMenu({ ...menu, [event.target.name]: event.target.value })
   };
+
   // This submit creates a new menu and is only called on the submit 
   const submitMenu = e => {
       e.preventDefault();
@@ -32,6 +33,11 @@ function MenuCreator(){
             }
   }
  console.log(menuCreated)
+
+  const finishMenu = e =>{
+    window.location.href = '/'
+  }
+
   return (
       <div>
           {/* Welcome to Menu Creation Screen this original form will prompt the user to create a menu before they can add menu items */}
@@ -48,11 +54,15 @@ function MenuCreator(){
             <button className="create-menu-button">Create Menu</button>
           </form>
         {/* conditional render to add items only if the menu exists first */}
-        {menuCreated === true ? <ItemCreator />
+        {menuCreated === true ? 
+        <div>
+          <ItemCreator />
+          <button onClick={finishMenu}>I am done creating my menu</button>
+          <MenuShowcase />
+        </div>
         // this will render if they have not created a menu yet
         :<p>Create Your menu</p>}
 
-        <MenuShowcase />
 
       </div>
   )
