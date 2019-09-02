@@ -7,8 +7,9 @@ function ItemCreator() {
 
     const [item, setItem] = useState([{
        "item_name":"" ,
-    //    "description":"",
-        "price": 0, //make into a float on the back end
+       "description":"",
+       "cals":1,
+        "price": 0, 
         "category":""
     }])
 
@@ -40,8 +41,7 @@ function ItemCreator() {
                 value={item.item_name}
                 onChange={changeHandler} />
         </div>
-        {/* need to add this to the database */}
-        {/* <div>
+        <div>
             <label>Describe item</label>
             <input
                 placeholder="Enter description..."
@@ -49,7 +49,7 @@ function ItemCreator() {
                 name="description"
                 value={item.description}
                 onChange={changeHandler} />
-        </div> */}
+        </div>
          <div>
             <label>Price</label>
             <input
@@ -66,6 +66,15 @@ function ItemCreator() {
                 type="text"
                 name="category"
                 value={item.category}
+                onChange={changeHandler} />
+        </div>
+        <div>
+            <label>If you wish to add how many calories this dish is please add below</label>
+            <input
+                placeholder="Enter description..."
+                type="text"
+                name="cals"
+                value={item.description}
                 onChange={changeHandler} />
         </div>
         <button>add item</button>
