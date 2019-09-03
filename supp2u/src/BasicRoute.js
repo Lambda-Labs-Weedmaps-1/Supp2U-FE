@@ -11,6 +11,7 @@ import CustomerCreator from './components/Customers/CustomerCreator'
 import Auth0 from './components/Auth0';
 import MenuCreator from './components/Menu/MenuCreator'
 import AddCustomer from "./components/Customer/Add";
+import InitLandingPage from "./components/InitLandingPage"
 
 
 export default () =>{
@@ -26,5 +27,6 @@ export default () =>{
         <Route path="/customer/create" exact component={CustomerCreator}/>
         <Route path="/menu/new" exact component={MenuCreator} />
         <Route path="/schedule/create" exact component={ScheduleCreator}/>
+        <Route path="/registration" exact component={InitLandingPage} />
       </>
 }
