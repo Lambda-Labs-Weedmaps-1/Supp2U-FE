@@ -8,7 +8,12 @@ export default function Marker(map, positions) {
                 },
                 map: map,
             });
-            marker.addListener("click", props=> console.log("marker clicked", position));
+            // marker.addListener("onhover")
+            marker.addListener("click", props=>  {
+            console.log("marker clicked", position )
+            window.location.href = `/business/${position.id}`
+            }
+            );
         });
     }else {// handle case if there is one obj of coordinates
         let marker = new window.google.maps.Marker({
@@ -18,7 +23,10 @@ export default function Marker(map, positions) {
             },
             map: map,
         });
-        marker.addListener("click", props=> console.log("marker clicked", positions));
+        marker.addListener("click", props=> {
+            console.log("marker clicked", positions)
+            window.location.href = `/business/${positions.id}`
+        });
     }
     console.log('position from Marker', positions)
 }
