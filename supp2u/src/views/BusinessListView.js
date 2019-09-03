@@ -26,7 +26,7 @@ class BusinessListView extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
+  console.log('businessListView state',state);
   return {
     businesses: state.businessGet.businesses,
     error: state.businessGet.error,

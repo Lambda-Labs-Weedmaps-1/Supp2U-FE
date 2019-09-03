@@ -13,7 +13,8 @@ function Map() {
             .get(`${process.env.REACT_APP_BACKEND_URL}businesses`)
             .then(res => {
                 setCoors(res.data);
-            }).catch(err => console.log({err}))
+                console.log('res from busin backend: ', res)
+            }).catch(err => console.log('err from busin backend:', err))
     }, []);
 
 
