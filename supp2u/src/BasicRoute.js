@@ -8,6 +8,7 @@ import Review from "./components/Reviews"
 import BusinessCreator from './components/Business/BusinessCreator'
 import Auth0 from './components/Auth0';
 import MenuCreator from './components/Menu/MenuCreator'
+import BusinessSingleView from './views/BusinessSingleView'
 
 export default () =>{
   return <>
@@ -19,5 +20,6 @@ export default () =>{
         <Route path="/business/create" exact component={BusinessCreator}/>
         <Route path="/login" exact component={Auth0}/>
         <Route path="/menu/new" exact component={MenuCreator} />
+        <Route path="/business/:id" exact component={BusinessSingleView} />
       </>
 }
