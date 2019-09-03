@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { BusinessList } from "../components/Business/BusinessList"
-import { getBusinessInfo } from "../actions/getBusiness"
+import { BusinessList } from "../BusinessList"
+import { getBusinessInfo } from "../../../actions/getBusiness"
 
 class BusinessListView extends React.Component {
   constructor() {
