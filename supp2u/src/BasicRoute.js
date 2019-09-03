@@ -6,6 +6,7 @@ import Navigation from './components/Navigation/Navigation'
 import BusinessListVew from './views/BusinessListView'
 import Review from "./components/Reviews"
 import BusinessCreator from './components/Business/BusinessCreator'
+import ScheduleCreator from './components/Business/ScheduleCreator'
 import CustomerCreator from './components/Customers/CustomerCreator'
 import Auth0 from './components/Auth0';
 import MenuCreator from './components/Menu/MenuCreator'
@@ -25,5 +26,6 @@ export default () =>{
         <Route path="/customer/create" exact component={CustomerCreator}/>
         <Route path="/menu/new" exact component={MenuCreator} />
         <Route path="/business/:id" exact component={BusinessSingleView} />
+        <Route path="/schedule/create" exact component={ScheduleCreator}/>
       </>
 }
