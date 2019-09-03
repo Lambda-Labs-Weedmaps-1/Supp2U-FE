@@ -20,7 +20,6 @@ function MenuShowcase() {
     useEffect(() => {
         Axios.get(`${process.env.REACT_APP_BACKEND_URL}menus/1/items`)
         .then(res => {
-            console.log('getting data')
          setItem(res.data)
         }).catch(error =>{
             console.log('ERROR GETTING MENU ITEMS\n',error);
