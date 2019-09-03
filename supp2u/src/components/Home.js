@@ -1,6 +1,4 @@
-//src/components/Home.js
 import React, { useState } from 'react';
-// import JSONDebugger from '../utils/JSONDebugger';
 import {
 	pingApiServer,
 	fetchProfilesWithAuth,
@@ -114,7 +112,7 @@ const Home = () => {
 					</ButtonGroup>
 				</div>
 				{renderLoading()}
-				{/* {<JSONDebugger json={this.state} />} */}
+
 			</Container>
 		);
   

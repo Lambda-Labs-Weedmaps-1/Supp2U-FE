@@ -1,27 +1,8 @@
-import { mapStyle } from "./MapStyles";
-import GoogleMaps from './GoogleMap'
-
-import React from "react";
-import Popup from "reactjs-popup";
-
-
-
 export default function Marker(map, positions) {
 
 
     if(positions.length){ // check if there is an array of coordinates
         positions.forEach((position)=>{
-
-            // const Card = ({ title }) => (
-            //     <div className="card">
-            //       <div className="header">{title}</div>
-            //       <div className="content">
-            //         Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit autem
-            //         sapiente labore architecto exercitationem optio quod dolor cupiditate
-            //       </div>
-            //     </div>
-            //   );
-
             var infowindow =  new window.google.maps.InfoWindow({
                 content: `${position.name} \n ${position.street}`,                
                 
