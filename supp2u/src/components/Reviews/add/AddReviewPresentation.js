@@ -2,9 +2,10 @@ import React, {useState} from "react";
 import Rating from "react-rating";
 
 export default({addReview, history})=>{
+
     let [review, setReview] = useState("");
     let [rating, setRating] = useState(0);
-
+    console.log("rating", rating);
     const cancel = (e)=>{
         e.preventDefault();
         history.goBack();
@@ -22,7 +23,8 @@ export default({addReview, history})=>{
             />
             <Rating
                 fractions={2}
-                onChange={setRating}
+                initialRating={rating}
+                onClick={setRating}
             />
             <input type="submit" value="Add Review"/>
             <input type="submit" value="Cancel" onClick={cancel}/>
