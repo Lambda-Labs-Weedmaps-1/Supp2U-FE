@@ -50,9 +50,10 @@ const Home = () => {
 		});
   };
   
-  const _fetchProfilesWithAuth = () => {
+  const _fetchProfilesWithAuth = (props) => {
 		setStatus('Fetching')
-		fetchProfilesWithAuth(this.props.token).then(data => {
+		fetchProfilesWithAuth(props.token).then(data => {
+      console.log('Auth0 data:', data)
 			setStatus('Fetch completed')
       setPingData(data)
 		});

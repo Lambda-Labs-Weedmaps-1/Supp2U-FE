@@ -7,7 +7,7 @@ export function pingApiServer() {
 			return response.data;
 		})
 		.catch(function(error) {
-			return error.response.data;
+			return error.response;
 		});
 }
 export function fetchProfilesNoAuth() {
@@ -17,7 +17,7 @@ export function fetchProfilesNoAuth() {
 			return response.data;
 		})
 		.catch(function(error) {
-			return error.response.data;
+			return error.response;
 		});
 }
 export function fetchProfilesWithAuth(token) {
@@ -27,6 +27,6 @@ export function fetchProfilesWithAuth(token) {
 			return response.data;
 		})
 		.catch(function(error) {
-			return error.response.data;
+			return error.response;
 		});
 }
