@@ -8585,6 +8585,11 @@ react@^15.6.2, react@^16.8.6, react@^16.9.0:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
 
+reactjs-popup@^1.4.2:
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/reactjs-popup/-/reactjs-popup-1.4.2.tgz#7ef29df2d87e31ffb0a9c6aae909cbd65d786be7"
+  integrity sha512-fDwRnR00tEFHjJha1cC1sqfH4qc73jQfvcjiOv6/THTE6QQI2DAcdI03iMKYm0ar47MGDLBWXNpU0J8eT22rkA==
+
 reactstrap@^8.0.1:
   version "8.0.1"
   resolved "https://registry.yarnpkg.com/reactstrap/-/reactstrap-8.0.1.tgz#0b663c8195f540bc1d6d5dbcbcf73cab56fe7c79"
