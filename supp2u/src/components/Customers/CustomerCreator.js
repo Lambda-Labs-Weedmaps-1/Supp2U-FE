@@ -12,6 +12,8 @@ function CustomerCreator() {
 		}
 	]);
 
+	let user_id = localStorage.user_id;
+
 	//function that handles Customer creation via axios POST
 	// needs to ADD ACTUAL User number once we have it stored from auth0
 
