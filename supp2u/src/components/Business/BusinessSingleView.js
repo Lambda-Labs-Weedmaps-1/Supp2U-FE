@@ -4,16 +4,11 @@ import Axios from 'axios'
 import './businessSingleView.sass'
 import MenuShowcase from '../Menu/MenuShowcase';
 import ReviewPresentation from '../Reviews/list/ReviewPresentation'
-// import Reviews from "../Reviews/add/index";
-
-
-
 
 function BusinessSingleView(props) {
 
     let idy = localStorage.getItem("user_id");
     // this holds the id of the business
-    console.log("BusinessSingleView", {props})
     let businy = props.match.params.id;
     // this sets the state to the information of the business called
     const [info, setInfo] = useState([{}])
