@@ -1,11 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import Axios from 'axios'
 
 import './businessSingleView.sass'
 import MenuShowcase from '../Menu/MenuShowcase';
 import ReviewPresentation from '../Reviews/list/ReviewPresentation'
 
-function BusinessSingleView() {
+
+function BusinessSingleView(props) {
+
+    console.log('business number prop', props.match.params.id);
+
+    let businy = props.match.params.id;
 
     // this sets the state to the information of the business called        
     const [info, setInfo] = useState([{}])
@@ -14,7 +19,7 @@ function BusinessSingleView() {
 
     useEffect(() => {
         // api GET to bring in all the info for the business
-        Axios.get(`${process.env.REACT_APP_BACKEND_URL}businesses/1`)
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}businesses/${businy}`)
         .then(res =>{
             setInfo(res.data)
         })
@@ -22,7 +27,7 @@ function BusinessSingleView() {
             console.log('ERROR POST\n', err)
         })
         //api GET to bring in the rating
-        Axios.get(`${process.env.REACT_APP_BACKEND_URL}businesses/1/ratings`)
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}businesses/${businy}/ratings`)
         .then(res =>{
             setRating(res)
         })
