@@ -4,7 +4,6 @@ import Rating from "react-rating";
 export default({ editReviewSubmitHandler, review})=>{
 
     let [reviewState, setReview] = useState(review);
-
     const cancel = (e)=>{
         e.preventDefault();
         window.location.href = `/business/${review.business_id}`
