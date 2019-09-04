@@ -3,7 +3,8 @@ import Axios from 'axios'
 
 import './menu.sass'
 
-function ItemCreator() {
+// when used anywhere just pass the id of the menu you are trying to access from the parent component as a prop
+function ItemCreator(props){
 
     const [item, setItem] = useState([{
        "item_name":"notSet" ,
@@ -19,7 +20,7 @@ function ItemCreator() {
 
     const submit = event =>{
         event.preventDefault();
-        Axios.post( `${process.env.REACT_APP_BACKEND_URL}menus/1/items`, item)
+        Axios.post( `${process.env.REACT_APP_BACKEND_URL}menus/${props.props}/items`, item)
         .then(res => {
             console.log('sent item', res)
         }).catch(error =>{

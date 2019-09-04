@@ -21,18 +21,18 @@ export default () =>{
         <Route path="/login" exact component={Auth0}/>
         <Route path={"/"} component={Navigation}/>
         <Route path={"/profile"} component={Profile}/>
-        {/*<Route path={"/profile"} component={Profile}/>*/}
         {/* Business */}
+        <Route path="/business/:id" exact component={BusinessSingleView} />
         <Route path={"/business/view"} component={BusinessListVew} />
         <Route path={"/business/reviews"} component={Review} />
         <Route path="/business/create" exact component={BusinessCreator}/>
         {/* Customer */}
+        <Route path={"/register/customer"} component={AddCustomer}/>
         <Route path={"/profile/new/customer"} component={AddCustomer}/>
         <Route path="/customer/create" exact component={CustomerCreator}/>
         <Route path="/customer/view" exact component={CustomerView}/>
         {/* Menu */}
         <Route path="/menu/new" exact component={MenuCreator} />
-        <Route path="/business/:id" exact component={BusinessSingleView} />
         <Route path="/schedule/create" exact component={ScheduleCreator}/>
         <Route path="/registration" exact component={InitLandingPage} />
       </>
