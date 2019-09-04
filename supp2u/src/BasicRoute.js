@@ -6,11 +6,15 @@ import Navigation from './components/Navigation/Navigation'
 import BusinessListVew from './views/BusinessListView'
 import Review from "./components/Reviews"
 import BusinessCreator from './components/Business/BusinessCreator'
+import ScheduleCreator from './components/Business/ScheduleCreator'
 import CustomerCreator from './components/Customers/CustomerCreator'
 import Auth0 from './components/Auth0';
 import MenuCreator from './components/Menu/MenuCreator'
+import BusinessSingleView from './components/Business/BusinessSingleView'
 import AddCustomer from "./components/Customer/Add";
-import CustomerList from "./components/customerviews/CustomerList";
+import CustomerView from "./components/customerviews/CustomerView";
+import InitLandingPage from "./components/InitLandingPage"
+
 
 export default () =>{
   return <>
@@ -25,8 +29,11 @@ export default () =>{
         {/* Customer */}
         <Route path={"/profile/new/customer"} component={AddCustomer}/>
         <Route path="/customer/create" exact component={CustomerCreator}/>
-        <Route path="/customer/listview" exact component={CustomerList}/>
+        <Route path="/customer/view" exact component={CustomerView}/>
         {/* Menu */}
         <Route path="/menu/new" exact component={MenuCreator} />
+        <Route path="/business/:id" exact component={BusinessSingleView} />
+        <Route path="/schedule/create" exact component={ScheduleCreator}/>
+        <Route path="/registration" exact component={InitLandingPage} />
       </>
 }
