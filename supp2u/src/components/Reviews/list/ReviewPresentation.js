@@ -3,26 +3,24 @@ import Axios from 'axios'
 
 import './reviews.sass'
 
-function ReviewPresentation() {
-
+function ReviewPresentation(props) {
+    //the GET call sets this state with the review data
     const [review, setReview] = useState([{
         "customer_id": null,
         "rating": null,
         "review":""
-    }])
+    }]);
 
     useEffect(() => {
-        Axios.get(`${process.env.REACT_APP_BACKEND_URL}businesses/1/reviews`)
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}businesses/${props.props}/reviews`)
         .then(res=>{
             setReview(res.data)
-            console.log(res)
         })
         .catch(err=>{
             console.log('ERROR POST\n', err)
         })
     }, [])
 
-console.log(review)
     return (
         <div>
             {/* this renders reviews only if there ar reviews */}

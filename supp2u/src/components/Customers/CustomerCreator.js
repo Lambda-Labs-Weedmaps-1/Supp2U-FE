@@ -11,6 +11,7 @@ function CustomerCreator() {
         "user_id": 0,
         "custname": ""}]);
         
+        let user_id = localStorage.user_id;
 
     //function that handles Customer creation via axios POST
     // needs to ADD ACTUAL User number once we have it stored from auth0
@@ -19,7 +20,7 @@ function CustomerCreator() {
     // cust name shows as null, backend function for adding customer info
     // needs to be updated to actually take the info and input it to DB :)
     let postCustomerHandler = () => {
-        Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/1/customers`, customerInformation)
+        Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/${user_id}/customers`, customerInformation)
             .then(res => {
                     console.log(res)
                     console.log("HERE customer")
