@@ -19,8 +19,9 @@ function CustomerCreator() {
 	// cust name shows as null, backend function for adding customer info
 	// needs to be updated to actually take the info and input it to DB :)
 	let postCustomerHandler = () => {
+		let user_id = localStorage.user_id;
 		Axios.post(
-			`${process.env.REACT_APP_BACKEND_URL}users/1/customers`,
+			`${process.env.REACT_APP_BACKEND_URL}users/${user_id}/customers`,
 			customerInformation
 		)
 			.then(res => {
