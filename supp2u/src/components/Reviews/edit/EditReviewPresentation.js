@@ -3,7 +3,6 @@ import Rating from "react-rating";
 // editReview={editReviewHandler}  review={review}
 export default({ editReviewSubmitHandler, review})=>{
 
-
     let [reviewState, setReview] = useState(review);
 
     const cancel = (e)=>{
