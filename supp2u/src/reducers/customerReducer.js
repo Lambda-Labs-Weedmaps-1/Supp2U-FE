@@ -1,5 +1,6 @@
 import {ADD_CUSTOMER_REQUEST, ADD_CUSTOMER_FAILED, ADD_CUSTOMER_SUCCESS} from "../actions/customerActions";
 const initialState = {
+    customer: {id: null,},
     error: "",
     status: {
         requesting: false,
@@ -13,7 +14,7 @@ export default (state=initialState, action) =>{
         case ADD_CUSTOMER_REQUEST:
             return {...state, status:{...state.status, requesting: true}, error: ""};
         case ADD_CUSTOMER_SUCCESS:
-            return {...state, status: {...state.status, requesting: false, succeed: true}};
+            return {...state, status: {...state.status, requesting: false, succeed: true}, customer: action.payload};
         case ADD_CUSTOMER_FAILED:
             return {...state, status: {...state.status, requesting: false, succeed: false, failed: true}};
         default:
