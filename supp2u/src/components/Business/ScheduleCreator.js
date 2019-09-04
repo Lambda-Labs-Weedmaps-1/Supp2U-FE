@@ -5,7 +5,9 @@ import './schedule-creator.scss'
 
 
 
-const ScheduleCreator = () => {
+const ScheduleCreator = (props) => {
+    // once this componet is all hooked up use props,match.params.id to make the POST dynamic
+    console.log('business number prop', props.match.params.id);
 
     const [scheduleState, setScheduleState] = useState([{
        "sunday": "",

@@ -3,7 +3,9 @@ import Axios from 'axios'
 
 import './menu.sass'
 
-function ItemCreator() {
+function ItemCreator(props){
+
+    // console.log('props', props.match.params.id);
 
     const [item, setItem] = useState([{
        "item_name":"notSet" ,

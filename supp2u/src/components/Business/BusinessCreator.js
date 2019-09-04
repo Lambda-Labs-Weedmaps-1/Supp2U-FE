@@ -3,7 +3,9 @@ import Axios from "axios";
 
 import './businessCreator.sass'
 
-function BusinessCreator() {
+function BusinessCreator(props) {
+
+    console.log('prop', props);
     
     // The useState hook that will store the Business information
     const [businessInformation, setBusinessInformation] = useState([{

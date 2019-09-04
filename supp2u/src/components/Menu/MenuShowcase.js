@@ -4,21 +4,19 @@ import Axios from 'axios'
 import './menu.sass'
 
 // this component renders all the items from a specified menu
-
-function MenuShowcase() {
+// when used anywhere just pass the id of the menu you are trying to access from the parent component as a prop
+function MenuShowcase(props) {
 
     const [item, setItem] = useState([{
-        "item_name":"notSet" ,
-       "description":"notSet",
-       "cals":1,
+        "item_name":"Menu Item" ,
+        "description":"Write a little bit about the item...",
+        "cals": NaN,
         "price": 0, 
-        "category":"notSet"
+        "category":"none"
     }])
-
-    
     
     useEffect(() => {
-        Axios.get(`${process.env.REACT_APP_BACKEND_URL}menus/1/items`)
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}menus/${props}/items`)
         .then(res => {
          setItem(res.data)
         }).catch(error =>{

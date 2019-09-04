@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState} from 'react'
 import Axios from 'axios'
 
 import './businessSingleView.sass'
@@ -7,8 +7,6 @@ import ReviewPresentation from '../Reviews/list/ReviewPresentation'
 
 
 function BusinessSingleView(props) {
-
-    console.log('business number prop', props.match.params.id);
 
     let businy = props.match.params.id;
 

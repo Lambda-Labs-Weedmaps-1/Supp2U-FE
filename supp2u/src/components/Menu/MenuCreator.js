@@ -5,12 +5,14 @@ import MenuShowcase from './MenuShowcase'
 
 import './menu.sass'
 
-function MenuCreator(){
+function MenuCreator(props){
 
   //This creates a new menu
   const [menu, setMenu] = useState({"name":"untitled"})
   // this lets us know if the menu has been created in order to render the ablitiy to add items
-    const [menuCreated, setMenuCreated] = useState(false)
+  const [menuCreated, setMenuCreated] = useState(false)
+  // this sets the menu id so that we can display the menu as the user add items too it
+  const [menuId, setMenuId] = useState({ id:null })
 
   //this function changes the state for menu
   const changeHandlerMenu = event => {
@@ -26,13 +28,13 @@ function MenuCreator(){
       Axios.post(`${process.env.REACT_APP_BACKEND_URL}businesses/1/menus`, menu)
               .then(res => {
                   console.log('sent menu', res)
+                  setMenuId(res.data.id)
                   }).catch(error =>{
                   console.log('ERROR POST\n',error);
               });
             setMenuCreated(true)
             }
   }
- console.log(menuCreated)
 
   const finishMenu = e =>{
     window.location.href = '/'
@@ -58,7 +60,7 @@ function MenuCreator(){
         <div>
           <ItemCreator />
           <button onClick={finishMenu}>I am done creating my menu</button>
-          <MenuShowcase />
+          <MenuShowcase props={menuId}/>
         </div>
         // this will render if they have not created a menu yet
         :<p>Create Your menu</p>}
