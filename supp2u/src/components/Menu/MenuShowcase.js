@@ -8,7 +8,7 @@ import './menu.sass'
 function MenuShowcase(props) {
 
     const [item, setItem] = useState([{
-        "item_name":"Menu Item" ,
+        "item_name":"menu item name" ,
         "description":"Write a little bit about the item...",
         "cals": NaN,
         "price": 0, 
@@ -16,21 +16,20 @@ function MenuShowcase(props) {
     }])
     
     useEffect(() => {
-        Axios.get(`${process.env.REACT_APP_BACKEND_URL}menus/${props}/items`)
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}menus/${props.props}/items`)
         .then(res => {
          setItem(res.data)
         }).catch(error =>{
             console.log('ERROR GETTING MENU ITEMS\n',error);
         });
-        console.log(item)
-    }, [])
+    })
 
     return (
         <>
         <h1>Menu</h1>
         <div>
         {/* this code makes it so you have to create items before they display */}
-      { item.item_name === "notSet" ? 
+      { item.item_name == "" ? 
       <p className="empty-menu-message">Add Items to your menu to see how your menu will look</p>:     
         <div  className="menu-showcase">
             {item.map( item =>(

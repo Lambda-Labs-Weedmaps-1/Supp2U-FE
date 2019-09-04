@@ -58,7 +58,7 @@ function MenuCreator(props){
         {/* conditional render to add items only if the menu exists first */}
         {menuCreated === true ? 
         <div>
-          <ItemCreator />
+          <ItemCreator props={menuId}/>
           <button onClick={finishMenu}>I am done creating my menu</button>
           <MenuShowcase props={menuId}/>
         </div>
