@@ -6,17 +6,24 @@ import {toast} from "react-toastify";
 
 export default connect(null, {addCustomer})(({addCustomer, history})=>{
 
-    const addCustomerHandler = ()=>{
-        let user_id=1; //TODO get user_id from localStorage
-        addCustomer(user_id)
+    const addCustomerHandler = (name)=>{
+
+        addCustomer({user_id: localStorage.getItem("user_id"), custname: name})
             .then((res) => {
                 if(res.user_id){
-                    toast.success("Welcome to yelp Clone");
-                    history.push('/profile');
+                    toast.success(`Welcome to yelp Clone ${name}`);
+                    history.push('/');
                 }else{
                     toast.error("Oh no! something went wrong, Please try again", res.response);
                 }
             });
     };
-    return <AddCustomerPresentation addCustomer={addCustomerHandler} history={history}/>
+    const routeBusinessRegistration = () =>{
+        history.push("/business/create");
+    };
+    return <div className={"customer"}>
+        <AddCustomerPresentation addCustomer={addCustomerHandler} history={history}/>
+
+        <button onClick={routeBusinessRegistration}>Register as Business</button>
+    </div>
 })

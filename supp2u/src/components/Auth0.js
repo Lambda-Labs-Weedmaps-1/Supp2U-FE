@@ -19,6 +19,7 @@ class Auth0 extends Component {
 					auth={auth}
 					isLoggedIn={this.state.isLoggedIn}
 					token={auth.getToken()}
+					history={this.props.history}
 				/>
 			</div>
 		);

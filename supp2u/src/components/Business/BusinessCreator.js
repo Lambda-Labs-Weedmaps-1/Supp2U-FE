@@ -25,8 +25,9 @@ function BusinessCreator() {
 
 	//function that handles business creation via axios POST
 	let postBusinessHandler = () => {
+		let user_id = localStorage.user_id;
 		Axios.post(
-			`${process.env.REACT_APP_BACKEND_URL}users/1/businesses`,
+			`${process.env.REACT_APP_BACKEND_URL}users/${user_id}/businesses`,
 			businessInformation
 		)
 			.then(res => {
@@ -71,22 +72,22 @@ function BusinessCreator() {
 				},${businessInformation.state}&key=${
 					process.env.REACT_APP_GCOORDINATES
 				}`
-			).then(res => {
-				//     // sends location to businessInformation
-				businessInformation.lat = res.data.results[0].geometry.location.lat.toString();
-				businessInformation.long = res.data.results[0].geometry.location.lng.toString();
+			)
+				.then(res => {
+					//     // sends location to businessInformation
+					businessInformation.lat = res.data.results[0].geometry.location.lat.toString();
+					businessInformation.long = res.data.results[0].geometry.location.lng.toString();
 
-				//ensures that a lat and lng exist before posting
-				if (businessInformation.lat && businessInformation.long) {
-					postBusinessHandler();
-				} else {
-					console.log(
-						'There was an error finding a lat and long for your selected address'
-					);
-				}
-			}).catch((error) =>
-        console.log(error)
-      );
+					//ensures that a lat and lng exist before posting
+					if (businessInformation.lat && businessInformation.long) {
+						postBusinessHandler();
+					} else {
+						console.log(
+							'There was an error finding a lat and long for your selected address'
+						);
+					}
+				})
+				.catch(error => console.log(error));
 			console.log('data to be sent to backend', businessInformation);
 		}
 	};
