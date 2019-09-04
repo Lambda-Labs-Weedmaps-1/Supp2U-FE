@@ -7,7 +7,13 @@ export const auth = new AuthService(
 	'supp2u.auth0.com'
 );
 
-export const api = axios.create({
+
+const api = axios.create({
   //! change to whatever port you're running front end from //
-	baseURL: 'http://localhost:9000'
+	baseURL: process.env.REACT_APP_API_BACKEND_URL,
 });
+if(localStorage.getItem("id_token")){
+	api.defaults.headers.common["Authorization"] = localStorage.id_token;
+}
+
+export default  api;

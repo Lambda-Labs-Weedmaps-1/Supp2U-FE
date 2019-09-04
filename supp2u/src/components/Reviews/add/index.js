@@ -9,13 +9,14 @@ export default connect(mapPropsToState, {addReview})(({addReview, history, custo
 
     const addReviewHandler =(review) =>{
         const business_id =3; //TODO get business id from redux store or params
-        addReview({...review, business_id}, customer.id)
+        addReview({...review, business_id}, localStorage.customer_id)
             .then((res) => {
                 if(res.review){
-                    toast.success("Thank you for your feedback", res.review);
+                    toast.success(`Thank you for your feedback ${res.review}`);
                     history.goBack();
                 }else{
-                    toast.error("Oh no! something went wrong, Please try again", res.response);
+                    toast.error(`🔐 ️${res.response.data.message}`);
+                    console.log();
                 }
             });
     };
