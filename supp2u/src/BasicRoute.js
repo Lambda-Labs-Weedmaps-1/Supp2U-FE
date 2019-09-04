@@ -12,21 +12,27 @@ import Auth0 from './components/Auth0';
 import MenuCreator from './components/Menu/MenuCreator'
 import BusinessSingleView from './components/Business/BusinessSingleView'
 import AddCustomer from "./components/Customer/Add";
+import CustomerView from "./components/customerviews/CustomerView";
 import InitLandingPage from "./components/InitLandingPage"
 
 
 export default () =>{
   return <>
+        <Route path="/login" exact component={Auth0}/>
         <Route path={"/"} component={Navigation}/>
         <Route path={"/profile"} component={Profile}/>
-        <Route path={"/register/customer"} component={AddCustomer}/>
+        {/* Business */}
+        <Route path="/business/:id" exact component={BusinessSingleView} />
         <Route path={"/business/view"} component={BusinessListVew} />
         <Route path={"/business/reviews"} component={Review} />
         <Route path="/business/create" exact component={BusinessCreator}/>
-        <Route path="/login" exact component={Auth0}/>
+        {/* Customer */}
+        <Route path={"/register/customer"} component={AddCustomer}/>
+        <Route path={"/profile/new/customer"} component={AddCustomer}/>
         <Route path="/customer/create" exact component={CustomerCreator}/>
+        <Route path="/customer/view" exact component={CustomerView}/>
+        {/* Menu */}
         <Route path="/menu/new" exact component={MenuCreator} />
-        <Route path="/business/:id" exact component={BusinessSingleView} />
         <Route path="/schedule/create" exact component={ScheduleCreator}/>
         <Route path="/registration" exact component={InitLandingPage} />
       </>
