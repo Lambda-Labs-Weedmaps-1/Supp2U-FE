@@ -2,7 +2,6 @@ import React , {useEffect, useState}from "react";
 import EditReviewPresentation from "../edit/EditReviewPresentation";
 import api from "../../../config/Axios";
 
-
 export default (props) => {
     let [review, setReview] = useState({});
 
