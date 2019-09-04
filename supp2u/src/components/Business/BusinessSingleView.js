@@ -4,7 +4,7 @@ import Axios from 'axios'
 import './businessSingleView.sass'
 import MenuShowcase from '../Menu/MenuShowcase';
 import ReviewPresentation from '../Reviews/list/ReviewPresentation'
-import Reviews from "../Reviews/add/index";
+// import Reviews from "../Reviews/add/index";
 
 
 
@@ -13,8 +13,9 @@ function BusinessSingleView(props) {
 
     let idy = localStorage.getItem("user_id");
     // this holds the id of the business
+    console.log("BusinessSingleView", {props})
     let businy = props.match.params.id;
-    // this sets the state to the information of the business called        
+    // this sets the state to the information of the business called
     const [info, setInfo] = useState([{}])
     // this sets the rating of the business
     const [rating, setRating] = useState({ "data":"loading..." })
@@ -60,8 +61,7 @@ function BusinessSingleView(props) {
         Rating: {rating.data}
         </div>
     </div>
-    <ReviewPresentation props={props.match.params.id} />
-    <Reviews business_id={businy} history={props.history} />
+    <ReviewPresentation business_id={props.match.params.id} history={props.history}/>
     {menuId ===null ? <p>no menu avalible</p>:
     <MenuShowcase props={menuId} />}
     </>
