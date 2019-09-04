@@ -15,8 +15,6 @@ function MenuShowcase(props) {
         "category":"none",
     }])
 
-    console.log('opopopop', props)
-
     useEffect( () => {
          Axios.get(`${process.env.REACT_APP_BACKEND_URL}menus/${props.props}/items`)
         .then(res => {
