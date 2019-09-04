@@ -15,6 +15,7 @@ export default({addReview, history})=>{
         addReview({review, rating})
     };
     return (
+        
         <form onSubmit={onSubmitHandler}>
             <input type="text"
                    placeholder={"add Review"}
