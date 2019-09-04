@@ -47,14 +47,14 @@ export function fetchProfilesWithAuth(email, history) {
 
 				toast.success(`Welcome back ${name} !`);
 				// history.push('/');
-				window.location.replace('/register/customer')
+				window.location.replace('/')
 
 			} else if (response.status === 201){
 				//lets register user as a business or a customer
 				toast.success("Lets create a profile for you!");
 				localStorage.setItem("user_id", response.data.id);
 				// history.push('/register/customer');
-				window.location.replace('/register/customer')
+				window.location.replace('/registration')
 			}
 		})
 		.catch(function(error) {
