@@ -19,12 +19,10 @@ function BusinessSingleView(props) {
     // this sets the rating of the business
     const [rating, setRating] = useState({ "data":"loading..." })
     //this sets the menus if
-    const [menuId , setMenuId] = useState({})
-    // brought this in to try and mitigated the amount of api calls
-    const [count, setCount] = useState(1)
+    const [menuId , setMenuId] = useState(null)
+
 
     useEffect(() => {
-        setCount(1)
         // api GET to bring in all the info for the business
         Axios.get(`${process.env.REACT_APP_BACKEND_URL}businesses/${businy}`)
         .then(res =>{
@@ -49,7 +47,7 @@ function BusinessSingleView(props) {
         .catch(err =>{
             console.log('ERROR POST\n', err)
         })
-    }, [count])
+    }, [])
 
     return (
     <>
@@ -64,7 +62,8 @@ function BusinessSingleView(props) {
     </div>
     <ReviewPresentation props={props.match.params.id} />
     <Reviews business_id={businy} history={props.history} />
-    <MenuShowcase props={menuId} />
+    {menuId ===null ? <p>no menu avalible</p>:
+    <MenuShowcase props={menuId} />}
     </>
     )
 }
