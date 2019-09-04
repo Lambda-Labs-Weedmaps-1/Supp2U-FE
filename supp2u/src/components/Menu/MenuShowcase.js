@@ -20,7 +20,8 @@ function MenuShowcase(props) {
         .then(res => {
          setItem(res.data)
         }).catch(error =>{
-            console.log('ERROR GETTING MENU ITEMS\n',error);
+            // commenting this out because it runs until it finds an menu item so it will throw a lot of errors if a business has no menu
+            // console.log('ERROR GETTING MENU ITEMS\n',error);
         });
     })
 

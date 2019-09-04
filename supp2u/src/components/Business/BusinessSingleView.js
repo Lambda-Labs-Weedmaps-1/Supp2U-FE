@@ -7,7 +7,7 @@ import ReviewPresentation from '../Reviews/list/ReviewPresentation'
 
 
 function BusinessSingleView(props) {
-
+console.log(props)
     let businy = props.match.params.id;
 
     // this sets the state to the information of the business called        
@@ -46,7 +46,7 @@ function BusinessSingleView(props) {
         Rating: {rating.data}
         </div>
     </div>
-    <ReviewPresentation />
+    <ReviewPresentation props={props.match.params.id} />
     <MenuShowcase />
     </>
     )
