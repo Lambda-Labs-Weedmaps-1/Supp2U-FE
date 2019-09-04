@@ -19,13 +19,16 @@ function MenuCreator(props){
       setMenu({ ...menu, [event.target.name]: event.target.value })
   };
 
+  //captures business_id 
+  let business_id = localStorage.business_id;
+
   // This submit creates a new menu and is only called on the submit 
   const submitMenu = e => {
       e.preventDefault();
       //conditional that forces them to name their menu, maybe change this into an alert instead of just a console log
       if(menu.name === "untitled"){console.log("You need to name your menu")}
       else{
-      Axios.post(`${process.env.REACT_APP_BACKEND_URL}businesses/1/menus`, menu)
+      Axios.post(`${process.env.REACT_APP_BACKEND_URL}businesses/${business_id}/menus`, menu)
               .then(res => {
                   console.log('sent menu', res)
                   setMenuId(res.data.id)

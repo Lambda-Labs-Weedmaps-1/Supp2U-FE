@@ -5,7 +5,7 @@ import {Button} from "reactstrap";
 
 export default function Navigation(props) {
     let renderLogInLogOut = () => {
-        if (localStorage.getItem('customer_id') || localStorage.getItem('business_id')) {
+        if (localStorage.getItem('customer_id') || localStorage.getItem('business_id') || localStorage.getItem('user_id')) {
             return (<Button color="primary" onClick={auth.logout}>
                 Sign out
             </Button>)

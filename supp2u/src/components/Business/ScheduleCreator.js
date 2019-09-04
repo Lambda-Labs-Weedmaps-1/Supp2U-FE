@@ -6,8 +6,9 @@ import './schedule-creator.scss'
 
 
 const ScheduleCreator = (props) => {
-    // once this componet is all hooked up use props,match.params.id to make the POST dynamic
-    console.log('business number prop', props.match.params.id);
+
+     //captures business_id 
+    let business_id = localStorage.business_id;
 
     const [scheduleState, setScheduleState] = useState([{
        "sunday": "",
@@ -26,7 +27,7 @@ const ScheduleCreator = (props) => {
 
     const postHandler = event => {
         event.preventDefault()
-        Axios.post(`${process.env.REACT_APP_BACKEND_URL}businesses/1/schedules`, scheduleState)
+        Axios.post(`${process.env.REACT_APP_BACKEND_URL}businesses/${business_id}/schedules`, scheduleState)
         .then(res => {
             console.log(res)
         }).catch(err => {
