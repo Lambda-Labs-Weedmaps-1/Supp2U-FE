@@ -14,6 +14,10 @@ console.log(props)
     const [info, setInfo] = useState([{}])
     // this sets the rating of the business
     const [rating, setRating] = useState({ "data":"loading..." })
+    //this sets the menus if
+    const [menuId , setMenuId] = useState({})
+
+    const [count, setCount] = useState(1)
 
     useEffect(() => {
         // api GET to bring in all the info for the business
@@ -32,8 +36,15 @@ console.log(props)
         .catch(err =>{
             console.log('ERROR POST\n', err)
         })
-    }, [])
-
+        //api GET to bring in the menu
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}businesses/${businy}/menus`)
+        .then(res =>{
+            setMenuId(res.data.id)
+        })
+        .catch(err =>{
+            console.log('ERROR POST\n', err)
+        })
+    }, [count])
 
     return (
     <>
@@ -47,7 +58,7 @@ console.log(props)
         </div>
     </div>
     <ReviewPresentation props={props.match.params.id} />
-    <MenuShowcase />
+    <MenuShowcase props={menuId} />
     </>
     )
 }
