@@ -19,7 +19,7 @@ export default () =>{
   return <>
         <Route path={"/"} component={Navigation}/>
         <Route path={"/profile"} component={Profile}/>
-        <Route path={"/profile/new/customer"} component={AddCustomer}/>
+        <Route path={"/register/customer"} component={AddCustomer}/>
         <Route path={"/business/view"} component={BusinessListVew} />
         <Route path={"/business/reviews"} component={Review} />
         <Route path="/business/create" exact component={BusinessCreator}/>

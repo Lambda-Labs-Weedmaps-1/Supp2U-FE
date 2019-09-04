@@ -13,7 +13,7 @@ import { Container, Row, Col, Button, ButtonGroup } from 'reactstrap';
 
 import Loading from './Loading';
 
-const Home = () => {
+const Home = (props) => {
   const [status, setStatus] = useState('Idle');
   const [pingData, setPingData] = useState('No data from server yet')
   const [profileData, setProfileData] = useState('No data from server yet')
@@ -60,7 +60,7 @@ const Home = () => {
   
   const renderSignInUp = () => {
 		return (
-			<Button color="primary" onClick={auth.login}>
+			<Button color="primary" onClick={ () => auth.login(props.history)}>
 				Sign In / Sign Up
 			</Button>
 		);

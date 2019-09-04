@@ -26,7 +26,8 @@ function BusinessCreator(props) {
 
         //function that handles business creation via axios POST
         let postBusinessHandler = () => {
-            Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/1/businesses`, businessInformation)
+            let user_id = localStorage.user_id;
+            Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/${user_id}/businesses`, businessInformation)
                 .then(res => {
                      console.log(res)
                      console.log("HERE")
