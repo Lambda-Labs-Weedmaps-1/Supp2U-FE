@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Axios from "axios";
 
-import './business-creator.sass'
+import './businessCreator.sass'
 
 function BusinessCreator() {
     
