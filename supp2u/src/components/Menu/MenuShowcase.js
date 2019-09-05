@@ -6,32 +6,33 @@ import './menu.sass'
 // this component renders all the items from a specified menu
 // when used anywhere just pass the id of the menu you are trying to access from the parent component as a prop
 function MenuShowcase(props) {
-
+    //these items are set and then mapped over
     const [item, setItem] = useState([{
         "item_name":"menu item name" ,
         "description":"Write a little bit about the item...",
         "cals": NaN,
         "price": 0, 
-        "category":"none"
+        "category":"none",
     }])
-    
-    useEffect(() => {
-        Axios.get(`${process.env.REACT_APP_BACKEND_URL}menus/${props.props}/items`)
+
+    useEffect( () => {
+         Axios.get(`${process.env.REACT_APP_BACKEND_URL}menus/${props.props}/items`)
         .then(res => {
          setItem(res.data)
         }).catch(error =>{
             // commenting this out because it runs until it finds an menu item so it will throw a lot of errors if a business has no menu
-            // console.log('ERROR GETTING MENU ITEMS\n',error);
+            console.log('ERROR GETTING MENU ITEMS\n',error);
         });
-    })
+    }, [])
+
 
     return (
         <>
         <h1>Menu</h1>
         <div>
         {/* this code makes it so you have to create items before they display */}
-      { item.item_name == "" ? 
-      <p className="empty-menu-message">Add Items to your menu to see how your menu will look</p>:     
+      { item.item_name === "" ? 
+      <p className="empty-menu-message">Add Items to your menu to see how your menu will look</p>: 
         <div  className="menu-showcase">
             {item.map( item =>(
                 <div className="menu-item-box">   

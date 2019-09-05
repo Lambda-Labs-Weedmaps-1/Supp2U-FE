@@ -3,6 +3,8 @@ import Axios from 'axios';
 
 import '../Business/businessCreator.sass';
 
+import '../Business/businessCreator.sass';
+
 function CustomerCreator() {
 	// The useState hook that will store the Customer information
 	const [customerInformation, setCustomerInformation] = useState([
