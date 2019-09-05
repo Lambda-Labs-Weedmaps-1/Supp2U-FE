@@ -1,7 +1,7 @@
 import React, {useState, useEffect } from 'react';
 import Axios from 'axios'
 import ImageUploader from '../shared/ImageUploader.js';
-import { ninvoke } from 'q';
+// import { ninvoke } from 'q';
 
 
 const BusinessUpdater = (props) => {
@@ -49,7 +49,6 @@ const BusinessUpdater = (props) => {
 
         if(state.image !== null){
             photoForm.append("image", state.image)
-            console.log("PHOTO FORM", photoForm)
             Axios.patch(`${process.env.REACT_APP_BACKEND_URL}businesses/${businessId}`,  
             photoForm,
             { headers: {'Content-Type': 'multipart/form-data' }}
