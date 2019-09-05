@@ -25,7 +25,7 @@ function BusinessSingleView(props) {
             setInfo(res.data)
         })
         .catch(err =>{
-            console.log('ERROR POST\n', err)
+            console.log('ERROR GETTING BUSINESS\n', err)
         })
         //api GET to bring in the rating
         Axios.get(`${process.env.REACT_APP_BACKEND_URL}businesses/${businy}/ratings`)
@@ -33,7 +33,7 @@ function BusinessSingleView(props) {
             setRating(res)
         })
         .catch(err =>{
-            console.log('ERROR POST\n', err)
+            console.log('ERROR GETTING RATINGS\n', err)
         })
         //api GET to bring in the menu
         Axios.get(`${process.env.REACT_APP_BACKEND_URL}businesses/${businy}/menus`)
@@ -41,7 +41,7 @@ function BusinessSingleView(props) {
             setMenuId(res.data.id)
         })
         .catch(err =>{
-            console.log('ERROR POST\n', err)
+            console.log('ERROR GETTING MENU ID\n', err)
         })
     }, [])
 

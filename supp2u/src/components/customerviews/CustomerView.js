@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import Axios from 'axios'
+import Reviews from '../Reviews';
 
-import CustomerReviews from './CustomersReviews'
 
 function CustomerView() {
-// Sets the customer holds it in an object in an array so we can call the first object (users can only have 1 customer)
+
   const [customer, setCustomer] = useState([{}])
+  const [review, setReview] = useState([{}])
+
 // This pulls the user_id from local storage
   let user_id = localStorage.getItem("user_id");
 
@@ -14,18 +16,40 @@ function CustomerView() {
     Axios.get(`${process.env.REACT_APP_BACKEND_URL}users/${user_id}/customers`)
         .then(res =>{
             setCustomer(res.data)
+            // api call to get the reviews connect to the customer it must be nested in order to get the id of the customer
+          Axios.get(`${process.env.REACT_APP_BACKEND_URL}customers/${res.data[0].id}/reviews`)
+          .then(res =>{
+              setReview(res.data)
+              console.log(res.data, 'ifeowhfoeoifwhoewihfeoiw')
+          })
+          .catch(err =>{
+              console.log('ERROR GETTING REVIEWS\n', err)
+          })
         })
         .catch(err =>{
-            console.log('ERROR POST\n', err)
+            console.log('ERROR GETTING CUSTOMER\n', err)
         })
+        console.log(customer[0].id, 'id')
+        setTimeout(function(){ 
+          
+       }, 5000);
       }, [])
 
   return (
     <div>
-      <div>
+      <h1 className="name-box">
       {customer[0].custname}
+      </h1>
+      <div>
+        <h3>Your Reviews</h3>
+        {review.map(review =>(
+          <div className="review-box">
+            <p>{review.created_at}</p>
+            <p>{review.rating}</p>
+            <p>{review.review}</p>
+          </div>)
+        )}
       </div>
-      <CustomerReviews customer_id={customer[0].id} />
     </div>
   )
 }
