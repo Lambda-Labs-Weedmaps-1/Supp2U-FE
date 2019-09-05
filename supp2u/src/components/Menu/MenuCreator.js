@@ -32,6 +32,7 @@ function MenuCreator(props){
               .then(res => {
                   console.log('sent menu', res)
                   setMenuId(res.data.id)
+                  console.log(res.data.id)
                   }).catch(error =>{
                   console.log('ERROR POST\n',error);
               });
