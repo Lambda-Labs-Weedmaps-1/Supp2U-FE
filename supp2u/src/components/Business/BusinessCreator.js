@@ -162,7 +162,7 @@ function BusinessCreator(props) {
             <div className="input-box-type1">
                 <label>Theme</label>
                 <input
-                    placeholder="Enter resturant theme..."
+                    placeholder="Enter restaurant theme..."
                     type="text"
                     name="theme"
                     value={businessInformation.theme}

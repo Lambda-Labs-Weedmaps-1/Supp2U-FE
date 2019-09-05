@@ -16,6 +16,7 @@ import BusinessSingleView from './components/Business/BusinessSingleView'
 import AddCustomer from "./components/Customer/Add";
 import CustomerView from "./components/customerviews/CustomerView";
 import InitLandingPage from "./components/InitLandingPage"
+import BusinessUpdater from "./components/Business/BusinessUpdater";
 
 
 export default () =>{
@@ -30,6 +31,7 @@ export default () =>{
         <Route path="/review/:id" exact component={EditReviewPresentation} />
 
         <Route path="/business/create" exact component={BusinessCreator}/>
+        <Route path="/business/update/:id" exact component={BusinessUpdater}/>
         {/* Customer */}
         <Route path={"/register/customer"} component={AddCustomer}/>
         <Route path={"/profile/new/customer"} component={AddCustomer}/>
