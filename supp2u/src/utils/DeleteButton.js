@@ -3,7 +3,7 @@ import React from "react";
 import { withRouter } from "react-router";
 //Redux
 import { connect } from "react-redux";
-import { Buttonr } from 'reactstrap';
+import { Button } from 'reactstrap';
 import {deleteReview} from "../actions/reviewsAction";
 import "./buttonStyle.sass"
 
