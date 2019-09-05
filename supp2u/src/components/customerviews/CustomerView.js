@@ -1,31 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Axios from "axios";
 
-const CustomerView = () => {
-  const [customerListView, setCustomerListView] = useState([{}]);
+const CustomerView = props => {
+  const [customerView, setCustomerView] = useState([])
+  let customerID = props.match.params.id;
 
-  let fetchData = () => {
-    Axios.get(
-      // `${process.env.REACT_APP_BACKEND_URL}users/1/customers`
-      `http://localhost:3001/api/v1/users/1/customers`
-    )
-      .then(res => {
-        console.log('res', res);
-        
-      })
-      .catch(error => {
-        alert(error);
-      });
-  }
-  fetchData();
+  useEffect(() => {
 
+    let fetchData = () => {
+      Axios.get(
+        // `${process.env.REACT_APP_BACKEND_URL}users/${customerID}/customers`
+        `http://localhost:3001/api/v1/users/1/customers`
+      )
+        .then(res => {
+          console.log("res", res);
+          console.log(res.data)
+          setCustomerView(res.data);
+        })
+        .catch(error => {
+          alert(error);
+        });
+    }
+    fetchData();  
+  }, []);
 
   return (
     <>
       <h3>CustomerView</h3>
-      <div></div>
+      <p> name: {customerView.user_id}</p>
     </>
   );
-}
+};
 
 export default CustomerView;

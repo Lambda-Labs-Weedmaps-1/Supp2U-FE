@@ -27,8 +27,8 @@ export default () =>{
         <Route path={"/business/reviews"} component={Review} />
         <Route path="/business/create" exact component={BusinessCreator}/>
         {/* Customer */}
-        <Route path={"/register/customer"} component={AddCustomer}/>
-        <Route path={"/profile/new/customer"} component={AddCustomer}/>
+        {/* <Route path={"/register/customer"} component={AddCustomer}/> */}
+        {/* <Route path={"/profile/new/customer"} component={AddCustomer}/> */}
         <Route path="/customer/create" exact component={CustomerCreator}/>
         <Route path="/customer/view" exact component={CustomerView}/>
         {/* Menu */}
