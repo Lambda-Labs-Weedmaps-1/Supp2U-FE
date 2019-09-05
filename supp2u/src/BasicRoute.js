@@ -25,12 +25,12 @@ export default () =>{
         <Route path={"/"} component={Navigation}/>
         <Route path={"/profile"} component={Profile}/>
         {/* Business */}
+        <Route path={"/business/view"} exact component={BusinessListVew} />
+        <Route path={"/business/reviews"} exact component={Review} /> {/* TODO delete this route, as this was created just for testing purposes*/}
+        <Route path="/business/create" exact component={BusinessCreator}/>
         <Route path="/business/:id" exact component={BusinessSingleView} />
-        <Route path={"/business/view"} component={BusinessListVew} />
-        <Route path={"/business/reviews"} component={Review} /> {/* TODO delete this route, as this was created just for testing purposes*/}
         <Route path="/review/:id" exact component={EditReviewPresentation} />
 
-        <Route path="/business/create" exact component={BusinessCreator}/>
         <Route path="/business/update/:id" exact component={BusinessUpdater}/>
         {/* Customer */}
         <Route path={"/register/customer"} component={AddCustomer}/>
