@@ -16,3 +16,20 @@ export const addReview = (review, customer_id) => dispatch => {
             return err
         });
 };
+
+export const DELETE_REVIEW_REQUEST = "DELETE_REVIEW_REQUEST";
+export const DELETE_REVIEW_SUCCESS = "DELETE_REVIEW_SUCCESS";
+export const DELETE_REVIEW_FAILED = "DELETE_REVIEW_FAILED";
+
+export const deleteReview = (review_id) => dispatch => {
+    dispatch({type: DELETE_REVIEW_REQUEST});
+    return api.delete(`reviews/${review_id}/`)
+        .then(res =>{
+            dispatch({type: DELETE_REVIEW_SUCCESS, payload: res.data});
+            return res.data
+        })
+        .catch(err =>  {
+            dispatch({type: DELETE_REVIEW_FAILED, payload: err});
+            return err
+        });
+};
