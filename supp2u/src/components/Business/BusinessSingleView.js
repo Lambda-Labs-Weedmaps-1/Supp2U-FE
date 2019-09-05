@@ -4,16 +4,11 @@ import Axios from 'axios'
 import './businessSingleView.sass'
 import MenuShowcase from '../Menu/MenuShowcase';
 import ReviewPresentation from '../Reviews/list/ReviewPresentation'
-// import Reviews from "../Reviews/add/index";
-
-
-
 
 function BusinessSingleView(props) {
 
     let idy = localStorage.getItem("user_id");
     // this holds the id of the business
-    console.log("BusinessSingleView", {props})
     let businy = props.match.params.id;
     // this sets the state to the information of the business called
     const [info, setInfo] = useState([{}])
@@ -30,7 +25,7 @@ function BusinessSingleView(props) {
             setInfo(res.data)
         })
         .catch(err =>{
-            console.log('ERROR POST\n', err)
+            console.log('ERROR GETTING BUSINESS\n', err)
         })
         //api GET to bring in the rating
         Axios.get(`${process.env.REACT_APP_BACKEND_URL}businesses/${businy}/ratings`)
@@ -38,7 +33,7 @@ function BusinessSingleView(props) {
             setRating(res)
         })
         .catch(err =>{
-            console.log('ERROR POST\n', err)
+            console.log('ERROR GETTING RATINGS\n', err)
         })
         //api GET to bring in the menu
         Axios.get(`${process.env.REACT_APP_BACKEND_URL}businesses/${businy}/menus`)
@@ -46,7 +41,7 @@ function BusinessSingleView(props) {
             setMenuId(res.data.id)
         })
         .catch(err =>{
-            console.log('ERROR POST\n', err)
+            console.log('ERROR GETTING MENU ID\n', err)
         })
     }, [])
 

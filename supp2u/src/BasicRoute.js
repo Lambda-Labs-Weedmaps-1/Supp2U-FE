@@ -27,7 +27,7 @@ export default () =>{
         {/* Business */}
         <Route path="/business/:id" exact component={BusinessSingleView} />
         <Route path={"/business/view"} component={BusinessListVew} />
-        <Route path={"/business/reviews"} component={Review} />
+        <Route path={"/business/reviews"} component={Review} /> {/* TODO delete this route, as this was created just for testing purposes*/}
         <Route path="/review/:id" exact component={EditReviewPresentation} />
 
         <Route path="/business/create" exact component={BusinessCreator}/>
@@ -35,7 +35,7 @@ export default () =>{
         {/* Customer */}
         <Route path={"/register/customer"} component={AddCustomer}/>
         <Route path={"/profile/new/customer"} component={AddCustomer}/>
-        <Route path="/customer/create" exact component={CustomerCreator}/>
+        <Route path="/customer/create" exact component={CustomerCreator}/> {/* have a single way of creating customer */}
         <Route path="/customer/view" exact component={CustomerView}/>
         {/* Menu */}
         <Route path="/menu/new" exact component={MenuCreator} />

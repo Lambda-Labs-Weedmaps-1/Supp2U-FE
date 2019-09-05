@@ -1,0 +1,53 @@
+$primary-color-main: #6d6d6d
+$primary-color-light: #b2b2b2
+$primary-color-dark: #464646
+
+.btn-parent
+  position: absolute
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+  z-index: 10
+  background-color: #0000002b
+  .btn-delete
+    width: 50vw
+    margin: auto
+    padding: 20px
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    background-color: white
+    border: 1px solid rgba(128, 128, 128, 0.11)
+    border-radius: 10px
+    transition: opacity .4s
+    box-shadow: 2px 3px 5px 6px #8080802e
+.hide
+  display: none
+  opacity: 0
+.show
+  display: block
+  opacity: 1
+.btn
+  font-size: 16px
+  margin: 10px
+  padding: 11px 25px
+  border-radius: 10px
+  background-color: $primary-color-main
+  color: white
+  transition: all .3s
+
+  &:hover
+    filter: brightness(120%)
+  &:active,
+  &:focus
+    outline: none
+
+
+.error
+  background-color: darkred
+  color: white
+.info
+  background-color: dodgerblue
+  color: #fdfdfd
