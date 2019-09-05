@@ -25,6 +25,8 @@ function CustomerCreator() {
             .then(res => {
                     console.log(res)
                     console.log("HERE customer")
+                    localStorage.setItem("customer_id", res.data.id)
+                    localStorage.removeItem("business_id")
                 }).then(res =>
                     { console.log("I AM HERE customer")
                     window.location.href = '/'
