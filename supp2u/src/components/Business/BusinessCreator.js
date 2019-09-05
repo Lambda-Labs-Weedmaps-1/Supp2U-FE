@@ -34,6 +34,8 @@ function BusinessCreator(props) {
                 .then(res => {
                      console.log(res)
                      console.log("HERE")
+                    localStorage.setItem("business_id", res.data.id)
+                    localStorage.removeItem("customer_id")
                     }).then(res =>
                        { console.log("I AM HERE")
                         window.location.href = '/menu/new'
