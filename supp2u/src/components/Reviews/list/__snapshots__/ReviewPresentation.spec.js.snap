@@ -19,6 +19,8 @@ exports[`Reviews Comp Should Render should render correctly 1`] = `
     }
     routeReviewToEdit={[Function]}
   />
-  loading
+  <p>
+    to add a review please create a customer account
+  </p>
 </div>
 `;

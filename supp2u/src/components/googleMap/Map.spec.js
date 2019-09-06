@@ -16,7 +16,6 @@ describe('Map Display', () => {
     });
 });
 
-
 // ERROR: this one causes warning about ACT issues and memory leaks, can't pin down yet
 // FIXED [PARTIAL]: cannot used a component called MAP in the tests, it thinks 
 // it's calling a function.

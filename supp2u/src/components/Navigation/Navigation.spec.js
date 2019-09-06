@@ -13,7 +13,6 @@ import App from './../../App';
 
 configure({ adapter: new Adapter() });
 
-
 describe('Navigation Bar', () => {
     it('should render correctly', () => {
       const nabvar = shallow(<Navigation />);
