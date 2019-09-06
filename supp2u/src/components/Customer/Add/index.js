@@ -12,7 +12,7 @@ export default connect(null, {addCustomer})(({addCustomer, history})=>{
             .then((res) => {
                 if(res.user_id){
                     toast.success(`Welcome to yelp Clone ${name}`);
-                    history.push('/');
+                    history.push('/home');
                 }else{
                     toast.error("Oh no! something went wrong, Please try again", res.response);
                 }

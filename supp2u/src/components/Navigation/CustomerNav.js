@@ -5,7 +5,8 @@ const CustomerNav = () => {
 
     return (
         <div>
-            <NavLink className="Link" to="/customer/create">Create Customer</NavLink>
+            welcome 
+            <NavLink to="/customer/view">Profile</NavLink>
         </div>
     );
 
