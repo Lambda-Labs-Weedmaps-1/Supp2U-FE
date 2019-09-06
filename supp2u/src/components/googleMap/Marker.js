@@ -1,11 +1,3 @@
-import { mapStyle } from "./MapStyles";
-import GoogleMaps from './GoogleMap'
-
-import React from "react";
-import Popup from "reactjs-popup";
-
-
-
 export default function Marker(map, positions) {
 
 

@@ -5,9 +5,6 @@ import { BusinessList } from "../components/Business/BusinessList"
 import { getBusinessInfo } from "../actions/getBusiness"
 
 class BusinessListView extends React.Component {
-  constructor() {
-    super();
-  }
 
   componentDidMount() {
     this.props.getBusinessInfo();
@@ -15,7 +12,7 @@ class BusinessListView extends React.Component {
 
   render() {
     // if (this.props.gettingBusinesses) {
-    //   <h2>Fetching business data...</h2>;
+    //   <h2>Fetchingyar business data...</h2>;
     // }
     return (
       <div>

@@ -1,17 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { BusinessList } from "../components/Business/BusinessList"
-import { getBusinessInfo } from "../actions/getBusiness"
-
 class InitLandingPage extends React.Component {
-  constructor() {
-    super();
-  }
-
-  componentDidMount() {
-    
-  }
 
   goCust = () => {
       window.location.href ='/customer/create'

@@ -37,8 +37,6 @@ function CustomerCreator() {
         });
     }
 
-    // hard coded user for test reasons
-    let user = 1
         
     const changeHandler = event => {
         setCustomerInformation({ ...customerInformation, [event.target.name]: event.target.value });
