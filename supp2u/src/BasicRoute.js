@@ -21,24 +21,21 @@ import Map from './components/googleMap/Map'
 
 export default () =>{
   return <>
-        <Route path={"/login"} exact component={Auth0}/>
+        {/* Main Page */}
         <Route path={"/home"} component={Map}/>
-        <Route path={"/profile"} component={Profile}/>
+        {/* Special Auth0 Route  */}
+        <Route path={"/login"} exact component={Auth0}/>
         {/* Business */}
         <Route path={"/businesses/create"} exact component={BusinessCreator}/>
-        {/* Differentiation needed per the routes already in use */}
-        <Route exact path={"/business/view"} exact component={BusinessListVew} />
-        <Route exact path={"/business/reviews"} exact component={Review} /> {/* TODO delete this route, as this was created just for testing purposes*/}
-        
         <Route path={"/business/:id"} exact component={BusinessSingleView} />
+        <Route path={"/business/update/:id"} exact component={BusinessUpdater}/>
+
         <Route path={"/review/:id"} exact component={EditReviewPresentation} />
 
-        <Route path={"/business/update/:id"} exact component={BusinessUpdater}/>
         {/* Customer */}
         <Route path={"/register/customer"} component={AddCustomer}/>
-        <Route path={"/profile/new/customer"} component={AddCustomer}/>
         <Route path={"/customer/create"} exact component={CustomerCreator}/> {/* have a single way of creating customer */}
-        <Route path={"/customer/view"} exact component={CustomerView}/>
+        <Route path={"/customer/view"} exact component={CustomerView}/> {/* will break unless you have a customer_id */}
         {/* Menu */}
         <Route path={"/menu/new"} exact component={MenuCreator} />
         <Route path={"/schedule/create"} exact component={ScheduleCreator}/>

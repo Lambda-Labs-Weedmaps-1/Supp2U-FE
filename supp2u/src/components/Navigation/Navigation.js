@@ -33,7 +33,7 @@ export default function Navigation(props) {
     };
 
     return (
-      <div>
+        <div>
         <nav className="Navigation">
           <h1 className="NavTitle" >supp2u</h1> 
             {renderUserType()}
