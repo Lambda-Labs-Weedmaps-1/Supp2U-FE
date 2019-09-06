@@ -5,8 +5,8 @@ import api from "../../../config/Axios";
 export default (props) => {
     let [review, setReview] = useState({});
 
-    useEffect(async ()=>{
-        await api.get(`/reviews/${props.match.params.id}`)
+    useEffect( ()=>{
+         api.get(`/reviews/${props.match.params.id}`)
             .then(res=> setReview(res.data))
             .catch(err=> console.log(err));
     }, [props.match.params.id]);

@@ -30,7 +30,7 @@ function BusinessCreator(props) {
             //captures user_id 
             let user_id = localStorage.user_id;
 
-            Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/${user_id}/businesses`, businessInformation)
+            Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/${user_id}/businesses`, businessInformation, { headers: {'Content-Type': 'multipart/form-data' }})
                 .then(res => {
                      console.log(res)
                      console.log("HERE")
@@ -46,8 +46,6 @@ function BusinessCreator(props) {
             });
         }
 
-        // hard coded user for test reasons
-        let user = 1
         
     const changeHandler = event => {
         setBusinessInformation({ ...businessInformation, [event.target.name]: event.target.value });

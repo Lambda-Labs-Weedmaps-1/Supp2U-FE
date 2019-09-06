@@ -45,5 +45,3 @@ export default function Navigation(props) {
       </div>
     )
 };
-
-{/* <NavLink className="Link" to=""></NavLink> */}
