@@ -1,12 +1,11 @@
 import React from 'react';
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 const CustomerNav = () => {
 
     return (
         <div>
-            welcome 
-            <NavLink to="/customer/view">Profile</NavLink>
+            <Link className="Link" to="/customer/create">Create Customer</Link>
         </div>
     );
 
