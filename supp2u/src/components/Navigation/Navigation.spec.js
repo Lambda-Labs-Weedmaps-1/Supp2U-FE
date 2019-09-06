@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { mount, configure, shallow, enzyme } from 'enzyme';
 import { MemoryRouter } from 'react-router';
 import Adapter from 'enzyme-adapter-react-16';
@@ -10,17 +9,20 @@ import Navigation from '../Navigation/Navigation'
 import Home from './../Home';
 import App from './../../App';
 
-// jest.mock('firebase/app');
+// jest.mock('backend/app');
 
 configure({ adapter: new Adapter() });
 
 
 describe('Navigation Bar', () => {
     it('should render correctly', () => {
-      const component = shallow(<Navigation />);
+      const nabvar = shallow(<Navigation />);
     
-      expect(component).toMatchSnapshot();
+      expect(nabvar).toMatchSnapshot();
+    
+    //   navbar.unmount();
     });
+    
 });
 
 test('valid path should not redirect to 404', () => {
@@ -30,7 +32,7 @@ test('valid path should not redirect to 404', () => {
     </MemoryRouter>
   );
   expect(wrapper.find(Navigation)).toHaveLength(1);
-  
+//   wrapper.unmount();
 });
 
 // Can't get to render correctly, will fix later
