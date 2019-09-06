@@ -2,6 +2,8 @@ import React from 'react';
 import { NavLink } from "react-router-dom";
 import {auth} from "../../utils/init";
 import {Button} from "reactstrap";
+import BusinessNav from "./BusinessNav";
+import CustomerNav from "./CustomerNav";
 
 export default function Navigation(props) {
     let renderLogInLogOut = () => {
@@ -16,15 +18,29 @@ export default function Navigation(props) {
         }
     };
 
+    let renderUserType = () => {
+        if (localStorage.getItem('customer_id') && localStorage.getItem('user_id')) {
+            return (
+                <CustomerNav />
+            )
+        }else if(localStorage.getItem('business_id') && localStorage.getItem('user_id')){
+            return (
+                <BusinessNav />
+                )
+        }else{
+            return (<NavLink className="Link" to="/"></NavLink>)
+        }
+    };
+
     return (
       <div>
         <nav className="Navigation">
           <h1 className="NavTitle" >supp2u</h1> 
-          <NavLink className="Link" to="/">Home</NavLink>
-          <NavLink className="Link" to="/business/reviews/add">Add Business Review</NavLink>
-          <NavLink className="Link" to="/business/create">Create Your Business</NavLink>
+            {renderUserType()}
             {renderLogInLogOut()}
         </nav>  
       </div>
     )
 };
+
+{/* <NavLink className="Link" to=""></NavLink> */}
