@@ -14,7 +14,9 @@ function BusinessHeader(props) {
     return (
     <>
       <div className="business-header">
-      {props.info[0].image === undefined ? <p>loading....</p> : <img className="image" src={props.info[0].image['url']} alt="business portrait" />}
+      {props.info[0].image === null || props.info[0].image === undefined ? 
+      <p className="loading">loading....</p> : 
+      <img className="image" src={props.info[0].image['url']} alt="business portrait" />}
         <div className="info">
           <h2>{props.info[0].name}</h2>
           <div>
