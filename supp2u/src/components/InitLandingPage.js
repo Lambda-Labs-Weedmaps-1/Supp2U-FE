@@ -18,7 +18,7 @@ class InitLandingPage extends React.Component {
   }
 
   goBus = () => {
-    window.location.href ='/business/create'
+    window.location.href ='/businesses/create'
 }
 
   render() {

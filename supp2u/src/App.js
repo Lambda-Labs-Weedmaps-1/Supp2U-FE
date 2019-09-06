@@ -15,9 +15,9 @@ function App() {
 
 
         <BasicRoute />
-        <div className="Map_Holder">
+        {/* <div className="Map_Holder">
           <Map />
-        </div>
+        </div> */}
 
     </div>
   );
