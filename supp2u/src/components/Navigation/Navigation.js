@@ -20,7 +20,7 @@ export default function Navigation(props) {
       <div>
         <nav className="Navigation">
           <h1 className="NavTitle" >supp2u</h1> 
-          <NavLink className="Link" to="/">Home</NavLink>
+          <NavLink className="Link" to="/home">Home</NavLink>
           <NavLink className="Link" to="/business/reviews/add">Add Business Review</NavLink>
           <NavLink className="Link" to="/businesses/create">Create Your Business</NavLink>
             {renderLogInLogOut()}
