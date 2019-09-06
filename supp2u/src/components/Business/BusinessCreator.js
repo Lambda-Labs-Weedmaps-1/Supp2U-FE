@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import Axios from "axios";
 
+import ImageUploader from '../shared/ImageUploader.js';
+
 import './businessCreator.sass'
 
 function BusinessCreator(props) {
@@ -21,16 +23,17 @@ function BusinessCreator(props) {
         "description": "",
         "recommended": null,
         "long": "",
-        "lat": ""}]);
+        "lat": "",
+        "image": null
+        }]);
         
-
         //function that handles business creation via axios POST
         let postBusinessHandler = () => {
             
             //captures user_id 
             let user_id = localStorage.user_id;
 
-            Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/${user_id}/businesses`, businessInformation, { headers: {'Content-Type': 'multipart/form-data' }})
+            Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/${user_id}/businesses`, businessInformation)
                 .then(res => {
                      console.log(res)
                      console.log("HERE")
@@ -78,6 +81,14 @@ function BusinessCreator(props) {
         
     }}
 
+    // These two functions handle the image processing in conjunction with the ImageUnloader component
+    const selectImage = image => {
+        setBusinessInformation({...businessInformation, "image": image})
+    }
+
+    const unselectImage = () => {
+        setBusinessInformation({...businessInformation, "image": "" })
+    }
 
     //   JSX for BusinessCreator component
     return (
@@ -181,6 +192,11 @@ function BusinessCreator(props) {
             </div>
             <span className="required-span">* required</span>
 
+            <ImageUploader
+                image = {businessInformation.image}
+                selectImage = {selectImage}
+                unselectImage = {unselectImage}
+                />
 
             <button className="create-business-button"> Create Business </button>
 
