@@ -19,7 +19,7 @@ export default connect(null, {addCustomer})(({addCustomer, history})=>{
             });
     };
     const routeBusinessRegistration = () =>{
-        history.push("/business/create");
+        history.push("/businesses/create");
     };
     return <div className={"customer"}>
         <AddCustomerPresentation addCustomer={addCustomerHandler} history={history}/>
