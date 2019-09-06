@@ -13,10 +13,11 @@ function BusinessSingleView(props) {
     // this sets the state to the information of the business called
     const [info, setInfo] = useState([{}])
     // this sets the rating of the business
-    const [rating, setRating] = useState({ "data":"loading..." })
+    const [rating, setRating] = useState({ "data":"Business has not been rated yet" })
     //this sets the menus if
     const [menuId , setMenuId] = useState(null)
-
+    //this holds the hours for the business
+    const [hours, setHours] = useState([{}])
 
     useEffect(() => {
         // api GET to bring in all the info for the business
@@ -43,12 +44,20 @@ function BusinessSingleView(props) {
         .catch(err =>{
             console.log('ERROR GETTING MENU ID\n', err)
         })
+        //api GET to grab the businesses hours of operations /
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}businesses/${businy}/schedules`)
+        .then(res =>{
+            setHours(res.data)
+        })
+        .catch(err =>{
+            console.log('ERROR GETTING MENU ID\n', err)
+        })
     }, [])
 
     return (
     <>
     {/* here i am passing in 2 states as an array so on the component i can grab the data from the property of info (it will name the props array after the first passed state ) */}
-    <BusinessHeader info={[info, rating]}/>
+    <BusinessHeader info={[info, rating, hours]}/>
 
     <ReviewPresentation business_id={props.match.params.id} history={props.history}/>
 

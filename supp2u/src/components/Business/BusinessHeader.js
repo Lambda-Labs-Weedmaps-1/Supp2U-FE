@@ -4,7 +4,7 @@ import './businessSingleView.sass'
 
 function BusinessHeader(props) {
 
-    console.log(props.info[0].image)
+    console.log(props.info)
 
     return (
       <div className="business-header">
@@ -15,6 +15,16 @@ function BusinessHeader(props) {
         </div>
         <div>
         Rating: {props.info[1].data}
+        </div>
+        <div>
+          <h4>Hours of Operation</h4>
+        <p>Sunday {props.info[2].sunday}</p>
+        <p>Monday {props.info[2].monday}</p>
+        <p>Tuesday {props.info[2].tuesday}</p>
+        <p>Wednesday {props.info[2].wednesday}</p>
+        <p>Thursday {props.info[2].thursday}</p>
+        <p>Friday {props.info[2].friday}</p>
+        <p>Saturday {props.info[2].saturday}</p>
         </div>
     </div>
     )
