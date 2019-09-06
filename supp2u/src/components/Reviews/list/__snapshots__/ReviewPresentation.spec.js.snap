@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Reviews Comp Should Render should render correctly 1`] = `
+<div
+  className="review-list"
+>
+   
+  <h1>
+    Reviews
+  </h1>
+  <_default
+    key="[object Object]"
+    review={
+      Object {
+        "customer_id": null,
+        "rating": null,
+        "review": "",
+      }
+    }
+    routeReviewToEdit={[Function]}
+  />
+  loading
+</div>
+`;

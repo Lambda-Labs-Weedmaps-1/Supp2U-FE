@@ -50,7 +50,7 @@ function ReviewPresentation(props) {
                     {/* this function maps all the reviews out for the restaurant */}
                     {review.map(review => {
                         return (
-                            <ShowReview review={review} routeReviewToEdit={routeReviewToEdit}/>
+                            <ShowReview key={review} review={review} routeReviewToEdit={routeReviewToEdit}/>
                         )
                     })}
                 </>
