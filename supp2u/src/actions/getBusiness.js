@@ -12,7 +12,7 @@ export const GET_BUSINESS_SUCCESS = 'GET_BUSINESS_SUCCESS';
 export const getBusinessInfo = dispatch => {
 
     // just in case we need to pull something locally
-    const token = localStorage.getItem("something");
+    // const token = localStorage.getItem("something");
 
     dispatch ({
         type: GET_BUSINESS_START

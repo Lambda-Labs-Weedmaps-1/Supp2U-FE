@@ -4,19 +4,20 @@ import Axios from 'axios'
 import './businessSingleView.sass'
 import MenuShowcase from '../Menu/MenuShowcase';
 import ReviewPresentation from '../Reviews/list/ReviewPresentation'
+import BusinessHeader from './BusinessHeader'
 
 function BusinessSingleView(props) {
-
-    let idy = localStorage.getItem("user_id");
+    
     // this holds the id of the business
     let businy = props.match.params.id;
     // this sets the state to the information of the business called
     const [info, setInfo] = useState([{}])
     // this sets the rating of the business
-    const [rating, setRating] = useState({ "data":"loading..." })
+    const [rating, setRating] = useState({ "data":"Business has not been rated yet" })
     //this sets the menus if
     const [menuId , setMenuId] = useState(null)
-
+    //this holds the hours for the business
+    const [hours, setHours] = useState([{}])
 
     useEffect(() => {
         // api GET to bring in all the info for the business
@@ -43,21 +44,25 @@ function BusinessSingleView(props) {
         .catch(err =>{
             console.log('ERROR GETTING MENU ID\n', err)
         })
+        //api GET to grab the businesses hours of operations /
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}businesses/${businy}/schedules`)
+        .then(res =>{
+            setHours(res.data)
+        })
+        .catch(err =>{
+            console.log('ERROR GETTING MENU ID\n', err)
+        })
     }, [])
 
     return (
     <>
-    <div className="business-header">
-        <h2>{info.name}</h2>
-        <div>
-        {info.street}, {info.city}, {info.zipcode}, {info.state}
-        </div>
-        <div>
-        Rating: {rating.data}
-        </div>
-    </div>
+    {/* here i am passing in 2 states as an array so on the component i can grab the data from the property of info (it will name the props array after the first passed state ) */}
+    <BusinessHeader info={[info, rating, hours]}/>
+
     <ReviewPresentation business_id={props.match.params.id} history={props.history}/>
-    {menuId ===null ? <p>no menu avalible</p>:
+
+    {/* here we are checking conditionally to see if there is a menu to show our user */}
+    {menuId ===null ? <p>no menu avliable</p>:
     <MenuShowcase props={menuId} />}
     </>
     )

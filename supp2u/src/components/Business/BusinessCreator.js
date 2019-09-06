@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import Axios from "axios";
 
-import './businessCreator.sass'
+import ImageUploader from '../shared/ImageUploader.js';
+
+import './businessCreator.sass';
+import ScheduleCreator from './ScheduleCreator.js';
 
 function BusinessCreator(props) {
 
@@ -21,9 +24,10 @@ function BusinessCreator(props) {
         "description": "",
         "recommended": null,
         "long": "",
-        "lat": ""}]);
+        "lat": "",
+        "image": null
+        }]);
         
-
         //function that handles business creation via axios POST
         let postBusinessHandler = () => {
             
@@ -38,7 +42,7 @@ function BusinessCreator(props) {
                     localStorage.removeItem("customer_id")
                     }).then(res =>
                        { console.log("I AM HERE")
-                        window.location.href = '/menu/new'
+                        window.location.href = '/schedule/create'
                     }
                     )
                 .catch(error =>{
@@ -46,8 +50,6 @@ function BusinessCreator(props) {
             });
         }
 
-        // hard coded user for test reasons
-        let user = 1
         
     const changeHandler = event => {
         setBusinessInformation({ ...businessInformation, [event.target.name]: event.target.value });
@@ -80,6 +82,14 @@ function BusinessCreator(props) {
         
     }}
 
+    // These two functions handle the image processing in conjunction with the ImageUnloader component
+    const selectImage = image => {
+        setBusinessInformation({...businessInformation, "image": image})
+    }
+
+    const unselectImage = () => {
+        setBusinessInformation({...businessInformation, "image": "" })
+    }
 
     //   JSX for BusinessCreator component
     return (
@@ -170,7 +180,6 @@ function BusinessCreator(props) {
                     value={businessInformation.theme}
                     onChange={changeHandler} />
             </div>
-
             
             <div className="input-box-type1">
                 <label>Website</label>
@@ -183,6 +192,11 @@ function BusinessCreator(props) {
             </div>
             <span className="required-span">* required</span>
 
+            <ImageUploader
+                image = {businessInformation.image}
+                selectImage = {selectImage}
+                unselectImage = {unselectImage}
+                />
 
             <button className="create-business-button"> Create Business </button>
 

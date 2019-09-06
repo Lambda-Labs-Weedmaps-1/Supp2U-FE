@@ -1,10 +1,6 @@
 import React from "react"
 import {Route} from "react-router-dom";
 //Routes
-import Profile from "./components/profile/show";
-import Navigation from './components/Navigation/Navigation'
-import BusinessListVew from './views/BusinessListView'
-import Review from "./components/Reviews"
 import BusinessCreator from './components/Business/BusinessCreator'
 import ScheduleCreator from './components/Business/ScheduleCreator'
 import CustomerCreator from './components/Customers/CustomerCreator'

@@ -30,6 +30,7 @@ const ScheduleCreator = (props) => {
         Axios.post(`${process.env.REACT_APP_BACKEND_URL}businesses/${business_id}/schedules`, scheduleState)
         .then(res => {
             console.log(res)
+            window.location.href = '/menu/new'
         }).catch(err => {
             console.log(err)
         })
