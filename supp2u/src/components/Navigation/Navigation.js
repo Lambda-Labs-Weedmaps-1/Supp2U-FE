@@ -36,14 +36,9 @@ function Navigation(props) {
     return (
         <div>
         <nav className="Navigation">
-<<<<<<< HEAD
           <h1 className="NavTitle">supp2u</h1> 
             {renderUserType()}
           <Link className="Link" to="/home">Home</Link>
-=======
-          <h1 className="NavTitle" >supp2u</h1> 
-          <NavLink className="Link" to="/home">Home</NavLink>
->>>>>>> 68cd2c1cc3caabc12f59627a55893012bea0dd41
           {/* <NavLink className="Link" to="/business/reviews/add">Add Business Review</NavLink> */}
           {/* <NavLink className="Link" to="/businesses/create">Create Your Business</NavLink> */}
             {renderUserType()}
