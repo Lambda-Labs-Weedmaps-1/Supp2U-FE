@@ -6,6 +6,7 @@ import Adapter from 'enzyme-adapter-react-16';
 
 import Navigation from '../Navigation/Navigation'
 
+// Will try to text links to correct routes next
 import Home from './../Home';
 import App from './../../App';
 
@@ -32,6 +33,7 @@ test('valid path should not redirect to 404', () => {
   
 });
 
+// Can't get to render correctly, will fix later
 // it('render correctly text component', () => {  
 //     const TextInputComponent = renderer.create(<Navigation />).toJSON();
 //     expect(TextInputComponent).toMatchSnapshot();

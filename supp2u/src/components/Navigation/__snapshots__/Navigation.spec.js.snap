@@ -6,8 +6,3 @@ exports[`Navigation Bar should render correctly 1`] = `
 </ContextConsumer>
 `;
 
-exports[`Navigation Bar should render correctly in "debug" mode 1`] = `
-<ContextConsumer>
-  <Component />
-</ContextConsumer>
-`;
