@@ -1,6 +1,5 @@
 import React from 'react';
-import Map from './components/googleMap/Map';
-import {Route} from "react-router-dom";
+import Navigation from './components/Navigation/Navigation'
 import './App.sass';
 import BasicRoute from "./BasicRoute";
 
@@ -12,13 +11,8 @@ toast.configure();
 function App() {
   return (
     <div className="App">
-
-
+        <Navigation />
         <BasicRoute />
-        {/* <div className="Map_Holder">
-          <Map />
-        </div> */}
-
     </div>
   );
 }
