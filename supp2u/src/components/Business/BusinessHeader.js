@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './businessSingleView.sass'
+import './businessHeader.sass'
 
 function BusinessHeader(props) {
 
@@ -12,18 +12,23 @@ function BusinessHeader(props) {
     console.log(props.info, 'hip')
 
     return (
+    <>
       <div className="business-header">
-        {props.info[0].image === undefined ? <p>loading....</p> : <img src={props.info[0].image['url']} alt="business portrait" />}
-        <h2>{props.info[0].name}</h2>
-        <div>
-        {props.info[0].street}, {props.info[0].city}, {props.info[0].zipcode}, {props.info[0].state}
+      {props.info[0].image === undefined ? <p>loading....</p> : <img className="image" src={props.info[0].image['url']} alt="business portrait" />}
+        <div className="info">
+          <h2>{props.info[0].name}</h2>
+          <div>
+          {props.info[0].street}, {props.info[0].city}, {props.info[0].zipcode}, {props.info[0].state}
+          </div>
+          <div>
+          Rating: {props.info[1].data}
+          </div>
         </div>
-        <div>
-        Rating: {props.info[1].data}
-        </div>
+      </div>
+      <div>
         {props.info[2] === null ? 
         <p>This business does not have any Hours of Operations set</p> :
-        <div>
+        <div className="hours">
           <h4>Hours of Operation</h4>
         {props.info[2].sunday === null ? <p>Sunday: Closed</p>:  <p>Sunday: {props.info[2].sunday}</p>}
         {props.info[2].monday === null ? <p>Monday: Closed</p>:  <p>Monday: {props.info[2].monday}</p>}
@@ -33,7 +38,8 @@ function BusinessHeader(props) {
         {props.info[2].friday === null ? <p>Friday: Closed</p>:  <p>Friday: {props.info[2].friday}</p>}
         {props.info[2].saturday === null ? <p>Saturday: Closed</p>:  <p>Saturday: {props.info[2].saturday}</p>}
         </div>}
-    </div>
+      </div>
+    </>
     )
 }
 
