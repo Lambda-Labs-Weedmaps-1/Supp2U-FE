@@ -4,11 +4,16 @@ import './businessSingleView.sass'
 
 function BusinessHeader(props) {
 
-    console.log(props.info[2].saturday, 'hip')
+  // Within this component there is an array of 3 groups of props
+  // [0] holds the info of the business table such as image, name, address
+  // [1] holds the ratings
+  // [2] holds the hours of operations separated by day
+
+    console.log(props.info, 'hip')
 
     return (
       <div className="business-header">
-        <img source={props.info[0].image} alt="business portrait" />
+        {props.info[0].image === undefined ? <p>loading....</p> : <img src={props.info[0].image['url']} alt="business portrait" />}
         <h2>{props.info[0].name}</h2>
         <div>
         {props.info[0].street}, {props.info[0].city}, {props.info[0].zipcode}, {props.info[0].state}
