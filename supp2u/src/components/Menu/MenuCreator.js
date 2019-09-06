@@ -41,7 +41,7 @@ function MenuCreator(props){
   }
 
   const finishMenu = e =>{
-    window.location.href = '/'
+    window.location.href = '/home'
   }
 
   return (

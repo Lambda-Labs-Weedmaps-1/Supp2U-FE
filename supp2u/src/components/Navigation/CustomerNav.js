@@ -5,7 +5,7 @@ const CustomerNav = () => {
 
     return (
         <div>
-            <NavLink className="Link" to="/customer/create">Create Customer</NavLink>
+            welcome
         </div>
     );
 
