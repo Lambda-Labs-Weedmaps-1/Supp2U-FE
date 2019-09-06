@@ -53,6 +53,6 @@ export default class AuthService {
 		localStorage.removeItem('customer_id');
 		localStorage.removeItem('business_id');
 		localStorage.removeItem('id_token');
-		window.location.replace('/');
+		window.location.href = '/home'
 	}
 }
