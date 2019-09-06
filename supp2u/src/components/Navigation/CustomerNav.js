@@ -5,7 +5,8 @@ const CustomerNav = () => {
 
     return (
         <div>
-            welcome
+            welcome 
+            <NavLink to="/customer/view">Profile</NavLink>
         </div>
     );
 
