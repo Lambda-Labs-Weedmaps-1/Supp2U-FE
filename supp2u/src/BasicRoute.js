@@ -17,17 +17,20 @@ import AddCustomer from "./components/Customer/Add";
 import CustomerView from "./components/customerviews/CustomerView";
 import InitLandingPage from "./components/InitLandingPage"
 import BusinessUpdater from "./components/Business/BusinessUpdater";
+import Landing from "./components/Landing/Landing"
 
 
 export default () =>{
   return <>
         <Route path="/login" exact component={Auth0}/>
         <Route path={"/"} component={Navigation}/>
+        <Route path={"/home"} component={Landing}/>
         <Route path={"/profile"} component={Profile}/>
         {/* Business */}
-        <Route path="/business/create" exact component={BusinessCreator}/>
-        <Route path={"/business/view"} exact component={BusinessListVew} />
-        <Route path={"/business/reviews"} exact component={Review} /> {/* TODO delete this route, as this was created just for testing purposes*/}
+        <Route path="/businesses/create" exact component={BusinessCreator}/>
+        {/* Differentiation needed per the routes already in use */}
+        <Route exact path={"/business/view"} exact component={BusinessListVew} />
+        <Route exact path={"/business/reviews"} exact component={Review} /> {/* TODO delete this route, as this was created just for testing purposes*/}
         
         <Route path="/business/:id" exact component={BusinessSingleView} />
         <Route path="/review/:id" exact component={EditReviewPresentation} />
