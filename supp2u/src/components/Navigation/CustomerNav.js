@@ -1,11 +1,11 @@
 import React from 'react';
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const CustomerNav = () => {
 
     return (
         <div>
-            <Link className="Link" to="/customer/create">Create Customer</Link>
+            <Link className="Link" to="/customer/view">View Customer</Link>
         </div>
     );
 
