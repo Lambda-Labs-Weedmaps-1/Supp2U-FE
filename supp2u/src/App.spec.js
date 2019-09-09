@@ -10,6 +10,5 @@ describe('APP', ()=>{
         const application = shallow(<App />);
     
       expect(application).toMatchSnapshot();
-    })
-
+    });
 })
