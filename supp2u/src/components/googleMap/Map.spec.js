@@ -12,6 +12,7 @@ describe('Map Display', () => {
     it('should render correctly when component called', () => {
       const mappy = shallow(<Map1 />);
     
+      
       expect(mappy).toMatchSnapshot();
     });
 });

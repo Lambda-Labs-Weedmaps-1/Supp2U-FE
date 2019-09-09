@@ -101,6 +101,7 @@ function BusinessCreator(props) {
             <div className="input-box-type1">
                 <label>Name of business <span className="required-span">*</span></label>
                 <input
+                    id="test1"
                     type="text"
                     name="name"
                     value={businessInformation.name}

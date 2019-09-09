@@ -9,7 +9,7 @@ function BusinessHeader(props) {
   // [1] holds the ratings
   // [2] holds the hours of operations separated by day
 
-    console.log(props.info, 'hip')
+    // console.log(props.info, 'hip')
 
     return (
     <>
