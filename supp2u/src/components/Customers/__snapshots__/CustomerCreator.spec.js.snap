@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddCustomer Renders should render correctly when component called 1`] = `
+<Fragment>
+  <h3>
+    Create your customer
+  </h3>
+  <div
+    className="form"
+  >
+    <form
+      onSubmit={[Function]}
+    >
+      <div
+        className="input-box-type1"
+      >
+        <label>
+          Display name: 
+          <span
+            className="required-span"
+          >
+            *
+          </span>
+        </label>
+        <input
+          name="custname"
+          onChange={[Function]}
+          placeholder="customer name..."
+          type="text"
+        />
+      </div>
+      <br />
+      <span
+        className="required-span"
+      >
+        * required
+      </span>
+      <button
+        className="create-business-button"
+      >
+         Create Customer Account 
+      </button>
+    </form>
+  </div>
+</Fragment>
+`;

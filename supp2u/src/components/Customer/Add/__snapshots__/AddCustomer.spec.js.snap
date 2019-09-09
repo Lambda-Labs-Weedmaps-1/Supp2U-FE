@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddCustomer Renders should render correctly when component called 1`] = `
+<form
+  className="customer form"
+  onSubmit={[Function]}
+>
+  <input
+    onChange={[Function]}
+    placeholder="Name"
+    type="text"
+    value=""
+  />
+  <input
+    type="submit"
+    value="Create Customer"
+  />
+  <input
+    onClick={[Function]}
+    type="submit"
+    value="Cancel"
+  />
+</form>
+`;
+
+exports[`Business Creator Renders should render correctly when component called 1`] = `
+<form
+  className="customer form"
+  onSubmit={[Function]}
+>
+  <input
+    onChange={[Function]}
+    placeholder="Name"
+    type="text"
+    value=""
+  />
+  <input
+    type="submit"
+    value="Create Customer"
+  />
+  <input
+    onClick={[Function]}
+    type="submit"
+    value="Cancel"
+  />
+</form>
+`;
