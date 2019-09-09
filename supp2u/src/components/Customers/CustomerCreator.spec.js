@@ -20,17 +20,17 @@ describe('AddCustomer Renders', () => {
 describe('input values for customer creation should be present', () => {
     const container = shallow(<CustomerCreator />)
 
-    // it('onchange should work', () => {
-    //     let container = shallow(<BusinessCreator />)
-    //     container.find('input[id="test1"]').simulate('change', {
-    //         target: {
-    //             value:'testpassword'
-    //         }
-    //     });
-    //     expect(container.find('input[name="name"]').prop('value')).toBe(
-    //         'testpassword'
-    //     );
-    // });
+    it('onchange should work', () => {
+        let container = shallow(<CustomerCreator />)
+        container.find('input[name="name"]').simulate('change', {
+            target: {
+                value:'testpassword'
+            }
+        });
+        expect(container.find('input[name="name"]').prop('value')).toBe(
+            'testpassword'
+        );
+    });
 
     it('should have a input field', () => {
         expect(container.find('input[type="text"]').length).toEqual(1)
