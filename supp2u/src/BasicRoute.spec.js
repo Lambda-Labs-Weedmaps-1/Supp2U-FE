@@ -29,6 +29,7 @@ describe('Routes', () =>{
     return pathMap;
   }, {});
   // Expected routes to existed
+  expect(pathMap['/']).toBe( GMap );
   expect(pathMap['/home']).toBe( GMap );
   expect(pathMap['/login']).toBe( Auth0 );
   expect(pathMap['/registration']).toBe( InitLandingPage );
