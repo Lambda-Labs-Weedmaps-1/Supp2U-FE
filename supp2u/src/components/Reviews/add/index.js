@@ -1,22 +1,40 @@
 import React from "react";
 import {addReview} from "../../../actions/reviewsAction";
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 import AddReviewPresentation from "./AddReviewPresentation";
 import {toast} from "react-toastify";
+import EditReveiwPresentaion from "../edit/EditReviewPresentation";
 
-export default connect(null, {addReview})(({addReview, history})=>{
+const mapPropsToState = ({customerReducer: {customer}}) => ({customer});
 
-    const addReviewHandler =(review) =>{
-        const customer_id = 1;
-        addReview({...review, business_id: 3}, customer_id)
+// edit={true} review={review}
+
+export default connect(mapPropsToState, {addReview})(({addReview, history, customer, business_id, edit, review}) => {
+
+
+    const addReviewHandler = (review) => {
+
+        addReview({...review, business_id}, localStorage.customer_id)
             .then((res) => {
-                if(res.review){
-                    toast.success("Thank you for your feedback", res.review);
-                    history.goBack();
-                }else{
-                    toast.error("Oh no! something went wrong, Please try again", res.response);
+                if (res.review) {
+                    toast.success(`Thank you for your feedback ${res.review}`);
+                    // history.goBack();
+                } else {
+                    toast.error(`🔐 ️${res.response.data.message}`);
+                    console.log();
                 }
             });
     };
-    return <AddReviewPresentation addReview={addReviewHandler} history={history}/>
+    const editReviewHandler= (review) => {
+        // patch axios calll to edit a review.
+
+    };
+    return (
+        <>
+            {
+                edit ? <EditReveiwPresentaion editReview={editReviewHandler}  review={review}/> :
+                    <AddReviewPresentation addReview={addReviewHandler} history={history}/>
+            }
+        </>
+    )
 })

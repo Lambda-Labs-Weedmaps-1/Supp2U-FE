@@ -1,9 +1,14 @@
 import React, { useState } from 'react'
 import Axios from "axios";
 
-import './business-creator.sass'
+import ImageUploader from '../shared/ImageUploader.js';
 
-function BusinessCreator() {
+import './businessCreator.sass';
+import ScheduleCreator from './ScheduleCreator.js';
+
+function BusinessCreator(props) {
+
+    console.log('prop', props);
     
     // The useState hook that will store the Business information
     const [businessInformation, setBusinessInformation] = useState([{
@@ -17,21 +22,27 @@ function BusinessCreator() {
         "building_number": 420,
         "theme": "",
         "description": "",
-        "hours": "",
         "recommended": null,
         "long": "",
-        "lat": ""}]);
+        "lat": "",
+        "image": null
+        }]);
         
-
         //function that handles business creation via axios POST
         let postBusinessHandler = () => {
-            Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/1/businesses`, businessInformation)
+            
+            //captures user_id 
+            let user_id = localStorage.user_id;
+
+            Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/${user_id}/businesses`, businessInformation)
                 .then(res => {
                      console.log(res)
                      console.log("HERE")
+                    localStorage.setItem("business_id", res.data.id)
+                    localStorage.removeItem("customer_id")
                     }).then(res =>
                        { console.log("I AM HERE")
-                        window.location.href = '/'
+                        window.location.href = '/schedule/create'
                     }
                     )
                 .catch(error =>{
@@ -39,8 +50,7 @@ function BusinessCreator() {
             });
         }
 
-        // hard coded user for test reasons
-        let user = 1
+        
     const changeHandler = event => {
         setBusinessInformation({ ...businessInformation, [event.target.name]: event.target.value });
     };
@@ -72,6 +82,14 @@ function BusinessCreator() {
         
     }}
 
+    // These two functions handle the image processing in conjunction with the ImageUnloader component
+    const selectImage = image => {
+        setBusinessInformation({...businessInformation, "image": image})
+    }
+
+    const unselectImage = () => {
+        setBusinessInformation({...businessInformation, "image": "" })
+    }
 
     //   JSX for BusinessCreator component
     return (
@@ -133,7 +151,7 @@ function BusinessCreator() {
                     />
             </div>
             <div className="input-box-type1">
-                <label>zipcode</label>
+                <label>zipcode<span className="required-span">*</span></label>
                 <input
                     placeholder="zipcode..."
                     type="integer"
@@ -156,23 +174,13 @@ function BusinessCreator() {
             <div className="input-box-type1">
                 <label>Theme</label>
                 <input
-                    placeholder="Enter resturant theme..."
+                    placeholder="Enter restaurant theme..."
                     type="text"
                     name="theme"
                     value={businessInformation.theme}
                     onChange={changeHandler} />
             </div>
             
-            {/* maybe turn this into a form of its own */}
-            <div className="input-box-type1">
-                <label>Hours of Operations</label>
-                <input
-                    placeholder="Enter open and close hours..." 
-                    type="text"
-                    name="hours"
-                    value={businessInformation.hours}
-                    onChange={changeHandler}/>
-            </div>
             <div className="input-box-type1">
                 <label>Website</label>
                 <input
@@ -184,6 +192,11 @@ function BusinessCreator() {
             </div>
             <span className="required-span">* required</span>
 
+            <ImageUploader
+                image = {businessInformation.image}
+                selectImage = {selectImage}
+                unselectImage = {unselectImage}
+                />
 
             <button className="create-business-button"> Create Business </button>
 
