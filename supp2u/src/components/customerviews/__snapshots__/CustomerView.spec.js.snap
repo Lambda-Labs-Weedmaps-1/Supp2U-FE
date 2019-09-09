@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddCustomer Renders should render correctly when component called 1`] = `
+<div>
+  <h1
+    className="name-box"
+  />
+  <div>
+    <h3>
+      Your Reviews
+    </h3>
+    <div
+      className="review-box"
+    >
+      <p />
+      <p />
+      <p />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Customer view Renders should render correctly when component called 1`] = `
+<div>
+  <h1
+    className="name-box"
+  />
+  <div>
+    <h3>
+      Your Reviews
+    </h3>
+    <div
+      className="review-box"
+    >
+      <p />
+      <p />
+      <p />
+    </div>
+  </div>
+</div>
+`;

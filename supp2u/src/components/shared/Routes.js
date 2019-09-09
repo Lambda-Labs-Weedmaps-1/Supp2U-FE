@@ -2,7 +2,7 @@
 import React from 'react';
 //Routes
 import NotFound from './NotFound';
-import App from './../App';
+import App from '../Auth0';
 import LoginTransition from './../LoginTransition';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 const Routes = props => {

@@ -1,18 +1,23 @@
 import Auth0Lock from 'auth0-lock';
+import {fetchProfilesWithAuth} from "./API";
 // import logo from './../../assets/img/logo.svg';
 
 export default class AuthService {
 	constructor(clientId, domain) {
 		// Configure Auth0
+		this.history={};
 		this.lock = new Auth0Lock(clientId, domain, {
 			auth: {
-				redirectUrl: `${window.location.origin}/auth`,
-				responseType: 'token'
-			},
+				redirectUrl: `${window.location.origin}`,
+				// redirectUrl: 'https://supp2u.netlify.com/',
+				responseType: 'id_token',
+				// responseMode: 'form_post'
+		  	},
 			theme: {
 				// logo: logo,
 				primaryColor: '#7FDBFF'
 			},
+			autoclose: true,
 			languageDictionary: {
 				title: 'React + Auth0 + Rails API'
 			}
@@ -25,30 +30,29 @@ export default class AuthService {
 
 	// Todo use arrow functions remove binding in constructor
 	_doAuthentication(authResult) {
-		// Saves the user token
-		this.setToken(authResult.idToken);
-		// navigate to the home route
-		window.location.replace('/');
+		fetchProfilesWithAuth(authResult.idTokenPayload.email, this.history);
+		return authResult;
 	}
-	login() {
+	login = (history) =>{
 		// Call the show method to display the widget.
 		this.lock.show();
-	}
+		this.history = history;
+	};
 	loggedIn() {
 		// Checks if there is a saved token and it's still valid
 		return !!this.getToken();
 	}
-	setToken(idToken) {
-		// Saves user token to local storage
-		localStorage.setItem('id_token', idToken);
-	}
+
 	getToken() {
 		// Retrieves the user token from local storage
-		return localStorage.getItem('id_token');
+		return localStorage.getItem('user_id');
 	}
 	logout() {
 		// Clear user token and profile data from local storage
+		localStorage.removeItem('user_id');
+		localStorage.removeItem('customer_id');
+		localStorage.removeItem('business_id');
 		localStorage.removeItem('id_token');
-		window.location.replace('/');
+		window.location.href = '/home'
 	}
 }

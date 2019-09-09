@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`APP Renders without crashing 1`] = `
+<div
+  className="App"
+>
+  <withRouter(Navigation) />
+  <_default />
+</div>
+`;

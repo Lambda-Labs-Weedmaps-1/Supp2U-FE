@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddCustomer Renders should render correctly when component called 1`] = `
+<div>
+  <h1>
+    LookupTest
+  </h1>
+  <p>
+    Enter an address, to search for geocoordinates
+  </p>
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      name="address"
+      onChange={[Function]}
+      placeholder="address"
+      type="text"
+      value=""
+    />
+  </form>
+  <br />
+  <br />
+  <p>
+    geocoordinates:
+  </p>
+  <p>
+    Lat: 
+    32342
+  </p>
+  <p>
+    Lon: 
+    23432
+  </p>
+  <br />
+  <br />
+  <p />
+</div>
+`;

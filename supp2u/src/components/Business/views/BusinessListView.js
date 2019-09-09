@@ -1,13 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { BusinessList } from "../components/Business/BusinessList"
-import { getBusinessInfo } from "../actions/getBusiness"
+import { BusinessList } from "../BusinessList"
+import { getBusinessInfo } from "../../../actions/getBusiness"
 
 class BusinessListView extends React.Component {
-  constructor() {
-    super();
-  }
 
   componentDidMount() {
     this.props.getBusinessInfo();
@@ -15,7 +12,7 @@ class BusinessListView extends React.Component {
 
   render() {
     // if (this.props.gettingBusinesses) {
-    //   <h2>Fetching business data...</h2>;
+    //   <h2>Fetchingyar business data...</h2>;
     // }
     return (
       <div>
@@ -26,7 +23,7 @@ class BusinessListView extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
+  console.log('businessListView state',state);
   return {
     businesses: state.businessGet.businesses,
     error: state.businessGet.error,
