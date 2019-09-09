@@ -1,5 +1,5 @@
 import React, {createRef,} from 'react';
-import "./style.sass"
+import "./map.sass"
 import { mapStyle } from "./MapStyles";
 //Marker brings in the coordinates of the business
 import Marker from "./Marker";
