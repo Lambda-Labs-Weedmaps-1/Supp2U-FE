@@ -160,16 +160,16 @@ exports[`Business Creator Renders should render correctly when component called 
       >
         * required
       </span>
-      <ImageUploader
-        selectImage={[Function]}
-        unselectImage={[Function]}
-      />
       <button
         className="create-business-button"
       >
          Create Business 
       </button>
     </form>
+    <ImageUploader
+      selectImage={[Function]}
+      unselectImage={[Function]}
+    />
   </div>
 </Fragment>
 `;

@@ -40,7 +40,7 @@ function MenuCreator(props){
   }
 
   const finishMenu = e =>{
-    window.location.href = '/home'
+    window.location.href = '/menu/preview'
   }
 
   return (
@@ -62,7 +62,7 @@ function MenuCreator(props){
         {menuCreated === true ? 
         <div>
           <ItemCreator props={menuId}/>
-          <button onClick={finishMenu}>I am done creating my menu</button>
+          <button onClick={finishMenu}>I am done adding items</button>
         </div>
         // this will render if they have not created a menu yet
         :<p>Create Your menu</p>}
