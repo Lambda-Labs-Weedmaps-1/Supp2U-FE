@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import Axios from "axios";
 
-
-import '../Business/businessCreator.sass'
+import ImageUploader from '../shared/ImageUploader'
+import './customerCreator.sass'
 
 
 function CustomerCreator() {
@@ -10,7 +10,8 @@ function CustomerCreator() {
     // The useState hook that will store the Customer information
     const [customerInformation, setCustomerInformation] = useState([{
         "user_id": 0,
-        "custname": ""}]);
+        "custname": "",
+        "image": null}]);
         
         let user_id = localStorage.user_id;
 
@@ -29,7 +30,7 @@ function CustomerCreator() {
                     localStorage.removeItem("business_id")
                 }).then(res =>
                     { console.log("I AM HERE customer")
-                    window.location.href = '/'
+                    // window.location.href = '/'
                 }
                 )
             .catch(error =>{
@@ -55,6 +56,15 @@ function CustomerCreator() {
         
     }
 
+    // These two functions handle the image processing in conjunction with the ImageUnloader component
+    const selectImage = image => {
+        setCustomerInformation({...customerInformation, "image": image})
+    }
+
+    const unselectImage = () => {
+        setCustomerInformation({...customerInformation, "image": "" })
+    }
+
 
     //   JSX for customerCreator component
     return (
@@ -64,7 +74,7 @@ function CustomerCreator() {
         <form onSubmit={submit}>
 
             <div className="input-box-type1">
-                <label>Display name: <span className="required-span">*</span></label>
+                <h4>Display name: <span className="required-span">*</span></h4>
                 <input
                     type="text"
                     name="custname"
@@ -72,11 +82,20 @@ function CustomerCreator() {
                     placeholder="customer name..." 
                     onChange={changeHandler}
                     />
+            <span className="required-span">* required</span>
             </div>
             <br/>
-            
-            <span className="required-span">* required</span>
 
+            <h4>Add a Profile Picture</h4>  
+
+            <div className="image-uploader">
+            <ImageUploader
+                className="image-uploader"
+                image = {customerInformation.image}
+                selectImage = {selectImage}
+                unselectImage = {unselectImage}
+                />
+            </div>
 
             <button className="create-business-button"> Create Customer Account </button>
 
