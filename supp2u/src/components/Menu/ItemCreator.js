@@ -1,6 +1,7 @@
 import React ,{ useState } from 'react'
 import Axios from 'axios'
 
+import ImageUploader from '../shared/ImageUploader.js';
 import './menu.sass'
 
 // when used anywhere just pass the id of the menu you are trying to access from the parent component as a prop
@@ -11,8 +12,38 @@ function ItemCreator(props){
        "description":"notSet",
        "cals":1,
         "price": 0, 
-        "category":"notSet"
+        "category":"notSet",
+        "image":null
     }])
+
+    let postItemHandler = (event, photoForm , state) => {
+        //This checks if there is an image before uploading
+        if(state.image !== null){
+            // this adds the image to the business
+            photoForm.append("image", state.image)
+            Axios.post(`${process.env.REACT_APP_BACKEND_URL}menus/${props.props}/items`,  
+            photoForm, item,
+            { headers: {'Content-Type': 'multipart/form-data' }}
+            ).catch(error =>{
+                console.log('ERROR POST\n',error);
+        });
+        } else{
+        Axios.post( `${process.env.REACT_APP_BACKEND_URL}menus/${props.props}/items`, item)
+        .then(res => {
+            console.log('sent item', res)
+        }).catch(error =>{
+            console.log('ERROR POST\n',error);
+        });}
+    }
+
+    // These two functions handle the image processing in conjunction with the ImageUnloader component
+    const selectImage = image => {
+        setItem({...item, "image": image})
+    }
+
+    const unselectImage = () => {
+        setItem({...item, "image": "" })
+    }
 
     const changeHandler = event => {
         setItem({ ...item, [event.target.name]: event.target.value })
@@ -20,14 +51,10 @@ function ItemCreator(props){
 
     const submit = event =>{
         event.preventDefault();
-        Axios.post( `${process.env.REACT_APP_BACKEND_URL}menus/${props.props}/items`, item)
-        .then(res => {
-            console.log('sent item', res)
-        }).catch(error =>{
-            console.log('ERROR POST\n',error);
-        });
+        //this adds the new data to the form
+        const photoForm = new FormData(event.target);
+        postItemHandler( photoForm, event , item)
     }
-
 
     return (
     <div className="add-item-form">
@@ -80,6 +107,13 @@ function ItemCreator(props){
         </div>
         <button className="add-item-button">add item</button>
         </form>
+
+        <ImageUploader
+                image = {item.image}
+                selectImage = {selectImage}
+                unselectImage = {unselectImage}
+                />
+
     </div>
     )
 }

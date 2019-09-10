@@ -20,6 +20,7 @@ function MenuShowcase(props) {
     useEffect( () => {
          Axios.get(`${process.env.REACT_APP_BACKEND_URL}menus/${props.props}/items`)
         .then(res => {
+            console.log(res.data)
          setItem(res.data)
         }).catch(error =>{
             // commenting this out because it runs until it finds an menu item so it will throw a lot of errors if a business has no menu
@@ -37,12 +38,14 @@ function MenuShowcase(props) {
       <p className="empty-menu-message">Add Items to your menu to see how your menu will look</p>: 
         <div  className="menu-showcase">
             {item.map( item =>(
-                <div className="menu-item-box">   
+                <div className="menu-item-box"> 
+                <img className="image" src={item.image['url']} alt="item portrait" /> 
                 <p>{item.item_name}</p>
                 <p>{item.category}</p>
                 <p>{item.description}</p>
                 <p>${item.price}</p>
-                <p>Calories: {item.cals}</p>
+                {/* calories will only show up if intentailly added */}
+                {item.cal === NaN ? null : <p>Calories: {item.cals}</p>}
                 </div>
             ))}
         </div>

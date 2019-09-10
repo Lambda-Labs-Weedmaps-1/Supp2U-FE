@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Axios from 'axios'
 import ItemCreator from './ItemCreator'
-import MenuShowcase from './MenuShowcase'
 
 import './menu.sass'
 
@@ -64,7 +63,6 @@ function MenuCreator(props){
         <div>
           <ItemCreator props={menuId}/>
           <button onClick={finishMenu}>I am done creating my menu</button>
-          <MenuShowcase props={menuId}/>
         </div>
         // this will render if they have not created a menu yet
         :<p>Create Your menu</p>}
