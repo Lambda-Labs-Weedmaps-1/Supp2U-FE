@@ -5,7 +5,7 @@ import './menu.sass'
 function MenuOrder(props) {
     //these items are set and then mapped over
     const [items, setItem] = useState([{ }])
-    const [cart, setCart] = useState([{ }])
+    const [cart, setCart] = useState([{}])
 
     // let businessy = props.match.params.id;
     let businessy = props.businy;
@@ -47,13 +47,15 @@ function MenuOrder(props) {
 
         console.log("Item Attempting Add to Cart!")
         console.log("Itemy: ", itemy)
-        console.log("CART INFOOOOOOOOOOOO", cart)
+        // console.log("CART INFOOOOOOOOOOOO", cart)
 
         Axios.put(
             `${process.env.REACT_APP_BACKEND_URL}carts/${cart.id}/add`, itemy
         )
         .then( res => {
             console.log('added item to cart', res)
+            setCart(res.data)
+            console.log('CART ITEMS',cart.item_numbers)
         })
         .catch ( error => {
             console.log('errer adding item', error)
@@ -65,6 +67,8 @@ function MenuOrder(props) {
         
         <>
         <h1>Menu</h1>
+        { cart.item_numbers == undefined ? <p>Number of Items in Cart: 0</p> :
+        <h3>Number of Items in Cart: {cart.item_numbers.length}</h3> }
         <div>
             <div  className="menu-showcase">
                 {items.map( item =>{ 
