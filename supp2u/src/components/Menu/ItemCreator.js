@@ -32,7 +32,7 @@ function ItemCreator(props){
     return (
     <div className="add-item-form">
         <h2>Add Items to your menu</h2>
-        <form onClick={submit}>
+        <form onSubmit={submit}>
         <div className="item-input-box">
             <label>Menu Item</label>
             <input

@@ -12,7 +12,7 @@ export default({addCustomer, history})=>{
         addCustomer(name)
     };
     return (
-        <form onSubmit={onSubmitHandler} className={"customer form"}>
+        <form onSubmit={onSubmitHandler} className={"customer-form"}>
             <input type="text" value={name} onChange={e => setName(e.target.value) } placeholder={"Name"} />
             <input type="submit" value="Create Customer"/>
             <input type="submit" value="Cancel" onClick={cancel}/>
