@@ -41,7 +41,7 @@ function Navigation(props) {
           <Link className="Link" to="/home">Home</Link>
           {/* <NavLink className="Link" to="/business/reviews/add">Add Business Review</NavLink> */}
           {/* <NavLink className="Link" to="/businesses/create">Create Your Business</NavLink> */}
-            {renderUserType()}
+            
             {renderLogInLogOut()}
         </nav>  
       </div>
