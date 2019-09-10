@@ -19,7 +19,7 @@ function BusinessCreator(props) {
         "state": "",
         "street": " ",
         "zipcode": 0,
-        "building_number": 420,
+        "building_number": "",
         "theme": "",
         "description": "",
         "recommended": null,
@@ -29,25 +29,37 @@ function BusinessCreator(props) {
         }]);
         
         //function that handles business creation via axios POST
-        let postBusinessHandler = () => {
+        let postBusinessHandler = (event, photoForm , state) => {
             
             //captures user_id 
             let user_id = localStorage.user_id;
-
-            Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/${user_id}/businesses`, businessInformation)
+            // here we are checking if there is an image before we POST
+            if(state.image !== null){
+                // this adds the image to the business
+                photoForm.append("image", state.image)
+                Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/${user_id}/businesses`,  
+                photoForm, businessInformation,
+                { headers: {'Content-Type': 'multipart/form-data' }}
+                )
                 .then(res => {
-                     console.log(res)
-                     console.log("HERE")
-                    localStorage.setItem("business_id", res.data.id)
-                    localStorage.removeItem("customer_id")
+                   localStorage.setItem("business_id", res.data.id)
+                   localStorage.removeItem("customer_id")
                     }).then(res =>
-                       { console.log("I AM HERE")
-                        window.location.href = '/schedule/create'
-                    }
-                    )
+                        { window.location.href = '/schedule/create'})
                 .catch(error =>{
                     console.log('ERROR POST\n',error);
             });
+            } else{ 
+
+            Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/${user_id}/businesses`, businessInformation)
+                .then(res => {
+                    localStorage.setItem("business_id", res.data.id)
+                    localStorage.removeItem("customer_id")
+                    }).then(res =>
+                        { window.location.href = '/schedule/create'})
+                .catch(error =>{
+                    console.log('ERROR POST\n',error);
+            });}
         }
 
         
@@ -58,6 +70,7 @@ function BusinessCreator(props) {
     //   submit form function
     const submit = e =>{
         e.preventDefault()
+        const photoForm = new FormData(e.target);
         // Transmutes the address into a useable array
         if(businessInformation.street === undefined){console.log('Address in Required')}else{
         const newAddress = businessInformation.street
@@ -72,7 +85,7 @@ function BusinessCreator(props) {
 
             //ensures that a lat and lng exist before posting
            if(businessInformation.lat && businessInformation.long){
-               postBusinessHandler()
+               postBusinessHandler(e, photoForm, businessInformation)
            } else {
                console.log("There was an error finding a lat and long for your selected address")
            }
@@ -193,15 +206,16 @@ function BusinessCreator(props) {
             </div>
             <span className="required-span">* required</span>
 
-            <ImageUploader
-                image = {businessInformation.image}
-                selectImage = {selectImage}
-                unselectImage = {unselectImage}
-                />
+            
 
             <button className="create-business-button"> Create Business </button>
 
         </form>
+        <ImageUploader
+                image = {businessInformation.image}
+                selectImage = {selectImage}
+                unselectImage = {unselectImage}
+                />
     </div>
     </>
     )
