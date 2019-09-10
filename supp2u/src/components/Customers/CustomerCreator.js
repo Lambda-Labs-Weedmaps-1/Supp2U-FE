@@ -13,7 +13,8 @@ function CustomerCreator() {
         "custname": "",
         "image": null}]);
         
-        let user_id = localStorage.user_id;
+    //grabs the users ID from storage
+    let user_id = localStorage.user_id;
 
     //function that handles Customer creation via axios POST
     // needs to ADD ACTUAL User number once we have it stored from auth0
@@ -21,21 +22,34 @@ function CustomerCreator() {
     // this does seem to be adding a new customer to the backend, but the
     // cust name shows as null, backend function for adding customer info
     // needs to be updated to actually take the info and input it to DB :)
-    let postCustomerHandler = () => {
-        Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/${user_id}/customers`, customerInformation)
+    let postCustomerHandler = (event, photoForm , state) => {
+
+        if(state.image !== null){
+            // this adds the image to the business
+            photoForm.append("image", state.image)
+            Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/${user_id}/customers`,  
+            photoForm, customerInformation,
+            { headers: {'Content-Type': 'multipart/form-data' }}
+            )
             .then(res => {
-                    console.log(res)
-                    console.log("HERE customer")
-                    localStorage.setItem("customer_id", res.data.id)
-                    localStorage.removeItem("business_id")
+               localStorage.setItem("customer_id", res.data.id)
+               localStorage.removeItem("business_id")
                 }).then(res =>
-                    { console.log("I AM HERE customer")
-                    // window.location.href = '/'
-                }
-                )
+                    { window.location.href = '/'})
             .catch(error =>{
                 console.log('ERROR POST\n',error);
         });
+        } else{
+
+        Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/${user_id}/customers`, customerInformation)
+            .then(res => {
+                    localStorage.setItem("customer_id", res.data.id)
+                    localStorage.removeItem("business_id")
+                }).then(res =>
+                    {window.location.href = '/'})
+            .catch(error =>{
+                console.log('ERROR POST\n',error);
+        });}
     }
 
         
@@ -43,13 +57,14 @@ function CustomerCreator() {
         setCustomerInformation({ ...customerInformation, [event.target.name]: event.target.value });
     };
     
-    //   submit form function
+    //   submit form function for creating a customer
     const submit = e =>{
         e.preventDefault()
-        // 
-        if(customerInformation.custname) {
-            console.log('do the next thing now ;p', customerInformation.custname)
-            postCustomerHandler();
+        const photoForm = new FormData(e.target);
+        if(customerInformation.custname != "") {
+            postCustomerHandler(e, photoForm, customerInformation);
+        }else{
+            console.log('Must have a name')
         }
         
         console.log('data to be sent to backend', customerInformation)
@@ -89,17 +104,18 @@ function CustomerCreator() {
             <h4>Add a Profile Picture</h4>  
 
             <div className="image-uploader">
-            <ImageUploader
-                className="image-uploader"
-                image = {customerInformation.image}
-                selectImage = {selectImage}
-                unselectImage = {unselectImage}
-                />
+          
             </div>
 
             <button className="create-business-button"> Create Customer Account </button>
 
         </form>
+          <ImageUploader
+                className="image-uploader"
+                image = {customerInformation.image}
+                selectImage = {selectImage}
+                unselectImage = {unselectImage}
+                />
     </div>
     </>
     )
