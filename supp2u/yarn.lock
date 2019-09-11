@@ -8434,7 +8434,7 @@ prop-types-exact@^1.2.0:
     object.assign "^4.1.0"
     reflect.ownkeys "^0.2.0"
 
-prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@15.7.2, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -8832,6 +8832,13 @@ react-spring@^8.0.27:
   dependencies:
     "@babel/runtime" "^7.3.1"
     prop-types "^15.5.8"
+
+react-stripe-elements@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/react-stripe-elements/-/react-stripe-elements-5.0.0.tgz#3a67717ddc9580c4dad9d45b672a9cf6c8a6dda4"
+  integrity sha512-zYYmlaROlkRV+Naz2abUZL4DnnQFzlSKc1PmAx7DKDi8PdFUEMiXk5kepPFlIfhwzq5fgoSptT2Y3Jri0p7cAQ==
+  dependencies:
+    prop-types "15.7.2"
 
 react-test-renderer@^16.0.0-0, react-test-renderer@^16.9.0:
   version "16.9.0"
