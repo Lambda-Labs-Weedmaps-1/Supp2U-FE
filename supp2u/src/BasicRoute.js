@@ -17,6 +17,7 @@ import MenuPreview from "./components/Menu/MenuPreview";
 
 import CustomerCart from './components/customerviews/CustomerCart';
 import BusinessOrderFrom from './components/Business/BusinessOrderFrom';
+import ImageFadeShuffle from './components/animations/ImageFadeShuffle';
 
 export default () => {
   return (
@@ -50,6 +51,9 @@ export default () => {
       {/* Main Page */}
       <Route exact path={"/"} component={Map} />
       <Route exact path={"/home"} component={Map} />
+
+      {/* Styling Test */}
+      <Route path={"/imageshuffle"} component={ImageFadeShuffle} />
     </>
   );
 };
