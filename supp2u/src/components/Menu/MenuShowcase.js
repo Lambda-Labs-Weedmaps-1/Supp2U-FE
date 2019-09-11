@@ -44,8 +44,6 @@ function MenuShowcase(props) {
                 <p>{item.category}</p>
                 <p>{item.description}</p>
                 <p>${item.price}</p>
-                {/* calories will only show up if intentailly added */}
-                {item.cal === NaN ? null : <p>Calories: {item.cals}</p>}
                 </div>
             ))}
         </div>

@@ -42,7 +42,8 @@ function MenuPreview() {
         <div>
             <h1>{menuName}</h1>
             <br />
-            <MenuShowcase props={menuId}/>
+            {/* since i was having trouble making the menu appear i had to make it a ternary so it will 'wait' for the menuId */}
+            {menuId === undefined || menuId === null ? <p>waiting for your menu</p> : <MenuShowcase props={menuId}/>}
             <button onClick={redirect}>I am done looking at my menu</button>
         </div>
     )

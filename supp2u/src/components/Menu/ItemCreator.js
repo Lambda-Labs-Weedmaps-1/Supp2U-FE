@@ -10,7 +10,6 @@ function ItemCreator(props){
     const [item, setItem] = useState([{
        "item_name":"notSet" ,
        "description":"notSet",
-       "cals":1,
         "price": 0, 
         "category":"notSet",
         "image": null
@@ -62,7 +61,7 @@ function ItemCreator(props){
     return (
     <div className="add-item-form">
         <h2>Add Items to your menu</h2>
-        <form onSubmit={submit}>
+        <form id="form" onSubmit={submit}>
         <div className="item-input-box">
             <label>Menu Item <span className="required-span">*</span></label>
             <input
@@ -97,15 +96,6 @@ function ItemCreator(props){
                 type="text"
                 name="category"
                 value={item.category}
-                onChange={changeHandler} />
-        </div>
-        <div className="item-input-box">
-            <label>Health</label>
-            <input
-                placeholder="Enter calories amount..."
-                type="text"
-                name="cals"
-                value={item.cals}
                 onChange={changeHandler} />
         </div>
         <p className="required-span">* Required</p>
