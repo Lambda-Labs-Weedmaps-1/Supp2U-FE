@@ -15,6 +15,9 @@ import BusinessUpdater from "./components/Business/BusinessUpdater";
 import Map from "./components/googleMap/Map";
 import MenuPreview from "./components/Menu/MenuPreview";
 
+import CustomerCart from './components/customerviews/CustomerCart';
+import BusinessOrderFrom from './components/Business/BusinessOrderFrom';
+
 export default () => {
   return (
     <>
@@ -24,6 +27,7 @@ export default () => {
       {/* Business */}
       <Route path={"/businesses/create"} exact component={BusinessCreator} />
       <Route path={"/business/:id"} exact component={BusinessSingleView} />
+      <Route path={"/business/:id/order"} exact component={BusinessOrderFrom} />
       <Route path={"/business/update/:id"} exact component={BusinessUpdater} />
       <Route path={"/review/:id"} exact component={EditReviewPresentation} />
       <Route path={"/schedule/create"} exact component={ScheduleCreator} />
@@ -33,6 +37,7 @@ export default () => {
       <Route path={"/customer/create"} exact component={CustomerCreator} />{" "}
       {/* have a single way of creating customer */}
       <Route path={"/customer/view"} exact component={CustomerView} />{" "}
+      <Route path={"/customer/cart"} exact component={CustomerCart} />
       {/* will break unless you have a customer_id */}
 
       {/* Menu */}

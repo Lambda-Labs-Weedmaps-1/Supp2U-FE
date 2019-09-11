@@ -54,10 +54,17 @@ function BusinessSingleView(props) {
         })
     }, [])
 
+
+    const orderFrom = e =>{
+        window.location.href = `/business/${businy}/order`
+    }
+
     return (
     <>
     {/* here i am passing in 2 states as an array so on the component i can grab the data from the property of info (it will name the props array after the first passed state ) */}
     <BusinessHeader info={[info, rating, hours]}/>
+
+    <button className="buttonA" onClick={orderFrom}>Place Order</button>
 
     <ReviewPresentation business_id={props.match.params.id} history={props.history}/>
 
