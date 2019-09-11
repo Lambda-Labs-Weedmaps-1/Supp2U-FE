@@ -16,12 +16,9 @@ function MenuShowcase(props) {
         "image": null
     }])
 
-    console.log(props)
-
     useEffect( () => {
          Axios.get(`${process.env.REACT_APP_BACKEND_URL}menus/${props.props}/items`)
         .then(res => {
-            console.log(res.data)
          setItem(res.data)
         }).catch(error =>{
             console.log('ERROR GETTING MENU ITEMS\n',error);

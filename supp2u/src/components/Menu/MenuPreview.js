@@ -11,9 +11,6 @@ function MenuPreview() {
     const [menuId, setMenuId] = useState()
     const [menuName, setMenuName] = useState()
 
-    //these items are set and then mapped over
-    const [item, setItem] = useState([{}])
-
     // this grabs the business id so we can use it in our axios call
     let business_id = localStorage.business_id;
 

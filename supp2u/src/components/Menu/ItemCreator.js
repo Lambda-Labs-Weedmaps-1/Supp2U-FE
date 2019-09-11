@@ -25,14 +25,14 @@ function ItemCreator(props){
             photoForm, item,
             { headers: {'Content-Type': 'multipart/form-data' }}
             ).then(res => {
-                console.log('sent item', res)
+    
             }).catch(error =>{
                 console.log('ERROR POST\n',error);
         });
         } else{
         Axios.post( `${process.env.REACT_APP_BACKEND_URL}menus/${props.props}/items`, item)
         .then(res => {
-            console.log('sent item', res)
+   
         }).catch(error =>{
             console.log('ERROR POST\n',error);
         });}
