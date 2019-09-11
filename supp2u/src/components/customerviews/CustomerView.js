@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Axios from 'axios'
+import './customerView.sass'
 
 function CustomerView() {
 
@@ -34,10 +35,10 @@ function CustomerView() {
       }, [])
 
   return (
-    <div>
+    <div className="c-view">
       {/* customer image */}
        {customer[0].image === null || customer[0].image === undefined ? 
-      <p className="loading">loading....</p> : 
+      <p>Image loading....</p> : 
       <img className="image" src={customer[0].image['url']} alt="customer portrait" />}
       {/* Name */}
       <h1 className="name-box">
