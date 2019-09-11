@@ -5,6 +5,7 @@ import './businessSingleView.sass'
 import MenuShowcase from '../Menu/MenuShowcase';
 import ReviewPresentation from '../Reviews/list/ReviewPresentation'
 import BusinessHeader from './BusinessHeader'
+import './businessSingleView.sass'
 
 function BusinessSingleView(props) {
     
@@ -55,7 +56,7 @@ function BusinessSingleView(props) {
     }, [])
 
     return (
-    <>
+    <div className="b-view">
     {/* here i am passing in 2 states as an array so on the component i can grab the data from the property of info (it will name the props array after the first passed state ) */}
     <BusinessHeader info={[info, rating, hours]}/>
 
@@ -64,7 +65,7 @@ function BusinessSingleView(props) {
     {/* here we are checking conditionally to see if there is a menu to show our user */}
     {menuId ===null ? <p>no menu avliable</p>:
     <MenuShowcase props={menuId} />}
-    </>
+    </div>
     )
 }
 
