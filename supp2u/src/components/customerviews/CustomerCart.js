@@ -24,38 +24,45 @@ function CustomerCart(props) {
     .then( async res => {
         await setCart(res.data);
         console.log('carty the cart cart ', cart);
+        getList(res.data)
 
     })
     .catch( error => {
         console.log('ERROR PULLING CUTOMER CART INFO', error)
     });
 
-    Axios.get(`${process.env.REACT_APP_BACKEND_URL}carts/1/itemfetch`)
-    .then(res => {
-      setCartlist(res.data)
-      console.log('cartlist the cartlist', res.data)
-    })
-    .catch( error => {
-      console.log('ERROR PULLING Cart Log', error )
-    })
 
   }, [])
 
-  // const getList = event => {
-  //   Axios.get(`${process.env.REACT_APP_BACKEND_URL}carts/${cart.id}/itemfetch`)
-  //       .then(res => {
-  //         setCartlist(res.data)
-  //         console.log('cartlist the cartlist', cartlist)
-  //       })
-  //       .catch( error => {
-  //         console.log('ERROR PULLING Cart Log', error )
-  //       })
-  // }
+  const whatever = cartlist =>{
+    let total = 0.00
+    console.log(cartlist);
+    cartlist.map( stuff => {
+      total = total+stuff.price
+    })
+    return total.toFixed(2);
+  }
+
+  const getList = data => {
+    console.log('data',data)
+    Axios.get(`${process.env.REACT_APP_BACKEND_URL}carts/${data.id}/itemfetch`)
+        .then(res => {
+          setCartlist(res.data)
+          console.log('cartlist the cartlist', cartlist)
+        })
+        .catch( error => {
+          console.log('ERROR PULLING Cart Log', error )
+        })
+  }
+
+  const placeOrder = info => {
+    console.log('place the order... once the order backend is up and working right ;p ')
+  }
 
   return (
     <div>
       {/* {getList()} */}
-      <h1 className="name-box"> {customer[0].custname} </h1>
+      <h1 className="name-box"> {customer.custname} </h1>
       { cart.item_numbers == undefined ? <p>Number of Items in Cart: 0</p> :
             <h2>Number of Items in Cart: {cart.item_numbers.length}</h2> }
       <div>
@@ -77,7 +84,10 @@ function CustomerCart(props) {
             
           })}
         </div>
+        <h3>Order Total: $ {whatever(cartlist)} </h3>
+        <button onClick={placeOrder}>Place Order</button>
 
+          <br></br><br></br>
       </div>
     </div>
   )

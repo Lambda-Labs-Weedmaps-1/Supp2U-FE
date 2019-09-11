@@ -44,7 +44,7 @@ function BusinessOrderFrom(props) {
   return (
     <div>
       <h1 className="name-box">
-      {customer[0].custname}
+      {customer.custname}
       </h1>
       <div>
         
