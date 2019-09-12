@@ -173,3 +173,62 @@ exports[`Business Creator Renders should render correctly when component called 
   </div>
 </Fragment>
 `;
+
+exports[`schedule creation renders 1`] = `
+<div
+  className="schedule-creation-wrapper"
+>
+  <h1>
+     Hours of Operation 
+  </h1>
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      name="sunday"
+      onChange={[Function]}
+      placeholder="Sunday..."
+      type="text"
+    />
+    <input
+      name="monday"
+      onChange={[Function]}
+      placeholder="Monday..."
+      type="text"
+    />
+    <input
+      name="tuesday"
+      onChange={[Function]}
+      placeholder="Tuesday..."
+      type="text"
+    />
+    <input
+      name="wednesday"
+      onChange={[Function]}
+      placeholder="Wednesday..."
+      type="text"
+    />
+    <input
+      name="thursday"
+      onChange={[Function]}
+      placeholder="Thursday..."
+      type="text"
+    />
+    <input
+      name="friday"
+      onChange={[Function]}
+      placeholder="Friday..."
+      type="text"
+    />
+    <input
+      name="saturday"
+      onChange={[Function]}
+      placeholder="Saturday..."
+      type="text"
+    />
+    <button>
+       Submit 
+    </button>
+  </form>
+</div>
+`;
