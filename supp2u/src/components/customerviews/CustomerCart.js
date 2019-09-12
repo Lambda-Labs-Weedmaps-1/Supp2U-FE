@@ -34,7 +34,7 @@ function CustomerCart(props) {
 
   }, [])
 
-  const whatever = cartlist =>{
+  const totals = cartlist =>{
     let total = 0.00
     console.log(cartlist);
     cartlist.map( stuff => {
@@ -96,7 +96,7 @@ function CustomerCart(props) {
             
           })}
         </div>
-        <h3>Order Total: $ {whatever(cartlist)} </h3>
+        <h3>Order Total: $ {totals(cartlist)} </h3>
         <button onClick={placeOrder}>Place Order</button>
 
           <br></br><br></br>
