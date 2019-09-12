@@ -5,7 +5,7 @@ import './businessSingleView.sass'
 import MenuShowcase from '../Menu/MenuShowcase';
 import ReviewPresentation from '../Reviews/list/ReviewPresentation'
 import BusinessHeader from './BusinessHeader'
-import './businessSingleView.sass'
+
 
 function BusinessSingleView(props) {
     
@@ -71,7 +71,10 @@ function BusinessSingleView(props) {
 
     {/* here we are checking conditionally to see if there is a menu to show our user */}
     {menuId ===null ? <p>no menu avliable</p>:
-    <MenuShowcase props={menuId} />}
+    <div>
+    <h1>Menu</h1>
+    <MenuShowcase props={menuId} />
+    </div>}
     </div>
     )
 }

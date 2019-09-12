@@ -12,10 +12,11 @@ class CheckoutForm extends Component {
       // User clicked submit
       let {token} = await this.props.stripe.createToken({name: "supp2u"});
       console.log(token.id)
-      Axios.post(`${process.env.REACT_APP_BACKEND_URL}charges`, {token:token.id, amount:500})
+      Axios.post(`${process.env.REACT_APP_BACKEND_URL}charges`, {token:token.id, amount:this.props.amount * 100, business_id:this.props.business_id})
         .then(res => {
           console.log(token, token.id)
           console.log(res)
+          this.props.callback()
         })
         .catch(error => {
           console.log(error)
@@ -27,7 +28,7 @@ class CheckoutForm extends Component {
         <div className="checkout">
           <p>Would you like to complete the purchase?</p>
           <CardElement />
-          <button onClick={this.submit}>Send</button>
+          <button onClick={this.submit}>Place Order</button>
         </div>
       );
     }

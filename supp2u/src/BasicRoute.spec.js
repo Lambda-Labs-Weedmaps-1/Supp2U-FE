@@ -19,6 +19,7 @@ import CustomerView from "./components/customerviews/CustomerView";
 import InitLandingPage from "./components/InitLandingPage"
 import BusinessUpdater from "./components/Business/BusinessUpdater";
 import GMap from './components/googleMap/Map'
+import MenuPreview from './components/Menu/MenuPreview'
 
 describe('Routes', () =>{
   it('All routes are rending in!', () => {
@@ -38,6 +39,7 @@ describe('Routes', () =>{
   expect(pathMap['/customer/view']).toBe( CustomerView );
   expect(pathMap['/business/update/:id']).toBe( BusinessUpdater );
   expect(pathMap['/menu/new']).toBe( MenuCreator );
+  expect(pathMap['/menu/preview']).toBe( MenuPreview );
   expect(pathMap['/customer/create']).toBe( CustomerCreator );
   expect(pathMap['/register/customer']).toBe( AddCustomer );
   expect(pathMap['/businesses/create']).toBe( BusinessCreator);
