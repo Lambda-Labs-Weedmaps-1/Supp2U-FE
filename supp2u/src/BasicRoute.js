@@ -17,6 +17,7 @@ import Map from "./components/googleMap/Map";
 import CustomerCart from './components/customerviews/CustomerCart';
 import BusinessOrderFrom from './components/Business/BusinessOrderFrom';
 import ImageFadeShuffle from './components/animations/ImageFadeShuffle';
+import { StripeProvider, Elements } from 'react-stripe-elements'
 
 export default () => {
   return (
@@ -25,7 +26,12 @@ export default () => {
       <Route path={"/login"} exact component={Auth0} />
 
       {/* Business */}
-      <Route path={"/businesses/create"} exact component={BusinessCreator} />
+      <StripeProvider apiKey="pk_test_Lk7CkE4Yez5LYD3KvwJwoYN500AVGVDnfZ">
+        <Elements>
+          <Route path={"/businesses/create"} exact component={BusinessCreator} />
+        </Elements>
+      </StripeProvider>
+      {/* <Route path={"/businesses/create"} exact component={BusinessCreator} /> */}
       <Route path={"/business/:id"} exact component={BusinessSingleView} />
       <Route path={"/business/:id/order"} exact component={BusinessOrderFrom} />
       <Route path={"/business/update/:id"} exact component={BusinessUpdater} />

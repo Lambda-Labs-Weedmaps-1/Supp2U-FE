@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import Axios from "axios";
 
 import ImageUploader from '../shared/ImageUploader.js';
-import { Elements, injectStripe } from 'react-stripe-elements'
 
 import './businessCreator.sass';
 import ScheduleCreator from './ScheduleCreator.js';
@@ -28,14 +27,13 @@ function BusinessCreator(props) {
         "lat": "",
         "image": null
         }]);
-        
+
         //function that handles business creation via axios POST
         let postBusinessHandler = (event, photoForm , state) => {
             
             //captures user_id 
             let user_id = localStorage.user_id;
-            let {token} = this.props.stripe.createToken({name: "supp2uBusiness"});
-
+            // let {token} = props.stripe.createToken({name: "supp2uBusiness"});
             // here we are checking if there is an image before we POST
             if(state.image !== null){
                 // this adds the image to the business
@@ -54,7 +52,7 @@ function BusinessCreator(props) {
             });
             } else{ 
             
-            Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/${user_id}/businesses`, businessInformation, {token:token.id})
+            Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/${user_id}/businesses`, businessInformation)
                 .then(res => {
                     localStorage.setItem("business_id", res.data.id)
                     localStorage.removeItem("customer_id")
@@ -109,7 +107,7 @@ function BusinessCreator(props) {
 
     //   JSX for BusinessCreator component
     return (
-        <Elements>
+        <>
     <h3>Create your business</h3>
     <div className="form"> 
         <form onSubmit={submit}>
@@ -209,8 +207,11 @@ function BusinessCreator(props) {
             <span className="required-span">* required</span>
 
             
-
-            <button className="create-business-button"> Create Business </button>
+            {/* <StripeProvider piKey="pk_test_Lk7CkE4Yez5LYD3KvwJwoYN500AVGVDnfZ">
+                <Elements> */}
+                    <button className="create-business-button"> Create Business </button>
+                {/* </Elements>
+            </StripeProvider> */}
 
         </form>
         <ImageUploader
@@ -219,8 +220,8 @@ function BusinessCreator(props) {
                 unselectImage = {unselectImage}
                 />
     </div>
-    </Elements>
+    </>
     )
 }
 
-export default injectStripe(BusinessCreator) 
+export default BusinessCreator
