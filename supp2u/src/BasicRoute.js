@@ -13,6 +13,7 @@ import CustomerView from "./components/customerviews/CustomerView";
 import InitLandingPage from "./components/InitLandingPage";
 import BusinessUpdater from "./components/Business/BusinessUpdater";
 import Map from "./components/googleMap/Map";
+import MenuPreview from "./components/Menu/MenuPreview";
 
 import CustomerCart from './components/customerviews/CustomerCart';
 import BusinessOrderFrom from './components/Business/BusinessOrderFrom';
@@ -30,6 +31,7 @@ export default () => {
       <Route path={"/business/:id/order"} exact component={BusinessOrderFrom} />
       <Route path={"/business/update/:id"} exact component={BusinessUpdater} />
       <Route path={"/review/:id"} exact component={EditReviewPresentation} />
+      <Route path={"/schedule/create"} exact component={ScheduleCreator} />
       
       {/* Customer */}
       <Route path={"/register/customer"} component={AddCustomer} />
@@ -41,7 +43,7 @@ export default () => {
 
       {/* Menu */}
       <Route path={"/menu/new"} exact component={MenuCreator} />
-      <Route path={"/schedule/create"} exact component={ScheduleCreator} />
+      <Route path={"/menu/preview"} exact component={MenuPreview} />
 
       {/* registration */}
       <Route path={"/registration"} exact component={InitLandingPage} />
