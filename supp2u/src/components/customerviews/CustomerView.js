@@ -17,7 +17,7 @@ function CustomerView() {
             setCustomer(res.data)
             console.log(res.data, 'customer')
             // api call to get the reviews connect to the customer it must be nested in order to get the id of the customer
-          Axios.get(`${process.env.REACT_APP_BACKEND_URL}customers/${res.data[0].id}/reviews`)
+          Axios.get(`${process.env.REACT_APP_BACKEND_URL}customers/${res.data.id}/reviews`)
           .then(res =>{
               setReview(res.data)
               console.log(res.data, 'review')
@@ -34,12 +34,12 @@ function CustomerView() {
   return (
     <div className="c-view">
       {/* customer image */}
-       {customer[0].image === null || customer[0].image === undefined ? 
+       {customer.image === null || customer.image === undefined ? 
       <p>Image loading....</p> : 
-      <img className="image" src={customer[0].image['url']} alt="customer portrait" />}
+      <img className="image" src={customer.image['url']} alt="customer portrait" />}
       {/* Name */}
       <h1 className="name-box">
-      {customer[0].custname}
+      {customer.custname}
       </h1>
         {/* customer reviews*/}
       <div>
