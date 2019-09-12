@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Axios from 'axios'
 import ItemCreator from './ItemCreator'
-import MenuShowcase from './MenuShowcase'
 
 import './menu.sass'
 
@@ -32,7 +31,6 @@ function MenuCreator(props){
               .then(res => {
                   console.log('sent menu', res)
                   setMenuId(res.data.id)
-                  console.log(res.data.id)
                   }).catch(error =>{
                   console.log('ERROR POST\n',error);
               });
@@ -41,7 +39,7 @@ function MenuCreator(props){
   }
 
   const finishMenu = e =>{
-    window.location.href = '/home'
+    window.location.href = '/menu/preview'
   }
 
   return (
@@ -63,8 +61,7 @@ function MenuCreator(props){
         {menuCreated === true ? 
         <div>
           <ItemCreator props={menuId}/>
-          <button onClick={finishMenu}>I am done creating my menu</button>
-          <MenuShowcase props={menuId}/>
+          <button onClick={finishMenu}>I am done adding items</button>
         </div>
         // this will render if they have not created a menu yet
         :<p>Create Your menu</p>}
