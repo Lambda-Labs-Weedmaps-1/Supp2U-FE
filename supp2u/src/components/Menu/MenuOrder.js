@@ -62,42 +62,52 @@ function MenuOrder(props) {
         })
     }
 
+    const orderCart = e =>{
+        window.location.href = "customer/cart"
+    }
     
     return (
         
         <>
-        <h1>Menu</h1>
-        { cart.item_numbers == undefined ? <p>Number of Items in Cart: 0</p> :
-        <h3>Number of Items in Cart: {cart.item_numbers.length}</h3> }
-        <div>
-            <div  className="menu-showcase">
-                {items.map( item =>{ 
-                    console.log('mapped item', item.id)
-                    console.log('cart ', cart);
-                    let numby = 0;
-                    return(
-                    
-                        <div className="menu-item-box">  
-                            
-                            <p>{item.item_name}</p>
-                            <p>{item.category}</p>
-                            <p>{item.description}</p>
-                            <p>${item.price}</p>
-                            <p>Calories: {item.cals}</p>
-                            <button onClick={function() {addToCart(item.id)} }>Add Item</button>
-                            <p>No. of Items : {numby}</p>
+        
+            { cart.item_numbers == undefined ? <p>Number of Items in Cart: 0</p> :
+            <h3>Number of Items in Cart: {cart.item_numbers.length}</h3> }
+            <button onClick={orderCart}>Check Out Now !</button>
+            <br></br><br></br>
+            <div>
+                <div  className="menu-showcase">
+                    {items.map( item =>{ 
+                        console.log('mapped item', item.id)
+                        console.log('cart ', cart);
+                        let numby = 0;
+                        return(
+                        
+                            <div className="menu-item-box">  
+                                
+                                <p>{item.item_name}</p>
+                                <p>{item.category}</p>
+                                <p>{item.description}</p>
+                                <p>${item.price}</p>
+                                <p>Calories: {item.cals}</p>
+                                <button onClick={function() {addToCart(item.id)} }>Add Item</button>
+                                {/* <p>No. of Items : {numby}</p> */}
 
-                        </div>
+                            </div>
 
-                    ) } )
-                }
+                        ) } )
+                    }
 
+                </div>
+                
             </div>
-            
-        </div>
 
-        <br></br><br></br>
+            <br></br>
+            { cart.item_numbers == undefined ? <p>Number of Items in Cart: 0</p> :
+            <h3>Number of Items in Cart: {cart.item_numbers.length}</h3> }
 
+            <button onClick={orderCart}>Check Out Now !</button>
+            <br></br>
+            <br></br><br></br>
         </>
     )
 

@@ -5,7 +5,7 @@ import './businessSingleView.sass'
 import MenuShowcase from '../Menu/MenuShowcase';
 import ReviewPresentation from '../Reviews/list/ReviewPresentation'
 import BusinessHeader from './BusinessHeader'
-import './businessSingleView.sass'
+
 
 function BusinessSingleView(props) {
     
