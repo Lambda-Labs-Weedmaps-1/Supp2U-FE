@@ -81,7 +81,7 @@ function CustomerCreator() {
     }
 
 
-    //   JSX for customerCreator component
+    // JSX for customerCreator component
     return (
         <>
     <h3>Create your customer</h3>

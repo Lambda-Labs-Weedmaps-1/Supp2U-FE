@@ -14,33 +14,44 @@ exports[`AddCustomer Renders should render correctly when component called 1`] =
       <div
         className="input-box-type1"
       >
-        <label>
+        <h4>
           Display name: 
           <span
             className="required-span"
           >
             *
           </span>
-        </label>
+        </h4>
         <input
           name="custname"
           onChange={[Function]}
           placeholder="customer name..."
           type="text"
         />
+        <span
+          className="required-span"
+        >
+          * required
+        </span>
       </div>
       <br />
-      <span
-        className="required-span"
-      >
-        * required
-      </span>
+      <h4>
+        Add a Profile Picture
+      </h4>
+      <div
+        className="image-uploader"
+      />
       <button
         className="create-business-button"
       >
          Create Customer Account 
       </button>
     </form>
+    <ImageUploader
+      className="image-uploader"
+      selectImage={[Function]}
+      unselectImage={[Function]}
+    />
   </div>
 </Fragment>
 `;

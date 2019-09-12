@@ -1,3 +1,6 @@
+$primary-color-main: #009b9b
+$primary-color-light: aqua
+$primary-color-dark: #003636
 .App
   margin: 0 auto
   display: flex
@@ -24,3 +27,63 @@
   background-size: cover
   background-position: center
   will-change: opacity
+
+form
+  background-color: whitesmoke
+  color: rgba(0, 0, 0, 0.54)
+  padding: 40px 5px
+  min-width: 400px
+  border-radius: 10px
+  margin-bottom: 20px
+  input::placeholder,
+  textarea::placeholder
+    color: rgba(0, 0, 0, 0.44)
+    text-transform: capitalize
+  input[type='text'],
+  input[type='text-box'],
+  input[type='integer'],
+  textarea
+    padding: 15px 10px
+    border: none
+    box-sizing: content-box
+    border-bottom: 1px solid #cecece
+    background-color: transparent
+    &:hover
+      border-bottom: 1px solid aqua
+    &:focus
+      outline: none
+      border-bottom: 1px solid #006f6f
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus
+    -webkit-box-shadow: 0 0 0px 1000px whitesmoke inset
+    transition: background-color 5000s ease-in-out 0s
+  button
+    display: block
+    font-size: 16px
+    text-align: center
+    padding: 11px 25px
+    border-radius: 10px
+    background-color: $primary-color-main
+    color: white
+    transition: all .3s
+
+    &:hover
+      filter: brightness(120%)
+    &:active,
+    &:focus
+      outline: none
+
+
+//
+//input[type='text']:focus,
+//input[type='integer']:focus,
+//textarea:focus + label
+//  display: none
