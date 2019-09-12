@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Axios from "axios";
 
 import ImageUploader from '../shared/ImageUploader.js';
+import { Elements, injectStripe } from 'react-stripe-elements'
 
 import './businessCreator.sass';
 import ScheduleCreator from './ScheduleCreator.js';
@@ -33,6 +34,8 @@ function BusinessCreator(props) {
             
             //captures user_id 
             let user_id = localStorage.user_id;
+            let {token} = this.props.stripe.createToken({name: "supp2uBusiness"});
+
             // here we are checking if there is an image before we POST
             if(state.image !== null){
                 // this adds the image to the business
@@ -50,8 +53,8 @@ function BusinessCreator(props) {
                     console.log('ERROR POST\n',error);
             });
             } else{ 
-
-            Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/${user_id}/businesses`, businessInformation)
+            
+            Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/${user_id}/businesses`, businessInformation, {token:token.id})
                 .then(res => {
                     localStorage.setItem("business_id", res.data.id)
                     localStorage.removeItem("customer_id")
@@ -106,11 +109,10 @@ function BusinessCreator(props) {
 
     //   JSX for BusinessCreator component
     return (
-        <>
+        <Elements>
     <h3>Create your business</h3>
     <div className="form"> 
         <form onSubmit={submit}>
-
             <div className="input-box-type1">
                 <label>Name of business <span className="required-span">*</span></label>
                 <input
@@ -217,8 +219,8 @@ function BusinessCreator(props) {
                 unselectImage = {unselectImage}
                 />
     </div>
-    </>
+    </Elements>
     )
 }
 
-export default BusinessCreator
+export default injectStripe(BusinessCreator) 
