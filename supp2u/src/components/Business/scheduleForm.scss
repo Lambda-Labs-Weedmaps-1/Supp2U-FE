@@ -1,0 +1,43 @@
+.schedule-form {
+	margin: 0 auto;
+	padding: 25px;
+
+	form {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	input {
+		padding: 15px;
+		text-align: center;
+	}
+
+	button {
+		padding: 13px;
+		width: 203px;
+		background: tomato;
+		color: white;
+		font-size: 18px;
+	}
+
+	// display: flex;
+	// flex-direction: column;
+	// margin: auto;
+	// .day_Label {
+	// 	width: 50%;
+	// 	justify-content: space-between;
+	// }
+
+	// .day_Input {
+	// 	width: 50%;
+	// 	justify-content: space-around;
+	// }
+
+	// .subbutton {
+	// 	padding: 13px;
+	// 	width: 203px;
+	// 	background: tomato;
+	// 	color: white;
+	// 	font-size: 18px;
+	// }
+}

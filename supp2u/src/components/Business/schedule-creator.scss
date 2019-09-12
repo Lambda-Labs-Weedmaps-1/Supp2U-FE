@@ -2,22 +2,21 @@
     margin: 0 auto;
     padding: 25px;
 
-    form {
-        display: flex;
-        flex-wrap: wrap;
-    }
+	form {
+		display: flex;
+		flex-wrap: wrap;
+	}
 
-    input {
-        padding: 15px;
-        text-align: center;
-    }
+	input {
+		padding: 15px;
+		text-align: center;
+	}
 
-    button {
-        padding: 13px;
-        width: 203px;
-        background: tomato;
-        color: white;
-        font-size: 18px;
-
-    }
+	button {
+		padding: 13px;
+		width: 203px;
+		background: tomato;
+		color: white;
+		font-size: 18px;
+	}
 }
