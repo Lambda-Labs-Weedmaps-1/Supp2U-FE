@@ -17,6 +17,8 @@ import Map from "./components/googleMap/Map";
 import CustomerCart from './components/customerviews/CustomerCart';
 import BusinessOrderFrom from './components/Business/BusinessOrderFrom';
 import ImageFadeShuffle from './components/animations/ImageFadeShuffle';
+import BusinessOrders from "./components/Business/BusinessOrders";
+import CustomerOrderFinish from './components/customerviews/CustomerOrderFinish';
 
 export default () => {
   return (
@@ -28,7 +30,10 @@ export default () => {
       <Route path={"/businesses/create"} exact component={BusinessCreator} />
       <Route path={"/business/:id"} exact component={BusinessSingleView} />
       <Route path={"/business/:id/order"} exact component={BusinessOrderFrom} />
+      <Route path={"/business/:id/customer/cart"} exact component={CustomerCart} />
+      <Route path={"/success"} exact component={CustomerOrderFinish} />
       <Route path={"/business/update/:id"} exact component={BusinessUpdater} />
+      <Route path={"/business/:id/orderview"} exact component={BusinessOrders} />
       <Route path={"/review/:id"} exact component={EditReviewPresentation} />
       
       {/* Customer */}
@@ -36,7 +41,7 @@ export default () => {
       <Route path={"/customer/create"} exact component={CustomerCreator} />{" "}
       {/* have a single way of creating customer */}
       <Route path={"/customer/view"} exact component={CustomerView} />{" "}
-      <Route path={"/customer/cart"} exact component={CustomerCart} />
+      
       {/* will break unless you have a customer_id */}
 
       {/* Menu */}

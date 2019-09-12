@@ -56,7 +56,19 @@ function CustomerCart(props) {
   }
 
   const placeOrder = info => {
-    console.log('place the order... once the order backend is up and working right ;p ')
+    let orderInfoSend = {
+      "customer_id": custy,
+      "business_id": props.match.params.id
+    }
+
+    Axios.post(`${process.env.REACT_APP_BACKEND_URL}customers/${custy}/orders`, orderInfoSend)
+    .then(res => {
+      console.log('order sent', res)
+      window.location.href = "/success"
+    })
+    .catch( err => {
+      console.log('order failed')
+    })
   }
 
   return (

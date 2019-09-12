@@ -62,6 +62,9 @@ function MenuOrder(props) {
         })
     }
 
+    const orderCart = e =>{
+        window.location.href = "customer/cart"
+    }
     
     return (
         
@@ -69,7 +72,7 @@ function MenuOrder(props) {
         
             { cart.item_numbers == undefined ? <p>Number of Items in Cart: 0</p> :
             <h3>Number of Items in Cart: {cart.item_numbers.length}</h3> }
-            <button>Check Out Now !</button>
+            <button onClick={orderCart}>Check Out Now !</button>
             <br></br><br></br>
             <div>
                 <div  className="menu-showcase">
@@ -102,7 +105,7 @@ function MenuOrder(props) {
             { cart.item_numbers == undefined ? <p>Number of Items in Cart: 0</p> :
             <h3>Number of Items in Cart: {cart.item_numbers.length}</h3> }
 
-            <button>Check Out Now !</button>
+            <button onClick={orderCart}>Check Out Now !</button>
             <br></br>
             <br></br><br></br>
         </>
