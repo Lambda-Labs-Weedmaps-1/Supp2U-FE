@@ -14,7 +14,7 @@ const BusinessUpdater = (props) => {
         "state": "",
         "street": " ",
         "zipcode": 0,
-        "building_number": 420,
+        "building_number": "",
         "theme": "",
         "description": "",
         "recommended": null,

@@ -16,6 +16,9 @@ export const GET_START_SUCCESS = 'GET_START_SUCCESS';
 export const GET_START_FAIL = 'GET_START_FAIL';
 
 export const startAction = dispatch => {
+	//might need to check headers here, to see if logged in, depending on auth implementation
+	// const token = localStorage.getItem("tokenNameHere");
+
 	dispatch({
 		type: GET_START
 	});

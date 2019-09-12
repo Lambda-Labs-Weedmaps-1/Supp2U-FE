@@ -41,7 +41,7 @@ function ReviewPresentation(props) {
 
     return (
         <div className={"review-list"}> {/* the class name is just for identifying the div on browser*/}
-            {/* this renders reviews only if there ar reviews */}
+            {/* this renders reviews only if there are reviews */}
             {review.customer_id === null ?
                 <p>This restaurant has no reviews yet! <br/>Eaten there? Tell us how it went by adding a review!</p>
                 :
@@ -50,17 +50,19 @@ function ReviewPresentation(props) {
                     {/* this function maps all the reviews out for the restaurant */}
                     {review.map(review => {
                         return (
-                            <ShowReview review={review} routeReviewToEdit={routeReviewToEdit}/>
+                            <ShowReview key={review} review={review} routeReviewToEdit={routeReviewToEdit}/>
                         )
                     })}
                 </>
             }
-            {/* check of user have left review already */}
-            {hasReview ?
+            {/* check if user is customer then if they have left review already */}
+            {localStorage.getItem("customer_id") != null ? <>{hasReview ?
                 <p> You have already left review, Thank you! </p>
                 : loading ?
                     <Reviews business_id={props.business_id}/> : "loading"
-            }
+            }</>:
+            // displays if they are not signed in as a customer
+            <p>to add a review please create a customer account</p>}
         </div>
     )
 }

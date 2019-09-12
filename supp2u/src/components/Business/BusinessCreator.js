@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
 
+import ImageUploader from '../shared/ImageUploader.js';
+
 import './businessCreator.sass';
+import ScheduleCreator from './ScheduleCreator.js';
 
 function BusinessCreator(props) {
 
@@ -16,36 +19,49 @@ function BusinessCreator(props) {
         "state": "",
         "street": " ",
         "zipcode": 0,
-        "building_number": 420,
+        "building_number": "",
         "theme": "",
         "description": "",
         "recommended": null,
         "long": "",
-        "lat": ""}]);
+        "lat": "",
+        "image": null
+        }]);
         
-
         //function that handles business creation via axios POST
-        let postBusinessHandler = () => {
+        let postBusinessHandler = (event, photoForm , state) => {
             
             //captures user_id 
             let user_id = localStorage.user_id;
-
-            Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/${user_id}/businesses`, businessInformation)
+            // here we are checking if there is an image before we POST
+            if(state.image !== null){
+                // this adds the image to the business
+                photoForm.append("image", state.image)
+                Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/${user_id}/businesses`,  
+                photoForm, businessInformation,
+                { headers: {'Content-Type': 'multipart/form-data' }}
+                )
                 .then(res => {
-                     console.log(res)
-                     console.log("HERE")
+                   localStorage.setItem("business_id", res.data.id)
+                   localStorage.removeItem("customer_id")
                     }).then(res =>
-                       { console.log("I AM HERE")
-                        window.location.href = '/menu/new'
-                    }
-                    )
+                        { window.location.href = '/schedule/create'})
                 .catch(error =>{
                     console.log('ERROR POST\n',error);
             });
+            } else{ 
+
+            Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/${user_id}/businesses`, businessInformation)
+                .then(res => {
+                    localStorage.setItem("business_id", res.data.id)
+                    localStorage.removeItem("customer_id")
+                    }).then(res =>
+                        { window.location.href = '/schedule/create'})
+                .catch(error =>{
+                    console.log('ERROR POST\n',error);
+            });}
         }
 
-        // hard coded user for test reasons
-        let user = 1
         
     const changeHandler = event => {
         setBusinessInformation({ ...businessInformation, [event.target.name]: event.target.value });
@@ -54,6 +70,7 @@ function BusinessCreator(props) {
     //   submit form function
     const submit = e =>{
         e.preventDefault()
+        const photoForm = new FormData(e.target);
         // Transmutes the address into a useable array
         if(businessInformation.street === undefined){console.log('Address in Required')}else{
         const newAddress = businessInformation.street
@@ -68,7 +85,7 @@ function BusinessCreator(props) {
 
             //ensures that a lat and lng exist before posting
            if(businessInformation.lat && businessInformation.long){
-               postBusinessHandler()
+               postBusinessHandler(e, photoForm, businessInformation)
            } else {
                console.log("There was an error finding a lat and long for your selected address")
            }
@@ -78,6 +95,14 @@ function BusinessCreator(props) {
         
     }}
 
+    // These two functions handle the image processing in conjunction with the ImageUnloader component
+    const selectImage = image => {
+        setBusinessInformation({...businessInformation, "image": image})
+    }
+
+    const unselectImage = () => {
+        setBusinessInformation({...businessInformation, "image": "" })
+    }
 
     //   JSX for BusinessCreator component
     return (
@@ -89,6 +114,7 @@ function BusinessCreator(props) {
             <div className="input-box-type1">
                 <label>Name of business <span className="required-span">*</span></label>
                 <input
+                    id="test1"
                     type="text"
                     name="name"
                     value={businessInformation.name}
@@ -168,7 +194,6 @@ function BusinessCreator(props) {
                     value={businessInformation.theme}
                     onChange={changeHandler} />
             </div>
-
             
             <div className="input-box-type1">
                 <label>Website</label>
@@ -181,10 +206,16 @@ function BusinessCreator(props) {
             </div>
             <span className="required-span">* required</span>
 
+            
 
             <button className="create-business-button"> Create Business </button>
 
         </form>
+        <ImageUploader
+                image = {businessInformation.image}
+                selectImage = {selectImage}
+                unselectImage = {unselectImage}
+                />
     </div>
     </>
     )
