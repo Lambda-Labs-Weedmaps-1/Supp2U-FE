@@ -29,9 +29,6 @@ function CustomerView() {
         .catch(err =>{
             console.log('ERROR GETTING CUSTOMER\n', err)
         })
-        setTimeout(function(){ 
-          
-       }, 5000);
       }, [])
 
   return (
@@ -44,6 +41,7 @@ function CustomerView() {
       <h1 className="name-box">
       {customer[0].custname}
       </h1>
+        {/* customer reviews*/}
       <div>
         <h3>Your Reviews</h3>
         {review.map(review =>(

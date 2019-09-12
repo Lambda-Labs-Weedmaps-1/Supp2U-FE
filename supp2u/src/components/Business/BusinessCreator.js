@@ -4,11 +4,8 @@ import Axios from "axios";
 import ImageUploader from '../shared/ImageUploader.js';
 
 import './businessCreator.sass';
-import ScheduleCreator from './ScheduleCreator.js';
 
 function BusinessCreator(props) {
-
-    console.log('prop', props);
     
     // The useState hook that will store the Business information
     const [businessInformation, setBusinessInformation] = useState([{

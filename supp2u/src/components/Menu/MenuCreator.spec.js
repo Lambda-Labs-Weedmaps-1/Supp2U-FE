@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount, configure, shallow, enzyme } from 'enzyme';
+import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 import Item from './ItemCreator';
