@@ -1,15 +1,14 @@
 import React, {Component} from 'react';
 import {Elements, StripeProvider} from 'react-stripe-elements';
-import CheckoutForm from './CheckoutForm';
+import CheckoutForm from './checkout';
 
-class App extends Component {
+class Stripe extends Component {
   render() {
     return (
       <StripeProvider apiKey="pk_test_Lk7CkE4Yez5LYD3KvwJwoYN500AVGVDnfZ">
         <div className="example">
-          <h1>React Stripe Elements Example</h1>
           <Elements>
-            <CheckoutForm />
+            <CheckoutForm amount={this.props.amount} business_id={this.props.business_id} callback={this.props.callback}/>
           </Elements>
         </div>
       </StripeProvider>
@@ -17,4 +16,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Stripe;
