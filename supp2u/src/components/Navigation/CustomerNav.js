@@ -19,11 +19,13 @@ const pages = [
       leave: { opacity: 0, transform: 'translate3d(-50%,0,0)' },
     })
     return (
+      <div>
       <div className="simple-trans-main" onClick={onClick}>
         {transitions.map(({ item, props, key }) => {
           const Page = pages[item]
           return <Page key={key} style={props} />
         })}
+      </div>
       </div>
     )
 }

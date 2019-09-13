@@ -40,7 +40,7 @@ function Navigation(props) {
     ) {
       return <BusinessNav />;
     } else {
-      return <Link className="Link" to="/"></Link>;
+      return;
     }
   };
 
