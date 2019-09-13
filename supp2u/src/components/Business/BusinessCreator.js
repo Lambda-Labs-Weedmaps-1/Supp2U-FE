@@ -24,7 +24,7 @@ function BusinessCreator(props) {
         "lat": "",
         "image": null
         }]);
-        
+
         //function that handles business creation via axios POST
         let postBusinessHandler = async (event, photoForm, state ) => {
             
@@ -129,7 +129,6 @@ function BusinessCreator(props) {
     <h3>Create your business</h3>
     <div className="form"> 
         <form onSubmit={submit}>
-
             <div className="input-box-type1">
                 <label>Name of business <span className="required-span">*</span></label>
                 <input
@@ -226,8 +225,11 @@ function BusinessCreator(props) {
             <span className="required-span">* required</span>
 
             
-
-            <button className="create-business-button"> Create Business </button>
+            {/* <StripeProvider piKey="pk_test_Lk7CkE4Yez5LYD3KvwJwoYN500AVGVDnfZ">
+                <Elements> */}
+                    <button className="create-business-button"> Create Business </button>
+                {/* </Elements>
+            </StripeProvider> */}
 
         </form>
         <ImageUploader

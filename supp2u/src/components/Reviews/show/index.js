@@ -1,7 +1,7 @@
 import React from 'react';
 import DeleteButton from "../../../utils/DeleteButton";
 
-export default ({review, routeReviewToEdit}) => {
+export default ({review, routeReviewToEdit, deleteReview}) => {
     return (
         <div className="review-box">
             <h3>user: {review.customer_id}</h3>
@@ -13,7 +13,7 @@ export default ({review, routeReviewToEdit}) => {
                     <button className={"btn"}
                             onClick={() => routeReviewToEdit(review.id)} >Edit
                     </button>
-                    <DeleteButton deleteType={"reviews"} id={review.id} title={"Confirm to delete"}/>
+                    <DeleteButton deleteType={"reviews"} id={review.id} title={"Confirm to delete"} callback={()=> deleteReview(review.id)} />
                 </>
                 : null
             }

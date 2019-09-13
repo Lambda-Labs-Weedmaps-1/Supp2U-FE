@@ -9,7 +9,7 @@ const mapPropsToState = ({customerReducer: {customer}}) => ({customer});
 
 // edit={true} review={review}
 
-export default connect(mapPropsToState, {addReview})(({addReview, history, customer, business_id, edit, review}) => {
+export default connect(mapPropsToState, {addReview})(({addReview, history, customer, business_id, edit, review, addReviewState}) => {
 
 
     const addReviewHandler = (review) => {
@@ -18,6 +18,7 @@ export default connect(mapPropsToState, {addReview})(({addReview, history, custo
             .then((res) => {
                 if (res.review) {
                     toast.success(`Thank you for your feedback ${res.review}`);
+                    addReviewState(res);
                     // history.goBack();
                 } else {
                     toast.error(`🔐 ️${res.response.data.message}`);
