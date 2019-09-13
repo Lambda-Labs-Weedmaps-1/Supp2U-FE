@@ -24,12 +24,13 @@ function BusinessCreator(props) {
         "lat": "",
         "image": null
         }]);
-        
+
         //function that handles business creation via axios POST
         let postBusinessHandler = (event, photoForm , state) => {
             
             //captures user_id 
             let user_id = localStorage.user_id;
+            // let {token} = props.stripe.createToken({name: "supp2uBusiness"});
             // here we are checking if there is an image before we POST
             if(state.image !== null){
                 // this adds the image to the business
@@ -47,7 +48,7 @@ function BusinessCreator(props) {
                     console.log('ERROR POST\n',error);
             });
             } else{ 
-
+            
             Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/${user_id}/businesses`, businessInformation)
                 .then(res => {
                     localStorage.setItem("business_id", res.data.id)
@@ -107,7 +108,6 @@ function BusinessCreator(props) {
     <h3>Create your business</h3>
     <div className="form"> 
         <form onSubmit={submit}>
-
             <div className="input-box-type1">
                 <label>Name of business <span className="required-span">*</span></label>
                 <input
@@ -204,8 +204,11 @@ function BusinessCreator(props) {
             <span className="required-span">* required</span>
 
             
-
-            <button className="create-business-button"> Create Business </button>
+            {/* <StripeProvider piKey="pk_test_Lk7CkE4Yez5LYD3KvwJwoYN500AVGVDnfZ">
+                <Elements> */}
+                    <button className="create-business-button"> Create Business </button>
+                {/* </Elements>
+            </StripeProvider> */}
 
         </form>
         <ImageUploader

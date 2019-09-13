@@ -18,8 +18,14 @@ import MenuPreview from "./components/Menu/MenuPreview";
 import CustomerCart from './components/customerviews/CustomerCart';
 import BusinessOrderFrom from './components/Business/BusinessOrderFrom';
 import ImageFadeShuffle from './components/animations/ImageFadeShuffle';
+
+import CheckoutForm from './components/Stripe/stripe'
+
+import { StripeProvider, Elements } from 'react-stripe-elements'
+
 import BusinessOrders from "./components/Business/BusinessOrders";
 import CustomerOrderFinish from './components/customerviews/CustomerOrderFinish';
+
 
 export default () => {
   return (
@@ -28,10 +34,14 @@ export default () => {
       <Route path={"/login"} exact component={Auth0} />
 
       {/* Business */}
+      
       <Route path={"/businesses/create"} exact component={BusinessCreator} />
+    
+      {/* <Route path={"/businesses/create"} exact component={BusinessCreator} /> */}
       <Route path={"/business/:id"} exact component={BusinessSingleView} />
       <Route path={"/business/:id/order"} exact component={BusinessOrderFrom} />
       <Route path={"/business/:id/customer/cart"} exact component={CustomerCart} />
+      <Route path={"/business/:id/customer/cart/payment"} exact component={CheckoutForm} />
       <Route path={"/success"} exact component={CustomerOrderFinish} />
       <Route path={"/business/update/:id"} exact component={BusinessUpdater} />
       <Route path={"/business/:id/orderview"} exact component={BusinessOrders} />
