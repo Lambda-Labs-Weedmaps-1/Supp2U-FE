@@ -4,9 +4,9 @@ import Axios from 'axios';
 // import './businessSingleView.sass';
 import './businessSingleView.scss';
 import MenuShowcase from '../Menu/MenuShowcase';
-import ReviewPresentation from '../Reviews/list/ReviewPresentation';
 import BusinessHeader from './BusinessHeader';
-import './businessSingleView.sass';
+import ReviewPresentation from '../Reviews/list/ReviewList';
+import BusinessHeader from './BusinessHeader';
 
 function BusinessSingleView(props) {
 	// this holds the id of the business

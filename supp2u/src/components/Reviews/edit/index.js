@@ -13,7 +13,7 @@ export default (props) => {
 
     const editReviewSubmitHandler= (review) => {
         api.patch(`/reviews/${review.id}`, review)
-            .then(()=> window.location.href = `/business/${review.business_id}`)
+            .then(()=> props.addReview(review))
             .catch(err=> console.log(err));
     };
     return (
