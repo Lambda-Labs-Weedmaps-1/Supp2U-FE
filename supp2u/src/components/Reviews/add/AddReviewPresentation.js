@@ -5,7 +5,6 @@ export default({addReview, history})=>{
 
     let [review, setReview] = useState("");
     let [rating, setRating] = useState(0);
-    console.log("rating", rating);
     const cancel = (e)=>{
         e.preventDefault();
         history.goBack();
