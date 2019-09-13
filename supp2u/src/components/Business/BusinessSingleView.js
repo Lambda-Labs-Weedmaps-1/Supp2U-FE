@@ -6,7 +6,6 @@ import './businessSingleView.scss';
 import MenuShowcase from '../Menu/MenuShowcase';
 import BusinessHeader from './BusinessHeader';
 import ReviewPresentation from '../Reviews/list/ReviewList';
-import BusinessHeader from './BusinessHeader';
 
 function BusinessSingleView(props) {
 	// this holds the id of the business
