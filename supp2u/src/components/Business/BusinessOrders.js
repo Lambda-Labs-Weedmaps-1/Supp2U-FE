@@ -24,6 +24,7 @@ function BusinessOrders(props) {
             console.log('ERROR GETTING BUSINESS\n', err)
         })
 
+        // Axios.get(`${process.env.REACT_APP_BACKEND_URL}businesses/${businy}/orders`)
         Axios.get(`${process.env.REACT_APP_BACKEND_URL}businesses/1/orders`)
         .then(res => {
             setOrders(res.data)
@@ -38,14 +39,21 @@ function BusinessOrders(props) {
     }, [])
 
 
-    const orderFrom = e =>{
-        window.location.href = `/business/${businy}/order`
+    const orderDone = id =>{
+
+        Axios.post(`${process.env.REACT_APP_BACKEND_URL}orders/${id}/ship`)
+        .then(res => {
+            console.log('Order Shipped ', res)
+        })
+        .catch( err => {
+            console.log('Error Shipping Order', err)
+        })
+        
     }
 
     return (
         <div>
             <h3>{info.name} Orders</h3>
-            <p>A placeholder obviously.</p>
             { orders[0] == undefined ? <p>Loading the Orders...</p> :
             <div>
             <h3>Orders are here</h3>
@@ -68,7 +76,7 @@ function BusinessOrders(props) {
                             })}
                             <p>_____________</p>
                             <p>Order Status: {order.status}</p>
-                            <p>----------------------------------------------------</p>
+                            <button onClick={() => {orderDone(order.id)} }>Complete & Ship</button>
                         </div>
                     )
                 })}
