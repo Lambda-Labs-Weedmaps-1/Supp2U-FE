@@ -3,7 +3,7 @@ import Axios from 'axios'
 
 import './businessSingleView.sass'
 import MenuShowcase from '../Menu/MenuShowcase';
-import ReviewPresentation from '../Reviews/list/ReviewPresentation'
+import ReviewPresentation from '../Reviews/list/ReviewList'
 import BusinessHeader from './BusinessHeader'
 
 
