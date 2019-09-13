@@ -31,16 +31,16 @@ function Navigation(props) {
   let renderUserType = () => {
     if (
       localStorage.getItem("customer_id") &&
-      localStorage.getItem("customer_id")
+      localStorage.getItem("user_id")
     ) {
       return <CustomerNav />;
     } else if (
       localStorage.getItem("business_id") &&
-      localStorage.getItem("business_id")
+      localStorage.getItem("user_id")
     ) {
       return <BusinessNav />;
     } else {
-      return <Link className="Link" to="/"></Link>;
+      return;
     }
   };
 

@@ -16,7 +16,7 @@ const ImageFadeShuffle = () => {
     leave: { opacity: 0 },
     config: config.molasses,
   })
-  useEffect(() => void setInterval(() => set(state => (state + 1) % 4), 2000), [])
+  useEffect(() => void setInterval(() => set(state => (state + 1) % 4), 6000), [])
   return transitions.map(({ item, props, key }) => (
     <animated.div
       key={key}
