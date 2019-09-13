@@ -24,13 +24,6 @@ class InitLandingPage extends React.Component {
         <br></br><hr></hr><br></br>
         <h2>Register as a Business</h2>
         <button onClick={this.goBus}>Business</button>
-        <StripeProvider apiKey="pk_test_Lk7CkE4Yez5LYD3KvwJwoYN500AVGVDnfZ">
-          <div className="example">
-            <Elements>
-              <CheckoutForm />
-            </Elements>
-          </div>
-        </StripeProvider>
       </div>
     );
   }
