@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Axios from 'axios'
 
+import CheckoutForm from '../Stripe/stripe'
+
 function CustomerCart(props) {
 
   const [customer, setCustomer] = useState([{}]);
@@ -55,7 +57,7 @@ function CustomerCart(props) {
         })
   }
 
-  const placeOrder = info => {
+  const placeOrder = () => {
     let orderInfoSend = {
       "customer_id": custy,
       "business_id": props.match.params.id
@@ -97,7 +99,8 @@ function CustomerCart(props) {
           })}
         </div>
         <h3>Order Total: $ {totals(cartlist)} </h3>
-        <button onClick={placeOrder}>Place Order</button>
+        <CheckoutForm amount={totals(cartlist)} business_id={props.match.params.id} callback={placeOrder} />
+        {/* <button onClick={placeOrder}>Place Order</button> */}
 
           <br></br><br></br>
       </div>

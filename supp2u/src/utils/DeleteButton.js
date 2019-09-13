@@ -26,6 +26,7 @@ class DeleteButton extends React.Component {
         switch (this.props.deleteType) {
             case "reviews":
                 this.props.deleteReview(this.props.id);
+                this.props.callback();
                 break;
             default:
                 break;
