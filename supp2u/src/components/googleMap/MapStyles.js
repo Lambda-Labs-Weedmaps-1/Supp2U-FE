@@ -25,7 +25,7 @@ export const mapStyle = [
     {
         featureType: 'road',
         elementType: 'geometry',
-        stylers: [{color: '#38414e'}]
+        stylers: [{color: '#8f9298'}]
     },
     {
         featureType: 'road',
@@ -45,7 +45,7 @@ export const mapStyle = [
     {
         featureType: 'road.highway',
         elementType: 'geometry.stroke',
-        stylers: [{color: '#1f2835'}]
+        stylers: [{color: '#bb1333'}]
     },
     {
         featureType: 'road.highway',
@@ -65,7 +65,7 @@ export const mapStyle = [
     {
         featureType: 'water',
         elementType: 'geometry',
-        stylers: [{color: '#17263c'}]
+        stylers: [{color: '#233d6e'}]
     },
     {
         featureType: 'water',

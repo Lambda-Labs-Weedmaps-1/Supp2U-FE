@@ -25,7 +25,7 @@ function BusinessOrders(props) {
         })
 
         // Axios.get(`${process.env.REACT_APP_BACKEND_URL}businesses/${businy}/orders`)
-        Axios.get(`${process.env.REACT_APP_BACKEND_URL}businesses/1/orders`)
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}businesses/${businy}/orders`)
         .then(res => {
             setOrders(res.data)
             console.log(res.data)

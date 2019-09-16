@@ -48,7 +48,10 @@ function Navigation(props) {
   return (
     <div>
       <nav className="Navigation">
-        <img src={Image} alt="logo" width="15%" height="130%" />
+      <Link to={{ pathname: `/` }}>
+        <img className="Navwidget" src={Image} alt="logo"/>
+      </Link>
+        {/* <img src={Image} alt="logo" width="15%" height="90%" /> */}
         {/* <Link className="Link" to="/">
           Home
         </Link> */}
