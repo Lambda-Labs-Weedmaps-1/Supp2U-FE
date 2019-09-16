@@ -50,10 +50,10 @@ function CustomerView() {
       <div className="customer-profile-reviews">
         <h3>Your Reviews</h3>
         {review.map(review => (
-          <div className="review-box">
+          <div className="review-card">
             <p>{review.created_at}</p>
-            <p>{review.rating}</p>
-            <p>{review.review}</p>
+            <p>Rating: {review.rating}</p>
+            <p>Review: {review.review}</p>
           </div>
         ))}
       </div>
