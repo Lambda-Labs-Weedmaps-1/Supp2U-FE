@@ -33,21 +33,21 @@ function CustomerView() {
   }, []);
 
   return (
-    <div className="c-view">
-      {/* customer image */}
-      {customer.image === null || customer.image === undefined ? (
-        <p>Image loading....</p>
-      ) : (
-        <img
-          className="image"
-          src={customer.image["url"]}
-          alt="customer portrait"
-        />
-      )}
-      {/* Name */}
-      <h1 className="name-box">{customer.custname}</h1>
-      {/* customer reviews*/}
-      <div>
+    <div className="customer-view-container">
+      <div className="customer-profile-info">
+        <h1 className="name-box">{customer.custname}</h1>
+        {customer.image === null || customer.image === undefined ? (
+          <p>Image loading....</p>
+        ) : (
+          <img
+            className="image"
+            src={customer.image["url"]}
+            alt="customer portrait"
+          />
+        )}
+      </div>
+
+      <div className="customer-profile-reviews">
         <h3>Your Reviews</h3>
         {review.map(review => (
           <div className="review-box">
