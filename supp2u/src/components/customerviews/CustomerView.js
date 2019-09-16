@@ -39,7 +39,7 @@ function CustomerView() {
         <p>Image loading....</p>
       ) : (
         <img
-          className="image"
+          className="c-image"
           src={customer.image["url"]}
           alt="customer portrait"
         />

@@ -21,7 +21,7 @@ import ImageFadeShuffle from './components/animations/ImageFadeShuffle';
 
 import CheckoutForm from './components/Stripe/stripe'
 
-import { StripeProvider, Elements } from 'react-stripe-elements'
+// import { StripeProvider, Elements } from 'react-stripe-elements'
 
 import BusinessOrders from "./components/Business/BusinessOrders";
 import CustomerOrderFinish from './components/customerviews/CustomerOrderFinish';

@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { auth } from "../../utils/init";
 import { Button } from "reactstrap";
 import BusinessNav from "./BusinessNav";
