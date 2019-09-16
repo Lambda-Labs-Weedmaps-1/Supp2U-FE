@@ -118,6 +118,7 @@ function CustomerCart(props) {
           {/* <button onClick={placeOrder}>Place Order</button> */}
       </div>
 
+      <br></br><br></br>
     </div>
     
   )
