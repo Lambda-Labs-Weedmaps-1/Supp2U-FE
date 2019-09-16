@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Axios from 'axios'
 
 import CheckoutForm from '../Stripe/stripe'
+import './CustomerCart.sass'
 
 function CustomerCart(props) {
 
@@ -74,37 +75,51 @@ function CustomerCart(props) {
   }
 
   return (
-    <div>
-      {/* {getList()} */}
-      <h1 className="name-box"> {customer.custname} </h1>
-      { cart.item_numbers == undefined ? <p>Number of Items in Cart: 0</p> :
-            <h2>Number of Items in Cart: {cart.item_numbers.length}</h2> }
-      <div>
-        
-        <h3>Your Cart</h3>
-        <div>
+    <div className="centerOrder">
 
-          {cart.id === null ? <p>no cart avliable</p> :
-          <div>
-            <p>Cart Now Available</p>
-          </div> 
-          }
-
-          {cartlist > 0 ? <p>Cart IS EMPTY!</p> :
-          cartlist.map( stuff => {
-            return(
-              <p>{stuff.item_name} - {stuff.price}</p>
-            )
-            
-          })}
-        </div>
-        <h3>Order Total: $ {totals(cartlist)} </h3>
-        <CheckoutForm amount={totals(cartlist)} business_id={props.match.params.id} callback={placeOrder} />
-        {/* <button onClick={placeOrder}>Place Order</button> */}
-
-          <br></br><br></br>
+      <div className="checkoutbox">
+          <h3>Order Total: $ {totals(cartlist)} </h3>
+          <CheckoutForm amount={totals(cartlist)} business_id={props.match.params.id} callback={placeOrder} />
+          {/* <button onClick={placeOrder}>Place Order</button> */}
       </div>
+      
+      { cart.item_numbers == undefined ? <p>Number of Items in Cart: 0</p> :
+      <div>
+        <h2>Number of Items in Cart: {cart.item_numbers.length}</h2>
+        <h3>Your Cart</h3>
+      </div> 
+      }
+
+      { cart.id === null ? <p>No Cart Avliable</p> : <p></p> }        
+
+      <div className="cart-order-showcase">
+            {cartlist > 0 ? <p>Cart IS EMPTY!</p> :
+            cartlist.map( stuff => {
+              return(
+                <div className="cart-order-box">
+                  <div className="cart-order-box-1">
+                    <p>{stuff.item_name}</p>
+                  </div>
+                  <div className="cart-order-box-2">
+                    <p>{stuff.price}</p>
+                  </div>
+                </div>
+              )
+              
+            })}
+      </div>
+
+      <br></br><br></br>
+      
+
+      <div className="checkoutbox">
+          <h3>Order Total: $ {totals(cartlist)} </h3>
+          <CheckoutForm amount={totals(cartlist)} business_id={props.match.params.id} callback={placeOrder} />
+          {/* <button onClick={placeOrder}>Place Order</button> */}
+      </div>
+
     </div>
+    
   )
 }
 
