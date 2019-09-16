@@ -65,12 +65,14 @@ function BusinessSingleView(props) {
     {/* here i am passing in 2 states as an array so on the component i can grab the data from the property of info (it will name the props array after the first passed state ) */}
     <BusinessHeader info={[info, rating, hours]}/>
 
-    <button className="buttonA" onClick={orderFrom}>Place Order</button>
+    {/* another ternary function that only lets this button appear for customers so businesses cant order! */}
+    {localStorage.getItem("business_id") ? null :
+    <button className="buttonA" onClick={orderFrom}>Place Order</button>}
 
     <ReviewPresentation business_id={props.match.params.id} history={props.history}/>
 
     {/* here we are checking conditionally to see if there is a menu to show our user */}
-    {menuId ===null ? <p>no menu avliable</p>:
+    {menuId ===null ? <p>no menu available</p>:
     <div>
     <h1>Menu</h1>
     <MenuShowcase props={menuId} />
