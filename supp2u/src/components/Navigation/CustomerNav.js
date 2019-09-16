@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import React, { useState, useCallback } from 'react'
 import { useTransition, animated } from 'react-spring'
 
-const BusinessNav = () => {
+const CustomerNav = () => {
   let custy = localStorage.customer_id;
   return (
     <div>
@@ -14,6 +14,6 @@ const BusinessNav = () => {
   );
 }
 
-export default BusinessNav;
+export default CustomerNav;
 
 
