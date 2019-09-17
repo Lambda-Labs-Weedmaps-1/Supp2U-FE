@@ -3,7 +3,7 @@ import Axios from 'axios'
 import './reviews.sass'
 import ShowReview from "../../Reviews/show";
 import Reviews from "../add";
-import SearchCard from "../../../utils/SearchCard";
+import SearchCard from "../../../utils/SearchCard/SearchCard";
 
 
 function ReviewPresentation({review, routeReviewToEdit, deleteReview, state, addReview, business_id}) {

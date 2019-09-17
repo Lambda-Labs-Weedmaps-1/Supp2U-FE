@@ -5,7 +5,7 @@ import './businessSingleView.sass'
 import MenuShowcase from '../Menu/MenuShowcase';
 import ReviewList from '../Reviews/list/ReviewList'
 import BusinessHeader from './BusinessHeader'
-import SearchCard from "../../utils/SearchCard";
+import SearchCard from "../../utils/SearchCard/SearchCard";
 
 
 function BusinessSingleView(props) {

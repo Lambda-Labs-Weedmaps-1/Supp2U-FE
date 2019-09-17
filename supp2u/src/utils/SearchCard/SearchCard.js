@@ -2,7 +2,7 @@ import React, { useState, Suspense } from "react";
 import Pagination from "./Pagination";
 import filter from './filter';
 import './searchCard.sass';
-import CardHeader from "./CardHeader";
+import SearchCardHeader from "./SearchCardHeader";
 export default (props) =>{
     const [itemCount, setItemCount] = useState(0);
     const searchBy = useState('recent');
@@ -20,7 +20,7 @@ export default (props) =>{
     const pagination = { offset, limit, setMax: setItemCount };
     return(
         <div className={"searchCard"}>
-            <CardHeader
+            <SearchCardHeader
                 searchByHook={searchBy}
                 searchHook={search}
                 isSearching={props.isSearching}
