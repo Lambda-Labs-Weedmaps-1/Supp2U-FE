@@ -101,7 +101,7 @@ function CustomerCreator() {
             </div>
             <br/>
 
-            <h4>Add a Profile Picture</h4>  
+            <h4>Add a Profile Picture 'Required'</h4>  
 
             <div className="image-uploader">
           
