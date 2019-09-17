@@ -9,7 +9,7 @@ import SearchCard from "../../utils/SearchCard";
 
 
 function BusinessSingleView(props) {
-    
+    console.log(props.match.params.id)
     // this holds the id of the business
     let businy = props.match.params.id;
     // this sets the state to the information of the business called
@@ -56,28 +56,36 @@ function BusinessSingleView(props) {
         })
     }, [])
 
-
-    const orderFrom = e =>{
+    // function for the button that sends user to the orders form
+    const orderFrom = () =>{
         window.location.href = `/business/${businy}/order`
+    }
+    // function for the button that allows user to update their business
+    const goToUpdate = () =>{
+        window.location.href = `/business/update/${businy}`
     }
 
     return (
     <div className="b-view">
+    {/* these 2 buttons will only display if you are be owner of the business     */}
+    {localStorage.getItem("business_id") != businy || localStorage.getItem("customer_id") ?
+    null : <button onClick={goToUpdate}>Update Your Business</button>}
+
     {/* here i am passing in 2 states as an array so on the component i can grab the data from the property of info (it will name the props array after the first passed state ) */}
     <BusinessHeader info={[info, rating, hours]}/>
 
-        {/*<ReviewPresentation business_id={props.match.params.id} history={props.history}/>*/}
-        {/* another ternary function that only lets this button appear for customers so businesses cant order! */}
-        {localStorage.getItem("business_id") || !localStorage.getItem("customer_id") ? <p>Must be Customer to Order</p> :
-            <button className="buttonA" onClick={orderFrom}>Place Order</button>}
-            <SearchCard
-                List={ReviewList}
-                history={props.history}
-                match={props.match}
-                title={"Reviews"}
-                limit={3}
-            />
+    {/*<ReviewPresentation business_id={props.match.params.id} history={props.history}/>*/}
+    {/* another ternary function that only lets this button appear for customers so businesses cant order! */}
+    {localStorage.getItem("business_id") || !localStorage.getItem("customer_id") ? <p>Must be Customer to Order</p> :
+        <button className="buttonA" onClick={orderFrom}>Place Order</button>}
 
+    <SearchCard
+        List={ReviewList}
+        history={props.history}
+        match={props.match}
+        title={"Reviews"}
+        limit={3}
+    />
 
     {/* here we are checking conditionally to see if there is a menu to show our user */}
     {menuId ===null ? <p>no menu available</p>:
