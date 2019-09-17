@@ -5,6 +5,7 @@ import './businessSingleView.sass'
 import MenuShowcase from '../Menu/MenuShowcase';
 import ReviewPresentation from '../Reviews/list/ReviewList'
 import BusinessHeader from './BusinessHeader'
+import SearchCard from "../../utils/SearchCard";
 
 
 function BusinessSingleView(props) {
@@ -66,8 +67,14 @@ function BusinessSingleView(props) {
     <BusinessHeader info={[info, rating, hours]}/>
 
     <button className="buttonA" onClick={orderFrom}>Place Order</button>
-
-    <ReviewPresentation business_id={props.match.params.id} history={props.history}/>
+        <SearchCard
+            List={ReviewPresentation}
+            history={props.history}
+            match={props.match}
+            title={"Reviews"}
+            limit={3}
+            />
+    {/*<ReviewPresentation business_id={props.match.params.id} history={props.history}/>*/}
 
     {/* here we are checking conditionally to see if there is a menu to show our user */}
     {menuId ===null ? <p>no menu avliable</p>:
