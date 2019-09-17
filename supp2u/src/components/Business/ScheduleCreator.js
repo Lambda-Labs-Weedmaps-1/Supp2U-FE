@@ -59,7 +59,7 @@ const ScheduleCreator = (props) => {
                     placeholder="Sunday..." 
                     onChange={changeHandler}
                     />
-
+                <br></br>
                 <input
                     type="text"
                     name="monday"
@@ -67,7 +67,7 @@ const ScheduleCreator = (props) => {
                     placeholder="Monday..." 
                     onChange={changeHandler}
                     />
-
+                <br></br>
                 <input
                     type="text"
                     name="tuesday"
@@ -75,7 +75,7 @@ const ScheduleCreator = (props) => {
                     placeholder="Tuesday..." 
                     onChange={changeHandler}
                     />
-
+                <br></br>
                 <input
                     type="text"
                     name="wednesday"
@@ -83,7 +83,7 @@ const ScheduleCreator = (props) => {
                     placeholder="Wednesday..." 
                     onChange={changeHandler}
                     />
-
+                <br></br>
                 <input
                     type="text"
                     name="thursday"
@@ -91,7 +91,7 @@ const ScheduleCreator = (props) => {
                     placeholder="Thursday..." 
                     onChange={changeHandler}
                     />
-
+                <br></br>
                 <input
                     type="text"
                     name="friday"
@@ -99,7 +99,7 @@ const ScheduleCreator = (props) => {
                     placeholder="Friday..." 
                     onChange={changeHandler}
                     />
-
+                <br></br>
                 <input
                     type="text"
                     name="saturday"
@@ -108,6 +108,7 @@ const ScheduleCreator = (props) => {
                     onChange={changeHandler}
                     />
 
+                <br></br>
                 <button> Submit </button>
             </form>
          

@@ -32,7 +32,7 @@ function MenuPreview() {
     }, [])
 
     const redirect = e =>{
-        window.location.href = '/home'
+        window.location.href = `/business/${business_id}`
       }
 
     return (
@@ -41,7 +41,7 @@ function MenuPreview() {
             <br />
             {/* since i was having trouble making the menu appear i had to make it a ternary so it will 'wait' for the menuId */}
             {menuId === undefined || menuId === null ? <p id="loading-message">waiting for your menu</p> : <MenuShowcase props={menuId}/>}
-            <button onClick={redirect}>I am done looking at my menu</button>
+            <button className="create-menu-button2" onClick={redirect}>I am done looking at my menu</button>
         </div>
     )
 }

@@ -7,7 +7,7 @@ import './menu.sass'
 function MenuCreator(props){
 
   //This creates a new menu
-  const [menu, setMenu] = useState({"name":"untitled"})
+  const [menu, setMenu] = useState({"name":"Menu Name Here"})
   // this lets us know if the menu has been created in order to render the ablitiy to add items
   const [menuCreated, setMenuCreated] = useState(false)
   // this sets the menu id so that we can display the menu as the user add items too it
@@ -61,7 +61,9 @@ function MenuCreator(props){
         {menuCreated === true ? 
         <div>
           <ItemCreator props={menuId}/>
-          <button onClick={finishMenu}>I am done adding items</button>
+          <br></br>
+          <button className="create-menu-button2" onClick={finishMenu}>I am done adding items</button>
+          <br></br><br></br>
         </div>
         // this will render if they have not created a menu yet
         :<p>Create Your menu</p>}
