@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "./customerView.sass";
+import ShowReview from "../Reviews/show";
 
-function CustomerView() {
+function CustomerView(props) {
   const [customer, setCustomer] = useState([{}]);
   const [review, setReview] = useState([{}]);
 
@@ -32,6 +33,14 @@ function CustomerView() {
       });
   }, []);
 
+  let deleteReview = (id) =>{
+    setReview(review.filter(review => review.id !== id));
+  };
+
+  const routeReviewToEdit = (id) => {
+    props.history.push(`/review/${id}`)
+  };
+
   return (
     <div className="customer-view-container">
       <div className="customer-profile-info">
@@ -49,13 +58,18 @@ function CustomerView() {
 
       <div className="customer-profile-reviews">
         <h3>Your Reviews</h3>
-        {review.map(review => (
+        {/* {review.map(review => (
           <div className="review-card">
             <p>{review.created_at}</p>
             <p>Rating: {review.rating}</p>
             <p>Review: {review.review}</p>
           </div>
-        ))}
+        ))} */}
+        {review.map(review => {
+          return (
+            <ShowReview key={review.id} review={review} routeReviewToEdit={routeReviewToEdit} deleteReview={deleteReview}/>
+          )
+        })}
       </div>
     </div>
   );
