@@ -99,7 +99,7 @@ function ItemCreator(props){
                 onChange={changeHandler} />
         </div>
         <p className="required-span">* Required</p>
-        <button className="add-item-button">add item</button>
+        <button className="add-item-button">Add Item</button>
         </form>
 
         <ImageUploader
