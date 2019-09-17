@@ -1,12 +1,10 @@
 import React from 'react';
-import { mount, configure, shallow, enzyme } from 'enzyme';
-import Enzyme from 'enzyme';
-import { MemoryRouter } from 'react-router';
+import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 import BusinessCreator from './BusinessCreator';
 import BusinessUpdater from './BusinessUpdater';
-import BusinessSingleView from './BusinessSingleView';
+// import BusinessSingleView from './BusinessSingleView';
 import ScheduleCreator from './ScheduleCreator';
 
 configure({ adapter: new Adapter() });
@@ -85,3 +83,9 @@ describe("schedule creation", () => {
         // expect(SC.contains(<button> Submit </button>).toBe(true))
     })
 });
+
+// Delete Button
+
+describe("delete button renders if conditions are met", () =>{
+    
+})
