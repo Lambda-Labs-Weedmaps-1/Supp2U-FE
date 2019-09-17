@@ -19,6 +19,9 @@ export default (props) => {
             <div className={"card--image"} style={{backgroundImage: `url(${bgImage})`}}
             />
             {props.children}
+            <div className="card--footer">
+                {props.footer}
+            </div>
         </div>
     )
 }
