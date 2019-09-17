@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Axios from 'axios'
 import MenuShowcase from '../Menu/MenuShowcase';
 import MenuOrder from './../Menu/MenuOrder';
+import './BusinessOrderFrom.sass'
 
 function BusinessOrderFrom(props) {
 
@@ -37,18 +38,19 @@ function BusinessOrderFrom(props) {
     Axios.get(`${process.env.REACT_APP_BACKEND_URL}businesses/${businy}`)
     .then(res =>{
         setInfo(res.data)
+        console.log('business info, ', res.data)
     })
 
   }, [])
 
   return (
     <div>
-      <h1 className="name-box">
-      {customer.custname}
-      </h1>
+      
       <div>
         
         <h1>{info.name} Menu</h1>
+        <p>{info.street}</p>
+        <p>{info.city} {info.state} {info.zipcode}</p>
         {menuId ===null ? <p>You Cannot Order Online From This Location!</p>:
         <MenuOrder props={menuId} businy={businy} />}
 

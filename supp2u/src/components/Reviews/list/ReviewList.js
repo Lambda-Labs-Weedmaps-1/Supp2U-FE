@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import Axios from 'axios'
+import api from '../../../config/Axios'
 import './reviews.sass'
 import Reviews from "../../Reviews/add";
 import ShowReview from "../../Reviews/show";
@@ -13,7 +13,7 @@ function ReviewList(props) {
     //the GET call sets this state with the review data
     const [review, setReview] = useState([{}]);
     let [hasReview, setHasReview] = useState(false);
-    let [loading, setLoading] = useState(false);
+    let [loading, setLoading] = useState(true);
     let addReview = (newReview) =>{
         setReview([...review, newReview]);
         setHasReview(true);
@@ -23,8 +23,9 @@ function ReviewList(props) {
         setHasReview(false);
         toast.info(`You have successfully deleted your review`);
     };
+    let business_id = props.match.params.id;
     useEffect(() => {
-        Axios.get(`${process.env.REACT_APP_BACKEND_URL}businesses/${props.business_id}/reviews`)
+        api.get(`${process.env.REACT_APP_BACKEND_URL}businesses/${business_id}/reviews`)
             .then(res => {
                 setReview(res.data);
                 // check if current signed in user have already left a review
@@ -33,11 +34,12 @@ function ReviewList(props) {
                         setHasReview(true);
                     }
                 });
+                return res
             })
+            .then(() => setLoading(false))
             .catch(err => {
                 console.log('ERROR POST\n', err)
             });
-        setLoading(true)
     }, []);
 
 
@@ -46,13 +48,14 @@ function ReviewList(props) {
     };
 
     return (
+
         <div className={"review-list"}> {/* the class name is just for identifying the div on browser*/}
             {/* this renders reviews only if there are reviews */}
             <ReviewPresentation deleteReview={deleteReview}
-                                review={review}
+                                review={props.getFiltered(review)}
                                 routeReviewToEdit={routeReviewToEdit}
                                 state={{loading, hasReview}}
-                                business_id={props.business_id}
+                                business_id={business_id}
                                 addReview={addReview}/>
         </div>
     )
