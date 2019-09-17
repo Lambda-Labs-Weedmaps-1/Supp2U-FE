@@ -1,7 +1,5 @@
 import React from "react"
 import { configure, shallow } from 'enzyme';
-import { Route } from 'react-router';
-import Routes from './BasicRoute';
 import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
