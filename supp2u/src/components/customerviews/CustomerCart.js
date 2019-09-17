@@ -76,13 +76,7 @@ function CustomerCart(props) {
 
   return (
     <div className="centerOrder">
-
-      <div className="checkoutbox">
-          <h3>Order Total: $ {totals(cartlist)} </h3>
-          <CheckoutForm amount={totals(cartlist)} business_id={props.match.params.id} callback={placeOrder} />
-          {/* <button onClick={placeOrder}>Place Order</button> */}
-      </div>
-      
+     
       { cart.item_numbers == undefined ? <p>Number of Items in Cart: 0</p> :
       <div>
         <h2>Number of Items in Cart: {cart.item_numbers.length}</h2>
