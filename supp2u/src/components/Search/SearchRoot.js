@@ -39,6 +39,8 @@ const reducer = (state, action) => {
 const SearchRoot = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+
+
   useEffect(() => {
     fetch(MOVIE_API_URL)
       .then(response => response.json())
