@@ -66,7 +66,7 @@ function BusinessSingleView(props) {
     <BusinessHeader info={[info, rating, hours]}/>
 
     {/* another ternary function that only lets this button appear for customers so businesses cant order! */}
-    {localStorage.getItem("business_id") ? null :
+    {localStorage.getItem("business_id") || !localStorage.getItem("customer_id") ? <p>Must be Customer to Order</p> :
     <button className="buttonA" onClick={orderFrom}>Place Order</button>}
 
     <ReviewPresentation business_id={props.match.params.id} history={props.history}/>
