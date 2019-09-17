@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react'
-import Axios from 'axios'
+import api from '../../config/Axios'
 
 import './menu.sass'
 import Card from "../../utils/Card/Card";
 import itemPhoto from '../../assets/Item-1.jpg';
-
+import {getCategory} from "./helper"
 // this component renders all the items from a specified menu
 // when used anywhere just pass the id of the menu you are trying to access from the parent component as a prop
 function MenuShowcase(props) {
@@ -17,17 +17,21 @@ function MenuShowcase(props) {
         "category": "none",
         "image": null
     }])
-
+    const [categories, setCategories] = useState([]);
     useEffect(() => {
-        Axios.get(`${process.env.REACT_APP_BACKEND_URL}menus/${props.props}/items`)
-            .then(res => {
-                setItem(res.data)
-            }).catch(error => {
-            console.log('ERROR GETTING MENU ITEMS\n', error);
-        });
-    }, [])
+        const fetchitems = async () =>{
+            const res = await api.get(`${process.env.REACT_APP_BACKEND_URL}menus/${props.props}/items`);
+            if(res.error){
+                console.log(res);
+                return
+            }
+            setItem(res.data)
+            setCategories(getCategory(res.data))
+        };
+        fetchitems();
+    }, []);
 
-
+    console.log("categories", categories);
     return (
         <>
             <div>
@@ -37,11 +41,11 @@ function MenuShowcase(props) {
                     <div className="menu-showcase">
                         {item.map(item => (
                             <Card bgImage={item.image ? item.image['url'] : itemPhoto}>
-                                <p>{item.item_name}</p>
-                                <p>{item.description}</p>
-                                <p>{item.category}</p>
-
-                                <p>${item.price}</p>
+                                <span style={{display: 'flex', justifyContent: "space-between", padding: "0px 10px"}}>
+                                    <p>{item.item_name}</p>
+                                    {/*<p>{item.description}</p>*/}
+                                    <p>${item.price}</p>
+                                </span>
                             </Card>
                         ))}
                     </div>
