@@ -1,6 +1,8 @@
 import React from 'react'
 import Axios from 'axios'
 
+import './BusinessUpdater.sass'
+
 function DeleteBusinessButton(props) {
 console.log(props)
 
@@ -25,7 +27,7 @@ console.log(props)
         <button 
         className='delete-button' 
         onClick={deleteButton} >
-             Delete Your Business 
+            ⚠️ Delete Your Business 
         </button>
     )
 }

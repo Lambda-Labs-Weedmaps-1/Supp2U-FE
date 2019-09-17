@@ -6,7 +6,6 @@ import MenuShowcase from '../Menu/MenuShowcase';
 import ReviewList from '../Reviews/list/ReviewList'
 import BusinessHeader from './BusinessHeader'
 import SearchCard from "../../utils/SearchCard";
-import DeleteBusinessButton from './DeleteBusinessButton'
 
 function BusinessSingleView(props) {
     
@@ -66,14 +65,15 @@ function BusinessSingleView(props) {
     }
 
     return (
-    <div className="b-view">
+    <>
     {/* these 2 buttons will only display if you are be owner of the business     */}
     {localStorage.getItem("business_id") != businy || localStorage.getItem("customer_id") ?
     null :
-    <div> 
-        <button onClick={goToUpdate}>Update Your Business</button>
-        <DeleteBusinessButton bis_id={props.match.params.id} bis_info={info} />
+    <div className="ownerButtonsContainer"> 
+        <button className="updateButton" onClick={goToUpdate}>Update Your Business</button>
     </div>}
+
+    <div className="b-view">
 
     {/* here i am passing in 2 states as an array so on the component i can grab the data from the property of info (it will name the props array after the first passed state ) */}
     <BusinessHeader info={[info, rating, hours]}/>
@@ -98,6 +98,7 @@ function BusinessSingleView(props) {
     <MenuShowcase props={menuId} />
     </div>}
     </div>
+    </>
     )
 }
 
