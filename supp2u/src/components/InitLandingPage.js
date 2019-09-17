@@ -21,7 +21,9 @@ class InitLandingPage extends React.Component {
       <div>
         <h2>Register as a Customer</h2>
         <button onClick={this.goCust}>Customer</button>
-        <br></br><hr></hr><br></br>
+        <br></br>
+        <p>_____________________________________</p>
+        <br></br>
         <h2>Register as a Business</h2>
         <button onClick={this.goBus}>Business</button>
       </div>
