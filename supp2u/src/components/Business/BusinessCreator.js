@@ -26,39 +26,58 @@ function BusinessCreator(props) {
         }]);
 
         //function that handles business creation via axios POST
-        let postBusinessHandler = (event, photoForm , state) => {
+        let postBusinessHandler = async (event, photoForm, state ) => {
             
             //captures user_id 
             let user_id = localStorage.user_id;
-            // let {token} = props.stripe.createToken({name: "supp2uBusiness"});
-            // here we are checking if there is an image before we POST
-            if(state.image !== null){
-                // this adds the image to the business
-                photoForm.append("image", state.image)
-                Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/${user_id}/businesses`,  
-                photoForm, businessInformation,
-                { headers: {'Content-Type': 'multipart/form-data' }}
-                )
-                .then(res => {
-                   localStorage.setItem("business_id", res.data.id)
-                   localStorage.removeItem("customer_id")
-                    }).then(res =>
-                        { window.location.href = '/schedule/create'})
-                .catch(error =>{
-                    console.log('ERROR POST\n',error);
-            });
-            } else{ 
+            let businy = 0
             
-            Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/${user_id}/businesses`, businessInformation)
+
+            await Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/${user_id}/businesses`
+            , businessInformation)
                 .then(res => {
                     localStorage.setItem("business_id", res.data.id)
                     localStorage.removeItem("customer_id")
-                    }).then(res =>
-                        { window.location.href = '/schedule/create'})
+                    businy = res.data.id
+                    })
+                    // .then(res =>
+                    //     businy = res.data.id
+                    //     { window.location.href = '/schedule/create'}
+                    //     )
                 .catch(error =>{
                     console.log('ERROR POST\n',error);
-            });}
+            });
+
+            businy = localStorage.getItem("business_id")
+            
+            // here we are checking if there is an image before we POST
+            if(state.image !== null){
+                photoForm.append("image", state.image)
+                Axios.patch(`${process.env.REACT_APP_BACKEND_URL}businesses/${businy}`,  
+                photoForm,
+                { headers: {'Content-Type': 'multipart/form-data' }}
+                )
+                .then(res => {
+                     console.log(res)
+                     { window.location.href = '/schedule/create'}
+                    })
+                .catch(error =>{
+                    console.log('ERROR POST\n',error);
+            });
+            } 
+
+            // Axios.post(`${process.env.REACT_APP_BACKEND_URL}users/${user_id}/businesses`
+            // , businessInformation)
+            //     .then(res => {
+            //         localStorage.setItem("business_id", res.data.id)
+            //         localStorage.removeItem("customer_id")
+            //         }).then(res =>
+            //             { window.location.href = '/schedule/create'})
+            //     .catch(error =>{
+            //         console.log('ERROR POST\n',error);
+            // });
         }
+        
 
         
     const changeHandler = event => {
@@ -66,7 +85,7 @@ function BusinessCreator(props) {
     };
     
     //   submit form function
-    const submit = e =>{
+    const submit = async (e) =>{
         e.preventDefault()
         const photoForm = new FormData(e.target);
         // Transmutes the address into a useable array
@@ -75,7 +94,7 @@ function BusinessCreator(props) {
         const newAddressArray = newAddress.split(' ')
         //   address look up function
         // axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=XXXXXXXXXXXXXXXXXXX`)
-        Axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${newAddressArray[0]}+${newAddressArray[1]}+${newAddressArray[2]},+${businessInformation.city},+${businessInformation.state}&key=${process.env.REACT_APP_GCOORDINATES}`)
+        await Axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${newAddressArray[0]}+${newAddressArray[1]}+${newAddressArray[2]},+${businessInformation.city},+${businessInformation.state}&key=${process.env.REACT_APP_GCOORDINATES}`)
         .then (res => {
         //     // sends location to businessInformation
            businessInformation.lat = res.data.results[0].geometry.location.lat.toString()
@@ -83,9 +102,11 @@ function BusinessCreator(props) {
 
             //ensures that a lat and lng exist before posting
            if(businessInformation.lat && businessInformation.long){
-               postBusinessHandler(e, photoForm, businessInformation)
+                postBusinessHandler(e, photoForm, businessInformation)
+                console.log('busy body', businessInformation)
+                console.log('photoform', photoForm)
            } else {
-               console.log("There was an error finding a lat and long for your selected address")
+                console.log("There was an error finding a lat and long for your selected address")
            }
 
         })

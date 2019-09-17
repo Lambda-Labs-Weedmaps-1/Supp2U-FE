@@ -1,11 +1,12 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { auth } from "../../utils/init";
 import { Button } from "reactstrap";
 import BusinessNav from "./BusinessNav";
 import CustomerNav from "./CustomerNav";
 import { withRouter } from "react-router";
 import "./nav.sass";
+import Image from "../../images/Image5.png"
 
 function Navigation(props) {
   let renderLogInLogOut = () => {
@@ -15,13 +16,13 @@ function Navigation(props) {
       localStorage.getItem("user_id")
     ) {
       return (
-        <Button color="primary" onClick={auth.logout}>
+        <Button className="auth-button"  onClick={auth.logout}>
           Sign out
         </Button>
       );
     } else {
       return (
-        <Button color="primary" onClick={() => auth.login(props.history)}>
+        <Button className="auth-button"  onClick={() => auth.login(props.history)}>
           Sign In / Sign Up
         </Button>
       );
@@ -40,19 +41,25 @@ function Navigation(props) {
     ) {
       return <BusinessNav />;
     } else {
-      return <Link className="Link" to="/"></Link>;
+      return;
     }
   };
 
   return (
     <div>
       <nav className="Navigation">
-        <h1 className="NavTitle">supp2u</h1>
-        <Link className="Link" to="/">
+      <Link to={{ pathname: `/` }}>
+        <img className="Navwidget" src={Image} alt="logo"/>
+      </Link>
+        {/* <img src={Image} alt="logo" width="15%" height="90%" /> */}
+        {/* <Link className="Link" to="/">
           Home
-        </Link>
+        </Link> */}
         {renderUserType()}
-        {renderLogInLogOut()}
+        <div>
+          {renderLogInLogOut()}
+        </div>
+        
       </nav>
     </div>
   );

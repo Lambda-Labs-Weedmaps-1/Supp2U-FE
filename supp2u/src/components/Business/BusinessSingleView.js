@@ -4,8 +4,9 @@ import Axios from 'axios';
 // import './businessSingleView.sass';
 import './businessSingleView.scss';
 import MenuShowcase from '../Menu/MenuShowcase';
+import ReviewList from '../Reviews/list/ReviewList';
 import BusinessHeader from './BusinessHeader';
-import ReviewPresentation from '../Reviews/list/ReviewList';
+import SearchCard from '../../utils/SearchCard';
 
 function BusinessSingleView(props) {
 	// this holds the id of the business
@@ -69,18 +70,27 @@ function BusinessSingleView(props) {
 			{/* here i am passing in 2 states as an array so on the component i can grab the data from the property of info (it will name the props array after the first passed state ) */}
 			<BusinessHeader info={[info, rating, hours]} />
 
-			<button className="buttonA" onClick={orderFrom}>
-				Place Order
-			</button>
-
-			<ReviewPresentation
-				business_id={props.match.params.id}
+			{/*<ReviewPresentation business_id={props.match.params.id} history={props.history}/>*/}
+			{/* another ternary function that only lets this button appear for customers so businesses cant order! */}
+			{localStorage.getItem('business_id') ||
+			!localStorage.getItem('customer_id') ? (
+				<p>Must be Customer to Order</p>
+			) : (
+				<button className="buttonA" onClick={orderFrom}>
+					Place Order
+				</button>
+			)}
+			<SearchCard
+				List={ReviewList}
 				history={props.history}
+				match={props.match}
+				title={'Reviews'}
+				limit={3}
 			/>
 
 			{/* here we are checking conditionally to see if there is a menu to show our user */}
 			{menuId === null ? (
-				<p>no menu avliable</p>
+				<p>no menu available</p>
 			) : (
 				<div>
 					<h1>Menu</h1>
