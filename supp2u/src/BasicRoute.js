@@ -21,10 +21,13 @@ import ImageFadeShuffle from './components/animations/ImageFadeShuffle';
 
 import CheckoutForm from './components/Stripe/stripe'
 
-import { StripeProvider, Elements } from 'react-stripe-elements'
+// import { StripeProvider, Elements } from 'react-stripe-elements'
 
 import BusinessOrders from "./components/Business/BusinessOrders";
 import CustomerOrderFinish from './components/customerviews/CustomerOrderFinish';
+import Movie from "./components/Search/Movie";
+import SearchRoot from "./components/Search/SearchRoot";
+import SearchRootB from "./components/Search/alt/SearchRootB";
 
 
 export default () => {
@@ -69,6 +72,11 @@ export default () => {
 
       {/* Styling Test */}
       <Route path={"/imageshuffle"} component={ImageFadeShuffle} />
+
+      {/* Search */}
+      <Route path={"/search"} component={SearchRoot} />
+      <Route path={"/search-alt"} component={SearchRootB} />
+
     </>
   );
 };
