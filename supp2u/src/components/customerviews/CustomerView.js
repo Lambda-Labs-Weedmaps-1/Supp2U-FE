@@ -42,6 +42,7 @@ function CustomerView(props) {
   };
 
   return (
+
     <div className="customer-view-container">
       <div className="customer-profile-info">
         <h1 className="name-box">{customer.custname}</h1>

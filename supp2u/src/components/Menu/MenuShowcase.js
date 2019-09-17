@@ -1,51 +1,52 @@
-import React, {useEffect , useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Axios from 'axios'
 
 import './menu.sass'
+import Card from "../../utils/Card/Card";
+import itemPhoto from '../../assets/Item-1.jpg';
 
 // this component renders all the items from a specified menu
 // when used anywhere just pass the id of the menu you are trying to access from the parent component as a prop
 function MenuShowcase(props) {
     //these items are set and then mapped over
     const [item, setItem] = useState([{
-        "item_name":"menu item name" ,
-        "description":"Write a little bit about the item...",
+        "item_name": "menu item name",
+        "description": "Write a little bit about the item...",
         "cals": NaN,
-        "price": 0, 
-        "category":"none",
+        "price": 0,
+        "category": "none",
         "image": null
     }])
 
-    useEffect( () => {
-         Axios.get(`${process.env.REACT_APP_BACKEND_URL}menus/${props.props}/items`)
-        .then(res => {
-         setItem(res.data)
-        }).catch(error =>{
-            console.log('ERROR GETTING MENU ITEMS\n',error);
+    useEffect(() => {
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}menus/${props.props}/items`)
+            .then(res => {
+                setItem(res.data)
+            }).catch(error => {
+            console.log('ERROR GETTING MENU ITEMS\n', error);
         });
     }, [])
 
 
     return (
         <>
-        <div>
-        {/* this code makes it so you have to create items before they display */}
-      { item.item_name === "menu item name" ? 
-      <p className="empty-menu-message">Add Items to your menu to see how your menu will look</p>: 
-        <div  className="menu-showcase">
-            {item.map( item =>(
-                <div className="menu-item-box"> 
-                 {item.image === null || item.image === undefined ? 
-                 <p className="loading">no image</p> : <img className="image" src={item.image['url']} alt="item portrait" /> }
-                <p>{item.item_name}</p>
-                <p>{item.category}</p>
-                <p>{item.description}</p>
-                <p>${item.price}</p>
-                </div>
-            ))}
-        </div>
-        }
-        </div>
+            <div>
+                {/* this code makes it so you have to create items before they display */}
+                {item.item_name === "menu item name" ?
+                    <p className="empty-menu-message">Add Items to your menu to see how your menu will look</p> :
+                    <div className="menu-showcase">
+                        {item.map(item => (
+                            <Card bgImage={item.image ? item.image['url'] : itemPhoto}>
+                                <p>{item.item_name}</p>
+                                <p>{item.description}</p>
+                                <p>{item.category}</p>
+
+                                <p>${item.price}</p>
+                            </Card>
+                        ))}
+                    </div>
+                }
+            </div>
         </>
     )
 }

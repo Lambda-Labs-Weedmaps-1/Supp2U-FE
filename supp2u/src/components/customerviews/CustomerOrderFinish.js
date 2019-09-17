@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Axios from 'axios'
+import './CustomerCart.sass'
 
 function CustomerOrderFinish(props) {
 
@@ -21,10 +22,12 @@ function CustomerOrderFinish(props) {
   
 
   return (
-    <div>
-      <h3>Order Complete</h3>
-      <p>Go back to main page!</p>
-      <button onClick={home}>Go Back!</button>
+    <div className="centerOrder">
+      <div className="checkoutbox2">
+        <h3>Order Complete</h3>
+        <p>Go back to main page!</p>
+        <button className="" onClick={home}>Go Back!</button>
+      </div>
     </div>
   )
 }
