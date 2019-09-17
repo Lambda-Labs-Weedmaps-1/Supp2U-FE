@@ -75,9 +75,14 @@ function BusinessSingleView(props) {
             limit={3}
             />
     {/*<ReviewPresentation business_id={props.match.params.id} history={props.history}/>*/}
+    {/* another ternary function that only lets this button appear for customers so businesses cant order! */}
+    {localStorage.getItem("business_id") || !localStorage.getItem("customer_id") ? <p>Must be Customer to Order</p> :
+    <button className="buttonA" onClick={orderFrom}>Place Order</button>}
+
+    <ReviewPresentation business_id={props.match.params.id} history={props.history}/>
 
     {/* here we are checking conditionally to see if there is a menu to show our user */}
-    {menuId ===null ? <p>no menu avliable</p>:
+    {menuId ===null ? <p>no menu available</p>:
     <div>
     <h1>Menu</h1>
     <MenuShowcase props={menuId} />
