@@ -25,9 +25,8 @@ import CheckoutForm from './components/Stripe/stripe'
 
 import BusinessOrders from "./components/Business/BusinessOrders";
 import CustomerOrderFinish from './components/customerviews/CustomerOrderFinish';
-import Movie from "./components/Search/Movie";
+
 import SearchRoot from "./components/Search/SearchRoot";
-import SearchRootB from "./components/Search/alt/SearchRootB";
 
 
 export default () => {
@@ -75,7 +74,6 @@ export default () => {
 
       {/* Search */}
       <Route path={"/search"} component={SearchRoot} />
-      <Route path={"/search-alt"} component={SearchRootB} />
 
     </>
   );
