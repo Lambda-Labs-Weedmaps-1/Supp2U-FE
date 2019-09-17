@@ -62,7 +62,7 @@ class DeleteButton extends React.Component {
                 >
                         <h3> {this.props.title}</h3>
 
-\                   <Button className="info" onClick={this.handleClose}>Cancel</Button>
+                   <Button className="info" onClick={this.handleClose}>Cancel</Button>
                     <Button className="error" onClick={this.handleDelete}>Delete</Button>
 
                 </div>
