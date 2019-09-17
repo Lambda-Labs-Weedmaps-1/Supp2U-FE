@@ -25,6 +25,8 @@ import CheckoutForm from './components/Stripe/stripe'
 
 import BusinessOrders from "./components/Business/BusinessOrders";
 import CustomerOrderFinish from './components/customerviews/CustomerOrderFinish';
+import Movie from "./components/Search/Movie";
+import SearchRoot from "./components/Search/SearchRoot";
 
 
 export default () => {
@@ -69,6 +71,10 @@ export default () => {
 
       {/* Styling Test */}
       <Route path={"/imageshuffle"} component={ImageFadeShuffle} />
+
+      {/* Search */}
+      <Route path={"/search"} component={SearchRoot} />
+
     </>
   );
 };
