@@ -6,7 +6,7 @@ import BusinessNav from "./BusinessNav";
 import CustomerNav from "./CustomerNav";
 import { withRouter } from "react-router";
 import "./nav.sass";
-import Image from "../../images/Image5.png"
+import Image from "../../assets/Image5.png"
 
 function Navigation(props) {
   let renderLogInLogOut = () => {
