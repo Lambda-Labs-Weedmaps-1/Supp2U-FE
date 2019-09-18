@@ -1,7 +1,8 @@
 import React, {useState, useEffect } from 'react';
 import Axios from 'axios'
 import ImageUploader from '../shared/ImageUploader.js';
-// import { ninvoke } from 'q';
+import DeleteBusinessButton from './DeleteBusinessButton'
+import './BusinessUpdater.sass'
 
 
 const BusinessUpdater = (props) => {
@@ -14,7 +15,7 @@ const BusinessUpdater = (props) => {
         "state": "",
         "street": " ",
         "zipcode": 0,
-        "building_number": 420,
+        "building_number": "",
         "theme": "",
         "description": "",
         "recommended": null,
@@ -45,7 +46,6 @@ const BusinessUpdater = (props) => {
 
     let updateHandler = (event, photoForm, state) => {
         let businessId = props.match.params.id;
-        console.log(state.image)
 
         if(state.image !== null){
             photoForm.append("image", state.image)
@@ -114,7 +114,7 @@ const BusinessUpdater = (props) => {
                 unselectImage = {unselectImage}
                 />
 
-        <form onSubmit = {submit}>
+        <form onSubmit={submit} className="form">
             <input
                 type="text"
                 name="name"
@@ -186,6 +186,9 @@ const BusinessUpdater = (props) => {
             <button> Update </button>
 
         </form>
+        
+        <DeleteBusinessButton bis_id={props.match.params.id} bis_info={updateState} />
+
     </div> );
 }
  

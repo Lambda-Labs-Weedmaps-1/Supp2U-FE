@@ -2,6 +2,7 @@ import React, {useEffect , useState} from 'react'
 import GoogleMaps from './GoogleMap'
 import axios from 'axios'
 
+import Image from '../../assets/suppburger.jpg'
 function Map() {
 
     //Setting the lat and long for display
@@ -20,7 +21,19 @@ function Map() {
 
     // let position = [23.118813, -82.329933]; // position should be an array of obj that hold info about {lng, lat}
 
-    return (<GoogleMaps positions={coors} /> )
+    return (
+        <div className="landing-container">
+            <div className="landing-blurb">
+                <p><span>Connect</span> with your favorite eateries and <span className="discover">discover</span> the best culinary experiences in town.</p>
+                <img src={Image} alt="food image" height="50%" width="90%"></img>
+            </div>
+            {/* <div className="map-container"> */}
+                <GoogleMaps positions={coors} /> 
+            {/* </div> */}
+            
+        </div>
+        
+    )
 
 
 }

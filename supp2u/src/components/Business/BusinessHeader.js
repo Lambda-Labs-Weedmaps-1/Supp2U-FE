@@ -12,17 +12,17 @@ function BusinessHeader(props) {
     // console.log(props.info, 'hip')
 
     return (
-    <>
+    <div className="b-h-view">
       <div className="business-header">
       {props.info[0].image === null || props.info[0].image === undefined ? 
       <p className="loading">loading....</p> : 
       <img className="image" src={props.info[0].image['url']} alt="business portrait" />}
         <div className="info">
           <h2>{props.info[0].name}</h2>
-          <div>
+          <div className="address">
           {props.info[0].street}, {props.info[0].city}, {props.info[0].zipcode}, {props.info[0].state}
           </div>
-          <div>
+          <div className="ratings">
           Rating: {props.info[1].data}
           </div>
         </div>
@@ -41,7 +41,7 @@ function BusinessHeader(props) {
         {props.info[2].saturday === null ? <p>Saturday: Closed</p>:  <p>Saturday: {props.info[2].saturday}</p>}
         </div>}
       </div>
-    </>
+    </div>
     )
 }
 
