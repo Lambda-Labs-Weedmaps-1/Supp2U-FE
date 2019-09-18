@@ -2,7 +2,7 @@ import React, {useEffect , useState} from 'react'
 import GoogleMaps from './GoogleMap'
 import axios from 'axios'
 
-import Image from '../../images/suppburger.jpg'
+import Image from '../../assets/suppburger.jpg'
 function Map() {
 
     //Setting the lat and long for display
