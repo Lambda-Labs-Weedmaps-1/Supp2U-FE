@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.min.css";
 import Search from "./components/Search/Search";
 import axios from "axios";
 import FoodCard from "./components/Search/FoodCard";
+import { NavLink } from "react-router-dom";
 toast.configure();
 
 // const MOVIE_API_URL = "https://supp2udev.herokuapp.com/api/v1/search";

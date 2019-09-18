@@ -26,7 +26,7 @@ import CheckoutForm from './components/Stripe/stripe'
 import BusinessOrders from "./components/Business/BusinessOrders";
 import CustomerOrderFinish from './components/customerviews/CustomerOrderFinish';
 
-import SearchRoot from "./components/Search/SearchRoot";
+import FoodCard from "./components/Search/FoodCard";
 
 
 export default () => {
@@ -73,7 +73,7 @@ export default () => {
       <Route path={"/imageshuffle"} component={ImageFadeShuffle} />
 
       {/* Search */}
-      <Route path={"/search"} component={SearchRoot} />
+      <Route exact path={"/search"} component={FoodCard} />
 
     </>
   );
