@@ -24,7 +24,7 @@ function Map() {
     return (
         <div className="landing-container">
             <div className="landing-blurb">
-                <p>Connect with your favorite eateries and discover the best culinary experiences in town.</p>
+                <p><span>Connect</span> with your favorite eateries and <span className="discover">discover</span> the best culinary experiences in town.</p>
                 <img src={Image} alt="food image" height="50%" width="90%"></img>
             </div>
             {/* <div className="map-container"> */}

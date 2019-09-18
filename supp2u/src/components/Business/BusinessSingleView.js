@@ -101,12 +101,12 @@ function BusinessSingleView(props) {
         </div>
     </div>
 
-    {/* here we are checking conditionally to see if there is a menu to show our user */}
-    {menuId ===null ? <p>no menu available</p>:
-    <div>
-    <h1>Menu</h1>
-    <MenuShowcase props={menuId} />
-    </div>}
+        {/* here we are checking conditionally to see if there is a menu to show our user */}
+        {menuId ===null ? <p>no menu available</p>:
+        <div>
+            <h1>Menu</h1>
+            <MenuShowcase props={menuId} />
+        </div>}
     </div>
     </>
     )
