@@ -1,14 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Map Display should render correctly when component called 1`] = `
-<GoogleMaps
-  positions={
-    Array [
-      Object {
-        "lat": 0,
-        "lng": 0,
-      },
-    ]
-  }
-/>
+<div
+  className="landing-container"
+>
+  <div
+    className="landing-blurb"
+  >
+    <p>
+      Connect with your favorite eateries and discover the best culinary experiences in town.
+    </p>
+    <img
+      alt="food image"
+      height="50%"
+      src="suppburger.jpg"
+      width="90%"
+    />
+  </div>
+  <GoogleMaps
+    positions={
+      Array [
+        Object {
+          "lat": 0,
+          "lng": 0,
+        },
+      ]
+    }
+  />
+</div>
 `;

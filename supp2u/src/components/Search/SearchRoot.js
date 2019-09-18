@@ -1,32 +1,31 @@
-import React, { useReducer, useEffect } from "react";
-import "../../App.sass";
-import Movie from "./FoodCard";
-import Search from "./Search";
-import axios from 'axios';
-
-const MOVIE_API_URL = "https://supp2udev.herokuapp.com/api/v1/search";
+import React, { useReducer, useEffect } from 'react';
+import '../../App.sass';
+import BusinessCard from './BusinessCard';
+import Search from './Search';
+import { BusinessList } from '../Business/BusinessList';
+import { Link } from 'react-router-dom/esm/react-router-dom';
 
 const initialState = {
   loading: true,
-  movies: [],
+  businesses: [],
   errorMessage: null
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "SEARCH_MOVIES_REQUEST":
+    case 'SEARCH_BUSINESSES_REQUEST':
       return {
         ...state,
         loading: true,
         errorMessage: null
       };
-    case "SEARCH_MOVIES_SUCCESS":
+    case 'SEARCH_BUSINESSES_SUCCESS':
       return {
         ...state,
         loading: false,
-        movies: action.payload
+        businesses: action.payload
       };
-    case "SEARCH_MOVIES_FAILURE":
+    case 'SEARCH_BUSINESSES_FAILURE':
       return {
         ...state,
         loading: false,
@@ -40,60 +39,58 @@ const reducer = (state, action) => {
 const SearchRoot = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-
-
-  useEffect(() => {
-    axios.get(MOVIE_API_URL)
-      .then(response => response.json())
-      .then(jsonResponse => {
-        dispatch({
-          type: "SEARCH_MOVIES_SUCCESS",
-          payload: jsonResponse.Search
-        });
-        console.log(jsonResponse)
-      });
-  }, []);
-
   const search = searchValue => {
     dispatch({
-      type: "SEARCH_MOVIES_REQUEST"
+      type: 'SEARCH_BUSINESSES_REQUEST'
     });
 
-    axios.get(`https://supp2udev.herokuapp.com/api/v1/search?query=${searchValue}`)
+    fetch(`${process.env.REACT_APP_BACKEND_URL}search?query=${searchValue}`)
       .then(response => response.json())
       .then(jsonResponse => {
-        console.log(jsonResponse)
-        if (jsonResponse.Response === "True") {
+        console.log(jsonResponse);
+        if (jsonResponse[0].length || jsonResponse[1].length) {
           dispatch({
-            type: "SEARCH_MOVIES_SUCCESS",
-            payload: jsonResponse.Search
+            type: 'SEARCH_BUSINESSES_SUCCESS',
+            payload: jsonResponse[0].concat(jsonResponse[1])
           });
         } else {
           dispatch({
-            type: "SEARCH_MOVIES_FAILURE",
+            type: 'SEARCH_BUSINESSES_FAILURE',
             error: jsonResponse.Error
           });
         }
       });
   };
 
-  const { movies, errorMessage, loading } = state;
+  let displayResults = () => {
+    console.log(businesses);
+    if (businesses) {
+      return (
+        // Todo update classnames to "businesses"
+        <div className="movies">
+          {loading && !errorMessage ? (
+            <span>loading... </span>
+          ) : errorMessage ? (
+            <div className="errorMessage">{errorMessage}</div>
+          ) : (
+            // <BusinessList businesses={businesses} />
+            businesses.map(business => (
+              <BusinessCard key={business.id} business={business} />
+            ))
+          )}
+        </div>
+      );
+    } else {
+      return;
+    }
+  };
+
+  const { businesses, errorMessage, loading } = state;
 
   return (
     <div className="App">
       <Search search={search} />
-      <p className="App-intro">Sharing a few of our favourite movies</p>
-      <div className="movies">
-        {loading && !errorMessage ? (
-          <span>loading... </span>
-        ) : errorMessage ? (
-          <div className="errorMessage">{errorMessage}</div>
-        ) : (
-          movies.map((movie, index) => (
-            <Movie key={`${index}-${movie.Title}`} movie={movie} />
-          ))
-        )}
-      </div>
+      {displayResults()}
     </div>
   );
 };

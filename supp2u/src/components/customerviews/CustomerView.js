@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "./customerView.sass";
+import ShowReview from "../Reviews/show";
 
-function CustomerView() {
+function CustomerView(props) {
   const [customer, setCustomer] = useState([{}]);
   const [review, setReview] = useState([{}]);
 
@@ -32,30 +33,44 @@ function CustomerView() {
       });
   }, []);
 
+  let deleteReview = (id) =>{
+    setReview(review.filter(review => review.id !== id));
+  };
+
+  const routeReviewToEdit = (id) => {
+    props.history.push(`/review/${id}`)
+  };
+
   return (
-    <div className="c-view">
-      {/* customer image */}
-      {customer.image === null || customer.image === undefined ? (
-        <p>Image loading....</p>
-      ) : (
-        <img
-          className="c-image"
-          src={customer.image["url"]}
-          alt="customer portrait"
-        />
-      )}
-      {/* Name */}
-      <h1 className="name-box">{customer.custname}</h1>
-      {/* customer reviews*/}
-      <div>
+
+    <div className="customer-view-container">
+      <div className="customer-profile-info">
+        <h1 className="name-box">{customer.custname}</h1>
+        {customer.image === null || customer.image === undefined ? (
+          <p>Image loading....</p>
+        ) : (
+          <img
+            className="image"
+            src={customer.image["url"]}
+            alt="customer portrait"
+          />
+        )}
+      </div>
+
+      <div className="customer-profile-reviews">
         <h3>Your Reviews</h3>
-        {review.map(review => (
-          <div className="review-box">
+        {/* {review.map(review => (
+          <div className="review-card">
             <p>{review.created_at}</p>
-            <p>{review.rating}</p>
-            <p>{review.review}</p>
+            <p>Rating: {review.rating}</p>
+            <p>Review: {review.review}</p>
           </div>
-        ))}
+        ))} */}
+        {review.map(review => {
+          return (
+            <ShowReview key={review.id} review={review} routeReviewToEdit={routeReviewToEdit} deleteReview={deleteReview}/>
+          )
+        })}
       </div>
     </div>
   );

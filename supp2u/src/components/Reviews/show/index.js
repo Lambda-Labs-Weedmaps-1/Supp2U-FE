@@ -5,6 +5,9 @@ import user from '../../../assets/user-1.jpg';
 import moment from "moment";
 
 export default ({review, routeReviewToEdit, deleteReview}) => {
+    if (!review.customer) {
+        return <p>Review is Loading</p>
+    } 
     return (
         <div className="review-box">
             <div className="review__header">
