@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// import { MdSearch } from 'react-icons/md';
 
 const Search = props => {
   const [searchValue, setSearchValue] = useState('');
@@ -25,6 +26,7 @@ const Search = props => {
         type="text"
         placeholder="Search Denver's best eateries"
       />
+
       <input onClick={callSearchFunction} type="submit" value="SEARCH" />
     </form>
   );
