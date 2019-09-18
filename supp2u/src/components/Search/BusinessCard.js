@@ -41,7 +41,7 @@ const BusinessCard = ({ business }) => {
     <Link
       to={`business/${business.id}`}
       key={business.id}
-      style={{ textDecoration: 'none', paddingBottom: '0.75rem' }}
+      style={{ textDecoration: 'none', padding: '0.75rem' }}
     >
       <Card className={classes.card}>
         <CardActionArea>
@@ -53,23 +53,40 @@ const BusinessCard = ({ business }) => {
             title="Contemplative Reptile"
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
+            <Typography
+              gutterBottom
+              variant="h5"
+              component="h2"
+              align="left"
+              color="primary"
+            >
               {business.name}
             </Typography>
-            <Typography gutterBottom variant="h6" component="h3">
+            <Typography
+              gutterBottom
+              variant="h6"
+              component="h3"
+              align="left"
+              color="textSecondary"
+            >
               {business.theme}
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
+            <Typography
+              variant="subtitle2"
+              color="textSecondary"
+              component="p"
+              align="left"
+            >
               {business.description
                 .split(' ')
-                .slice(0, 11)
+                .slice(0, 5)
                 .join(' ') + '....'}
             </Typography>
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary">
-            Learn More
+          <Button size="small" color="primary" variant="contained">
+            Menu & More
           </Button>
         </CardActions>
       </Card>

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from '@material-ui/core';
 
 const Search = props => {
   const [searchValue, setSearchValue] = useState('');
