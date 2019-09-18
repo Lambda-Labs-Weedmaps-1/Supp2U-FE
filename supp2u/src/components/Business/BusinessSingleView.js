@@ -33,6 +33,7 @@ function BusinessSingleView(props) {
         Axios.get(`${process.env.REACT_APP_BACKEND_URL}businesses/${businy}/ratings`)
         .then(res =>{
             setRating(res)
+            console.log('ratings', res)
         })
         .catch(err =>{
             console.log('ERROR GETTING RATINGS\n', err)

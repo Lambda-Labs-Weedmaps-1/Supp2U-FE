@@ -13,12 +13,15 @@ export default (props) => {
     return (
         <div
             className={`card ${classes}`}
-            onMouseEnter={(e) => console.dir( e.target.classList)}
+            // onMouseEnter={(e) => console.dir( e.target.classList)}
             {...props}
         >
             <div className={"card--image"} style={{backgroundImage: `url(${bgImage})`}}
             />
             {props.children}
+            <div className="card--footer">
+                {props.footer}
+            </div>
         </div>
     )
 }

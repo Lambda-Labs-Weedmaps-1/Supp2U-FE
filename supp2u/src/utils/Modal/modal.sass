@@ -1,0 +1,53 @@
+$primary-color-main: #6d6d6d
+$primary-color-light: #b2b2b2
+$primary-color-dark: #464646
+
+.modal-parent
+  position: fixed
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+  z-index: 10
+  background-color: #0000002b
+  .modal
+    width: 50vw
+    margin: auto
+    padding: 20px
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    background-color: white
+    border: 1px solid rgba(128, 128, 128, 0.11)
+    border-radius: 10px
+    transition: opacity .4s
+    box-shadow: 2px 3px 5px 6px #8080802e
+    .error
+      background-color: darkred
+      color: white
+      width: 100px
+      padding: 11px 25px
+    .info
+      background-color: dodgerblue
+      color: #fdfdfd
+      width: 100px
+      padding: 11px 25px
+.hide
+  display: none
+  opacity: 0
+.show
+  display: block
+  opacity: 1
+.link
+  border-radius: 10px
+  transition: all .3s
+  cursor: pointer
+  margin: 0
+  &:hover
+    filter: brightness(120%)
+  &:active,
+  &:focus
+    outline: none
+
+

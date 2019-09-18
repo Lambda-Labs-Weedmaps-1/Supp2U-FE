@@ -23,7 +23,7 @@ function BusinessHeader(props) {
           {props.info[0].street}, {props.info[0].city}, {props.info[0].zipcode}, {props.info[0].state}
           </div>
           <div className="ratings">
-          Rating: {props.info[1].data}
+          Rating: {props.info[0].data}
           </div>
         </div>
       </div>
