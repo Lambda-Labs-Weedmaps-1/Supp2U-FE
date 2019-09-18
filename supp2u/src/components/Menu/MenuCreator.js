@@ -7,7 +7,7 @@ import './menu.sass'
 function MenuCreator(props){
 
   //This creates a new menu
-  const [menu, setMenu] = useState({"name":"Menu Name Here"})
+  const [menu, setMenu] = useState({"name":""})
   // this lets us know if the menu has been created in order to render the ablitiy to add items
   const [menuCreated, setMenuCreated] = useState(false)
   // this sets the menu id so that we can display the menu as the user add items too it
@@ -25,7 +25,7 @@ function MenuCreator(props){
   const submitMenu = e => {
       e.preventDefault();
       //conditional that forces them to name their menu, maybe change this into an alert instead of just a console log
-      if(menu.name === "untitled"){console.log("You need to name your menu")}
+      if(menu.name === ""){console.log("You need to name your menu")}
       else{
       Axios.post(`${process.env.REACT_APP_BACKEND_URL}businesses/${business_id}/menus`, menu)
               .then(res => {
