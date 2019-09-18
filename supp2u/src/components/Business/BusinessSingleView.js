@@ -76,14 +76,21 @@ function BusinessSingleView(props) {
 
     <div className="b-view">
 
-        {/* here i am passing in 2 states as an array so on the component i can grab the data from the property of info (it will name the props array after the first passed state ) */}
-        <BusinessHeader info={[info, rating, hours]}/>
-        {/* <button className="buttonA" onClick={orderFrom}>Place Order</button> */}
-        {/*<ReviewPresentation business_id={props.match.params.id} history={props.history}/>*/}
-        {/* another ternary function that only lets this button appear for customers so businesses cant order! */}
-        {localStorage.getItem("business_id") || !localStorage.getItem("customer_id") ? <p>Must be Customer to Order</p> :
-        <button className="buttonA" onClick={orderFrom}>Place Order</button>}
+    {/* here i am passing in 2 states as an array so on the component i can grab the data from the property of info (it will name the props array after the first passed state ) */}
+    <BusinessHeader info={[info, rating, hours]}/>
 
+    {/*<ReviewPresentation business_id={props.match.params.id} history={props.history}/>*/}
+    {/* another ternary function that only lets this button appear for customers so businesses cant order! */}
+    {localStorage.getItem("business_id") || !localStorage.getItem("customer_id") ? 
+        <p>Must be Customer to Order</p> :
+        <div className="centerOrder">
+            <div className="checkoutbox">
+            <button className="buttonA" onClick={orderFrom}>Place Order With This Location</button>
+            </div>
+        </div>
+        }
+    <div className="centerOrder">
+        <div className="reviewbox">
         <SearchCard
             List={ReviewList}
             history={props.history}
@@ -91,6 +98,8 @@ function BusinessSingleView(props) {
             title={"Reviews"}
             limit={3}
         />
+        </div>
+    </div>
 
         {/* here we are checking conditionally to see if there is a menu to show our user */}
         {menuId ===null ? <p>no menu available</p>:
