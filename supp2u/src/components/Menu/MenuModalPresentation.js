@@ -10,7 +10,7 @@ export default ({item, isModalOpen, toggleModal}) =>{
                         {/*<img src={item.image ? item.image['url'] : itemPhoto} alt="Menu Item"/>*/}
                     </div>
                     <div className="modal__body--right">
-                                <span style={{display: 'flex', justifyContent: "space-between", padding: "0px 10px"}}>
+                                <span style={{display: 'flex', justifyContent: "space-between", padding: "0px 0px"}}>
                                     <p>{item.item_name}</p>
                                     <p >${item.price}</p>
                                 </span>
