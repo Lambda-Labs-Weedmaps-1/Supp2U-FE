@@ -8,8 +8,9 @@ const CustomerNav = () => {
     <div>
       <Link to={{ pathname: `/customer/view` }} >My Profile </Link>
       --
-      <Link to={{ pathname: `/customer/view` }} >My Orders </Link>
-      
+      <Link to={{ pathname: `/customer/orders` }} >My Orders </Link>
+      --
+      <Link to={{ pathname: `/customer/cart` }} >Cart </Link>
     </div>
   );
 }
