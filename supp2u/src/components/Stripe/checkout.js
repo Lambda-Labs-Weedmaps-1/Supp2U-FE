@@ -30,7 +30,7 @@ class CheckoutForm extends Component {
           <CardElement />
           <div className="card-info">
             <p className="1">Card Number</p>
-            <p className="2">Exp. Date / CVC</p>
+            <p className="2">Exp. Date / CVC / Zipcode</p>
           </div>
           <button onClick={this.submit}>Place Order</button>
         </div>
