@@ -2,7 +2,6 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 //Routes
 import BusinessCreator from './components/Business/BusinessCreator';
-import { BusinessList } from './components/Business/BusinessList';
 import ScheduleCreator from './components/Business/ScheduleCreator';
 import CustomerCreator from './components/Customers/CustomerCreator';
 import Auth0 from './components/Auth0';
@@ -35,7 +34,6 @@ export default () => {
       {/* Special Auth0 Route  */}
       <Route path={'/login'} exact component={Auth0} />
       {/* Business */}
-      <Route path={'/search/results'} exact component={BusinessList} />
       <Route path={'/businesses/create'} exact component={BusinessCreator} />
       {/* <Route path={"/businesses/create"} exact component={BusinessCreator} /> */}
       <Route path={'/business/:id'} exact component={BusinessSingleView} />
@@ -76,7 +74,7 @@ export default () => {
       {/* Styling Test */}
       <Route path={'/imageshuffle'} component={ImageFadeShuffle} />
       {/* Search */}
-      <Route path={'/search'} component={SearchRoot} />
+      <Route exact path={'/search'} component={SearchRoot} />
     </>
   );
 };

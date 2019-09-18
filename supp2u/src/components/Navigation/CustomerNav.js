@@ -27,7 +27,7 @@ const CustomerNav = () => {
       >
         My Profile{' '}
       </Link>
-
+      {/* <SearchRoot /> */}
       <Link
         style={{
           display: 'flex',

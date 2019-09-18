@@ -2,8 +2,6 @@ import React, { useReducer, useEffect } from 'react';
 import '../../App.sass';
 import BusinessCard from './BusinessCard';
 import Search from './Search';
-import { BusinessList } from '../Business/BusinessList';
-import { Link } from 'react-router-dom/esm/react-router-dom';
 
 const initialState = {
   loading: true,
@@ -89,8 +87,8 @@ const SearchRoot = () => {
 
   return (
     <div className="App">
-      <Search search={search} />
-      {displayResults()}
+      {/* <Search search={search} />
+      {displayResults()} */}
     </div>
   );
 };

@@ -1,15 +1,17 @@
-import React, { useReducer, useEffect } from "react";
-import Navigation from "./components/Navigation/Navigation";
-import "./App.sass";
-import BasicRoute from "./BasicRoute";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.min.css";
-import Search from "./components/Search/Search";
-import BusinessCard from "./components/Search/BusinessCard";
+import React, { useReducer, useEffect } from 'react';
+import Navigation from './components/Navigation/Navigation';
+import './App.sass';
+import BasicRoute from './BasicRoute';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
+import Search from './components/Search/Search';
+import BusinessCard from './components/Search/BusinessCard';
+import { Route, Redirect } from 'react-router-dom';
+
 toast.configure();
 
 // const MOVIE_API_URL = "https://supp2udev.herokuapp.com/api/v1/search";
-const FOOD_API_URL = "https://www.omdbapi.com/?s=man&apikey=4a3b711b";
+const FOOD_API_URL = 'https://www.omdbapi.com/?s=man&apikey=4a3b711b';
 
 const initialState = {
   loading: true,
