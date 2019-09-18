@@ -14,8 +14,8 @@ function MenuOrder(props) {
 
     console.log('inc props', props)
 
-    useEffect( async () => {
-        await Axios.get(`${process.env.REACT_APP_BACKEND_URL}menus/${props.props}/items`)
+    useEffect( () => {
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}menus/${props.props}/items`)
         .then(res => {
             setItem(res.data)
             console.log('items', items)
@@ -66,6 +66,17 @@ function MenuOrder(props) {
         window.location.href = "customer/cart"
     }
     
+    if (businessy != cart.business_id) {
+        return (
+            <div>
+                <br></br><br></br>
+            <p>You Already Have An Active Cart With Another Restauraunt</p>
+            <p>Please click the Cart Link at the top of page to view!</p>
+            </div>
+        )
+    }
+    else {
+
     return (
         
         <div>
@@ -122,6 +133,7 @@ function MenuOrder(props) {
             <br></br><br></br>
         </div>
     )
+    }
 
 }
 
