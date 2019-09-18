@@ -1,9 +1,10 @@
 import React, { useReducer, useEffect } from "react";
 import "../../App.sass";
-import Movie from "./Movie";
+import Movie from "./FoodCard";
 import Search from "./Search";
+import axios from 'axios';
 
-const MOVIE_API_URL = "https://www.omdbapi.com/?s=man&apikey=4a3b711b";
+const MOVIE_API_URL = "https://supp2udev.herokuapp.com/api/v1/search";
 
 const initialState = {
   loading: true,
@@ -42,13 +43,14 @@ const SearchRoot = () => {
 
 
   useEffect(() => {
-    fetch(MOVIE_API_URL)
+    axios.get(MOVIE_API_URL)
       .then(response => response.json())
       .then(jsonResponse => {
         dispatch({
           type: "SEARCH_MOVIES_SUCCESS",
           payload: jsonResponse.Search
         });
+        console.log(jsonResponse)
       });
   }, []);
 
@@ -57,9 +59,10 @@ const SearchRoot = () => {
       type: "SEARCH_MOVIES_REQUEST"
     });
 
-    fetch(`https://www.omdbapi.com/?s=${searchValue}&apikey=4a3b711b`)
+    axios.get(`https://supp2udev.herokuapp.com/api/v1/search?query=${searchValue}`)
       .then(response => response.json())
       .then(jsonResponse => {
+        console.log(jsonResponse)
         if (jsonResponse.Response === "True") {
           dispatch({
             type: "SEARCH_MOVIES_SUCCESS",
