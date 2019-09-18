@@ -37,6 +37,7 @@ function BusinessSingleView(props) {
     )
       .then(res => {
         setRating(res);
+        console.log('ratings', res);
       })
       .catch(err => {
         console.log('ERROR GETTING RATINGS\n', err);
@@ -97,13 +98,31 @@ function BusinessSingleView(props) {
           </button>
         )}
 
-        <SearchCard
-          List={ReviewList}
-          history={props.history}
-          match={props.match}
-          title={'Reviews'}
-          limit={3}
-        />
+        {/*<ReviewPresentation business_id={props.match.params.id} history={props.history}/>*/}
+        {/* another ternary function that only lets this button appear for customers so businesses cant order! */}
+        {localStorage.getItem('business_id') ||
+        !localStorage.getItem('customer_id') ? (
+          <p>Must be Customer to Order</p>
+        ) : (
+          <div className="centerOrder">
+            <div className="checkoutbox">
+              <button className="buttonA" onClick={orderFrom}>
+                Place Order With This Location
+              </button>
+            </div>
+          </div>
+        )}
+        <div className="centerOrder">
+          <div className="reviewbox">
+            <SearchCard
+              List={ReviewList}
+              history={props.history}
+              match={props.match}
+              title={'Reviews'}
+              limit={3}
+            />
+          </div>
+        </div>
 
         {/* here we are checking conditionally to see if there is a menu to show our user */}
         {menuId === null ? (
