@@ -38,6 +38,7 @@ const BusinessCard = ({ business }) => {
   */
   const classes = useStyles();
   return (
+    // `business/${business.id}`
     <Link
       to={`business/${business.id}`}
       key={business.id}
@@ -77,10 +78,17 @@ const BusinessCard = ({ business }) => {
               component="p"
               align="left"
             >
-              {business.description
-                .split(' ')
+              {business.description === undefined ? (
+                <p></p>
+              ) : (
+                business.description
+                  .split(' ')
+                  .slice(0, 5)
+                  .join(' ') + '....'
+              )}
+              {/* .split(' ')
                 .slice(0, 5)
-                .join(' ') + '....'}
+                .join(' ') + '....' */}
             </Typography>
           </CardContent>
         </CardActionArea>

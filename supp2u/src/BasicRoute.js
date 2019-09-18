@@ -25,13 +25,11 @@ import CheckoutForm from './components/Stripe/stripe';
 
 import BusinessOrders from './components/Business/BusinessOrders';
 import CustomerOrderFinish from './components/customerviews/CustomerOrderFinish';
-import Movie from './components/Search/Movie';
 import SearchRoot from './components/Search/SearchRoot';
-import SearchRootB from './components/Search/alt/SearchRootB';
+
 import CustomerCartGet from './components/customerviews/CustomerCartGet';
 import CustomerOrders from './components/customerviews/CustomerOrders';
-
-import SearchRoot from './components/Search/SearchRoot';
+import BusinessList from './components/Business/BusinessList';
 
 export default () => {
   return (
@@ -42,6 +40,7 @@ export default () => {
       <Route path={'/businesses/create'} exact component={BusinessCreator} />
       {/* <Route path={"/businesses/create"} exact component={BusinessCreator} /> */}
       <Route path={'/business/:id'} exact component={BusinessSingleView} />
+      {/* <Route path={'/businesses/search'} exact component={BusinessList} /> */}
       <Route path={'/business/:id/order'} exact component={BusinessOrderFrom} />
       <Route
         path={'/business/:id/customer/cart'}
@@ -81,7 +80,8 @@ export default () => {
       {/* Styling Test */}
       <Route path={'/imageshuffle'} component={ImageFadeShuffle} />
       {/* Search */}
-      <Route exact path={'/search'} component={SearchRoot} />
+      {/* <Route path={'/search'} exact component={SearchRoot} /> */}
+      <Route path={'/search'} exact component={BusinessList} />
     </>
   );
 };

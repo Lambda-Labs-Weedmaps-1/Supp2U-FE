@@ -2,6 +2,7 @@ import React, { useReducer, useEffect } from 'react';
 import '../../App.sass';
 import BusinessCard from './BusinessCard';
 import Search from './Search';
+import BusinessList from '../Business/BusinessList';
 
 const initialState = {
   loading: true,
@@ -71,10 +72,10 @@ const SearchRoot = () => {
           ) : errorMessage ? (
             <div className="errorMessage">{errorMessage}</div>
           ) : (
-            // <BusinessList businesses={businesses} />
-            businesses.map(business => (
-              <BusinessCard key={business.id} business={business} />
-            ))
+            <BusinessList businesses={businesses} />
+            // businesses.map(business => (
+            //   <BusinessCard key={business.id} business={business} />
+            // ))
           )}
         </div>
       );
@@ -84,11 +85,11 @@ const SearchRoot = () => {
   };
 
   const { businesses, errorMessage, loading } = state;
-
+  let searchResults = businesses.length;
   return (
     <div className="App">
-      {/* <Search search={search} />
-      {displayResults()} */}
+      <Search search={search} />
+      {displayResults()}
     </div>
   );
 };

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Axios from 'axios';
+
 // import { MdSearch } from 'react-icons/md';
 
 const Search = props => {
@@ -15,7 +17,13 @@ const Search = props => {
   const callSearchFunction = e => {
     e.preventDefault();
     props.search(searchValue);
-    resetInputField();
+    window.location.href = `/search?query=${searchValue}`;
+
+    // fetch(`${process.env.REACT_APP_BACKEND_URL}search?query=${searchValue}`
+    // Axios.get(
+    //   `${process.env.REACT_APP_BACKEND_URL}search?query=${searchValue}`
+    // );
+    // resetInputField();
   };
 
   return (
