@@ -29,6 +29,7 @@ import Movie from "./components/Search/Movie";
 import SearchRoot from "./components/Search/SearchRoot";
 import SearchRootB from "./components/Search/alt/SearchRootB";
 import CustomerCartGet from './components/customerviews/CustomerCartGet';
+import CustomerOrders from './components/customerviews/CustomerOrders';
 
 
 export default () => {
@@ -58,7 +59,8 @@ export default () => {
       {/* have a single way of creating customer */}
       <Route path={"/customer/view"} exact component={CustomerView} />{" "}
       <Route path={"/customer/cart"} exact component={CustomerCartGet} />
-      
+      <Route path={"/customer/orders"} exact component ={CustomerOrders} />
+
       {/* will break unless you have a customer_id */}
 
       {/* Menu */}
