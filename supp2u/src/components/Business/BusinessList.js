@@ -1,15 +1,12 @@
-import React from "react";
-
-import Business from "./Business";
+import React from 'react';
+import BusinessCard from '../Search/BusinessCard';
 
 export const BusinessList = props => {
   return (
-    <ul>
+    <div>
       {props.businesses.map(business => {
-        return <Business key={business.name} business={business} />;
+        return <BusinessCard key={business.name} business={business} />;
       })}
-    </ul>
+    </div>
   );
 };
-
-
