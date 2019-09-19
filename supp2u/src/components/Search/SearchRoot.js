@@ -1,6 +1,5 @@
 import React, { useReducer, useEffect } from 'react';
 import '../../App.sass';
-import BusinessCard from './BusinessCard';
 import Search from './Search';
 import BusinessList from '../Business/BusinessList';
 
@@ -66,16 +65,14 @@ const SearchRoot = () => {
     if (businesses) {
       return (
         // Todo update classnames to "businesses"
-        <div className="movies">
+        <div>
           {loading && !errorMessage ? (
-            <span>loading... </span>
+            // <span>loading... </span>
+            <p></p>
           ) : errorMessage ? (
             <div className="errorMessage">{errorMessage}</div>
           ) : (
             <BusinessList businesses={businesses} />
-            // businesses.map(business => (
-            //   <BusinessCard key={business.id} business={business} />
-            // ))
           )}
         </div>
       );
@@ -85,7 +82,7 @@ const SearchRoot = () => {
   };
 
   const { businesses, errorMessage, loading } = state;
-  let searchResults = businesses.length;
+
   return (
     <div className="App">
       <Search search={search} />

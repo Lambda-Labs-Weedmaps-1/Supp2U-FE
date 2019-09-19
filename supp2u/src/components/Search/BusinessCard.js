@@ -86,9 +86,6 @@ const BusinessCard = ({ business }) => {
                   .slice(0, 5)
                   .join(' ') + '....'
               )}
-              {/* .split(' ')
-                .slice(0, 5)
-                .join(' ') + '....' */}
             </Typography>
           </CardContent>
         </CardActionArea>

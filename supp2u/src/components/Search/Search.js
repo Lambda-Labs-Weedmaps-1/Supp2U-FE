@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import Axios from 'axios';
-
-// import { MdSearch } from 'react-icons/md';
+import { MdSearch } from 'react-icons/md';
 
 const Search = props => {
   const [searchValue, setSearchValue] = useState('');
@@ -18,12 +16,6 @@ const Search = props => {
     e.preventDefault();
     props.search(searchValue);
     window.location.href = `/search?query=${searchValue}`;
-
-    // fetch(`${process.env.REACT_APP_BACKEND_URL}search?query=${searchValue}`
-    // Axios.get(
-    //   `${process.env.REACT_APP_BACKEND_URL}search?query=${searchValue}`
-    // );
-    // resetInputField();
   };
 
   return (
@@ -35,7 +27,17 @@ const Search = props => {
         placeholder="Search Denver's best eateries"
       />
 
-      <input onClick={callSearchFunction} type="submit" value="SEARCH" />
+      <button
+        className="searchButton"
+        onClick={callSearchFunction}
+        title="search"
+        type="submit"
+        value="Search"
+        style={{ background: '#bb1535' }}
+      >
+        <MdSearch />
+      </button>
+      {/* <input onClick={callSearchFunction} type="submit" value="SEARCH" /> */}
     </form>
   );
 };

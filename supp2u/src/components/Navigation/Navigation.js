@@ -55,7 +55,6 @@ function Navigation(props) {
         <Link to={{ pathname: `/` }}>
           <img className="Navwidget" src={Image} alt="logo" />
         </Link>
-        <SearchRoot />
         {/* <img src={Image} alt="logo" width="15%" height="90%" /> */}
         {/* <Link className="Link" to="/">
           Home
@@ -63,6 +62,7 @@ function Navigation(props) {
         {renderUserType()}
         <div>{renderLogInLogOut()}</div>
       </nav>
+      <SearchRoot />
     </div>
   );
 }
