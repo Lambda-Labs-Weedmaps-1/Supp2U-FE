@@ -8,10 +8,10 @@ import './menu.sass'
 function ItemCreator(props){
 
     const [item, setItem] = useState([{
-       "item_name":"notSet" ,
-       "description":"notSet",
+       "item_name":"" ,
+       "description":"",
         "price": 0, 
-        "category":"notSet",
+        "category":"",
         "image": null
     }])
 
@@ -51,17 +51,31 @@ function ItemCreator(props){
         setItem({...item, "image": "" })
     }
 
-    const submit = e =>{
+    const resetInputField = () => {
+        setItem({
+            "item_name":"" ,
+            "description":"",
+             "price": 0, 
+             "category":"",
+             "image": null})
+      }
+
+    let submit = e =>{
         e.preventDefault();
         //this adds the new data to the form
         const photoForm = new FormData(e.target);
         postItemHandler(e, photoForm , item)
+        resetInputField();
     }
 
     return (
-    <div className="add-item-form">
-        <h2>Add Items to your menu</h2>
-        <form id="form" onSubmit={submit}>
+    <>
+    <p className="create-menu-input">Add items to your menu</p>
+    <label ><i className="menuCreatorLabel">Here we can create a menu so that you can show off your products on your business's page.
+            <br/>Customers will be able to order your products online through our site.</i></label>
+          <br/>
+    <div className="add-item-form-comp">
+        <form id="form" onSubmit={submit} className="item-form">
         <div className="item-input-box">
             <label>Menu Item <span className="required-span">*</span></label>
             <input
@@ -81,7 +95,7 @@ function ItemCreator(props){
                 onChange={changeHandler} />
         </div>
          <div className="item-input-box">
-            <label>Price <span className="required-span">*</span></label>
+            <label>Price <i>$</i><span className="required-span">*</span></label>
             <input
                 placeholder="Enter price..."
                 type="integer"
@@ -101,14 +115,16 @@ function ItemCreator(props){
         <p className="required-span">* Required</p>
         <button className="add-item-button">Add Item</button>
         </form>
-
+        <div className="image-uploader">
         <ImageUploader
                 image = {item.image}
                 selectImage = {selectImage}
                 unselectImage = {unselectImage}
                 />
+        </div>
 
     </div>
+    </>
     )
 }
 

@@ -45,7 +45,10 @@ function MenuCreator(props){
   return (
       <div>
           {/* Welcome to Menu Creation Screen this original form will prompt the user to create a menu before they can add menu items */}
-          <form onClick={submitMenu} className="create-menu">
+          <form onClick={submitMenu} >
+          <label ><i className="menuCreatorLabel">Here we can create a menu so that you can show off your products on your business's page.
+            <br/>Customers will be able to order your products online through our site.</i></label>
+          <br/>
           <input
                   className="create-menu-input"
                   type="text"
@@ -54,7 +57,7 @@ function MenuCreator(props){
                   placeholder="name of your menu" 
                   onChange={changeHandlerMenu}
                   />
-        
+            
             <button className="create-menu-button">Create Menu</button>
           </form>
         {/* conditional render to add items only if the menu exists first */}
@@ -66,7 +69,7 @@ function MenuCreator(props){
           <br></br><br></br>
         </div>
         // this will render if they have not created a menu yet
-        :<p>Create Your menu</p>}
+        :<p className="message_menuCreation">Create Your menu</p>}
 
 
       </div>
