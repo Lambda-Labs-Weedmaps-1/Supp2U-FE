@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "./customerView.sass";
-import ShowReview from "../Reviews/show";
+import OrderPresentation from "./OrderPresentation";
+import SearchCard from "../../utils/SearchCard";
 
 function CustomerOrders(props) {
   const [customer, setCustomer] = useState([{}]);
@@ -15,21 +16,17 @@ function CustomerOrders(props) {
     Axios.get(`${process.env.REACT_APP_BACKEND_URL}users/${user_id}/customers`)
       .then(res => {
         setCustomer(res.data);
-        console.log(res.data, "customer");
         // api call to get the reviews connect to the customer it must be nested in order to get the id of the customer
         Axios.get(
-          `${process.env.REACT_APP_BACKEND_URL}customers/${res.data.id}/orders`
+          `${process.env.REACT_APP_BACKEND_URL}customers/${localStorage.customer_id}/orders`
         )
           .then(res => {
             setOrders(res.data);
-            console.log(res.data, "orders");
           })
           .catch(err => {
-            console.log("ERROR GETTING REVIEWS\n", err);
           });
       })
       .catch(err => {
-        console.log("ERROR GETTING CUSTOMER\n", err);
       });
   }, []);
 
@@ -60,13 +57,13 @@ function CustomerOrders(props) {
             <p>Review: {review.review}</p>
           </div>
         ))} */}
-        {orders.map( order => {
-          return (
-            <div>
-                <p>{order.id}</p>
-            </div>
-          )
-        })}
+        <SearchCard List={(props) =>{
+            return props.getFiltered(orders).map( order => {
+                    return (
+                        <OrderPresentation order={order}/>
+                    )
+                })
+        }}/>
       </div>
     </div>
   );
