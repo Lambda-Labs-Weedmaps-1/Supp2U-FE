@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements'
 import Axios from 'axios';
-
+import './checkout.sass';
 class CheckoutForm extends Component {
     constructor(props) {
       super(props);
@@ -26,8 +26,12 @@ class CheckoutForm extends Component {
     render() {
       return (
         <div className="checkout">
-          <p>Would you like to complete the purchase?</p>
+          <p>Please enter your card information below.</p>
           <CardElement />
+          <div className="card-info">
+            <p className="1">Card Number</p>
+            <p className="2">Exp. Date / CVC / Zipcode</p>
+          </div>
           <button onClick={this.submit}>Place Order</button>
         </div>
       );
