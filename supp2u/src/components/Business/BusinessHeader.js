@@ -27,7 +27,7 @@ function BusinessHeader(props) {
               {props.info[0].zipcode}
             </li>
           </div>
-          {/* What happened to the ratings??? Used to be able to pull the seeded ratings off of customer??*/}
+
           <div>Rating: {props.info[1].data}</div>
         </div>
         <div>
@@ -36,41 +36,13 @@ function BusinessHeader(props) {
           ) : (
             <div className="hours">
               <h4>Hours of Operation</h4>
-              {props.info[2].sunday === null ? (
-                <p>Sunday: Closed</p>
-              ) : (
-                <p>Sunday: {props.info[2].sunday}</p>
-              )}
-              {props.info[2].monday === null ? (
-                <p>Monday: Closed</p>
-              ) : (
-                <p>Monday: {props.info[2].monday}</p>
-              )}
-              {props.info[2].tuesday === null ? (
-                <p>Tuesday: Closed</p>
-              ) : (
-                <p>Tuesday: {props.info[2].tuesday}</p>
-              )}
-              {props.info[2].wednesday === null ? (
-                <p>Wednesday: Closed</p>
-              ) : (
-                <p>Wednesday: {props.info[2].wednesday}</p>
-              )}
-              {props.info[2].thursday === null ? (
-                <p>Thursday: Closed</p>
-              ) : (
-                <p>Thursday: {props.info[2].thursday}</p>
-              )}
-              {props.info[2].friday === null ? (
-                <p>Friday: Closed</p>
-              ) : (
-                <p>Friday: {props.info[2].friday}</p>
-              )}
-              {props.info[2].saturday === null ? (
-                <p>Saturday: Closed</p>
-              ) : (
-                <p>Saturday: {props.info[2].saturday}</p>
-              )}
+              {props.info[2].sunday === null ? (<p>Sunday: Closed</p>) : (<p>Sunday: {props.info[2].sunday}</p>)}
+              {props.info[2].monday === null ? (<p>Monday: Closed</p>) : (<p>Monday: {props.info[2].monday}</p>)}
+              {props.info[2].tuesday === null ? (<p>Tuesday: Closed</p>) : (<p>Tuesday: {props.info[2].tuesday}</p>)}
+              {props.info[2].wednesday === null ? (<p>Wednesday: Closed</p>) : (<p>Wednesday: {props.info[2].wednesday}</p>)}
+              {props.info[2].thursday === null ? (<p>Thursday: Closed</p>) : (<p>Thursday: {props.info[2].thursday}</p>)}
+              {props.info[2].friday === null ? (<p>Friday: Closed</p>) : (<p>Friday: {props.info[2].friday}</p>)}
+              {props.info[2].saturday === null ? (<p>Saturday: Closed</p>) : (<p>Saturday: {props.info[2].saturday}</p>)}
             </div>
           )}
         </div>
