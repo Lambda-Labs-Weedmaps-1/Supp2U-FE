@@ -52,7 +52,7 @@ function ItemCreator(props){
     }
     // this function calls off inside the submit so we can clear the item creation from inputs and let the user know an item was added
     const resetInputField = () => {
-        alert("Thank you. Your time has been added");
+        alert("Thank you. Your item has been added");
         setItem({
             "item_name":"" ,
             "description":"",

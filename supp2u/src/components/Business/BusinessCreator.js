@@ -113,21 +113,27 @@ function BusinessCreator(props) {
         console.log('data to be sent to backend', businessInformation)
         
     }}
-
+    
     // These two functions handle the image processing in conjunction with the ImageUnloader component
     const selectImage = image => {
         setBusinessInformation({...businessInformation, "image": image})
     }
-
+    
     const unselectImage = () => {
         setBusinessInformation({...businessInformation, "image": "" })
     }
-
+    
     //   JSX for BusinessCreator component
     return (
         <>
     <h3>Create your business</h3>
     <div className="form"> 
+    <b>Add a Picture of your Business</b>  
+        <ImageUploader
+                image = {businessInformation.image}
+                selectImage = {selectImage}
+                unselectImage = {unselectImage}
+                />
         <form onSubmit={submit}>
             <div className="input-box-type1">
                 <label>Name of business <span className="required-span">*</span></label>
@@ -232,11 +238,6 @@ function BusinessCreator(props) {
             </StripeProvider> */}
 
         </form>
-        <ImageUploader
-                image = {businessInformation.image}
-                selectImage = {selectImage}
-                unselectImage = {unselectImage}
-                />
     </div>
     </>
     )
