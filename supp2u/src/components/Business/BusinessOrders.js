@@ -36,12 +36,13 @@ function BusinessOrders(props) {
     }, [])
 
     // Axios call that ships the order
-    const orderDone = id =>{
-
+    const orderDone = ( id ) =>{
         Axios.post(`${process.env.REACT_APP_BACKEND_URL}orders/${id}/ship`)
         .then(res => {
             console.log('Order Shipped ', res)
         })
+        .then(alert('You have shipped your item?'))
+        .then(window.location.reload())
         .catch( err => {
             console.log('Error Shipping Order', err)
         })
