@@ -84,6 +84,24 @@ function CustomerCartGet(props) {
     window.location.href = `/business/${cart.business_id}/order`
   }
 
+  const deleteitem = item => {
+    let pompom = {
+      "item_number" : item
+    }
+
+    Axios.put(`${process.env.REACT_APP_BACKEND_URL}carts/${cart.id}/removeitem`, pompom)
+    .then(res => {
+      console.log('item deleted', res)
+      // might refresh page or cart here
+      // window.location.href = "/success"
+      window.location.reload();
+    })
+    .catch( err => {
+      console.log('removal failed')
+    })
+
+  }
+
   return (
     <div className="centerOrder">
      
@@ -107,6 +125,9 @@ function CustomerCartGet(props) {
                   </div>
                   <div className="cart-order-box-2">
                     <p>{stuff.price}</p>
+                  </div>
+                  <div className="cart-order-box-3">
+                    <button onClick={() => {deleteitem(stuff.id)}} className="buttonbois">Delete Item</button>
                   </div>
                 </div>
               )
