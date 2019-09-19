@@ -11,7 +11,7 @@ function MenuPreview() {
     // this holds the state of the diffrent responses from the /menus endpoint
     const [menuId, setMenuId] = useState()
     const [menuName, setMenuName] = useState()
-
+    const [menu, setMenu] = useState([{}])
     // this grabs the business id so we can use it in our axios call
     let business_id = localStorage.business_id;
 
@@ -19,6 +19,7 @@ function MenuPreview() {
         // axis to get the menus and their ids
         Axios.get(`${process.env.REACT_APP_BACKEND_URL}businesses/${business_id}/menus`)
         .then(response =>{
+            setMenu(response.data)
             setMenuId(response.data.id);
             setMenuName(response.data.name)
         }).catch(error =>{
@@ -43,7 +44,7 @@ function MenuPreview() {
             {/* since i was having trouble making the menu appear i had to make it a ternary so it will 'wait' for the menuId */}
             {menuId === undefined || menuId === null ? <p id="loading-message">waiting for your menu</p> : <MenuShowcase props={menuId}/>}
             <button className="create-menu-button2" onClick={redirect}>I am done looking at my menu</button>
-            <DeleteMenuButton menu_id={menuId} menu={menuName} />
+            <DeleteMenuButton menu_id={menuId} menu={menu} />
         </div>
     )
 }

@@ -65,7 +65,7 @@ function MenuCreator(props){
         <div>
           <ItemCreator props={menuId}/>
           <br></br>
-          <button className="create-menu-button2" onClick={finishMenu}>I am done adding items</button>
+          <button className="create-menu-button3" onClick={finishMenu}>I am done adding items</button>
           <br></br><br></br>
         </div>
         // this will render if they have not created a menu yet

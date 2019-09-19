@@ -6,15 +6,21 @@ import './menu.sass'
 function DeleteMenuButton(props) {
 console.log(props.menu_id)
 
+function redirect(){
+ window.location.href = `/menu/new`
+}
+
     let deleteButton = () =>{
-        // this prompts a conformation button 
-            Axios.delete(`${process.env.REACT_APP_BACKEND_URL}menus/${props.menu_id}` )
+        Axios.delete(`${process.env.REACT_APP_BACKEND_URL}menus/${props.menu_id}` , props.menu )
+            .then(res => {})
             .then(alert("Your menu had been deleted"))
-            .then( window.location.href = `/menu/new`)
             .catch(error =>{
                 console.log('ERROR GETTING THE BUSINESS ID\n', error)
             })
- 
+        // needed to set a time out becasue the redirect was breaking the axios call as it was too slow to delete
+        setTimeout(() => {   
+            redirect();
+        }, 1000);    
     }
 
     return (

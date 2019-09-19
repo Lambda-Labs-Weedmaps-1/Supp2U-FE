@@ -25,7 +25,7 @@ function ItemCreator(props){
             photoForm, item,
             { headers: {'Content-Type': 'multipart/form-data' }}
             ).then(res => {
-    
+                console.log('item added')
             }).catch(error =>{
                 console.log('ERROR POST\n',error);
         });
