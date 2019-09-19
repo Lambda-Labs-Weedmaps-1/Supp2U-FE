@@ -38,21 +38,22 @@ form
   input::placeholder,
   textarea::placeholder
     color: rgba(0, 0, 0, 0.44)
-    text-transform: capitalize
+    text-transform: none
   input[type='text'],
   input[type='text-box'],
   input[type='integer'],
   textarea
+    font-family: Lato
     padding: 15px 10px
     border: none
     box-sizing: content-box
-    border-bottom: 1px solid #cecece
+    border-bottom: none
     background-color: transparent
     &:hover
       border-bottom: 1px solid aqua
     &:focus
       outline: none
-      border-bottom: 1px solid #006f6f
+      
 
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
@@ -67,6 +68,7 @@ form
     transition: background-color 5000s ease-in-out 0s
   button
     display: block
+    font-family: Lato
     font-size: 16px
     text-align: center
     padding: 11px 25px
@@ -76,7 +78,7 @@ form
     transition: all .3s
 
     &:hover
-      filter: brightness(120%)
+      filter: brightness(110%)
     &:active,
     &:focus
       outline: none
@@ -85,9 +87,6 @@ form
 * 
   box-sizing: border-box
 
-.react-icons
-  vertical-align: middle
-  
 .movies 
   display: flex
   flex-wrap: wrap
@@ -127,7 +126,7 @@ form
   justify-content: center
   height: 6vh
   padding: 5px
-
+  
 input[type="submit"] 
   font-family: Work Sans
   background-color: transparent
@@ -146,26 +145,11 @@ input[type="submit"]:hover
 
 
 .search > input[type="text"]
+  font-family: Lato
+  font-size: 18px
   width: 40%
   min-width: 170px
   height: 1vh
 
 
-@media screen and (min-width: 694px) and (max-width: 915px) 
-  .movie 
-    max-width: 33%
-  
-
-
-@media screen and (min-width: 652px) and (max-width: 693px) 
-  .movie 
-    max-width: 50%
-  
-
-
-
-@media screen and (max-width: 651px) 
-  .movie 
-    max-width: 100%
-    margin: auto
   

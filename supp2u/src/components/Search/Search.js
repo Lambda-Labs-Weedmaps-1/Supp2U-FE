@@ -19,25 +19,31 @@ const Search = props => {
   };
 
   return (
-    <form className="search">
+    <form
+      className="search"
+      style={{
+        borderTop: 'solid black',
+        borderBottom: 'solid black',
+        borderWidth: 'thin',
+        borderRadius: '0px'
+      }}
+    >
       <input
         value={searchValue}
         onChange={handleSearchInputChanges}
         type="text"
         placeholder="Search Denver's best eateries"
+        style={{ borderBottom: 'none' }}
       />
-
       <button
-        className="searchButton"
         onClick={callSearchFunction}
         title="search"
         type="submit"
         value="Search"
-        style={{ background: '#bb1535' }}
+        style={{ background: '#bb1535', cursor: 'pointer' }}
       >
-        <MdSearch />
+        <MdSearch style={{ verticalAlign: 'middle', fontSize: '20px' }} />
       </button>
-      {/* <input onClick={callSearchFunction} type="submit" value="SEARCH" /> */}
     </form>
   );
 };

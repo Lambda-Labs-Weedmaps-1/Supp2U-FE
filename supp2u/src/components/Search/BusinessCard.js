@@ -66,11 +66,20 @@ const BusinessCard = ({ business }) => {
             <Typography
               gutterBottom
               variant="h6"
-              component="h3"
+              component="h2"
               align="left"
               color="textSecondary"
             >
               {business.theme}
+            </Typography>
+            <Typography
+              gutterBottom
+              variant="subtitle1"
+              component="h6"
+              align="left"
+              color="textSecondary"
+            >
+              {business.street}
             </Typography>
             <Typography
               variant="subtitle2"
@@ -90,7 +99,12 @@ const BusinessCard = ({ business }) => {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary" variant="contained">
+          <Button
+            size="small"
+            variant="contained"
+            color="primary"
+            style={{ background: '#125999' }}
+          >
             Menu & More
           </Button>
         </CardActions>
