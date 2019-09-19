@@ -3,7 +3,7 @@ import Axios from 'axios'
 
 import CheckoutForm from '../Stripe/stripe'
 import './CustomerCart.sass'
-import { businessGet } from './../../reducers/businessReducer';
+import DeleteCartButton from './DeleteCartButton'
 
 function CustomerCartGet(props) {
 
@@ -91,6 +91,7 @@ function CustomerCartGet(props) {
       <div>
         <p>Looks like you have a cart !</p>
         <button className="buttony" onClick={gobackprev}>Go Back to Menu / Add More Items</button>
+        <DeleteCartButton cus_id={custy} cart={cart} bis_id={cart.business_id}/>
       </div> 
       }
 
