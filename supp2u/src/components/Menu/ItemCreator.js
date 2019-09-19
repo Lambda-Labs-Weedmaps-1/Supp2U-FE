@@ -12,12 +12,14 @@ function ItemCreator(props){
        "description":"",
         "price": 0, 
         "category":"",
+        "inventory": 1000,
         "image": null
     }])
 
     
     let postItemHandler = (event, photoForm , state) => {
-        //This checks if there is an image before uploading
+
+                //This checks if there is an image before uploading
         if(state.image != null){
             // this adds the image to the business
             photoForm.append("image", state.image)
@@ -29,13 +31,15 @@ function ItemCreator(props){
             }).catch(error =>{
                 console.log('ERROR POST\n',error);
         });
-        } else{
-        Axios.post( `${process.env.REACT_APP_BACKEND_URL}menus/${props.props}/items`, item)
-        .then(res => {
-   
-        }).catch(error =>{
-            console.log('ERROR POST\n',error);
-        });}
+        } else {
+            Axios.post( `${process.env.REACT_APP_BACKEND_URL}menus/${props.props}/items`, item)
+            .then(res => {
+    
+            }).catch(error =>{
+                console.log('ERROR POST\n',error);
+            });
+        }
+        
     }
 
     const changeHandler = event => {
@@ -58,6 +62,7 @@ function ItemCreator(props){
             "description":"",
              "price": 0, 
              "category":"",
+             "inventory":1000,
              "image": null})
       }
 
@@ -109,6 +114,15 @@ function ItemCreator(props){
                 type="text"
                 name="category"
                 value={item.category}
+                onChange={changeHandler} />
+        </div>
+        <div className="item-input-box">
+            <label>Inventory<span className="required-span">*</span></label>
+            <input
+                placeholder="Enter Inventory"
+                type="integer"
+                name="inventory"
+                value={item.inventory}
                 onChange={changeHandler} />
         </div>
         <p className="required-span">* Required</p>
