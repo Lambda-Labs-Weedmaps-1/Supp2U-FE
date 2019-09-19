@@ -1,7 +1,7 @@
 import React, { useEffect, useState} from 'react'
 import Axios from 'axios'
 
-import './businessSingleView.sass'
+import './BusinessOrders.sass'
 
 
 
@@ -28,9 +28,6 @@ function BusinessOrders(props) {
         Axios.get(`${process.env.REACT_APP_BACKEND_URL}businesses/${businy}/orders`)
         .then(res => {
             setOrders(res.data)
-            console.log(res.data)
-            
-
         })
         .catch(err => {
             console.log('Error getting business ORDERS ', err)
@@ -38,7 +35,7 @@ function BusinessOrders(props) {
         
     }, [])
 
-
+    // Axios call that ships the order
     const orderDone = id =>{
 
         Axios.post(`${process.env.REACT_APP_BACKEND_URL}orders/${id}/ship`)
@@ -53,17 +50,19 @@ function BusinessOrders(props) {
 
     return (
         <div>
-            <h3>{info.name} Orders</h3>
             { orders[0] == undefined ? <p>Loading the Orders...</p> :
             <div>
-            <h3>Orders are here</h3>
+            <b>Your orders</b>
             <div>
+                {/* there are 2 maps the first brings in the information about the order, the second brings in all the items for that order */}
                 {orders.map(order => {
                     return (
                         <div>
                             <p>----------------------------------------------------</p>
-                            <p>Order ID: {order.id}</p>
-                            <p>Order Customer: {order.customer_id}</p>
+                            <div className="order-info-header">
+                                <p><b>Order ID:</b> <i>{order.id}</i></p>
+                                <p><b>Order Customer:</b> <i>{order.customer_id}</i></p>
+                            </div>
                             <p>Order Items:</p>
                             <p>_____________</p>
                             {order.items.map(inneritems => {
@@ -75,8 +74,14 @@ function BusinessOrders(props) {
                                 )
                             })}
                             <p>_____________</p>
-                            <p>Order Status: {order.status}</p>
-                            <button onClick={() => {orderDone(order.id)} }>Complete & Ship</button>
+                            <b>Order Status:</b> 
+                            {/* the text will change color if it is pending or shipping */}
+                            {order.status === "pending" ? 
+                            <i className="color-red"> {order.status}</i> : 
+                            <b className="color-black"> {order.status}</b>}<br />
+                            {/* shipping button */}
+                            <button className='buttonA' onClick={() => {
+                                orderDone(order.id)} }>Complete & Ship</button>
                         </div>
                     )
                 })}
