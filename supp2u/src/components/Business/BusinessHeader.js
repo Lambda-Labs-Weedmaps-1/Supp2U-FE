@@ -27,7 +27,7 @@ function BusinessHeader(props) {
               {props.info[0].zipcode}
             </li>
           </div>
-          {/* What happened to the ratings??? */}
+          {/* What happened to the ratings??? Used to be able to pull the seeded ratings off of customer??*/}
           <div>Rating: {props.info[1].data}</div>
         </div>
         <div>
