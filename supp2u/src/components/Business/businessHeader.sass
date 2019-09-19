@@ -4,23 +4,20 @@
     border-radius: 8px
 
 .business-header
-    width: 70%
-    margin: 0 auto
-
+    display: flex
+    flex-direction: column
+    margin: auto
+    padding: 0% 10% 0% 10%
+    
 .info
     background-color: #f8ebe1
     color: black
     width: 100%
     border-radius: 8px
-    padding: 5px 10px 0 10px
-    margin: 10% 0 0 0%
-    font-family: -apple-system, Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-
-
-.info .address
-    padding-bottom: 4%
+    font-family: Lato
+    text-align: center
+    padding: 20px
     
-
 .info .ratings 
     padding-bottom: 4%
 
@@ -28,14 +25,28 @@
     border-bottom: 4px solid #32ade1
     padding-bottom: 15px
 
+.info li
+    list-style: none
+    
 .hours
-    width: 60%
-    border: solid 2px black
-    margin-top: -120px
+  display: flex
+  flex-direction: row
+  flex-flow: column-wrap
+  width: 100%
+  
+.hours p
+  margin: auto
+  padding: 10px
+  font-family: Work Sans
+
+@media screen and (max-width: 950px)
+ .hours
+    flex-direction: column
+  
+    
 
 .b-h-view
-    display: flex
-    flex-direction: column
+    
 
 .centerOrder
     display: flex

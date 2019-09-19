@@ -44,11 +44,25 @@
     color: red
 
 // MenuShowcase.js 
+.menu
+  display: flex
+  justify-content: center
+  
+
 .menu-showcase
+  display: flex
+  flex-direction: row
+  justify-content: center
+  flex-wrap: wrap
+  
+@media screen and (max-width: 500px) 
+  .menu-showcase
     display: flex
-    flex-direction: row-reverse
-    flex-wrap: wrap
+    flex-direction: column
     justify-content: center
+  .menu-showcase
+    flex-direction: column
+    
 
 .menu-order-showcase
     display: flex
@@ -116,6 +130,7 @@
     text-decoration: none
     display: inline-block
     font-size: 16px
+    
 
 .check-info button
     background-color: #bb1535
@@ -127,6 +142,7 @@
     text-decoration: none
     display: inline-block
     font-size: 16px
+    
 
 .modal__parent
     position: fixed

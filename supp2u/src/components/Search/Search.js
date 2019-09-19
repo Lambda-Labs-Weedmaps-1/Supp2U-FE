@@ -36,13 +36,22 @@ const Search = props => {
         style={{ borderBottom: 'none' }}
       />
       <button
+        className="search-button"
         onClick={callSearchFunction}
         title="search"
         type="submit"
         value="Search"
-        style={{ background: '#bb1535', cursor: 'pointer' }}
+        style={{
+          background: '#bb1535',
+          cursor: 'pointer',
+          height: '5.5vh'
+        }}
       >
-        <MdSearch style={{ verticalAlign: 'middle', fontSize: '20px' }} />
+        <MdSearch
+          style={{
+            verticalAlign: 'center'
+          }}
+        />
       </button>
     </form>
   );
