@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Axios from 'axios'
 import MenuShowcase from './MenuShowcase'
+import DeleteMenuButton from './DeleteMenuButton'
 
 import './menu.sass'
 
@@ -42,6 +43,7 @@ function MenuPreview() {
             {/* since i was having trouble making the menu appear i had to make it a ternary so it will 'wait' for the menuId */}
             {menuId === undefined || menuId === null ? <p id="loading-message">waiting for your menu</p> : <MenuShowcase props={menuId}/>}
             <button className="create-menu-button2" onClick={redirect}>I am done looking at my menu</button>
+            <DeleteMenuButton menu_id={menuId} menu={menuName} />
         </div>
     )
 }

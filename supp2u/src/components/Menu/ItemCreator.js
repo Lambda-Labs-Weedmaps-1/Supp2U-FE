@@ -50,8 +50,9 @@ function ItemCreator(props){
     const unselectImage = () => {
         setItem({...item, "image": "" })
     }
-
+    // this function calls off inside the submit so we can clear the item creation from inputs and let the user know an item was added
     const resetInputField = () => {
+        alert("Thank you. Your time has been added");
         setItem({
             "item_name":"" ,
             "description":"",
@@ -71,8 +72,6 @@ function ItemCreator(props){
     return (
     <>
     <p className="create-menu-input">Add items to your menu</p>
-    <label ><i className="menuCreatorLabel">Here we can create a menu so that you can show off your products on your business's page.
-            <br/>Customers will be able to order your products online through our site.</i></label>
           <br/>
     <div className="add-item-form-comp">
         <form id="form" onSubmit={submit} className="item-form">
@@ -95,7 +94,7 @@ function ItemCreator(props){
                 onChange={changeHandler} />
         </div>
          <div className="item-input-box">
-            <label>Price <i>$</i><span className="required-span">*</span></label>
+            <label>Price <i>($)</i> <span className="required-span">*</span></label>
             <input
                 placeholder="Enter price..."
                 type="integer"
