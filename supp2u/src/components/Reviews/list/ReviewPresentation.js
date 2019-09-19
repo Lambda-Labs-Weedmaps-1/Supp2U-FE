@@ -15,7 +15,7 @@ function ReviewPresentation({review, routeReviewToEdit, deleteReview, state, add
                 {/* check if user is customer then if they have left review already */}
                 {/* loading state checks while the page is loading */}
 
-                { state.hasReview ?
+                { state.hasReview || !localStorage.customer_id ?
                 null
                 :
                 <Reviews business_id={business_id} addReviewState={addReview}/>}
