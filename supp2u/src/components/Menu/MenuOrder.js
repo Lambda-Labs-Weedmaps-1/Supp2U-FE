@@ -65,6 +65,17 @@ function MenuOrder(props) {
     const orderCart = e =>{
         window.location.href = "customer/cart"
     }
+
+    const quantifyitems = itemy => {
+        let bob = 0;
+        cart.item_numbers.map( holding => {
+            if(holding == itemy) {
+                bob++
+            }
+        })
+        
+        return bob;
+    }
     
     if (businessy != cart.business_id) {
         return (
@@ -110,6 +121,7 @@ function MenuOrder(props) {
                                 </div>
                                 <div className="menu-order-box-2">
                                 <button className="buttony" onClick={function() {addToCart(item.id)} }>Add Item</button>
+                                { cart.item_numbers.includes(item.id) ? <p>Qty:{quantifyitems(item.id)}</p> : <p>Qty:0</p>}  
                                 </div>
 
                             </div>
