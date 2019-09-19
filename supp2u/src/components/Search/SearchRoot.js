@@ -62,7 +62,7 @@ const SearchRoot = () => {
 
   let displayResults = () => {
     console.log(businesses);
-    if (businesses) {
+    if (businesses.length > 0) {
       return (
         // Todo update classnames to "businesses"
         <div>
