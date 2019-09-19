@@ -1,31 +1,29 @@
-import React, { useReducer, useEffect } from "react";
-import "../../App.sass";
-import Movie from "./Movie";
-import Search from "./Search";
-
-const MOVIE_API_URL = "https://www.omdbapi.com/?s=man&apikey=4a3b711b";
+import React, { useReducer, useEffect } from 'react';
+import '../../App.sass';
+import Search from './Search';
+import BusinessList from '../Business/BusinessList';
 
 const initialState = {
   loading: true,
-  movies: [],
+  businesses: [],
   errorMessage: null
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "SEARCH_MOVIES_REQUEST":
+    case 'SEARCH_BUSINESSES_REQUEST':
       return {
         ...state,
         loading: true,
         errorMessage: null
       };
-    case "SEARCH_MOVIES_SUCCESS":
+    case 'SEARCH_BUSINESSES_SUCCESS':
       return {
         ...state,
         loading: false,
-        movies: action.payload
+        businesses: action.payload
       };
-    case "SEARCH_MOVIES_FAILURE":
+    case 'SEARCH_BUSINESSES_FAILURE':
       return {
         ...state,
         loading: false,
@@ -39,58 +37,56 @@ const reducer = (state, action) => {
 const SearchRoot = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-
-
-  useEffect(() => {
-    fetch(MOVIE_API_URL)
-      .then(response => response.json())
-      .then(jsonResponse => {
-        dispatch({
-          type: "SEARCH_MOVIES_SUCCESS",
-          payload: jsonResponse.Search
-        });
-      });
-  }, []);
-
   const search = searchValue => {
     dispatch({
-      type: "SEARCH_MOVIES_REQUEST"
+      type: 'SEARCH_BUSINESSES_REQUEST'
     });
 
-    fetch(`https://www.omdbapi.com/?s=${searchValue}&apikey=4a3b711b`)
+    fetch(`${process.env.REACT_APP_BACKEND_URL}search?query=${searchValue}`)
       .then(response => response.json())
       .then(jsonResponse => {
-        if (jsonResponse.Response === "True") {
+        console.log(jsonResponse);
+        if (jsonResponse[0].length || jsonResponse[1].length) {
           dispatch({
-            type: "SEARCH_MOVIES_SUCCESS",
-            payload: jsonResponse.Search
+            type: 'SEARCH_BUSINESSES_SUCCESS',
+            payload: jsonResponse[0].concat(jsonResponse[1])
           });
         } else {
           dispatch({
-            type: "SEARCH_MOVIES_FAILURE",
+            type: 'SEARCH_BUSINESSES_FAILURE',
             error: jsonResponse.Error
           });
         }
       });
   };
 
-  const { movies, errorMessage, loading } = state;
+  let displayResults = () => {
+    console.log(businesses);
+    if (businesses) {
+      return (
+        // Todo update classnames to "businesses"
+        <div>
+          {loading && !errorMessage ? (
+            // <span>loading... </span>
+            <p></p>
+          ) : errorMessage ? (
+            <div className="errorMessage">{errorMessage}</div>
+          ) : (
+            <BusinessList businesses={businesses} />
+          )}
+        </div>
+      );
+    } else {
+      return;
+    }
+  };
+
+  const { businesses, errorMessage, loading } = state;
 
   return (
     <div className="App">
       <Search search={search} />
-      <p className="App-intro">Sharing a few of our favourite movies</p>
-      <div className="movies">
-        {loading && !errorMessage ? (
-          <span>loading... </span>
-        ) : errorMessage ? (
-          <div className="errorMessage">{errorMessage}</div>
-        ) : (
-          movies.map((movie, index) => (
-            <Movie key={`${index}-${movie.Title}`} movie={movie} />
-          ))
-        )}
-      </div>
+      {displayResults()}
     </div>
   );
 };

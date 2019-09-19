@@ -1,33 +1,60 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { MdSearch } from 'react-icons/md';
 
+const Search = props => {
+  const [searchValue, setSearchValue] = useState('');
 
-const Search = (props) => {
-  const [searchValue, setSearchValue] = useState("");
-  
-  const handleSearchInputChanges = (e) => {
+  const handleSearchInputChanges = e => {
     setSearchValue(e.target.value);
-  }
+  };
 
   const resetInputField = () => {
-    setSearchValue("")
-  }
+    setSearchValue('');
+  };
 
-  const callSearchFunction = (e) => {
+  const callSearchFunction = e => {
     e.preventDefault();
     props.search(searchValue);
-    resetInputField();
-  }
+    window.location.href = `/search?query=${searchValue}`;
+  };
 
   return (
-      <form className="search">
-        <input
-          value={searchValue}
-          onChange={handleSearchInputChanges}
-          type="text"
+    <form
+      className="search"
+      style={{
+        borderTop: 'solid black',
+        borderBottom: 'solid black',
+        borderWidth: 'thin',
+        borderRadius: '0px'
+      }}
+    >
+      <input
+        value={searchValue}
+        onChange={handleSearchInputChanges}
+        type="text"
+        placeholder="Search Denver's best eateries"
+        style={{ borderBottom: 'none' }}
+      />
+      <button
+        className="search-button"
+        onClick={callSearchFunction}
+        title="search"
+        type="submit"
+        value="Search"
+        style={{
+          background: '#bb1535',
+          cursor: 'pointer',
+          height: '5.5vh'
+        }}
+      >
+        <MdSearch
+          style={{
+            verticalAlign: 'center'
+          }}
         />
-        <input onClick={callSearchFunction} type="submit" value="SEARCH" />
-      </form>
-    );
-}
+      </button>
+    </form>
+  );
+};
 
 export default Search;
