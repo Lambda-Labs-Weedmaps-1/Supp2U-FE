@@ -84,8 +84,15 @@ function CustomerCreator() {
     // JSX for customerCreator component
     return (
         <>
-    <h3>Create your customer</h3>
+    <h2>Create your customer</h2>
+    <b>Add a Profile Picture <span className="required-span">*</span></b>  
     <div className="form"> 
+                <ImageUploader
+                      className="image-uploader"
+                      image = {customerInformation.image}
+                      selectImage = {selectImage}
+                      unselectImage = {unselectImage}
+                      />
         <form onSubmit={submit}>
 
             <div className="input-box-type1">
@@ -101,7 +108,6 @@ function CustomerCreator() {
             </div>
             <br/>
 
-            <h4>Add a Profile Picture 'Required'</h4>  
 
             <div className="image-uploader">
           
@@ -110,12 +116,6 @@ function CustomerCreator() {
             <button className="create-business-button"> Create Customer Account </button>
 
         </form>
-          <ImageUploader
-                className="image-uploader"
-                image = {customerInformation.image}
-                selectImage = {selectImage}
-                unselectImage = {unselectImage}
-                />
     </div>
     </>
     )

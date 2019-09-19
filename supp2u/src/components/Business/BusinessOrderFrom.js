@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import Axios from 'axios'
-import MenuShowcase from '../Menu/MenuShowcase';
 import MenuOrder from './../Menu/MenuOrder';
 import './BusinessOrderFrom.sass'
 
@@ -25,7 +24,6 @@ function BusinessOrderFrom(props) {
     .catch(err =>{
         console.log('ERROR GETTING CUSTOMER\n', err)
     })
-    console.log(customer, 'id')
 
     Axios.get(`${process.env.REACT_APP_BACKEND_URL}businesses/${businy}/menus`)
     .then(res =>{
@@ -38,7 +36,6 @@ function BusinessOrderFrom(props) {
     Axios.get(`${process.env.REACT_APP_BACKEND_URL}businesses/${businy}`)
     .then(res =>{
         setInfo(res.data)
-        console.log('business info, ', res.data)
     })
 
   }, [])
