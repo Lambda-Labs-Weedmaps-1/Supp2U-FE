@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import Rating from "react-rating";
-
+import './addReviewStyle.sass';
 export default({addReview, history})=>{
 
     let [review, setReview] = useState("");
@@ -25,6 +25,8 @@ export default({addReview, history})=>{
                 fractions={2}
                 initialRating={rating}
                 onClick={setRating}
+                emptySymbol="fa fa-star-o fa-2x low" //fa fa-star-o fa-2x low
+                fullSymbol="fa fa-star fa-2x low"
             />
             <input type="submit" value="Add Review"/>
             <input type="submit" value="Cancel" onClick={cancel}/>
