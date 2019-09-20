@@ -26,7 +26,8 @@ const BusinessUpdater = (props) => {
 
     useEffect(() => {
         let businessId = props.match.params.id
-        Axios.get(`${process.env.REACT_APP_BACKEND_URL}businesses/${businessId}`).then( res => {
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}businesses/${businessId}`)
+        .then( res => {
             console.log(res.data)
             setUpdateState(res.data)
         }).catch(err => {
@@ -55,6 +56,7 @@ const BusinessUpdater = (props) => {
             )
             .then(res => {
                  console.log(res)
+
                 })
             .catch(error =>{
                 console.log('ERROR POST\n',error);
@@ -79,6 +81,7 @@ const BusinessUpdater = (props) => {
 
     const submit = e =>{
         e.preventDefault()
+        let businessId = props.match.params.id
         const photoForm = new FormData(e.target);
         // Transmutes the address into a useable array
         if(updateState.street === undefined){console.log('Address is Required')}else{
@@ -100,6 +103,11 @@ const BusinessUpdater = (props) => {
            }
 
         })
+        .then(alert('You have Updated Your Business!'))
+
+
+
+
         
     }}
 
