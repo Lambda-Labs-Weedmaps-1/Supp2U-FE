@@ -5,6 +5,7 @@ import user from '../../../assets/user-1.jpg';
 import moment from "moment";
 
 export default ({review, routeReviewToEdit, deleteReview}) => {
+
     if (!review.customer) {
         return <p>Review is Loading</p>
     } 
@@ -22,7 +23,11 @@ export default ({review, routeReviewToEdit, deleteReview}) => {
                         }</p>
                     </div>
                 </div>
-                <Rating initialRating={review.rating} readonly={true}
+                <Rating
+                    emptySymbol="fa fa-star-o fa-2x low"
+                    fullSymbol="fa fa-star fa-2x low"
+                    fractions={2}
+                    initialRating={review.rating} readonly={true}
                 />
             </div>
             <p>{review.review}</p>
