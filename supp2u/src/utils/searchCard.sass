@@ -1,0 +1,38 @@
+.pagination--list
+  background-color: transparent
+  display: flex
+  justify-content: center
+  .pagination--item
+    background-color: #ffffff
+    color: #444444
+    margin: 0 5px
+    cursor: pointer
+    padding: 10px
+    list-style: none
+    box-shadow: 10px 10px 15px 4px #a1a1a13d
+.searchCard
+  &__header
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: 0 20px
+
+input[type='text'],
+input[type='text-box'],
+input[type='integer'],
+textarea
+  padding: 15px 10px
+  border: none
+  box-sizing: content-box
+  border-bottom: 1px solid #cecece
+  background-color: transparent
+  font-size: 16px
+  &:hover
+    border-bottom: 1px solid aqua
+  &:focus
+    outline: none
+    border-bottom: 1px solid #006f6f
+input::placeholder,
+textarea::placeholder
+  color: rgba(0, 0, 0, 0.44)
+  text-transform: capitalize

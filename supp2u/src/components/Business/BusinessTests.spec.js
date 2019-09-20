@@ -1,14 +1,14 @@
 import React from 'react';
-import { mount, configure, shallow, enzyme } from 'enzyme';
-import Enzyme from 'enzyme';
-import { MemoryRouter } from 'react-router';
+import { configure, shallow, render } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import BusinessCreator from './BusinessCreator'
-import BusinessUpdater from './BusinessUpdater'
-import BusinessSingleView from './BusinessSingleView'
+import BusinessCreator from './BusinessCreator';
+import BusinessUpdater from './BusinessUpdater';
+import BusinessSingleView from './BusinessSingleView';
+import ScheduleCreator from './ScheduleCreator';
 
 configure({ adapter: new Adapter() });
+
 // Business Update // Business Update // Business Update // Business Update // Business Update 
 describe('Business Updater Renders', () => {
     // If Map component render is ever non functional, this should fail
@@ -66,6 +66,30 @@ describe("testing updating form", () => {
         const preventDefault = jest.fn();
         wrapper.find('form').simulate('submit', {preventDefault});
         expect(preventDefault).toHaveBeenCalled()
+    });
+});
+
+// Schedule Creator // Schedule Creator // Schedule Creator // Schedule Creator // Schedule Creator // Schedule Creator 
+
+describe("schedule creation", () => {
+    it('renders', () => {
+        const SC = shallow(<ScheduleCreator />);
+        
+        expect(SC).toMatchSnapshot();
+    });
+
+    // it('contains post handler', () => {
+    //     const SC = shallow(<ScheduleCreator />);
+
+    //     // expect(SC.contains(<button> Submit </button>).toBe(true))
+    // })
+});
+
+// Delete Button
+
+describe("delete button", () =>{
+    it("delete button will not render if conditions are not met", () =>{
+        let BSV = render(<BusinessSingleView />)
+        expect(BSV.getByClassName('delete-button').toBe(false))
     })
 })
-

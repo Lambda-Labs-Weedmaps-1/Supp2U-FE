@@ -5,33 +5,98 @@
     justify-content: center
 
 .create-menu-button
+    background-color: #125999
     margin: 3%
+    margin: 10px auto
+
+.create-menu-button2
+    background-color: #125999
+    border: none
+    border-radius: 8px
+    color: white
+    padding: 15px 32px
+    text-align: center
+    text-decoration: none
+    display: inline-block
+    font-size: 16px
+
+.create-menu-button3
+    background-color: #bb1535
+    border: none
+    border-radius: 8px
+    color: white
+    padding: 15px 32px
+    text-align: center
+    text-decoration: none
+    display: inline-block
+    font-size: 16px
+
+.message_menuCreation
+    font-weight: bold
 
 .create-menu-input
-    font-size: 200%
+    font-weight: bold
+
+.menuCreatorLabel
+    display: block
+
 
 // ItemCreator.js
+.item-form
+    width: 400px
+    margin: 0 auto
+
 .item-input-box
     display: flex
     justify-content: center
     flex-direction: column
     margin: 20px
 
-.add-item-form
+.add-item-form-comp
+    display: flex
+    flex-direction: row
+
+.image-uploader
+    width: 33.3%
+
+.add-item-button
+    background-color: #125999
+    margin: 3% auto
+
+.required-span
+    color: red
+
+// MenuShowcase.js 
+.menu
+  display: flex
+  justify-content: center
+  padding: 0% 10% 0% 10%
+
+.menu-showcase
+  display: flex
+  flex-direction: row
+  justify-content: center
+  flex-wrap: wrap
+  .card
+    margin: 24px
+    //margin-right: 5px
+    //margin-left: 5px
+    //margin: 0% 2% 0% 2%
+  
+  
+@media screen and (max-width: 500px) 
+  .menu-showcase
     display: flex
     flex-direction: column
     justify-content: center
-    padding-left: 24%
-    padding-right: 24%
+  .menu-showcase
+    flex-direction: column
+    
 
-.add-item-button
-    margin: 3%
-
-// MenuShowcase.js 
-.menu-showcase
+.menu-order-showcase
     display: flex
-    flex-direction: row-reverse
-    flex-wrap: wrap
+    flex-direction: column
+
 
 .menu-item-box
     border: black 2px solid
@@ -39,3 +104,140 @@
     padding: 30px
     width: 200px
     margin: 10px auto
+
+.menu-order-box
+    display: flex
+    flex-direction: row
+    border: #125999 2px solid
+    width: 80%
+    padding: 10px
+    margin: 10px auto
+    justify-content: center
+    align-items: center
+    align-content: space-around
+
+.menu-order-box-1
+    width: 23%
+    padding: 4px
+    border-right: #125999 1px solid
+
+.menu-order-box-2
+    display: flex
+    align-items: center
+    width: 13%
+    text-align: right
+
+.loading 
+    margin: 0 auto
+    color: #766B7B
+    font-size: 40%
+    padding: 40px
+    width: 13%
+    background-color: #cdcdcd
+
+.image
+    width: 100%
+
+.check-info
+    border: 2px solid #bb1535
+    width: 30%
+    padding: 10px
+    padding-bottom: 20px
+    
+.centerOrder
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    align-content: space-around
+
+.menu-order-box-2 button
+    background-color: #125999
+    border: none
+    border-radius: 8px
+    color: white
+    padding: 15px 32px
+    text-align: center
+    text-decoration: none
+    display: inline-block
+    font-size: 16px
+    
+
+.check-info button
+    background-color: #bb1535
+    border: none
+    border-radius: 8px
+    color: white
+    padding: 15px 32px
+    text-align: center
+    text-decoration: none
+    display: inline-block
+    font-size: 16px
+    
+
+.modal__parent
+    position: fixed
+    top: 0
+    left: 0
+    width: 100vw
+    height: 100vh
+    z-index: 10
+    background-color: rgba(0, 0, 0, 0.42)
+    .modal
+        margin: auto
+        padding: 10px
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        background-color: white
+        border: 1px solid rgba(128, 128, 128, 0.11)
+        border-radius: 10px
+        transition: opacity .4s
+        box-shadow: 2px 3px 5px 6px rgba(128, 128, 128, 0.21)
+        .error
+            background-color: darkred
+            color: white
+            width: 100px
+            padding: 11px 25px
+        .info
+            background-color: dodgerblue
+            color: #fdfdfd
+            width: 100px
+            padding: 11px 25px
+.modal__body
+    display: flex
+    width: 100%
+    height: 100%
+    img
+        height: 100%
+    &--right
+        width: 50%
+        min-width: 150px
+        text-align: start
+        padding: 10px
+
+    &--left
+        width: 50%
+        min-width: 150px
+        max-width: 250px
+        background-size: cover
+        background-position: center
+        background-repeat: no-repeat
+
+@media  (max-width: 400px)
+    .modal
+        font-size: 10px
+
+// Menu Delete Button
+.buttony
+    background-color: #bb1535
+    border: none
+    border-radius: 8px
+    color: white
+    padding: 15px 32px
+    text-align: center
+    text-decoration: none
+    display: inline-block
+    font-size: 16px
+    margin: 10px

@@ -3,15 +3,70 @@
   font-size: 3.0vw
 
 .Navigation
-  background-color: #8debac
-  height: 40px
+  height: 80px
   display: flex
   flex-direction: row
+  justify-content: space-between
   align-items: center
-  justify-content: center
-  font-size: 15px
-  font-size: 2.5vw
+  align-content: center
+  margin: 0 3.5% 0 1.5%
+  font-size: 1.5rem
   color: white
+
+.Navigation a
+  font-family: Work Sans
+  text-decoration: none
+  color: #bb1535
+
+.Navigation img
+  margin-top: .5%
+  height: 90%
+
+.Navigation .auth-button
+  margin-top: 10%
+  color: 
+  background: #125999
+  padding: 19px 25px
+
 
 .Link
   padding: 15px
+  font-size: 1rem
+
+.Navwidget
+  height: 50%
+  width: 200px
+
+.auth-button
+  font-family: Work Sans
+  cursor: pointer
+
+@media screen and (max-width: 500px) 
+  .NavTitle
+    width: 100%
+    display: block
+    text-align: center
+    padding: 10px 0
+    font-size: 6vw
+    border-bottom: 1px solid gray
+
+  .Navigation
+    height: 95%
+    width: 100%
+    flex-direction: column
+    margin: 0
+    padding: 0
+
+  .Link
+    width: 100%
+    display: flex
+    text-align: center
+    align-items: center
+    align-content: center
+    padding: 10px 0
+    font-size: 4vw
+    border-bottom: 1px solid gray
+    text-decoration: none
+    
+
+

@@ -1,40 +1,87 @@
 import React ,{ useState } from 'react'
 import Axios from 'axios'
 
+import ImageUploader from '../shared/ImageUploader.js';
 import './menu.sass'
 
 // when used anywhere just pass the id of the menu you are trying to access from the parent component as a prop
 function ItemCreator(props){
 
     const [item, setItem] = useState([{
-       "item_name":"notSet" ,
-       "description":"notSet",
-       "cals":1,
+       "item_name":"" ,
+       "description":"",
         "price": 0, 
-        "category":"notSet"
+        "category":"",
+        "inventory": 1000,
+        "image": null
     }])
+
+    
+    let postItemHandler = (event, photoForm , state) => {
+
+                //This checks if there is an image before uploading
+        if(state.image != null){
+            // this adds the image to the business
+            photoForm.append("image", state.image)
+            Axios.post(`${process.env.REACT_APP_BACKEND_URL}menus/${props.props}/items`,  
+            photoForm, item,
+            { headers: {'Content-Type': 'multipart/form-data' }}
+            ).then(res => {
+                console.log('item added')
+            }).catch(error =>{
+                console.log('ERROR POST\n',error);
+        });
+        } else {
+            Axios.post( `${process.env.REACT_APP_BACKEND_URL}menus/${props.props}/items`, item)
+            .then(res => {
+    
+            }).catch(error =>{
+                console.log('ERROR POST\n',error);
+            });
+        }
+        
+    }
 
     const changeHandler = event => {
         setItem({ ...item, [event.target.name]: event.target.value })
     };
 
-    const submit = event =>{
-        event.preventDefault();
-        Axios.post( `${process.env.REACT_APP_BACKEND_URL}menus/${props.props}/items`, item)
-        .then(res => {
-            console.log('sent item', res)
-        }).catch(error =>{
-            console.log('ERROR POST\n',error);
-        });
+    // These two functions handle the image processing in conjunction with the ImageUnloader component
+    const selectImage = image => {
+        setItem({...item, "image": image})
     }
 
+    const unselectImage = () => {
+        setItem({...item, "image": "" })
+    }
+    // this function calls off inside the submit so we can clear the item creation from inputs and let the user know an item was added
+    const resetInputField = () => {
+        alert("Thank you. Your item has been added");
+        setItem({
+            "item_name":"" ,
+            "description":"",
+             "price": 0, 
+             "category":"",
+             "inventory":1000,
+             "image": null})
+      }
+
+    let submit = e =>{
+        e.preventDefault();
+        //this adds the new data to the form
+        const photoForm = new FormData(e.target);
+        postItemHandler(e, photoForm , item)
+        resetInputField();
+    }
 
     return (
-    <div className="add-item-form">
-        <h2>Add Items to your menu</h2>
-        <form onSubmit={submit}>
+    <>
+    <p className="create-menu-input">Add items to your menu</p>
+          <br/>
+    <div className="add-item-form-comp">
+        <form id="form" onSubmit={submit} className="item-form">
         <div className="item-input-box">
-            <label>Menu Item</label>
+            <label>Menu Item <span className="required-span">*</span></label>
             <input
                 placeholder="Enter item..."
                 type="text"
@@ -52,7 +99,7 @@ function ItemCreator(props){
                 onChange={changeHandler} />
         </div>
          <div className="item-input-box">
-            <label>Price</label>
+            <label>Price <i>($)</i> <span className="required-span">*</span></label>
             <input
                 placeholder="Enter price..."
                 type="integer"
@@ -70,17 +117,27 @@ function ItemCreator(props){
                 onChange={changeHandler} />
         </div>
         <div className="item-input-box">
-            <label>Health</label>
+            <label>Inventory<span className="required-span">*</span></label>
             <input
-                placeholder="Enter calories amount..."
-                type="text"
-                name="cals"
-                value={item.cals}
+                placeholder="Enter Inventory"
+                type="integer"
+                name="inventory"
+                value={item.inventory}
                 onChange={changeHandler} />
         </div>
-        <button className="add-item-button">add item</button>
+        <p className="required-span">* Required</p>
+        <button className="add-item-button">Add Item</button>
         </form>
+        <div className="image-uploader">
+        <ImageUploader
+                image = {item.image}
+                selectImage = {selectImage}
+                unselectImage = {unselectImage}
+                />
+        </div>
+
     </div>
+    </>
     )
 }
 
