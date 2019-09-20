@@ -9,7 +9,7 @@ function BusinessOrders(props) {
     
     let businy = localStorage.getItem("business_id")
    
-    const [setInfo] = useState([{}])
+    const [info, setInfo] = useState([{}])
     const [orders, setOrders] = useState({})
     
     
@@ -33,7 +33,7 @@ function BusinessOrders(props) {
             console.log('Error getting business ORDERS ', err)
         })
         
-    }, [businy, setInfo])
+    }, [info, businy, setInfo])
 
     // Axios call that ships the order
     const orderDone = ( id ) =>{

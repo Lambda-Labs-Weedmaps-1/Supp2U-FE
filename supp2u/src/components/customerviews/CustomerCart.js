@@ -7,7 +7,7 @@ import DeleteCartButton from './DeleteCartButton'
 
 function CustomerCart(props) {
 
-  const [setCustomer] = useState([{}]);
+  const [customer, setCustomer] = useState([{}]);
   const [cart, setCart] = useState([{}]);
   const [cartlist, setCartlist] = useState([{}]);
   
@@ -50,7 +50,7 @@ function CustomerCart(props) {
     });
 
 
-  }, [cart, custy, setCustomer, user_id])
+  }, [customer, cart, custy, setCustomer, user_id])
 
   const totals = cartlist =>{
     let total = 0.00

@@ -7,7 +7,7 @@ function BusinessOrderFrom(props) {
 
     let businy = props.match.params.id;
 
-    const [setCustomer] = useState([{}])
+    const [customer, setCustomer] = useState([{}])
     const [info, setInfo] = useState([{}])
     const [menuId , setMenuId] = useState(null)
 
@@ -38,7 +38,7 @@ function BusinessOrderFrom(props) {
         setInfo(res.data)
     })
 
-  }, [businy, setCustomer, user_id])
+  }, [customer, businy, setCustomer, user_id])
 
   return (
     <div>

@@ -6,7 +6,7 @@ import "./CustomerCart.sass";
 import DeleteCartButton from "./DeleteCartButton";
 
 function CustomerCartGet(props) {
-  const [setCustomer] = useState([{}]);
+  const [customer, setCustomer] = useState([{}]);
   const [cart, setCart] = useState([{}]);
   const [cartlist, setCartlist] = useState([{}]);
 
@@ -100,7 +100,7 @@ function CustomerCartGet(props) {
       .catch(error => {
         console.log("ERROR PULLING CUTOMER CART INFO", error);
       });
-  }, [cart, custy, setCustomer, user_id, cartlist]);
+  }, [customer, cart, custy, setCustomer, user_id, cartlist]);
 
   return (
     <div className="centerOrder">
