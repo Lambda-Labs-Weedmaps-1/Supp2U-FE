@@ -59,7 +59,7 @@ function BusinessSingleView(props) {
       .catch(err => {
         console.log('ERROR GETTING BUSINESS ID\n', err);
       });
-  }, []);
+  }, [businy]);
 
   // function for the button that sends user to the orders form
   const orderFrom = () => {
@@ -73,7 +73,7 @@ function BusinessSingleView(props) {
   return (
     <>
       {/* these 2 buttons will only display if you are be owner of the business     */}
-      {localStorage.getItem('business_id') != businy ||
+      {localStorage.getItem('business_id') !== businy ||
       localStorage.getItem('customer_id') ? null : (
         <div className="ownerButtonsContainer">
           <button className="updateButton" onClick={goToUpdate}>

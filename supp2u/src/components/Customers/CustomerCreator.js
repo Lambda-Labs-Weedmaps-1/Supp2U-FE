@@ -61,7 +61,7 @@ function CustomerCreator() {
     const submit = e =>{
         e.preventDefault()
         const photoForm = new FormData(e.target);
-        if(customerInformation.custname != "") {
+        if(customerInformation.custname !== "") {
             postCustomerHandler(e, photoForm, customerInformation);
         }else{
             console.log('Must have a name')

@@ -4,7 +4,7 @@ import React from 'react';
 // import SearchRoot from '../Search/SearchRoot';
 
 const CustomerNav = () => {
-  let custy = localStorage.customer_id;
+  // let custy = localStorage.customer_id;
   return (
     <div>
       <Link to={{ pathname: `/customer/view` }}>My Profile </Link>

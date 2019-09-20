@@ -50,12 +50,12 @@ function CustomerCart(props) {
     });
 
 
-  }, [customer, cart, custy, setCustomer, user_id])
+  }, [customer, cart, custy, setCustomer, user_id, cartlist])
 
   const totals = cartlist =>{
     let total = 0.00
     console.log(cartlist);
-    cartlist.map( stuff => {
+    cartlist.forEach( stuff => {
       total = total+stuff.price
     })
     return total.toFixed(2);
@@ -106,7 +106,7 @@ function CustomerCart(props) {
   return (
     <div className="centerOrder">
      
-      { cart.item_numbers == undefined ? <p>Number of Items in Cart: 0</p> :
+      { cart.item_numbers === undefined ? <p>Number of Items in Cart: 0</p> :
       <div>
         <h2>Number of Items in Cart: {cart.item_numbers.length}</h2>
         <h3>Your Cart</h3>

@@ -51,7 +51,7 @@ function BusinessOrders(props) {
 
     return (
         <div>
-            { orders[0] == undefined ? <p>Loading the Orders...</p> :
+            { orders[0] === undefined ? <p>Loading the Orders...</p> :
             <div>
             <b>Your orders</b>
             <div>

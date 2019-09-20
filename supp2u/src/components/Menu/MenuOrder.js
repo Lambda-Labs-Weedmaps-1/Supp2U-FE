@@ -39,7 +39,7 @@ function MenuOrder(props) {
             console.log('ERROR! MAKING CART FOR CUSTOMER', error)
         });
 
-    }, [])
+    }, [businessy, cart, custy, items, props.props])
 
     const addToCart = item =>{
         // e.preventDefault()
@@ -68,8 +68,8 @@ function MenuOrder(props) {
 
     const quantifyitems = itemy => {
         let bob = 0;
-        cart.item_numbers.map( holding => {
-            if(holding == itemy) {
+        cart.item_numbers.forEach( holding => {
+            if(holding === itemy) {
                 bob++
             }
         })
@@ -77,7 +77,7 @@ function MenuOrder(props) {
         return bob;
     }
     
-    if (businessy != cart.business_id) {
+    if (businessy !== cart.business_id) {
         return (
             <div>
                 <br></br><br></br>
@@ -92,7 +92,7 @@ function MenuOrder(props) {
         
         <div>
         
-            { cart.item_numbers == undefined ? <p>Number of Items in Cart: 0</p> :
+            { cart.item_numbers === undefined ? <p>Number of Items in Cart: 0</p> :
             <div className="centerOrder">
                 <div className="check-info">
                 <h3>Number of Items in Cart: {cart.item_numbers.length}</h3>
@@ -106,7 +106,7 @@ function MenuOrder(props) {
                     {items.map( item =>{ 
                         console.log('mapped item', item.id)
                         console.log('cart ', cart);
-                        let numby = 0;
+                        // let numby = 0;
                         return(
                         
                             <div className="menu-order-box">  
@@ -134,7 +134,7 @@ function MenuOrder(props) {
             </div>
 
             <br></br>
-            { cart.item_numbers == undefined ? <p>Number of Items in Cart: 0</p> :
+            { cart.item_numbers === undefined ? <p>Number of Items in Cart: 0</p> :
             <div className="centerOrder">
             <div className="check-info">
             <h3>Number of Items in Cart: {cart.item_numbers.length}</h3>

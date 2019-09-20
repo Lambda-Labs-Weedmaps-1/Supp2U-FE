@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import GoogleMaps from './GoogleMap';
 import axios from 'axios';
 
-import Image from '../../assets/suppburger.jpg';
+import suppburger from '../../assets/suppburger.jpg';
 function Map() {
   //Setting the lat and long for display
   const [coors, setCoors] = useState([{ lat: 0, lng: 0 }]);
@@ -26,7 +26,7 @@ function Map() {
           Connect with your favorite eateries and discover the best culinary
           experiences in town.
         </p>
-        <p src={Image} alt="food image" height="50%" width="90%"></p>
+        <img src={suppburger} alt="food pic" height="50%" width="90%"></img>
       </div>
       {/* <div className="map-container"> */}
       <GoogleMaps positions={coors} />

@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import api from '../../../config/Axios'
 import './reviews.sass'
-import Reviews from "../../Reviews/add";
-import ShowReview from "../../Reviews/show";
-import EditReviewPresentation from "../edit";
-import Route from "react-router-dom/es/Route";
+// import Reviews from "../../Reviews/add";
+// import ShowReview from "../../Reviews/show";
+// import EditReviewPresentation from "../edit";
+// import Route from "react-router-dom/es/Route";
 import ReviewPresentation from "./ReviewPresentation";
 import {toast} from "react-toastify";
 
@@ -40,7 +40,7 @@ function ReviewList(props) {
             .catch(err => {
                 console.log('ERROR POST\n', err)
             });
-    }, []);
+    }, [business_id]);
 
 
     const routeReviewToEdit = (id) => {

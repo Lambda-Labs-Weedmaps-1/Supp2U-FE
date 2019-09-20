@@ -59,7 +59,7 @@ function BusinessCreator(props) {
                 )
                 .then(res => {
                      console.log(res)
-                     { window.location.href = '/schedule/create'}
+                     window.location.href = '/schedule/create'
                     })
                 .catch(error =>{
                     console.log('ERROR POST\n',error);
