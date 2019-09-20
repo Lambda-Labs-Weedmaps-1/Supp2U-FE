@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import React, { useState, useCallback } from 'react';
-import { useTransition, animated } from 'react-spring';
-import SearchRoot from '../Search/SearchRoot';
+import React from 'react';
+// import { useTransition, animated } from 'react-spring';
+// import SearchRoot from '../Search/SearchRoot';
 
 const CustomerNav = () => {
   let custy = localStorage.customer_id;

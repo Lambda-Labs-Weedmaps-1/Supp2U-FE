@@ -33,7 +33,7 @@ function BusinessOrders(props) {
             console.log('Error getting business ORDERS ', err)
         })
         
-    }, [])
+    }, [businy, setInfo])
 
     // Axios call that ships the order
     const orderDone = ( id ) =>{

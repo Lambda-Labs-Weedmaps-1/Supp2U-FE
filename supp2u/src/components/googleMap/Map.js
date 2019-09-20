@@ -26,7 +26,7 @@ function Map() {
           Connect with your favorite eateries and discover the best culinary
           experiences in town.
         </p>
-        <img src={Image} alt="food image" height="50%" width="90%"></img>
+        <p src={Image} alt="food image" height="50%" width="90%"></p>
       </div>
       {/* <div className="map-container"> */}
       <GoogleMaps positions={coors} />

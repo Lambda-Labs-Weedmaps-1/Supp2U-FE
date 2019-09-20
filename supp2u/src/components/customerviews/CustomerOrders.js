@@ -28,7 +28,7 @@ function CustomerOrders(props) {
       })
       .catch(err => {
       });
-  }, []);
+  }, [user_id]);
 
    
 

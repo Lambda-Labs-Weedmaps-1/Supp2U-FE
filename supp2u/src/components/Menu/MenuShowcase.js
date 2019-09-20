@@ -21,7 +21,6 @@ function MenuShowcase(props) {
   const [isLoading, setLoading] = useState(true);
 
   const [categories, setCategories] = useState([]);
-  categories = null;
 
   useEffect(() => {
     const fetchitems = async () => {
@@ -37,7 +36,7 @@ function MenuShowcase(props) {
       setLoading(false);
     };
     fetchitems();
-  }, []);
+  }, [categories, props.props]);
   if (isLoading) {
     return <p>Loading...</p>;
   }

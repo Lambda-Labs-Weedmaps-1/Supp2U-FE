@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { MdSearch } from 'react-icons/md';
+import React, { useState } from "react";
+import { MdSearch } from "react-icons/md";
 
 const Search = props => {
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState("");
 
   const handleSearchInputChanges = e => {
     setSearchValue(e.target.value);
@@ -22,19 +22,20 @@ const Search = props => {
     <form
       className="search"
       style={{
-        borderTop: 'solid black',
-        borderBottom: 'solid black',
-        borderWidth: 'thin',
-        borderRadius: '0px'
+        borderTop: "solid black",
+        borderBottom: "solid black",
+        borderWidth: "thin",
+        borderRadius: "0px"
       }}
     >
       <input
-        style={{ fontWeight: 'bolder' }}
+        style={{ 
+          fontWeight: "bolder", 
+          borderBottom: "none" }}
         value={searchValue}
         onChange={handleSearchInputChanges}
         type="text"
         placeholder="Find Denver's best eateries by theme, dish, address or zipcode"
-        style={{ borderBottom: 'none' }}
       />
       <button
         className="search-button"
@@ -43,14 +44,14 @@ const Search = props => {
         type="submit"
         value="Search"
         style={{
-          background: '#bb1535',
-          cursor: 'pointer',
-          height: '5.5vh'
+          background: "#bb1535",
+          cursor: "pointer",
+          height: "5.5vh"
         }}
       >
         <MdSearch
           style={{
-            verticalAlign: 'center'
+            verticalAlign: "center"
           }}
         />
       </button>

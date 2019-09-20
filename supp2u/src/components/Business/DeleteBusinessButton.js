@@ -27,7 +27,7 @@ console.log(props)
         <button 
         className='delete-button' 
         onClick={deleteButton} >
-            <span role="img">⚠️</span> Delete Your Business 
+            <span role="img" aria-label="warning">⚠️</span> Delete Your Business 
         </button>
     )
 }

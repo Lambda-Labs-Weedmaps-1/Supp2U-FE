@@ -32,7 +32,7 @@ const BusinessUpdater = (props) => {
         }).catch(err => {
             console.error(err)
         })
-    }, [])
+    }, [props.match.params.id])
 
     const selectImage = image => {
         setUpdateState({...updateState, "image": image})

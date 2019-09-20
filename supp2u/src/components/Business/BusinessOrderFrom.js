@@ -38,7 +38,7 @@ function BusinessOrderFrom(props) {
         setInfo(res.data)
     })
 
-  }, [])
+  }, [businy, setCustomer, user_id])
 
   return (
     <div>

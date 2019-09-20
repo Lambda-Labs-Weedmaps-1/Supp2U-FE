@@ -26,22 +26,21 @@ let sortBy = (value, list) => {
 };
 
 
-
+let property = null;
+let el = null;
 
 export default ({items, pagination, search, searchBy}) =>{
     const { offset, limit, setMax} = pagination;
     console.log({items});
     const filteredResults = items.filter (item =>{
-        for( let property in item){
+        for( property in item){
             const noSearch = {"id": true, "user_id":true, "customer_id": true, "business_id": true,
                 "update_at": true, "updated_at": true, 'price': true,
                 };
-            {/*handle search cases incase some of the property is an arry*/}
-
             if(!noSearch[property] && item[property] && typeof item[property] === 'object' && item[property].length > 0){
                 for(let i = 0; i < item[property].length; i++){
                     let element = item[property][i];
-                    for( let el in element){
+                    for( el in element){
                         if(!noSearch[el] && typeof element[el] !== "number" && element[el].toString().toLowerCase().includes(search)){
                             return true;
                         }

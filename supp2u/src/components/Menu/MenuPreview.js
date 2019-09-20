@@ -31,7 +31,7 @@ function MenuPreview() {
             console.log(res)
         })
    
-    }, [])
+    }, [business_id, menuId])
 
     const redirect = e =>{
         window.location.href = `/business/${business_id}`

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import {Elements, StripeProvider} from 'react-stripe-elements';
-import CheckoutForm from './Stripe/checkout'
+// import {Elements, StripeProvider} from 'react-stripe-elements';
+// import CheckoutForm from './Stripe/checkout'
 import './InitLandingPage.sass'
 
 class InitLandingPage extends React.Component {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import BusinessCard from '../Search/BusinessCard';
-import { MdRemove, MdMoreHoriz } from 'react-icons/md';
+import { MdMoreHoriz } from 'react-icons/md';
 import axios from 'axios';
 
 export default function BusinessList(props) {
@@ -20,7 +20,7 @@ export default function BusinessList(props) {
       .catch(error => {
         console.log(error);
       });
-  }, []);
+  }, [props.location.search]);
 
   return (
     <div

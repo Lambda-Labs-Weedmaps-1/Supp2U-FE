@@ -31,7 +31,7 @@ function CustomerView(props) {
       .catch(err => {
         console.log("ERROR GETTING CUSTOMER\n", err);
       });
-  }, []);
+  }, [user_id]);
 
   let deleteReview = (id) =>{
     setReview(review.filter(review => review.id !== id));

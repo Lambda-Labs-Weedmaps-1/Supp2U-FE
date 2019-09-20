@@ -16,6 +16,17 @@ function CustomerCart(props) {
   // let businy = null;
 
   useEffect(() => {
+    const getList = data => {
+      console.log('data',data)
+      Axios.get(`${process.env.REACT_APP_BACKEND_URL}carts/${data.id}/itemfetch`)
+          .then(res => {
+            setCartlist(res.data)
+            console.log('cartlist the cartlist', cartlist)
+          })
+          .catch( error => {
+            console.log('ERROR PULLING Cart Log', error )
+          })
+    }
     
     Axios.get(`${process.env.REACT_APP_BACKEND_URL}users/${user_id}/customers`)
       .then(res =>{
@@ -39,7 +50,7 @@ function CustomerCart(props) {
     });
 
 
-  }, [])
+  }, [cart, custy, setCustomer, user_id])
 
   const totals = cartlist =>{
     let total = 0.00
@@ -50,17 +61,7 @@ function CustomerCart(props) {
     return total.toFixed(2);
   }
 
-  const getList = data => {
-    console.log('data',data)
-    Axios.get(`${process.env.REACT_APP_BACKEND_URL}carts/${data.id}/itemfetch`)
-        .then(res => {
-          setCartlist(res.data)
-          console.log('cartlist the cartlist', cartlist)
-        })
-        .catch( error => {
-          console.log('ERROR PULLING Cart Log', error )
-        })
-  }
+
 
   const placeOrder = () => {
     console.log('getlist at checkout', cart.business_id)

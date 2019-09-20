@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import CustomerOrderFinish from './../customerviews/CustomerOrderFinish';
-import Auth0 from './../Auth0';
+// import CustomerOrderFinish from './../customerviews/CustomerOrderFinish';
+// import Auth0 from './../Auth0';
 
 const BusinessNav = () => {
   let business = localStorage.business_id;
