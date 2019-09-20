@@ -7,18 +7,21 @@ export default (props) => {
         setTimeout(() => {
             setAnimated(true)
         }, props.delay)
-    }, []);
-    const {delay = 0, noAnimation, primary, big, clickable, bgImage} = props;
+    }, [props.delay]);
+    const {noAnimation, primary, big, clickable, bgImage} = props;
     let classes = `${primary && 'primary'} ${clickable && 'clickable'} ${big && 'big'} ${noAnimation && 'noAnimation'} ${animated && 'animation'}`;
     return (
         <div
             className={`card ${classes}`}
-            onMouseEnter={(e) => console.dir( e.target.classList)}
+            // onMouseEnter={(e) => console.dir( e.target.classList)}
             {...props}
         >
             <div className={"card--image"} style={{backgroundImage: `url(${bgImage})`}}
             />
             {props.children}
+            <div className="card--footer">
+                {props.footer}
+            </div>
         </div>
     )
 }

@@ -5,7 +5,7 @@ import CheckoutForm from '../Stripe/stripe'
 import './CustomerCart.sass'
 import DeleteCartButton from './DeleteCartButton'
 
-function CustomerCart(props) {
+function CustomerCartGet(props) {
 
   const [setCustomer] = useState([{}]);
   const [cart, setCart] = useState([{}]);
@@ -105,16 +105,15 @@ function CustomerCart(props) {
   return (
     <div className="centerOrder">
      
-      { cart.item_numbers == undefined ? <p>Number of Items in Cart: 0</p> :
+      { cart == undefined ? <p>Number of Items in Cart: 0</p> :
       <div>
-        <h2>Number of Items in Cart: {cart.item_numbers.length}</h2>
-        <h3>Your Cart</h3>
+        <p>Looks like you have a cart !</p>
         <button className="buttony" onClick={gobackprev}>Go Back to Menu / Add More Items</button>
-        <DeleteCartButton cus_id={custy} cart={cart} bis_id={props.match.params.id}/>
+        <DeleteCartButton cus_id={custy} cart={cart} bis_id={cart.business_id}/>
       </div> 
       }
 
-      { cart.id === null ? <p>No Cart Avliable</p> : <p></p> }        
+      { cart == undefined ? <p>No Cart Avliable</p> : <p></p> }        
 
       <div className="cart-order-showcase">
             {cartlist > 0 ? <p>Cart IS EMPTY!</p> :
@@ -130,7 +129,6 @@ function CustomerCart(props) {
                   <div className="cart-order-box-3">
                     <button onClick={() => {deleteitem(stuff.id)}} className="buttonbois">Delete Item</button>
                   </div>
-
                 </div>
               )
               
@@ -140,11 +138,14 @@ function CustomerCart(props) {
       <br></br><br></br>
       
 
+    
+      { cart== undefined ? <p> No Items Added</p> :
       <div className="checkoutbox">
-          <h3>Order Total: $ {totals(cartlist)} </h3>
-          <CheckoutForm amount={totals(cartlist)} business_id={props.match.params.id} callback={placeOrder} />
-          {/* <button onClick={placeOrder}>Place Order</button> */}
+        <h3>Order Total: $ {totals(cartlist)} </h3>
+        <CheckoutForm amount={totals(cartlist)} business_id={cart.business_id} callback={placeOrder} />
+        {/* <button onClick={placeOrder}>Place Order</button> */}
       </div>
+      }
 
       <br></br><br></br>
     </div>
@@ -152,4 +153,4 @@ function CustomerCart(props) {
   )
 }
 
-export default CustomerCart
+export default CustomerCartGet

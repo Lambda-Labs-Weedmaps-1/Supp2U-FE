@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react'
-import Axios from 'axios'
+import React from 'react'
+// import Axios from 'axios'
 import './reviews.sass'
 import ShowReview from "../../Reviews/show";
 import Reviews from "../add";
-import SearchCard from "../../../utils/SearchCard";
+// import SearchCard from "../../../utils/SearchCard";
 
 
 function ReviewPresentation({review, routeReviewToEdit, deleteReview, state, addReview, business_id}) {
@@ -15,7 +15,7 @@ function ReviewPresentation({review, routeReviewToEdit, deleteReview, state, add
                 {/* check if user is customer then if they have left review already */}
                 {/* loading state checks while the page is loading */}
 
-                { state.hasReview ?
+                { state.hasReview || !localStorage.customer_id ?
                 null
                 :
                 <Reviews business_id={business_id} addReviewState={addReview}/>}

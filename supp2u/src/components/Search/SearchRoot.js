@@ -1,9 +1,7 @@
-import React, { useReducer, useEffect } from 'react';
+import React, {useReducer} from 'react';
 import '../../App.sass';
-import BusinessCard from './BusinessCard';
 import Search from './Search';
-import { BusinessList } from '../Business/BusinessList';
-import { Link } from 'react-router-dom/esm/react-router-dom';
+import BusinessList from '../Business/BusinessList';
 
 const initialState = {
   loading: true,
@@ -64,19 +62,17 @@ const SearchRoot = () => {
 
   let displayResults = () => {
     console.log(businesses);
-    if (businesses) {
+    if (businesses.length > 0) {
       return (
         // Todo update classnames to "businesses"
-        <div className="movies">
+        <div>
           {loading && !errorMessage ? (
-            <span>loading... </span>
+            // <span>loading... </span>
+            <p></p>
           ) : errorMessage ? (
             <div className="errorMessage">{errorMessage}</div>
           ) : (
-            // <BusinessList businesses={businesses} />
-            businesses.map(business => (
-              <BusinessCard key={business.id} business={business} />
-            ))
+            <BusinessList businesses={businesses} />
           )}
         </div>
       );

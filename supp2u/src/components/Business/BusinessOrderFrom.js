@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import Axios from 'axios'
-import MenuShowcase from '../Menu/MenuShowcase';
 import MenuOrder from './../Menu/MenuOrder';
 import './BusinessOrderFrom.sass'
 
@@ -8,12 +7,12 @@ function BusinessOrderFrom(props) {
 
     let businy = props.match.params.id;
 
-    const [customer, setCustomer] = useState([{}])
+    const [setCustomer] = useState([{}])
     const [info, setInfo] = useState([{}])
     const [menuId , setMenuId] = useState(null)
 
     let user_id = localStorage.getItem("user_id");
-    let custy = localStorage.getItem("customer_id");
+    // let custy = localStorage.getItem("customer_id");
 
   useEffect(() => {
     //api call to get the information on the users customer status
@@ -25,7 +24,6 @@ function BusinessOrderFrom(props) {
     .catch(err =>{
         console.log('ERROR GETTING CUSTOMER\n', err)
     })
-    console.log(customer, 'id')
 
     Axios.get(`${process.env.REACT_APP_BACKEND_URL}businesses/${businy}/menus`)
     .then(res =>{
@@ -38,7 +36,6 @@ function BusinessOrderFrom(props) {
     Axios.get(`${process.env.REACT_APP_BACKEND_URL}businesses/${businy}`)
     .then(res =>{
         setInfo(res.data)
-        console.log('business info, ', res.data)
     })
 
   }, [])

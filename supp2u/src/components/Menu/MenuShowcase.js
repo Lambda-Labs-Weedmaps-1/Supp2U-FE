@@ -2,24 +2,27 @@ import React, { useEffect, useState } from 'react';
 import api from '../../config/Axios';
 
 import './menu.sass';
-import Card from '../../utils/Card/Card';
-import itemPhoto from '../../assets/Item-1.jpg';
 import { getCategory } from './helper';
+import MenuPresentation from './MenuPresentation';
+import MenuModalPresentation from './MenuModalPresentation';
+
 // this component renders all the items from a specified menu
 // when used anywhere just pass the id of the menu you are trying to access from the parent component as a prop
 function MenuShowcase(props) {
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [item, setItem] = useState({});
+
+  const toggleModal = item => {
+    setModalOpen(!isModalOpen);
+    item && setItem(item);
+  };
   //these items are set and then mapped over
-  const [item, setItem] = useState([
-    {
-      item_name: 'menu item name',
-      description: 'Write a little bit about the item...',
-      cals: NaN,
-      price: 0,
-      category: 'none',
-      image: null
-    }
-  ]);
+  const [items, setItems] = useState([]);
+  const [isLoading, setLoading] = useState(true);
+
   const [categories, setCategories] = useState([]);
+  categories = null;
+
   useEffect(() => {
     const fetchitems = async () => {
       const res = await api.get(
@@ -29,40 +32,35 @@ function MenuShowcase(props) {
         console.log(res);
         return;
       }
-      setItem(res.data);
+      setItems(res.data);
       setCategories(getCategory(res.data));
+      setLoading(false);
     };
     fetchitems();
   }, []);
-
-  console.log('categories', categories);
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
   return (
     <>
-      <div>
+      <div className={'menu'}>
         {/* this code makes it so you have to create items before they display */}
-        {item.item_name === 'menu item name' ? (
+        {items.length === 0 ? (
           <p className="empty-menu-message">
             Add Items to your menu to see how your menu will look
           </p>
         ) : (
           <div className="menu-showcase">
-            {item.map(item => (
-              <Card bgImage={item.image ? item.image['url'] : itemPhoto}>
-                <span
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    padding: '0px 10px'
-                  }}
-                >
-                  <p>{item.item_name}</p>
-                  {/* <p>{item.description}</p> */}
-                  <p>${item.price}</p>
-                </span>
-              </Card>
+            {items.map(item => (
+              <MenuPresentation item={item} toggleModal={toggleModal} />
             ))}
           </div>
         )}
+        <MenuModalPresentation
+          item={item}
+          isModalOpen={isModalOpen}
+          toggleModal={toggleModal}
+        />
       </div>
     </>
   );

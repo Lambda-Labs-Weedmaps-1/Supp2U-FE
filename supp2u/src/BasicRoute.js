@@ -2,7 +2,6 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 //Routes
 import BusinessCreator from './components/Business/BusinessCreator';
-import { BusinessList } from './components/Business/BusinessList';
 import ScheduleCreator from './components/Business/ScheduleCreator';
 import CustomerCreator from './components/Customers/CustomerCreator';
 import Auth0 from './components/Auth0';
@@ -26,8 +25,11 @@ import CheckoutForm from './components/Stripe/stripe';
 
 import BusinessOrders from './components/Business/BusinessOrders';
 import CustomerOrderFinish from './components/customerviews/CustomerOrderFinish';
+// import SearchRoot from './components/Search/SearchRoot';
 
-import SearchRoot from './components/Search/SearchRoot';
+import CustomerCartGet from './components/customerviews/CustomerCartGet';
+import CustomerOrders from './components/customerviews/CustomerOrders';
+import BusinessList from './components/Business/BusinessList';
 
 export default () => {
   return (
@@ -35,10 +37,10 @@ export default () => {
       {/* Special Auth0 Route  */}
       <Route path={'/login'} exact component={Auth0} />
       {/* Business */}
-      <Route path={'/search/results'} exact component={BusinessList} />
       <Route path={'/businesses/create'} exact component={BusinessCreator} />
       {/* <Route path={"/businesses/create"} exact component={BusinessCreator} /> */}
       <Route path={'/business/:id'} exact component={BusinessSingleView} />
+      {/* <Route path={'/businesses/search'} exact component={BusinessList} /> */}
       <Route path={'/business/:id/order'} exact component={BusinessOrderFrom} />
       <Route
         path={'/business/:id/customer/cart'}
@@ -64,6 +66,8 @@ export default () => {
       <Route path={'/customer/create'} exact component={CustomerCreator} />{' '}
       {/* have a single way of creating customer */}
       <Route path={'/customer/view'} exact component={CustomerView} />{' '}
+      <Route path={'/customer/cart'} exact component={CustomerCartGet} />
+      <Route path={'/customer/orders'} exact component={CustomerOrders} />
       {/* will break unless you have a customer_id */}
       {/* Menu */}
       <Route path={'/menu/new'} exact component={MenuCreator} />
@@ -76,7 +80,8 @@ export default () => {
       {/* Styling Test */}
       <Route path={'/imageshuffle'} component={ImageFadeShuffle} />
       {/* Search */}
-      <Route path={'/search'} component={SearchRoot} />
+      {/* <Route path={'/search'} exact component={SearchRoot} /> */}
+      <Route path={'/search'} exact component={BusinessList} />
     </>
   );
 };

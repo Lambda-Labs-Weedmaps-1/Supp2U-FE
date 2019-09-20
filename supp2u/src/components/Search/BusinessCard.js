@@ -38,6 +38,7 @@ const BusinessCard = ({ business }) => {
   */
   const classes = useStyles();
   return (
+    // `business/${business.id}`
     <Link
       to={`business/${business.id}`}
       key={business.id}
@@ -47,10 +48,10 @@ const BusinessCard = ({ business }) => {
         <CardActionArea>
           <CardMedia
             component="img"
-            alt="Contemplative Reptile"
+            alt="Business Logo"
             height="140"
             image="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F46239%2Fsalmon-dish-food-meal-46239.jpeg%3Fauto%3Dcompress%26cs%3Dtinysrgb%26h%3D350&f=1&nofb=1"
-            title="Contemplative Reptile"
+            title="Business Logo"
           />
           <CardContent>
             <Typography
@@ -65,11 +66,20 @@ const BusinessCard = ({ business }) => {
             <Typography
               gutterBottom
               variant="h6"
-              component="h3"
+              component="h2"
               align="left"
               color="textSecondary"
             >
               {business.theme}
+            </Typography>
+            <Typography
+              gutterBottom
+              variant="subtitle1"
+              component="h6"
+              align="left"
+              color="textSecondary"
+            >
+              {business.street}
             </Typography>
             <Typography
               variant="subtitle2"
@@ -77,15 +87,24 @@ const BusinessCard = ({ business }) => {
               component="p"
               align="left"
             >
-              {business.description
-                .split(' ')
-                .slice(0, 5)
-                .join(' ') + '....'}
+              {business.description === undefined ? (
+                <p></p>
+              ) : (
+                business.description
+                  .split(' ')
+                  .slice(0, 5)
+                  .join(' ') + '....'
+              )}
             </Typography>
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary" variant="contained">
+          <Button
+            size="small"
+            variant="contained"
+            color="primary"
+            style={{ background: '#125999' }}
+          >
             Menu & More
           </Button>
         </CardActions>

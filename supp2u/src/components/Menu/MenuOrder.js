@@ -14,8 +14,8 @@ function MenuOrder(props) {
 
     console.log('inc props', props)
 
-    useEffect( async () => {
-        await Axios.get(`${process.env.REACT_APP_BACKEND_URL}menus/${props.props}/items`)
+    useEffect( () => {
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}menus/${props.props}/items`)
         .then(res => {
             setItem(res.data)
             console.log('items', items)
@@ -65,7 +65,29 @@ function MenuOrder(props) {
     const orderCart = e =>{
         window.location.href = "customer/cart"
     }
+
+    const quantifyitems = itemy => {
+        let bob = 0;
+        cart.item_numbers.map( holding => {
+            if(holding == itemy) {
+                bob++
+            }
+        })
+        
+        return bob;
+    }
     
+    if (businessy != cart.business_id) {
+        return (
+            <div>
+                <br></br><br></br>
+            <p>You Already Have An Active Cart With Another Restauraunt</p>
+            <p>Please click the Cart Link at the top of page to view!</p>
+            </div>
+        )
+    }
+    else {
+
     return (
         
         <div>
@@ -99,6 +121,7 @@ function MenuOrder(props) {
                                 </div>
                                 <div className="menu-order-box-2">
                                 <button className="buttony" onClick={function() {addToCart(item.id)} }>Add Item</button>
+                                { cart.item_numbers.includes(item.id) ? <p>Qty:{quantifyitems(item.id)}</p> : <p>Qty:0</p>}  
                                 </div>
 
                             </div>
@@ -122,6 +145,7 @@ function MenuOrder(props) {
             <br></br><br></br>
         </div>
     )
+    }
 
 }
 

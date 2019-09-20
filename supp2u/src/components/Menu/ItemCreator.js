@@ -8,16 +8,18 @@ import './menu.sass'
 function ItemCreator(props){
 
     const [item, setItem] = useState([{
-       "item_name":"notSet" ,
-       "description":"notSet",
+       "item_name":"" ,
+       "description":"",
         "price": 0, 
-        "category":"notSet",
+        "category":"",
+        "inventory": 1000,
         "image": null
     }])
 
     
     let postItemHandler = (event, photoForm , state) => {
-        //This checks if there is an image before uploading
+
+                //This checks if there is an image before uploading
         if(state.image != null){
             // this adds the image to the business
             photoForm.append("image", state.image)
@@ -25,17 +27,19 @@ function ItemCreator(props){
             photoForm, item,
             { headers: {'Content-Type': 'multipart/form-data' }}
             ).then(res => {
-    
+                console.log('item added')
             }).catch(error =>{
                 console.log('ERROR POST\n',error);
         });
-        } else{
-        Axios.post( `${process.env.REACT_APP_BACKEND_URL}menus/${props.props}/items`, item)
-        .then(res => {
-   
-        }).catch(error =>{
-            console.log('ERROR POST\n',error);
-        });}
+        } else {
+            Axios.post( `${process.env.REACT_APP_BACKEND_URL}menus/${props.props}/items`, item)
+            .then(res => {
+    
+            }).catch(error =>{
+                console.log('ERROR POST\n',error);
+            });
+        }
+        
     }
 
     const changeHandler = event => {
@@ -50,18 +54,32 @@ function ItemCreator(props){
     const unselectImage = () => {
         setItem({...item, "image": "" })
     }
+    // this function calls off inside the submit so we can clear the item creation from inputs and let the user know an item was added
+    const resetInputField = () => {
+        alert("Thank you. Your item has been added");
+        setItem({
+            "item_name":"" ,
+            "description":"",
+             "price": 0, 
+             "category":"",
+             "inventory":1000,
+             "image": null})
+      }
 
-    const submit = e =>{
+    let submit = e =>{
         e.preventDefault();
         //this adds the new data to the form
         const photoForm = new FormData(e.target);
         postItemHandler(e, photoForm , item)
+        resetInputField();
     }
 
     return (
-    <div className="add-item-form">
-        <h2>Add Items to your menu</h2>
-        <form id="form" onSubmit={submit}>
+    <>
+    <p className="create-menu-input">Add items to your menu</p>
+          <br/>
+    <div className="add-item-form-comp">
+        <form id="form" onSubmit={submit} className="item-form">
         <div className="item-input-box">
             <label>Menu Item <span className="required-span">*</span></label>
             <input
@@ -81,7 +99,7 @@ function ItemCreator(props){
                 onChange={changeHandler} />
         </div>
          <div className="item-input-box">
-            <label>Price <span className="required-span">*</span></label>
+            <label>Price <i>($)</i> <span className="required-span">*</span></label>
             <input
                 placeholder="Enter price..."
                 type="integer"
@@ -98,17 +116,28 @@ function ItemCreator(props){
                 value={item.category}
                 onChange={changeHandler} />
         </div>
+        <div className="item-input-box">
+            <label>Inventory<span className="required-span">*</span></label>
+            <input
+                placeholder="Enter Inventory"
+                type="integer"
+                name="inventory"
+                value={item.inventory}
+                onChange={changeHandler} />
+        </div>
         <p className="required-span">* Required</p>
         <button className="add-item-button">Add Item</button>
         </form>
-
+        <div className="image-uploader">
         <ImageUploader
                 image = {item.image}
                 selectImage = {selectImage}
                 unselectImage = {unselectImage}
                 />
+        </div>
 
     </div>
+    </>
     )
 }
 

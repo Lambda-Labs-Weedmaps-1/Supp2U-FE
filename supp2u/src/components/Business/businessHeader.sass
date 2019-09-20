@@ -2,34 +2,57 @@
     max-width: 400px
     border: black solid 2px
     border-radius: 8px
+    margin: 2% auto
 
 .business-header
-    margin: 0 auto
-
+    display: flex
+    flex-direction: column
+    margin: auto
+    padding: 0% 10% 0% 10%
+    
 .info
-    background-color: #f8ebe1
-    color: black
+    background-color: #125999
+    align-self: center
+    color: white
     width: 100%
     border-radius: 8px
-    padding: 5px 10px 0 10px
-    margin: 10% 0 0 -3%
-    font-family: -apple-system, Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-
-
-.info .address
-    padding-bottom: 4%
+    font-family: Lato
+    text-align: center
+    padding: 20px
+    font-weight: 700
     
-
 .info .ratings 
     padding-bottom: 4%
 
 .info h2
-    border-bottom: 4px solid #32ade1
+    border-bottom: 4px solid #BB1535
     padding-bottom: 15px
 
+.info li
+    list-style: none
+    
 .hours
-    border: solid 2px black
+  display: flex
+  flex-direction: row
+  flex-flow: column-wrap
+  width: 100%
+  
+.hours p
+  margin: auto
+  padding: 10px
+  font-family: Work Sans
+
+@media screen and (max-width: 950px)
+ .hours
+    flex-direction: column
+  
+    
 
 .b-h-view
+    
+
+.centerOrder
     display: flex
     flex-direction: column
+    align-items: center
+    margin-top: 30px

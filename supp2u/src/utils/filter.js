@@ -30,28 +30,43 @@ let sortBy = (value, list) => {
 
 export default ({items, pagination, search, searchBy}) =>{
     const { offset, limit, setMax} = pagination;
+    console.log({items});
     const filteredResults = items.filter (item =>{
         for( let property in item){
             const noSearch = {"id": true, "user_id":true, "customer_id": true, "business_id": true,
-                "update_at": true
+                "update_at": true, "updated_at": true, 'price': true,
                 };
+            {/*handle search cases incase some of the property is an arry*/}
 
-            const string = item[property] ?
-                item[property].toString().toLowerCase()
-                : "";
+            if(!noSearch[property] && item[property] && typeof item[property] === 'object' && item[property].length > 0){
+                for(let i = 0; i < item[property].length; i++){
+                    let element = item[property][i];
+                    for( let el in element){
+                        if(!noSearch[el] && typeof element[el] !== "number" && element[el].toString().toLowerCase().includes(search)){
+                            return true;
+                        }
+                    }
+                }
+            } else {
+                const string = item[property] ?
+                    item[property].toString().toLowerCase()
+                    : "";
 
-            if(!noSearch[property] && string.includes(search)){
-                return true;
+                if(!noSearch[property] && string.includes(search)){
+                    return true;
+                }
+
+                if(property.toString().toLowerCase() === 'customer' && item[property].custname.toString().toLowerCase().includes(search)){
+
+                    return true;
+                }
             }
 
-            if(property.toString().toLowerCase() === 'customer' && item[property].custname.toString().toLowerCase().includes(search)){
-
-                return true;
-            }
         }
         return false
     });
     setMax(filteredResults.length);
+
     const sortedFilteredResults = sortBy(searchBy, filteredResults);
     return sortedFilteredResults.filter((_, i) => i >= offset * parseInt(limit, 10) && i < (offset * parseInt(limit, 10)) + 3)
 }

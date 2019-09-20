@@ -6,7 +6,7 @@ import BusinessNav from './BusinessNav';
 import CustomerNav from './CustomerNav';
 import { withRouter } from 'react-router';
 import './nav.sass';
-import Image from '../../images/Image5.png';
+import Image from '../../assets/Image5.png';
 import SearchRoot from '../Search/SearchRoot';
 
 function Navigation(props) {
@@ -55,13 +55,10 @@ function Navigation(props) {
         <Link to={{ pathname: `/` }}>
           <img className="Navwidget" src={Image} alt="logo" />
         </Link>
-        {/* <img src={Image} alt="logo" width="15%" height="90%" /> */}
-        {/* <Link className="Link" to="/">
-          Home
-        </Link> */}
         {renderUserType()}
         <div>{renderLogInLogOut()}</div>
       </nav>
+      <SearchRoot />
     </div>
   );
 }
