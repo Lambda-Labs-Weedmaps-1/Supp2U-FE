@@ -75,7 +75,7 @@ const App = () => {
         // Todo update classnames to "businesses"
         <div className="movies">
           {loading && !errorMessage ? (
-            <span>loading... </span>
+            <span></span>
           ) : errorMessage ? (
             <div className="errorMessage">{errorMessage}</div>
           ) : (
