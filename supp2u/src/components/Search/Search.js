@@ -29,10 +29,11 @@ const Search = props => {
       }}
     >
       <input
+        style={{ fontWeight: 'bolder' }}
         value={searchValue}
         onChange={handleSearchInputChanges}
         type="text"
-        placeholder="Search Denver's best eateries"
+        placeholder="Find Denver's best eateries by theme, dish, address or zipcode"
         style={{ borderBottom: 'none' }}
       />
       <button
