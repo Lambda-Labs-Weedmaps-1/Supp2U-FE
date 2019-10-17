@@ -37,6 +37,7 @@ const BusinessCard = ({ business }) => {
   zipcode: 80112
   */
   const classes = useStyles();
+  console.log(business);
   return (
     // `business/${business.id}`
     <Link
@@ -50,7 +51,11 @@ const BusinessCard = ({ business }) => {
             component="img"
             alt="Business Logo"
             height="140"
-            image="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F46239%2Fsalmon-dish-food-meal-46239.jpeg%3Fauto%3Dcompress%26cs%3Dtinysrgb%26h%3D350&f=1&nofb=1"
+            image={
+              business.image
+                ? business.image.url
+                : 'https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F46239%2Fsalmon-dish-food-meal-46239.jpeg%3Fauto%3Dcompress%26cs%3Dtinysrgb%26h%3D350&f=1&nofb=1'
+            }
             title="Business Logo"
           />
           <CardContent>

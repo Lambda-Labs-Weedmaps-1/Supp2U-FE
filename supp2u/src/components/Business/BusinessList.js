@@ -15,13 +15,16 @@ export default function BusinessList(props) {
         }`
       )
       .then(response => {
-        setBusinesses(response.data[0].concat(response.data[1]));
+        console.log(response);
+
+        setBusinesses(response.data);
       })
       .catch(error => {
         console.log(error);
       });
   }, []);
 
+  console.log(businesses);
   return (
     <div
       style={{
